@@ -1,0 +1,23 @@
+label.error
+	{
+		color:red;
+	}
+.sub input
+	{
+		font-weight: normal;
+		height: 40px;
+		float:right;
+	}
+.profileUpdated
+{
+	text-align: center;
+	padding-top: 5px;
+	color: green;
+}	
+
+.payError
+{
+	text-align: center;
+	padding-top: 5px;
+	color: red;
+}
