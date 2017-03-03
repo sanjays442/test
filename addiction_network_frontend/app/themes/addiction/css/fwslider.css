@@ -1,0 +1,226 @@
+/*------------------------------------------------------------------------
+
+        Name: Full Width Slider 2.0
+        Design and Develpment: eightyclouds
+        Author URI: http://www.eightyclouds.com
+        Version: 1.0
+
+--------------------------------------------------------------------------
+
+   01. CSS Reset
+   02. Head Styles
+   03. Top Slider Styles
+   04. Media Query Max Width 1300, Min Width 720
+   05. Media Query Max Width 719
+   
+*/
+
+/* ------------------------------- 1. Resets ------------------------------- */
+
+/* ------------------------------- 3. Slider Styles ------------------------------- */
+
+#fwslider {
+    position: relative;
+    background:#000;
+    width:100%;
+}
+
+#fwslider .slider_container {
+}
+
+#fwslider .slide {
+    display: none;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 0;
+    width:100%;
+	text-align:center;
+}
+
+#fwslider .slide img {
+    width:100%;
+	max-width:1369px;
+
+}
+
+#fwslider .slidePrev {
+    /*background:#000;*/
+    width:50px;
+    height:50px;
+    position: absolute;
+    top:43.3% !important;
+    left:-50px;
+    opacity:0.5;
+    z-index: 10;
+}
+
+#fwslider .slidePrev span {
+    background:url(../images/clandar.png) no-repeat scroll -26px 0;
+    width:50px;
+    height:50px;
+    float:left;
+    cursor: pointer;
+	
+}
+#fwslider .slideNext 
+{
+    /*background:#000;*/
+    width:50px;
+    height:50px;
+    position: absolute;
+    top:43.3% !important;
+    right:-50px;
+    opacity:0.5;
+    z-index: 10;
+}
+
+#fwslider .slideNext span 
+{
+    background:url(../images/clandar.png) no-repeat scroll -65px 0px;
+    width:50px;
+    height:50px;
+    float:left;
+    cursor: pointer;
+
+}
+
+#fwslider .timers {
+    height:4px;
+    position: absolute;
+    bottom:15px;
+    right:0;
+    z-index: 3;
+	width:180px !important;
+}
+
+#fwslider .timer {
+    height:4px;
+    width:40px;
+    background-color: #000;
+    float:left;
+    margin-right: 10px;
+	visibility:hidden;
+}
+
+#fwslider .progress {
+    height:4px;
+    width:0%;
+    background-color: #FC3;
+    float:left;
+	visibility:hidden;
+}
+
+#fwslider .slide_content {
+    top:0;
+    left:0;
+    position: absolute;
+    width:100%;
+    height:100%;
+}
+
+#fwslider .slide_content_wrap { /* Slider Text Content Container Style */
+    max-width:1280px;
+    margin:15% auto;
+}
+
+#fwslider .title {  /* Slider Title Style */
+    opacity: 0;
+    color:#fff;     
+    font-size:36px;
+    background:#000;
+    padding:10px;
+    float:left;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+	margin-top:85px;
+}
+
+#fwslider .description { /* Slider Description Style */
+    opacity: 0;
+    color:#FC3;
+    font-size:18px;
+    background:#000;
+    padding:10px;
+    clear:both;
+    float:left;
+    margin-top:2px;
+    line-height:24px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+}
+
+#fwslider .readmore { /* Slider Read More button Style */
+    opacity: 0;
+    clear:both;
+    float:left;
+    text-transform:uppercase;
+    font-size:10px;
+    color:#919191;
+    background:#000;
+    padding:10px;
+    text-decoration: none;
+    margin-top:2px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+}
+
+#fwslider .readmore:hover {
+    color:#fff;
+}
+
+.footer {
+    width:100%;
+    float:left;
+    text-align:center;
+}
+
+.footer p {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size:12px;
+    color:#585858;
+    margin-top:20px;
+}
+
+/* ------------------------------- 4. Media Query Max Width 1300, Min Width 720 ------------------------------- */
+@media only screen and (max-width:767px) {
+#fwslider .slidePrev {top:50% !important;}
+#fwslider .slideNext {top:50% !important;}
+}
+@media only screen and (max-width:600px) {
+#fwslider .slidePrev {top:31% !important;}
+#fwslider .slideNext {top:31% !important;}
+}
+@media only screen and (max-width:568px) {
+#fwslider .slidePrev {top:27% !important;}
+#fwslider .slideNext {top:27% !important;}
+}
+
+@media only screen and (max-width:480px) {
+#fwslider .slidePrev {top:27% !important;}
+#fwslider .slideNext {top:27% !important;}
+}
+
+@media only screen and (min-width:720px) and (max-width: 1300px) {
+
+    #fwslider .slide_content_wrap { margin-left:50px; margin-top:15%;}
+    #fwslider .title { font-size:26px; }
+    #fwslider .description {  font-size:12px;}
+
+	
+
+}
+
+/* ------------------------------- 5. Media Query Max Width 719 ------------------------------- */
+
+@media only screen and (max-width:719px) {
+
+    #fwslider .slide_content_wrap { display:none; }
+    #fwslider .timers { display:none; }
+    #fwslider .slide_content {cursor: pointer;}
+}
