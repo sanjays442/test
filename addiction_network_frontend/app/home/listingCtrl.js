@@ -1,6 +1,6 @@
 var result = require('./home.json');
 
-function listingCtrl($scope, $routeParams, ListingService) {
+function listingCtrl($scope, $http, $routeParams, ListingService) {
   $scope.type = $routeParams.type;
   $scope.entry = result;
   // ListingService.queryByType($scope.type).then(function (response) {
@@ -11,4 +11,4 @@ function listingCtrl($scope, $routeParams, ListingService) {
   // });
 }
 
-module.exports = ['$scope', '$routeParams', 'SponsoredListingService', listingCtrl];
+module.exports = ['$scope', '$http', '$routeParams', 'SponsoredListingService', listingCtrl];
