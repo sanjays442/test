@@ -12,7 +12,7 @@ angular.module(appName, [
   .config(['$locationProvider', function ($locationProvider) {
     $locationProvider.hashPrefix('');
   }])
-  .controller('advertisements', function($scope, $http) {
+  .controller('advertisements',["$scope", "$http", function($scope, $http) {
 	$http({
 		  method: 'GET',
 		  url: 'https://ancient-everglades-10056.herokuapp.com/advertisements',
@@ -23,6 +23,6 @@ angular.module(appName, [
 		  }, function errorCallback(response) {
 			$scope.advertisements = response.statusText;
 		  });
-	});
+	}]);
 
 angular.bootstrap(document.getElementsByTagName('body')[0], [appName]);
