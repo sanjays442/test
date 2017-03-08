@@ -14,16 +14,15 @@ angular.module(moduleName, ['ngRoute'])
   }])
   .factory('SponsoredListingService', service)
   .controller('HomeCtrl', ctrl)
-  .controller('advertisements', function($scope, $http) {
+  .controller('advertisement', function($scope, $http) {
 	$http({
 		  method: 'GET',
-		  url: 'https://ancient-everglades-10056.herokuapp.com/advertisements/',
+		  url: 'https://ancient-everglades-10056.herokuapp.com/advertisements',
 		}).then(function successCallback(response) {
-			//$scope.header_adv_banner = response.data.advertisements.header;
-			//$scope.footer_adv_banner = response.data.advertisements.footer;
-			//$scope.sidebar_adv_banner = response.data.advertisements.side_bar;
+			$scope.header_adv_banner = response.data.advertisements.header;
+			$scope.footer_adv_banner = response.data.advertisements.footer;
+			$scope.sidebar_adv_banner = response.data.advertisements.side_bar;
 		  }, function errorCallback(response) {
-			  console.log(response);
 			$scope.advertisements = response.statusText;
 		  });
 	});
