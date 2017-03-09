@@ -1,0 +1,243 @@
+<div class="middle_content_div margin_top_new">
+  <div class="container">
+    <div class="left_content top_text">
+      <h1>
+        <label>{{ entry.center_name }}</label>
+      </h1>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-sm-12 col-xs-12">
+        <!-- slider -->
+        <div id="main_area">
+          <!-- Slider -->
+          <div class="row">
+            <div class="col-xs-12" id="slider">
+              <!-- Top part of the slider -->
+              <div class="row">
+                <div class="col-sm-12" id="carousel-bounding-box">
+                  <div class="carousel slide" id="myCarousel" tabindex="-1">
+                    <!-- Carousel items -->
+                    <div class="carousel-inner "></div>
+                    <a class="left carousel-control anchor_active" href="#myCarousel" role="button" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/Slider-->
+            <div class="col-md-12">
+              <div class="carousel slide media-carousel carousel-2" id="media" tabindex="-1">
+                <div class="carousel-inner carousel-inner-2"></div>
+                <a data-slide="prev" href="#media" class="left carousel-control">‹</a>
+                <a data-slide="next" href="#media" class="right carousel-control">›</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- slider -->
+        <div class="left_content">
+          <div class="outerMessage" style="display: none;">
+            <div class="innerMessage"></div>
+          </div>
+          <div id="success" style="display: none;">
+            <div class="innerMessage"></div>
+          </div>
+          <h1>
+            <label>{{ entry.center_name}}
+              Details</label>
+          </h1>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+              <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <label for="userf">Name:</label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12 treatment_detail">
+                  <p>{{ entry.center_name }}</p>
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <label for="userl">Details:</label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12 treatment_detail">
+                  <p>{{ entry.description }}</p>
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <label>Website Link:</label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12 treatment_detail">
+                  <a href="{{ entry.website_link }}">{{ entry.center_web_link }}</a>
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <label>Phone Number:</label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12 treatment_detail">
+                  <p>{{ entry.phone }}</p>
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <label>Address:</label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12 treatment_detail">
+                  <p>{{ entry.address }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--   About us    -->
+          <h1 class="display_full">
+            <label>{{ entry.heading_1 }}</label>
+          </h1>
+          <div class="margin_top_adjust_go col-md-12 col-sm-12 col-xs-12 ">
+            <span class="text_style_about margin_bottom_adjust_go">{{ entry.content_1 }}</span>
+          </div>
+
+          <!--   Treatment Approach    -->
+          <h1 class="display_full">
+            <label>{{ entry.heading_2 }}</label>
+          </h1>
+          <div class="margin_top_adjust_go col-md-12 col-sm-12 col-xs-12">
+            <span class="text_style_about margin_bottom_adjust_go">{{ entry.content_2 }}</span>
+          </div>
+
+          <!--   Unique Points   -->
+          <h1 class="display_full">
+            <label>{{ entry.heading_3 }}</label>
+          </h1>
+          <div class="margin_top_adjust_go col-md-12 col-sm-12 col-xs-12">
+            <span class="text_style_about margin_bottom_adjust_go">{{ entry.content_3 }}</span>
+          </div>
+
+          <!--   Reviews    -->
+          <h1 class="display_full">
+            <label>{{ entry.heading_4 }}
+            </label>
+          </h1>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <label>Average Rating:</label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12 review_star">
+                  <img src="http://www.addictionnetwork.com/wp-content/themes/addiction/images/review_star-half.png">
+                  <img src="http://www.addictionnetwork.com/wp-content/themes/addiction/images/review_star-half.png">
+                  <img src="http://www.addictionnetwork.com/wp-content/themes/addiction/images/review_star-half.png">
+                  <img src="http://www.addictionnetwork.com/wp-content/themes/addiction/images/review_star-half.png">
+                  <img src="http://www.addictionnetwork.com/wp-content/themes/addiction/images/review_star-half.png">
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 main_wrap_form_inner_sub padding_0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                  <a class="margin_left_0 btn btn-primary modal_btn" id="send_rev_button">Submit Review</a>
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12" id="div_to_show" style="display:none;">
+                <form id="reviewForm" method="post" action="http://www.addictionnetwork.com/wp-content/themes/addiction/submit_review.php" novalidate="novalidate" __bizdiag="1806558906" __biza="WJ__">
+                  <input type="hidden" name="ratings" id="ratVal" value="">
+                  <input type="hidden" name="post_id" id="ratVal" value="13236">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding_0">
+                    <h4 class="sub_heading_under_sign_up">Review and Rating :
+                    </h4>
+                    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub color_for_star">
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <label for="rat">Select Rating:
+                        </label>
+                      </div>
+                      <div class="col-md-8 col-sm-8 col-xs-12">
+                        <div class="user_ratings">
+                          <img id="1" class="star" src="http://www.addictionnetwork.com/wp-content/themes/addiction/images/review_star-half.png">
+                          <img id="2" class="star" src="http://www.addictionnetwork.com/wp-content/themes/addiction/images/review_star-half.png">
+                          <img id="3" class="star" src="http://www.addictionnetwork.com/wp-content/themes/addiction/images/review_star-half.png">
+                          <img id="4" class="star" src="http://www.addictionnetwork.com/wp-content/themes/addiction/images/review_star-half.png">
+                          <img id="5" class="star" src="http://www.addictionnetwork.com/wp-content/themes/addiction/images/review_star-half.png">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <label for="userf">Name:
+                        </label>
+                      </div>
+                      <div class="col-md-8 col-sm-8 col-xs-12">
+                        <input name="username" type="text" class="form-control required comm" id="userf" placeholder="Name">
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <label for="message">Review:
+                        </label>
+                      </div>
+                      <div class="col-md-8 col-sm-8 col-xs-12">
+                        <textarea name="reviews" id="message" rows="4" cols="100%" class="form-control required comm"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                      <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                        <input type="submit" class="btn btn-primary modal_btn btn_size submit_review sub" value="Submit">
+                        <a class="btn btn-primary modal_btn cancel_review btn_size canc">Cancel</a>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub">
+                <div class="company_adds">
+                  <a href="http://www.monarchshores.com"><img class="img-responsive" src="http://www.addictionnetwork.com/wp-content/uploads/advertisement_images/medium/1428518360-MonarchAN.jpg"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+        <div class="contact_info_wrap_div">
+          <img src="http://www.addictionnetwork.com/wp-content/uploads/treatment_center_images/medium/1430401661-logo-new start detox logo.jpg" style="margin-bottom : 10px;">
+          <div class="text_style_detail_page">
+            <span>Location:</span>
+            <p class="margin_top_adjust_go">
+              <i class="glyphicon glyphicon-map-marker"></i>{{ entry.address }}
+            </p>
+          </div>
+          <div class="text_style_detail_page">
+            <span class="margin_top_adjust_go">Call Us:</span>
+            <p class="margin_top_adjust_go">
+              <i class="glyphicon glyphicon-phone-alt"></i>{{ entry.phone_no}}</p>
+          </div>
+          <div class="text_style_detail_page">
+            <span class="margin_top_adjust_go">Email Us:</span>
+            <p class="margin_top_adjust_go">
+              <i class="glyphicon glyphicon-envelope mail_icon"></i>{{ entry.email}}
+            </p>
+          </div>
+        </div>
+        <div class="detail_form_main map_margin">
+          <div class="detail_heading">{{ entry.address }}
+            <h2>
+              <label>Map</label>
+            </h2>
+          </div>
+          <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 padding_0 main_wrap_form_inner_sub">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+              <iframe width="100%" height="250px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=123 Main Street Tustin CALIFORNIA, 92705&amp;ie=UTF8&amp;hq=&amp;hnear=123 Main Street Tustin CALIFORNIA, 92705&amp;z=11&amp;iwloc=near&amp;output=embed"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inquiry form -->
+        <inquiry-form-card></inquiry-form-card>
+      </div>
+    </div>
+  </div>
+</div>
