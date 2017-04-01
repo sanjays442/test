@@ -19,10 +19,9 @@ function ctrl($log, $rootScope, Status, service, $uibModal) {
       // component: 'modalComponent',
       // templateUrl: 'myModalContent.html',
       template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">Delete Treatment Center!</h3></div><div class="modal-body" id="modal-body">Are you sure you want to delete?</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()"> OK </button><button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button ></div>',
-      size: size,
       appendTo: parentElem,
       controllerAs: '$ctrl',
-      controller: function () {},
+      controller: function ($scope) {},
       // controller: 'ModalController',
       resolve: {
         items: function () {
