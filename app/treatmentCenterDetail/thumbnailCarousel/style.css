@@ -1,0 +1,13 @@
+.carousel-inner {
+  max-height: 317px;
+}
+
+.carousel-inner img {
+  max-width: 100%;
+  heigh: auto;
+}
+
+.center-detail-carousel {
+  border: 7px solid #fff;
+  box-shadow: 0 0 5px 1px #d6d6d6;
+}

@@ -1,0 +1,171 @@
+<div class="container">
+  <div class="row">
+    <!-- Left Section -->
+    <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
+      <div class="sidebar_main">
+        <form method="GET" action="#/treatment-center-map/" id="search_form" name="search_form223" __bizdiag="927742349" __biza="WJ__">
+          <input type="hidden" name="srch-keyword" value="search">
+          <div class="ul_wrapper_sidebar padding_0">
+            <ul class="main_sidebar padding_0">
+              <!--  category -->
+              <li>
+                <a href="#panel2" class="bg_list_page_search" data-toggle="collapse" data-parent=".ul_wrapper_sidebar"> Category <span class="caret"></span> </a>
+                <ul class="panel-collapse collapse padding_0 in only_border" id="panel2">
+                  <li>
+                    <div class="under_ul_wrap_sidebar bg_gray">
+                      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 form_wrap_margin new_class_for_label">
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input class="form-control category" value="1" name="catg[]" type="checkbox" id="category_search_1">
+                          <label for="cat1" class="inline">
+                            Inpatient </label>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input class="form-control category" value="2" name="catg[]" type="checkbox" id="category_search_2">
+                          <label for="cat1" class="inline">
+                            Outpatient </label>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input class="form-control category" value="3" name="catg[]" type="checkbox" id="category_search_3">
+                          <label for="cat1" class="inline">
+                            Sober Living </label>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input class="form-control category" value="4" name="catg[]" type="checkbox" id="category_search_4">
+                          <label for="cat1" class="inline">
+                            Adolescent </label>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <!--        Advanced Search         -->
+              <li>
+                <a href="#panel1" data-toggle="collapse" data-parent=".ul_wrapper_sidebar" class="bg_list_page_search"> Advanced Search <span class="caret"></span> </a>
+                <ul class="panel-collapse collapse padding_0 in new_class_for_border_list" id="panel1">
+                  <li>
+                    <div class="under_ul_wrap_sidebar">
+                      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 form_wrap_margin">
+                        <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+                          <label for="state"> State: </label>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+                          <select name="state" ng-model="$ctrl.state" class="form-control">
+                            <option value="">Select State</option>
+                            <option ng-repeat="states in $ctrl.states track by $index" value="{{states}}">{{states}}</option>
+                          </select>
+
+                        </div>
+                        <p class="monali" style="font-weight: bold; text-align: center"> OR</p>
+                      </div>
+                      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 form_wrap_margin">
+                        <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+                          <label for="zip"> Zipcode: </label>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+                          <input type="text" class="form-control zip" value="" name="zip" id="search_zip" placeholder="">
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 form_wrap_margin">
+                        <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+                          <label for="miles"> Select Miles: </label>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+                          <select id="miles" name="distance" class="form-control selectpicker miles">
+                            <option selected="" value="">Select Miles</option>
+                            <option value="10">10 miles</option>
+                            <option value="20">20 miles</option>
+                            <option value="50">50 miles</option>
+                            <option value="100">100 miles</option>
+                            <option value="250">250 miles</option>
+                            <option selected="" value="">Unlimited</option>
+                          </select>
+
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li id="ajax_submit">
+                    <input type="submit" name="center_filter" class="btn btn-primary border_radius_add modal_btn text-center" value="submit">
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </form>
+      </div>
+      <!--  sidebar main ends  -->
+      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 padding_0 ">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 padding_0">
+          <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 padding_0 ">
+            <div class="banner_adjust">
+              <img class="img-responsive" id="sidebar_ad">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ng-if="hide_map == 'show'">
+      <!-- Right Section  -->
+      <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8 text_deco">
+        <label> Begin your search by clicking on the state you're considering going to treatment in, or using the advanced search on the left </label>
+      </div>
+
+      <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8">
+        <div class="heading_main_div">
+          <h2>
+            <label>Treatment Centers </label>
+          </h2>
+          <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12"></div>
+          <!--- Map content  Start   -->
+          <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+            <div onselectstart="return false;" class="unselectable">
+              <div id="mapwrapper">
+                <div id="map_base">
+                  <state-map></state-map>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--- Map content End -->
+        </div>
+      </div>
+    </div>
+    <div ng-if="hide_map == 'hide'">
+      <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8">
+        <div class="heading_main_div">
+          <h2>
+            <label>Treatment Centers</label>
+          </h2>
+        </div>
+        <div style="color:red;margin-left:10px;" class="ng-hide" id="no_results">No data Found.</div>
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
+
+          <div class="col-sm-6 col-xs-12 col-md-6 col-lg-6" ng-repeat="listing in search_by_filter">
+            <div class="listing_wrap">
+              <div class="img_under_block_outer">
+                <a ng-href="#/treatment_center/{{listing.id}}/detail">
+                  <img class="" ng-src="{{ listing.listing_image}}"> </a>
+              </div>
+              <div class="head_under_block">
+                <a href="#/treatment_center/{{listing.id}}/detail">
+                  <p class="text_style_under_block">{{ listing.center_name | limitTo:14}}...
+                  </p>
+                </a>
+                <div class="desc_under_block">
+                  <p> {{ listing.description | limitTo:100}} </p>
+                </div>
+              </div>
+              <div class="detail_div_under_block"><a ng-href="#/treatment-center-detail/{{listing.id}}">More Details</a> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

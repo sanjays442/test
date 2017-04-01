@@ -1,0 +1,3 @@
+<div class="review-rating left">
+  <img ng-repeat="image in $ctrl.images track by $index" ng-src="{{ image }}" ng-click="$ctrl.onClick($index + 1)" />
+</div>

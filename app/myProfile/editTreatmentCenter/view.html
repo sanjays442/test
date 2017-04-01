@@ -1,0 +1,223 @@
+<div class="col-md-8 col-sm-8 col-xs-12 col-lg-9">
+  <div class="heading_main_div">
+    <h2>
+      <label>Edit Treatment Center</label>
+    </h2>
+  </div>
+  <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
+    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 pull-right pading_0">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <a href="javascript:history.go(-1);">
+          <span class="modal_btn btn btn-primary margin_bottom_15_add pull-right  text-right">
+            <i class="glyphicon glyphicon-hand-left"></i> Back
+          </span>
+        </a>
+      </div>
+    </div>
+    <form ng-submit="$ctrl.submit()" id="treatmentCenter" class="form-horizontal" enctype="multipart/form-data" novalidate="novalidate" __bizdiag="1043787928" __biza="WJ__">
+
+      <!-- Category -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="category">Select Category:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12 class_for_select">
+          <!-- <select name="center_category" class="form-control selectpicker required">
+            <option value="">Select</option>
+            <option value="inpatient">Inpatient</option>
+            <option value="outpatient">Outpatient</option>
+            <option value="sober-living">Sober Living</option>
+            <option value="adolescent">Adolescent</option>
+          </select> -->
+          <div ng-dropdown-multiselect="" options="$ctrl.treatmentCenterCategories" checkboxes="true" selected-model="$ctrl.multiselectModelCategories" extra-settings="$ctrl.multiselectModelSettings"></div>
+
+        </div>
+      </div>
+
+      <!-- Center Name -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="tname">Center Name:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.center_name" type="text" class="form-control required" placeholder="Treatment Center Name" />
+        </div>
+      </div>
+
+      <!-- Center Website Link -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="web_link">Website Link:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.center_web_link" type="text" class="form-control required url" placeholder="http://www.google.com" value="" />
+        </div>
+      </div>
+
+      <!-- Street Address -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="addr">Street Address:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.address_line_1" type="text" class="form-control required" placeholder="" />
+          <input type="hidden" name="centerapprove" value="0" />
+        </div>
+      </div>
+
+      <!-- City -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="city">City:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.city" type="text" class="form-control required" placeholder="center city" value="" />
+        </div>
+      </div>
+
+      <!-- Select State -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="state">Select State:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12 class_for_select">
+          <state-select on-update="$ctrl.onStateUpdate(selected)"></state-select>
+        </div>
+      </div>
+
+      <!-- Zipcode -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="zip">Zipcode:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.pincode" type="text" name="center_zip" class="form-control required" number="true" maxlength="5" minlength="5" id="zip" placeholder="14100" value="" />
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="phone">Phone:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.phone" type="text" name="center_phone" class="form-control required" id="phone" number="true" maxlength="10" minlength="10" placeholder="09855438504" value="" />
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="phone">Email:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.email" type="email" name="center_email" class="form-control required" email="placeholder=&quot;abc@gmail.com&quot;" value="">
+        </div>
+      </div>
+
+      <!-- Logo -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="logo"></label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <img ng-src="{{ $ctrl.logo }}">
+        </div>
+      </div>
+
+      <!-- Logo Upload-->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="img_upload">Logo:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <div class="">
+            <a href="javascript:void(0)">
+              <input file-model="$ctrl.listing_image" type="file" name="center_image" id="img_upload" class="center_image" accept="image/*" />
+            </a>
+            <span style="float:left;">Please upload an image with exact size of 308*180 KB.
+            </span>
+            <span ng-show="$ctrl.err_type">Please upload an image only. </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description content_1 -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="description">Description:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <textarea ng-model="$ctrl.content_1" name="center_description" rows="3" cols="100%" class="form-control required" placeholder=""></textarea>
+        </div>
+      </div>
+
+      <!-- About  Facility content_2 -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="about">About Facility:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <textarea ng-model="$ctrl.content_2" name="center_facility" rows="3" cols="100%" class="form-control required" id="description2" placeholder=""></textarea>
+        </div>
+      </div>
+
+      <!-- Treatment Approach content_3 -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="center_approach">Treatment Approach:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <textarea ng-model="$ctrl.content_3" name="center_approach" rows="3" cols="100%" class="form-control required" placeholder=""></textarea>
+        </div>
+      </div>
+
+      <!-- Unique Selling Points content_4 -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="center_philosophy">Unique Selling Points:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <textarea ng-model="$ctrl.content_4" name="center_philosophy" rows="3" cols="100%" class="form-control required" placeholder=""></textarea>
+        </div>
+      </div>
+
+      <!-- Gallery Images -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="gallery"></label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <thumbnail-delete ng-repeat="imgUrl in $ctrl.center_images track by $index" imgUrl="imgUrl" on-delete="$ctrl.deleteImage(imgUrl)"></thumbnail-delete>
+        </div>
+      </div>
+
+      <!-- Upload Gallery Images image_data -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="web_link">Upload Gallery Images:
+          </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <div id="galler_image_wrap">
+            <input file-model="$ctrl.image_data" type="file" multiple name="treatment_center_gallery_images[]" id="galler_image" class="span2 text_file multi center_image" value="" accept="image/*" />
+            <span id="galler_image_wrap_labels"></span>
+
+          </div>
+        </div>
+      </div>
+      <input type="hidden" name="slug" value="" />
+      <div class="text-left col-md-8 col-sm-12 col-xs-8 col-lg-8 col-md-offset-4 col-lg-offset-4 col-sm-offset-4 main_wrap_form_inner_sub">
+        <input class="btn btn-primary modal_btn pull-right btn_size" id="submit_profile" type="submit" value="Submit" />
+        <input type="hidden" value="" name="current_pay" id="current_pay" />
+      </div>
+    </form>
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+      <div class="company_adds margin_top_25">
+        <div class="company_adds">
+          <img class="img-reponsive" id="footer_ad">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

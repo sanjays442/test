@@ -1,0 +1,57 @@
+<div class="col-md-12 col-sm-12 col-xs-12" style="min-height:500px;">
+  <form class="form-horizontal" __bizdiag="0" __biza="WJ__">
+    <div id="no-more-tables">
+      <table class="col-md-12 col-xs-12 col-sm-12  table-striped table-condensed cf padding_0">
+        <thead class="cf">
+          <tr>
+            <th>Image</th>
+            <th>
+              <a class="head-name" href="?order=DESC" title="Order By name in desending order">Name</a>
+            </th>
+            <th>Category</th>
+            <th class="head-action">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="center in $ctrl.centers">
+            <!-- Image -->
+            <td data-title="Image" class="block_make">
+              <div class="img_outer_in_tb">
+                <div class="img_inner_in_tb">
+                  <a ui-sref="{{ center.viewLink }}">
+                    <img ng-src="{{ center.listing_image }}" alt="{{ center.center_name }}" />
+                  </a>
+                </div>
+              </div>
+            </td>
+
+            <!-- Name -->
+            <td data-title="Name">
+              <a ui-sref="{{ center.viewLink }}" style="color:black;">{{ center.center_name }}</a>
+            </td>
+
+            <!-- Category -->
+            <td data-title="Category">{{ center.categories_name }}</td>
+
+            <!-- Action view, edit, delete, activate/deactivate -->
+            <td data-title="Action">
+              <a ui-sref="{{ center.viewLink }}" data-toggle="tooltip" data-placement="bottom" title="View">
+                <i class="glyphicon glyphicon-eye-open"></i>
+              </a>
+              <a ui-sref="{{ center.editLink }}" data-toggle="tooltip" data-placement="bottom" title="Edit">
+                <i class="glyphicon glyphicon-edit"></i>
+              </a>
+              <a href ng-click="$ctrl.onDelete({id: center.id })" data-toggle="tooltip" data-placement="bottom" title="Delete">
+                <i class="glyphicon glyphicon-trash"></i>
+              </a>
+              <a href ng-click="$ctrl.onActivate({id: center.id})" data-toggle="tooltip" data-placement="bottom" title="Deactivate It">
+                <i class="">{{ center.active ? "Deactivate": "Activate"}}</i>
+              </a>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </form>
+</div>

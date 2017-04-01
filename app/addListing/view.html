@@ -1,0 +1,298 @@
+<div class="middle_content_div">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <div class="left_content">
+          <h1>
+            <label>Sign Up</label>
+          </h1>
+          <h4 class="sub_heading_under_sign_up">
+            Contact Information:
+          </h4>
+          <div class="row">
+            <form name="addlistForm" enctype="multipart/form-data">
+              <input name="customertype" value="owner" type="hidden">
+              <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Email
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input placeholder="Email" id="email" name="email" class="form-control required" type="email" ng-model="$ctrl.email" required="true">
+                    <span id="email_err">{{$ctrl.email_err}}</span>
+                    <p ng-show="addlistForm.email.$error.required" class="help-block">Required</p>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Password
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+
+                    <input placeholder="Password" name="password" class="form-control required1" type="password" ng-model="$ctrl.password" ng-minlength="8" ng-pattern="/^(?=.*[0-9])(?=.*[!@#$%^&*()_+])([a-zA-Z0-9!@#$%^&*()]+)$/" required="true">
+                    <span>{{$ctrl.pass_err}}</span>
+                    <p ng-show="addlistForm.password.$invalid" class="help-block">Required, Password must contain 1 special, 1 numeric character and must be 8 digits</p>
+
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Password Confirmation
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input placeholder="Password Confirmation" id="confirm_password" name="confirm_password" class="form-control required" type="password" ng-model="$ctrl.confirm_password" ng-required="required" valid-password-c="$ctrl.password">
+                    <span ng-show="addlistForm.confirm_password.$error.noMatch">Password does not match!
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">First Name
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input placeholder="First Name" id="first_name" name="user_first_name" class="form-control required" type="text" required="true" ng-model="$ctrl.first_name">
+                    <p ng-show="addlistForm.user_first_name.$error.required" class="help-block">Required</p>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Last Name
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input placeholder="Last Name" id="last_name" name="user_last_name" class="form-control required" type="text" required="true" ng-model="$ctrl.last_name">
+                    <p ng-show="addlistForm.user_last_name.$error.required" class="help-block">Required</p>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Company
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input placeholder="Company" name="user_company" class="form-control required" type="text" required="true" ng-model="$ctrl.company">
+                    <p ng-show="addlistForm.user_company.$error.required" class="help-block">Required</p>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Phone
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input placeholder="Phone" name="user_phone" class="form-control required" type="text" required="true" ng-minlength="10" ng-maxlength="10" ng-pattern="/^-?[0-9+]*$/" restrict="reject" maxlength="10" ng-model="$ctrl.phone">
+                    <p ng-show="addlistForm.user_phone.$invalid" class="help-block">phone number must be 10 digits</p>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <h3 class="sub_heading_under_sign_up">Treatment Center Info :</h3>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Treatment Center Name
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input placeholder="Treatment Center Name" name="center_name" class="form-control required" type="text" required="true" ng-model="$ctrl.center_name">
+                    <p ng-show="addlistForm.center_name.$invalid" class="help-block">Required</p>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Description</label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <textarea name="briefoverview" ng-model="$ctrl.description" class="form-control required" rows="2" cols="50" placeholder="Brief Overview"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="web_link">Listing Image:
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input name="listing_image[]" id="listing_image" file-model="$ctrl.listing_image" class="span2 text_file multi center_image" type="file" accept="image/*">
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Heading1
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input id="website" name="heading1" class="form-control required" type="text" ng-model="$ctrl.heading_1" placeholder="Heading1">
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Heading2
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input name="heading2" class="form-control required" type="text" ng-model="$ctrl.heading_2" placeholder="Heading2">
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Heading3
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input name="heading3" class="form-control required" type="text" ng-model="$ctrl.heading_3" placeholder="Heading3">
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Heading4
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input name="heading4" class="form-control required" type="text" ng-model="$ctrl.heading_4" placeholder="Heading4">
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Content1</label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <textarea name="briefoverview" ng-model="$ctrl.content_1" class="form-control required" rows="2" cols="50" placeholder="Content 1"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Content 2</label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <textarea name="briefoverview" ng-model="$ctrl.content_2" class="form-control required" rows="2" cols="50" placeholder="Content 2"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Content 3</label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <textarea name="briefoverview" ng-model="$ctrl.content_3" class="form-control required" rows="2" cols="50" placeholder="Content 3"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Content 4</label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <textarea name="briefoverview" ng-model="$ctrl.content_4" class="form-control required" rows="2" cols="50" placeholder="Content 4"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Address Line 1
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input name="address_line_1" class="form-control required" type="text" ng-model="$ctrl.address_line_1" placeholder="Address Line 1">
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Address Line 2
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input name="address_line_2" class="form-control required" type="text" ng-model="$ctrl.address_line_2" placeholder="Address Line 2">
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Intake Email
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input placeholder="Intake Email " id="intakeemail" name="intakeemail" class="form-control required" email="true" type="text" ng-model="$ctrl.intakeemail" required="true">
+                    <span>{{$ctrl.intakeemail_err}}</span>
+                    <span ng-show="addlistForm.intakeemail.$invalid" class="help-block">Invalid Email</span>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Intake Phone</label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input placeholder="Intake Phone" id="intakephone" name="intakephone" class="form-control required" ng-minlength="10" ng-maxlength="10" maxlength="10" ng-pattern="/^-?[0-9+]*$/" type="text" ng-model="$ctrl.intakephone">
+                    <span id="intakephone_err"> </span>
+                    <span ng-show="addlistForm.intakephone.$invalid" class="help-block">Phone number must be 10 digits long</span>
+                    <!-- <input id="intakephone1" onclick="alert(this.value)" type="text" name="intakephone1" value="(___)-___-____" ng-model="$ctrl.intakephone1" pattern="^(\s+)?\(?(17|25|29|33|44)\)?(\s+)?[0-9]{3}-?[0-9]{2}-?[0-9]{2}$" > -->
+
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">State</label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <select ng-change="$ctrl.getCities()" name="state" ng-model="$ctrl.state">
+                      <option value="">Select State</option>
+                      <option ng-repeat="states in $ctrl.states track by $index" value="{{states}}">{{states}}</option>
+                    </select>
+                    <span ng-show="addlistForm.state.$invalid">Required</span>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">City
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <select ng-model="$ctrl.city" name="city" required="true">
+                      <option value="">Select City</option>
+                      <option ng-repeat="cities in $ctrl.cities track by $index" value="{{cities}}">{{cities}}</option>
+                    </select>
+                    <span ng-show="addlistForm.city.$invalid">Required</span>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Country
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input placeholder="Country" id="country" name="country" class="form-control required" type="text" ng-model="$ctrl.country">
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="cpwd">Zip
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input placeholder="Zip" id="zip" name="zip" class="form-control required" number="true" minlength="5" maxlength="5" type="text" ng-model="$ctrl.pincode">
+                    <p ng-show="addlistForm.zip.$invalid" class="help-block">Zip code must be 5 digits</p>
+                    <span id="zip_err"> </span>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label for="web_link">Upload Gallery Images:
+                    </label>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input name="image_data[]" id="galler_image" class="span2 text_file multi center_image" type="file" file-model="$ctrl.image_data" accept="image/*">
+                  </div>
+                </div>
+                <div class="text-right col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub sub">
+                  <input class="btn btn-primary modal_btn btn_size pull-left" value="Submit" id="submit" type="button" ng-click="$ctrl.submit(addlistForm)" ng-disabled="addlistForm.zip.$dirty && addlistForm.zip.$invalid || addlistForm.intakephone.$dirty && addlistForm.intakephone.$invalid || addlistForm.user_phone.$dirty && addlistForm.user_phone.$invalid || ( addlistForm.password.$invalid) || addlistForm.email.$invalid || addlistForm.city.$error.required || addlistForm.state.$error.required || addlistForm.center_name.$error.required || addlistForm.user_last_name.$error.required || addlistForm.user_first_name.$error.required || addlistForm.user_company.$error.required || addlistForm.user_phone.$error.required || addlistForm.intakeemail.$error.required">
+                  <span style="color:green;" ng-show="success_msg">Added</span>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub">
+                  <div class="company_adds"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
