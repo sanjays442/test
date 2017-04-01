@@ -44,7 +44,6 @@ angular.module(moduleName, [
       name: 'myProfile.myTreatmentCenters',
       url: '/my-treatment-centers',
       template: '<my-treatment-centers></my-treatment-centers>'
-
     });
     $stateProvider.state({
       name: 'myProfile.addTreatmentCenter',
