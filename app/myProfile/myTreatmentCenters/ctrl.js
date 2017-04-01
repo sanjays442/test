@@ -22,9 +22,7 @@ function ctrl($log, $rootScope, Status, service, $uibModal) {
       size: size,
       appendTo: parentElem,
       controller: function ($scope) {
-        $scope.ok = function () {
-          onDelete(149);
-        };
+
       },
       // controller: 'ModalController',
       resolve: {
