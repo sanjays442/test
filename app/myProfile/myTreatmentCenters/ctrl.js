@@ -21,13 +21,7 @@ function ctrl($log, $rootScope, Status, service, $uibModal) {
       size: size,
       appendTo: parentElem,
       controller: function ($scope) {
-        $scope.ok = function (id) {
-          onDelete(id);
-          modalInstance.close();
-        };
-        $scope.cancel = function () {
-          modalInstance.dismiss('cancel');
-        };
+
       },
       resolve: {
         items: function () {
