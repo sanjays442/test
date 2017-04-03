@@ -50,35 +50,36 @@ var common = {
 
 // copy angular and angular-route to build directory
 var copyWebpackPlugin = new CopyWebpackPlugin([{
-  from: 'node_modules/angular/angular.js',
-  to: PATHS.build
+    from: 'node_modules/angular/angular.js',
+    to: PATHS.build
 }, {
-  from: 'node_modules/angular-animate/angular-animate.min.js',
-  to: PATHS.build
+    from: 'node_modules/angular-animate/angular-animate.min.js',
+    to: PATHS.build
 }, {
-  from: 'node_modules/angularjs-dropdown-multiselect/dist',
-  to: PATHS.build
+    from: 'node_modules/angular-ui-router/release/angular-ui-router.min.js',
+    to: PATHS.build
 }, {
-  from: 'node_modules/angular-local-storage/dist',
-  to: PATHS.build
+    from: 'node_modules/angular-ui-bootstrap/dist',
+    to: PATHS.build
 }, {
-  from: 'node_modules/angular-ui-router/release/angular-ui-router.min.js',
-  to: PATHS.build
+    from: 'node_modules/angularjs-dropdown-multiselect/dist/angularjs-dropdown-multiselect.min.js',
+    to: PATHS.build
 }, {
-  from: 'node_modules/angular-ui-bootstrap/dist',
-  to: PATHS.build
+    from: 'node_modules/angular-local-storage/dist/angular-local-storage.min.js',
+    to: PATHS.build
+},
+  {
+    from: 'app/plugins',
+    to: 'plugins'
 }, {
-  from: 'app/plugins',
-  to: 'plugins'
+    from: 'app/themes',
+    to: 'themes'
 }, {
-  from: 'app/themes',
-  to: 'themes'
+    from: 'app/uploads',
+    to: 'uploads'
 }, {
-  from: 'app/uploads',
-  to: 'uploads'
-}, {
-  from: 'app/js',
-  to: 'js'
+    from: 'app/js',
+    to: 'js'
 }], {
   debug: 'warning'
 });
@@ -117,7 +118,6 @@ var jsAssetsPlugin = new HtmlWebpackIncludeAssetsPlugin({
     'themes/addiction/js/multiple.js',
     'themes/addiction/js/maskinput.js',
     'themes/addiction/js/functions.js',
-    'themes/addiction/js/lodash.min.js',
     // 'themes/addiction/js/fileupload.js',
     // 'js/comment-reply.min.js',
     // 'js/imagesloaded.min.js',
@@ -158,7 +158,7 @@ var devConfig = merge(common, {
   devtool: 'source-map',
   devServer: {
     contentBase: PATHS.build,
-    compress: true,
+    stats: 'minimal',
     port: 3000,
     overlay: {
       errors: true,
