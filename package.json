@@ -13,7 +13,7 @@
     "build": "webpack --progress",
     "postinstall": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint app --ext .js --config .eslintrc.json && htmlhint --config .htmlhintrc app/**/*.html"
+    "lint": "eslint app --ext .js --config .eslintrc.yml --cache && htmlhint --config .htmlhintrc app/**/*.html"
   },
   "precommit": [
     "lint"
@@ -28,6 +28,7 @@
   "dependencies": {
     "angular": "^1.6.2",
     "angular-animate": "^1.6.3",
+    "angular-local-storage": "^0.5.2",
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-router": "^0.4.2",
     "angularjs-dropdown-multiselect": "^2.0.0-beta.6",
@@ -35,6 +36,8 @@
     "clean-webpack-plugin": "^0.1.15",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.27.3",
+    "eslint-config-angular": "^0.5.0",
+    "eslint-plugin-angular": "^2.2.1",
     "express": "^4.14.1",
     "html-loader": "^0.4.5",
     "html-webpack-include-assets-plugin": "0.0.4",

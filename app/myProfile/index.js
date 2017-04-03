@@ -2,7 +2,7 @@ var angular = require('angular'),
   moduleName = 'app.myProfile';
 
 angular.module(moduleName, [
-  'ui.router', 'angularjs-dropdown-multiselect', 'ui.bootstrap',
+  'ui.router', 'angularjs-dropdown-multiselect',
   require('../components'),
   require('../services')
 ]).component('thumbnailDelete', require('./sub/thumbnailDelete'))

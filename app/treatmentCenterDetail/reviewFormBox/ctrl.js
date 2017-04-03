@@ -6,9 +6,9 @@
 //  }
 // }
 
-module.exports = ['$log', '$rootScope', '$scope', 'Status', 'TreatmentCenterService', ctrl];
+module.exports = ['$log', '$rootScope', 'Status', 'TreatmentCenterService', ctrl];
 
-function ctrl($log, $rootScope, $scope, Status, service) {
+function ctrl($log, $rootScope, Status, service) {
   var vm = this;
   vm.$onInit = onInit;
   vm.showAndHideInput = showAndHideInput;
@@ -51,8 +51,8 @@ function ctrl($log, $rootScope, $scope, Status, service) {
       vm.star = 0;
       vm.name = '';
       vm.review = '';
+      vm.onSubmitSuccess();
       $rootScope.$emit(Status.SUCCEEDED, Status.SUBMIT_SUCCESS_MSG);
-      $scope.$emit(Status.RATING_SUBMIT_SUCCEEDED);
     }).catch(function (err) {
       $log.error(err);
       $rootScope.$emit(Status.FAILED, Status.FAILURE_MSG);

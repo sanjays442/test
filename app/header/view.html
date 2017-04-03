@@ -49,7 +49,7 @@
       <div class="nav_align">
         <ul class="nav navbar-nav new_class_for_sub_menu header_main_menu fonnt ">
           <li ng-repeat="link in $ctrl.internalLinks">
-            <a class="comm " ui-sref="{{ link.uiSref }}">{{ link.name }}</a>
+            <a class="comm " id="{{link.id}}" ui-sref="{{ link.uiSref }}">{{ link.name }}</a>
           </li>
         </ul>
       </div>

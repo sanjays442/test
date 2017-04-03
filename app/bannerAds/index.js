@@ -23,19 +23,19 @@ angular.module(moduleName, ['ui.router', require('../components')])
   .config(['$stateProvider', function ($stateProvider) {
     $stateProvider.state({
       name: 'bannerAdsList',
-      url: '/banner-ads',
+      url: '/my-profile/banner-ads',
       template: '<banner-ads-list></banner-ads-list>'
     }).state({
       name: 'bannerAdsAdd',
-      url: '/banner-ads-add',
+      url: '/my-profile/banner-ads-add',
       template: '<banner-ads-add></banner-ads-add>'
     }).state({
       name: 'bannerAdsEdit',
-      url: '/banner-ads-edit/:id',
+      url: '/my-profile/banner-ads-edit/:id',
       template: '<banner-ads-edit></banner-ads-edit>'
     }).state({
       name: 'bannerAdsView',
-      url: '/banner-ads-view/:id',
+      url: '/my-profile/banner-ads-view/:id',
       template: '<banner-ads-view></banner-ads-view>'
     });
   }])

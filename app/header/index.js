@@ -17,8 +17,17 @@ var internalLinks = [{
   uiSref: 'centerDetail',
   name: 'Add Listing'
 }, {
+  uiSref: 'login',
+  name: 'Login',
+  id: 'adic-login'
+}, {
+  uiSref: 'logout',
+  name: 'Logout',
+  id: 'adic-logout'
+}, {
   uiSref: 'myProfile.index',
-  name: 'My Profile'
+  name: 'My Profile',
+  id: 'adic-my-profile'
 }];
 
 var socialLinks = [{

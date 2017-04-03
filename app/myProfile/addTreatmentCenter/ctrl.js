@@ -2,7 +2,6 @@ module.exports = ['$log', '$rootScope', '$state', 'Status', 'TreatmentCenterServ
 
 function ctrl($log, $rootScope, $state, Status, service) {
   var vm = this;
-
   vm.multiselectModelCategories = [];
   vm.multiselectModelSettings = {
     scrollableHeight: '200px',
@@ -30,22 +29,11 @@ function ctrl($log, $rootScope, $state, Status, service) {
       'id': 'adolescent'
     }
   ];
-
   vm.state = '';
   vm.onStateUpdate = function (selected) {
     vm.state = selected;
   };
   vm.submit = function () {
-    // validating file type
-    vm.err_type = 0;
-    if (vm.listing_image) {
-      var imageType = String(vm.listing_image.type);
-      if (imageType.includes('image/') === false) {
-        vm.err_type = 1;
-        return;
-      }
-    }
-
     var data = {
       'center_name': vm.center_name,
       'description': vm.description,

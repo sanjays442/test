@@ -4,3 +4,4 @@ npm-debug.log
 nbproject
 !.gitkeep
 .DS_Store
+.eslintcache

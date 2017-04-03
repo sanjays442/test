@@ -18,11 +18,11 @@
   color: red;
 }
 
-.animate-show-hide.ng-hide {
+.status-show-hide.ng-hide {
   opacity: 0;
 }
 
-.animate-show-hide.ng-hide-add,
-.animate-show-hide.ng-hide-remove {
+.status-show-hide.ng-hide-add,
+.status-show-hide.ng-hide-remove {
   transition: all linear 0.5s;
 }

@@ -30,7 +30,6 @@ function ctrl($log, $rootScope, $state, $stateParams, Status, service) {
       'id': 'adolescent'
     }
   ];
-
   service.queryDetail(id).then(function (result) {
     for (var key in result) {
       vm[key] = result[key];
@@ -42,16 +41,6 @@ function ctrl($log, $rootScope, $state, $stateParams, Status, service) {
   };
 
   vm.submit = function () {
-    // validating file type
-    vm.err_type = 0;
-    if (vm.listing_image) {
-      var imageType = String(vm.listing_image.type);
-      if (imageType.includes('image/') === false) {
-        vm.err_type = 1;
-        return;
-      }
-    }
-
     var data = {
       'center_name': vm.center_name,
       'description': vm.description,

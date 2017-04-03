@@ -101,14 +101,12 @@
               <!-- Review List -->
               <review-list-box ratings="$ctrl.entry.center_ratings"></review-list-box>
               <!-- Write Review -->
-              <review-form-box center-id="$ctrl.entry.id"></review-form-box>
+              <review-form-box center-id="$ctrl.entry.id" on-submit-success="$ctrl.onReviewSubmitSuccess()">
+              </review-form-box>
 
               <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub">
                 <div class="company_adds">
                   <img class="img-reponsive" id="footer_ad">
-                  <a href="http://www.monarchshores.com">
-                    <img class="img-responsive" src="http://www.addictionnetwork.com/wp-content/uploads/advertisement_images/medium/1428518360-MonarchAN.jpg">
-                  </a>
                 </div>
               </div>
             </div>

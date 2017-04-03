@@ -23,7 +23,7 @@ function ctrl($log, AdvertisementService) {
     }
     AdvertisementService.advertisementAdd(formData).then(function () {
       vm.success_msg = 1;
-      window.location.href = '/#banner-ads';
+      window.location.href = '/#my-profile/banner-ads';
       setTimeout(function () {
         vm.success_msg = 0;
       }, 3000);

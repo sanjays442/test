@@ -1,7 +1,8 @@
 function ctrl($rootScope, $timeout, Status) {
   var vm = this;
-  $rootScope.$on(Status.SUCCEEDED, handleActionStatusEvent);
-  $rootScope.$on(Status.FAILED, handleActionStatusEvent);
+  var unbindFn1 = $rootScope.$on(Status.SUCCEEDED, handleActionStatusEvent);
+  var unbindFn2 = $rootScope.$on(Status.FAILED, handleActionStatusEvent);
+  vm.$onDestroy = onDestroy;
 
   function handleActionStatusEvent(event, data) {
     var eventName = event.name;
@@ -14,6 +15,11 @@ function ctrl($rootScope, $timeout, Status) {
   function hide() {
     vm.visible = false;
     vm.message = '';
+  }
+
+  function onDestroy() {
+    unbindFn1();
+    unbindFn2();
   }
 }
 
