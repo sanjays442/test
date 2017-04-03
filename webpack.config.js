@@ -62,10 +62,10 @@ var copyWebpackPlugin = new CopyWebpackPlugin([{
     from: 'node_modules/angular-ui-bootstrap/dist',
     to: PATHS.build
 }, {
-    from: 'node_modules/angularjs-dropdown-multiselect/dist/angularjs-dropdown-multiselect.min.js',
+    from: 'node_modules/angularjs-dropdown-multiselect/dist',
     to: PATHS.build
 }, {
-    from: 'node_modules/angular-local-storage/dist/angular-local-storage.min.js',
+    from: 'node_modules/angular-local-storage/dist',
     to: PATHS.build
 },
   {
