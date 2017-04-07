@@ -1,0 +1,25 @@
+<div>
+  <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8 text_deco">
+    <label> Begin your search by clicking on the state you're considering going to treatment in, or using the advanced search on the left </label>
+  </div>
+
+  <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8">
+    <div class="heading_main_div">
+      <h2>
+        <label>Treatment Centers </label>
+      </h2>
+      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12"></div>
+      <!--- Map content  Start   -->
+      <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+        <div onselectstart="return false;" class="unselectable">
+          <div id="mapwrapper">
+            <div id="map_base">
+              <state-map on-select="$ctrl.onStateSelect(state)"></state-map>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--- Map content End -->
+    </div>
+  </div>
+</div>

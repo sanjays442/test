@@ -1,0 +1,11 @@
+<div class="col-xs-12" ng-show="$ctrl.images.length">
+  <div class="row">
+    <div class="col-sm-12">
+      <div uib-carousel active="active" interval="$ctrl.interval" no-wrap="$ctrl.noWrap" class="center-detail-carousel">
+        <div uib-slide ng-repeat="image in $ctrl.images track by $index" index="$index">
+          <img ng-src="{{image.file}}" alt="{{image.file}}" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

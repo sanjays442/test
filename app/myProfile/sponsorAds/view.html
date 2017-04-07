@@ -1,0 +1,69 @@
+<div class="col-md-8 col-sm-8 col-xs-12 col-lg-9">
+    <div class="heading_main_div">
+        <h2>
+      <label>Sponsor Ads</label>
+    </h2>
+    </div>
+    <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 pull-right ">
+                    <!-- bg_add_treat -->
+                    <div class="col-md-12 col-xs-12 col-sm-12 padding_0">
+                        <a href="/#/my-profile/sponsor-ads/add-sponsor">
+                            <span class="pull-right modal_btn btn btn-primary margin_bottom_15_add text-right">Add Sponsor Ad
+              </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12" style="min-height:500px;">
+                    <div id="no-more-tables">
+                        <table class="col-md-12 col-xs-12 col-sm-12  table-striped table-condensed cf padding_0">
+                            <thead class="cf">
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Name</th>
+                                    <th class="width_adjust_tb">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr current-page="$ctrl.pagination.current" ng-repeat="list in $ctrl.sponsor.sponsored_ads">
+                                    <td class="block_make" data-title="Image">
+                                        <div class="img_outer_in_tb">
+                                            <div class="img_inner_in_tb">
+                                                <img class="" src="{{list.image}}" style="height:70px">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td data-title="Title">{{list.title}}
+                                    </td>
+                                    <td data-title="Name">
+                                        {{list.name}}
+                                    </td>
+                                    <td data-title="Action">
+                                        <a href="/#/my-profile/sponsor-ads/view-sponsor/{{list.id}}" data-toggle="tooltip" data-placement="bottom" title="View"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                        <a href="/#/my-profile/sponsor-ads/edit-sponsor/{{list.id}}" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
+                                        <a id="status-{{list.id}}" href="javascript:;" data-toggle="tooltip" data-placement="bottom" ng-click="$ctrl.actDect(list.id)"><i class="" ng-show="list.active">Deactivate</i><i class="" ng-show="(list.active==false)">Activate</i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="pagination">
+                            <a href="#">&laquo;</a>
+                            <a href="javascript:;" ng-click="$ctrl.pageChanged(i)" ng-repeat="i in $ctrl.totalPages track by $index">{{i}}</a>
+                            <a href="#">&raquo;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="company_adds margin_top_25">
+                <div class="company_adds">
+                    <img class="img-reponsive" id="footer_ad">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

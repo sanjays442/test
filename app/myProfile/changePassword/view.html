@@ -1,0 +1,51 @@
+<div class="col-md-8 col-sm-8 col-xs-12 col-lg-9">
+
+  <!-- Heading Start -->
+  <div class="heading_main_div">
+    <h2>
+      <label> Change Password </label>
+    </h2>
+  </div>
+  <!-- Heading End -->
+
+  <!-- Content Start -->
+  <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
+    <form ng-submit="$ctrl.submit()" class="form-horizontal" novalidate="novalidate" __bizdiag="123399799" __biza="WJ__" ng-sub>
+
+      <!-- Old Password -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="oldPassword">Old Password: </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.oldPassword" type="password" class="form-control old_password required" name="old_password" placeholder="Old Password" />
+        </div>
+      </div>
+
+      <!-- New Password -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="newPassword"> New Password: </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.password" type="password" name="new_password" class="form-control Password required" placeholder="New Password" />
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="confirmPassword"> Confirm Password: </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.passwordConfirmation" type="password" name="cnf_password" class="form-control confirm_password" placeholder="Confirm Password" />
+        </div>
+      </div>
+      <div class="text-left col-md-8 col-sm-8 col-xs-12 col-lg-8 col-md-offset-4 col-lg-offset-4 col-sm-offset-4 main_wrap_form_inner_sub">
+        <input type="submit" name="changePassword" class="btn btn-primary modal_btn btn_size" value="Submit" />
+      </div>
+    </form>
+  </div>
+  <!-- Content End -->
+
+</div>

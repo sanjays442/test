@@ -1,0 +1,14 @@
+<div ng-repeat="rating in $ctrl.ratings" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 main_wrap_form_inner_sub review-list-box">
+  <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 padding_0">
+    <img src="themes/addiction/images/default_profile_pic.png" class="thumbnail" />
+  </div>
+  <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 padding_0">
+    <h2 class="left">{{ rating.name }}</h2>
+    <review-rating display-only star="rating.star"></review-rating>
+    <p class="left">
+      {{ rating.review }}
+      <!-- <a href="javascript:void();" id="1" class="view_more viewmore">
+        <span class="glyphicon glyphicon-hand-right"></span>Read More</a> -->
+    </p>
+  </div>
+</div>

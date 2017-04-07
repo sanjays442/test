@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="row">
+    <!-- Left Section -->
+    <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
+      <div class="sidebar_main">
+        <form ng-submit="$ctrl.submit()" __bizdiag="927742349" __biza="WJ__">
+          <div class="ul_wrapper_sidebar padding_0">
+            <ul class="main_sidebar padding_0">
+              <!--  category -->
+              <li>
+                <a class="bg_list_page_search" data-toggle="collapse" data-parent=".ul_wrapper_sidebar"> Category <span class="caret"></span> </a>
+                <ul class="panel-collapse collapse padding_0 in only_border" id="panel2">
+                  <li>
+                    <div class="under_ul_wrap_sidebar bg_gray">
+                      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 form_wrap_margin new_class_for_label">
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <label for="catg1" class="checkbox-inline">
+                            <input ng-model="$ctrl.catg1" value="1" type="checkbox">Inpatient
+                          </label>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <label for="catg2" class="checkbox-inline">
+                            <input ng-model="$ctrl.catg2" value="2" type="checkbox">Outpatient
+                          </label>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <label for="catg3" class="checkbox-inline">
+                            <input ng-model="$ctrl.catg3" value="3" type="checkbox">Sober Living
+                          </label>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <label for="catg4" class="checkbox-inline">
+                            <input ng-model="$ctrl.catg4" value="4" type="checkbox">Adolescent
+                          </label>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <!--        Advanced Search         -->
+              <li>
+                <a data-toggle="collapse" data-parent=".ul_wrapper_sidebar" class="bg_list_page_search"> Advanced Search <span class="caret"></span> </a>
+                <ul class="panel-collapse collapse padding_0 in new_class_for_border_list" id="panel1">
+                  <li>
+                    <div class="under_ul_wrap_sidebar">
+                      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 form_wrap_margin">
+                        <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+                          <label for="state"> State: </label>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+                          <state-select selected="$ctrl.state" on-update="$ctrl.onFormStateSelect(selected)"></state-select>
+                        </div>
+                        <p class="font-bold text-center">OR</p>
+                      </div>
+                      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 form_wrap_margin">
+                        <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+                          <label for="zip">Zipcode:</label>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+                          <input ng-model="$ctrl.zipcode" type="text" class="form-control" placeholder="" />
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 form_wrap_margin">
+                        <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+                          <label for="miles">Select Miles:</label>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+                          <select ng-model="$ctrl.miles" class="form-control">
+                            <option selected="" value="">Select Miles</option>
+                            <option value="10">10 miles</option>
+                            <option value="20">20 miles</option>
+                            <option value="50">50 miles</option>
+                            <option value="100">100 miles</option>
+                            <option value="250">250 miles</option>
+                            <option value="">Unlimited</option>
+                          </select>
+
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <input type="submit" class="btn btn-primary border_radius_add modal_btn text-center" value="submit" />
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </form>
+      </div>
+      <!--  sidebar main ends  -->
+      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 padding_0 ">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 padding_0">
+          <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 padding_0 ">
+            <div class="banner_adjust">
+              <img class="img-responsive" id="sidebar_ad">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ui-view></ui-view>
+  </div>
+</div>

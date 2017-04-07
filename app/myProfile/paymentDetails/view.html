@@ -1,0 +1,58 @@
+<div class="col-md-8 col-sm-8 col-xs-12 col-lg-9">
+  <div class="heading_main_div">
+    <h2>
+      <label>My Payment Details</label>
+    </h2>
+  </div>
+  <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 pull-right ">
+          <!-- bg_add_treat -->
+          <div class="col-md-12 col-xs-12 col-sm-12 padding_0">
+            <a href="/#/my-profile/payment-details/add-payment">
+              <span class="pull-right modal_btn btn btn-primary margin_bottom_15_add text-right">Add Payment Details
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12" style="min-height:500px;">
+          <div id="no-more-tables">
+            <table class="col-md-12 col-xs-12 col-sm-12  table-striped table-condensed cf padding_0">
+              <thead class="cf">
+                <tr>
+                  <th>Profile Id</th>
+                  <th>Card Number</th>
+                  <th>Card Type</th>
+                  <th class="width_adjust_tb">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="payment in $ctrl.payment.payments">
+                  <td>{{payment.customer_payment_profile_id}}</td>
+                  <td data-title="Name">{{payment.card}}
+                  </td>
+                  <td data-title="Name">{{payment.card_type}}
+                  </td>
+                  <td data-title="Action">
+                    <a href="/#/my-profile/payment-details/edit-detail/{{payment.customer_payment_profile_id}}" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
+                    <a href="" ng-click="$ctrl.open({id: payment.customer_payment_profile_id })" data-toggle="tooltip" data-placement="bottom" title="Delete">
+                      <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+      <div class="company_adds margin_top_25">
+        <div class="company_adds">
+          <img class="img-reponsive" id="footer_ad">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

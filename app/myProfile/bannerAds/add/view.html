@@ -1,0 +1,99 @@
+<div class="col-md-8 col-sm-8 col-xs-12 col-lg-9">
+  <div class="heading_main_div">
+    <h2>
+      <label>Add Banner Ads </label>
+    </h2>
+
+  </div>
+  <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
+
+    <div class="row">
+
+      <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 pull-right ">
+          <!-- bg_add_treat -->
+          <div class="col-md-12 col-xs-12 col-sm-12 padding_0">
+            <a href="javascript:history.go(-1);">
+              <span class="modal_btn btn btn-primary margin_bottom_15_add pull-right  text-right">
+                <i class="glyphicon glyphicon-hand-left"></i> Back
+              </span>
+            </a>
+
+          </div>
+        </div>
+        <div class="row">
+          <form name="advertisementForm" enctype="multipart/form-data">
+            <input name="customertype" value="owner" type="hidden">
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+              <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <label for="name">Name: </label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                  <input placeholder="Name" name="name" id="name" class="form-control" type="text" ng-model="$ctrl.name">
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <label for="position">Position: </label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                  <select name="position" ng-model="$ctrl.position" required="true" class="selectpicker1">
+                    <option value="footer">footer</option>
+                    <option value="header">header</option>
+                    <option value="sidebar">sidebar</option>
+                  </select>
+                  <span ng-show="advertisementForm.position.$invalid">Select position</span>
+
+                </div>
+              </div>
+
+              <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <label for="upload_img">Content</label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                  <!--  <input name="image" id="image" class="span2 text_file center_image" ng-model="$ctrl.image" type="file"> -->
+                  <input file-model="$ctrl.content" type="file" name="content" id="content" class="center_image" accept="image/*" />
+                  <span ng-show="$ctrl.err_type">Please upload an image only. </span>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <label for="cpwd">Center Web Link</label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                  <input name="center_web_link" ng-model="$ctrl.center_web_link" class="form-control" type="text" placeholder="Center Web Link" ng-pattern="/^(?:(ftp|http|https):\/\/)?(?:[\w-]+\.)+[a-z]{2,10}$/" />
+                  <span ng-show="advertisementForm.center_web_link.$error.pattern" class="help-block">Invalid Format(Correct format: www.google.com)</span>
+                </div>
+              </div>
+
+
+              <div class="text-right col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub sub">
+                <input class="btn btn-primary modal_btn btn_size pull-right" value="Submit" id="submit" type="button" ng-click="$ctrl.submit()" ng-disabled="advertisementForm.position.$invalid || advertisementForm.center_web_link.$invalid">
+                <span ng-show="$ctrl.success_msg" class="pull-left" style="color:green;">Added</span>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub">
+                <div class="company_adds">
+                </div>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+      <div class="company_adds margin_top_25">
+        <div class="company_adds">
+          <img class="img-reponsive" id="footer_ad">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

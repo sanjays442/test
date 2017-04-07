@@ -1,0 +1,146 @@
+<div class="col-md-8 col-sm-8 col-xs-12 col-lg-9">
+
+  <!-- Heading Start -->
+  <div class="heading_main_div">
+    <h2>
+      <label> Account Settings </label>
+    </h2>
+  </div>
+  <!-- Heading End -->
+
+  <!-- Content Start -->
+  <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
+    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 pull-right pading_0">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <a href="javascript:history.go(-1);">
+          <span class="modal_btn btn btn-primary margin_bottom_15_add pull-right text-right">
+            <i class="glyphicon glyphicon-hand-left"></i> Back
+          </span>
+        </a>
+      </div>
+    </div>
+    <form ng-submit="$ctrl.submit()" class="form-horizontal" enctype="multipart/form-data" novalidate="novalidate" __bizdiag="-1747746453" __biza="WJ__">
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub pading_0">
+        <!-- First Name -->
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="userf">First Name: </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.first_name" type="text" name="first_name" class="form-control required" placeholder="First Name" />
+        </div>
+      </div>
+
+      <!-- Last Name -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="userl"> Last Name: </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.last_name" type="text" name="last_name" class="form-control required" placeholder="Last Name" />
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="email"> Email: </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.email" type="text" name="email" readonly="" class="form-control" id="email" placeholder="Email" />
+        </div>
+      </div>
+
+      <!-- About me -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="about"> About Me: </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <textarea ng-model="$ctrl.about_me" name="about_me" type="text" rows="3" cols="100%" class="form-control required" placeholder=""> </textarea>
+        </div>
+      </div>
+
+      <!-- Country -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="country"> Country</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.country" type="text" name="country" class="form-control required" value="" />
+        </div>
+      </div>
+
+      <!-- State -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="state"> State </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <state-select selected="$ctrl.state" on-update="$ctrl.onStateUpdate(selected)"></state-select>
+        </div>
+      </div>
+
+      <!-- Zipcode -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="zip"> Zipcode: </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.zipcode" type="text" name="zip" class="form-control required" minlength="5" maxlength="5" placeholder="14102" />
+        </div>
+      </div>
+
+      <!-- City -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="city"> City: </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.city" type="text" name="city" class="form-control required" />
+        </div>
+      </div>
+
+      <!-- Address -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="addr"> Address: </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.address" type="text" name="address" class="form-control required" />
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="phone"> Phone: </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.phone" type="text" name="phone" number="true" class="form-control required" maxlength="10" minlength="10" placeholder="09855438504" />
+        </div>
+      </div>
+
+      <!-- Upload Image -->
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="img_upload"> Upload Image: </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <div class="">
+            <!-- bg_file_input  -->
+            <a href="javascript:void(0)">
+              <input file-model="$ctrl.profile_pic" type="file" name="profile_image" class="profile_img" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="col-md-8 col-md-offset-4 col-md-offset-4 col-sm-12 col-xs-12 col-lg-8 main_wrap_form_inner_sub new_class_for_label text-left">
+        <input type="submit" name="submit" class="btn btn-primary modal_btn pull-right" value="Submit" />
+      </div>
+    </form>
+  </div>
+  <!-- Content End -->
+
+</div>

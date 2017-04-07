@@ -1,0 +1,19 @@
+<div ng-show="$ctrl.display" class="col-lg-12 col-sm-12 col-md-12 col-xs-12 padding_0">
+  <div class="right_content">
+    <h2 class="right-section-heading">
+      <label>Filter</label>
+    </h2>
+    <ol class="breadcrumb location-filter-ol">
+      <li class="breadcrumb-item"><a href ng-click="$ctrl.goToState()">{{ $ctrl.stateName }}</a></li>
+      <!-- <li class="breadcrumb-item active">{{ $ctrl.area }}</li> -->
+    </ol>
+    <ul class="list-unstyled">
+      <li>
+        <a href ng-click="$ctrl.goToCities()">View All Cities</a>
+      </li>
+      <li>
+        <a href ng-click="$ctrl.goToCounties()">View All Counties</a>
+      </li>
+    </ul>
+  </div>
+</div>

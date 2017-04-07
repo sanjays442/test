@@ -1,0 +1,112 @@
+<div class="col-md-8 col-sm-8 col-xs-12 col-lg-9">
+  <div class="heading_main_div">
+    <h2>
+      <label>Edit Sponsor Ad </label>
+    </h2>
+  </div>
+  <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 pull-right ">
+          <!-- bg_add_treat -->
+          <div class="col-md-12 col-xs-12 col-sm-12 padding_0">
+            <a href="javascript:history.go(-1);">
+              <span class="modal_btn btn btn-primary margin_bottom_15_add pull-right  text-right">
+                <i class="glyphicon glyphicon-hand-left"></i> Back
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+          <p> You are free to add your own image and text and place them on any sponsored page on Addiction Network. This allows you to choose pages that related highly to the services you provide, as well as zero in on specific locations in the United States.</p>
+        </div>
+        <form name="sponsorAdsEdit" class="form-horizontal">
+          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub pading_0">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="tname"> Title: </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <input name="title" class="form-control required" id="tname" placeholder="Sponsor Ad Title" type="text" value="{{$ctrl.title}}" ng-model="$ctrl.title">
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub pading_0">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="tname"> Name: </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <input name="name" class="form-control required" placeholder="Sponsor Ad Name" value="{{$ctrl.name}}" type="text" ng-model="$ctrl.name">
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="img_upload"> Upload Image:</label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <div class="">
+                <a href="javascript:void(0)">
+                  <input file-model="$ctrl.image" type="file" name="image" id="image" class="center_image" accept="image/*" />
+                </a>
+                <span ng-show="$ctrl.err_type">Please upload an image with exact size of 308*180 pixel. </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="description"> </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <div class="">
+                <img id="sponsor_image" ng-src="{{$ctrl.image}}" style="max-width:300px;max-height:100px;" alt="Image">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="description"> Description: </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <textarea maxlength="255" name="sponsor_ad_descriptiion" rows="3" class="form-control required" id="description" placeholder="" ng-model="$ctrl.description">{{$ctrl.description}}</textarea>
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12  main_wrap_form_inner_sub pading_0">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="web_link"> Website URL: </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <input name="sponsor_ad_website" class="form-control required url" type="text" id="sponsor_web_link" placeholder="http://www.google.com" ng-model="$ctrl.website" ng-pattern="/^(?:(ftp|http|https):\/\/)?(?:[\w-]+\.)+[a-z]{2,10}$/">
+              <span ng-show="sponsorAdsEdit.sponsor_ad_website.$error.pattern" class="help-block">Invalid Format(Correct format: www.google.com)</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub pading_0">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="tname"> Sponsor Ads: </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12 class_for_select">
+              <div ng-dropdown-multiselect="" options="$ctrl.sponsored_ad_select" checkboxes="true" selected-model="$ctrl.multiselectModelLayoutIds " extra-settings="$ctrl.multiselectModelSettings"></div>
+
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub pading_0 ">
+            <div class="col-md-4 col-sm-4 col-xs-12 ">
+              <label for="web_link "> Payment Amount: </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12 ">
+              <input disabled=" " name="paidamount " class="form-control " value="{{$ctrl.payment_amount}} " id="paidamount " type="text ">
+            </div>
+          </div>
+          <div class="text-left col-md-8 col-sm-12 col-xs-8 col-lg-8 col-md-offset-4 col-lg-offset-4 col-sm-offset-4 main_wrap_form_inner_sub ">
+            <input class="btn btn-primary modal_btn pull-right btn_size " id="pay_sponsor_ad " value="Review " type="button " ng-disabled="sponsorAdsEdit.sponsor_ad_website.$invalid " ng-click="$ctrl.submit()">
+            <span ng-show="$ctrl.success_msg " style="color:green; ">Updated</span>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+      <div class="company_adds margin_top_25 ">
+        <div class="company_adds ">
+          <img class="img-reponsive " id="footer_ad">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
