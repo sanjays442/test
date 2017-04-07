@@ -1,4 +1,4 @@
-function ctrl($log, $rootScope, Status, $window, PaymentService) {
+function ctrl($log, $rootScope, Status, $window, service) {
   var vm = this;
   vm.submit = function () {
     // validating file type
@@ -21,7 +21,7 @@ function ctrl($log, $rootScope, Status, $window, PaymentService) {
     for (var key in paymentData) {
       formData.append('payment[' + key + ']', paymentData[key]);
     }
-    PaymentService.paymentDetailsAdd(formData).then(function () {
+    service.paymentDetailsAdd(formData).then(function () {
       $rootScope.$emit(Status.SUCCEEDED, Status.PAYMENT_ADD_SUCCEESS_MSG);
       $window.location.href = '/#my-profile/payment-details';
     }).catch(function (err) {

@@ -1,8 +1,8 @@
-function ctrl($log, $injector, $rootScope, Status, PaymentService) {
+function ctrl($log, $injector, $rootScope, Status, service) {
   var list = this;
 
   function paymentList() {
-    PaymentService.paymentList().then(function (response) {
+    service.paymentList().then(function (response) {
       list.payment = response;
     }).catch(function (err) {
       throw err;
@@ -30,7 +30,7 @@ function ctrl($log, $injector, $rootScope, Status, PaymentService) {
   };
 
   function onDelete(id) {
-    PaymentService.removePaymentDetails(id).then(function ( /* result */ ) {
+    service.removePaymentDetails(id).then(function ( /* result */ ) {
       paymentList();
       $rootScope.$emit(Status.SUCCEEDED, Status.PAYMENT_DELETE_SUCCEESS_MSG);
     }).catch(function (err) {

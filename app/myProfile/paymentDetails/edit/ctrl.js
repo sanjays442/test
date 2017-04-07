@@ -1,4 +1,4 @@
-function ctrl($log, $stateParams, $rootScope, Status, PaymentService) {
+function ctrl($log, $stateParams, $rootScope, Status, service) {
   var vm = this;
   var profileId = $stateParams.id;
   vm.submit = function () {
@@ -22,7 +22,7 @@ function ctrl($log, $stateParams, $rootScope, Status, PaymentService) {
     for (var key in paymentData) {
       formData.append('payment[' + key + ']', paymentData[key]);
     }
-    PaymentService.paymentDetailsEdit(profileId, formData).then(function () {
+    service.paymentDetailsEdit(profileId, formData).then(function () {
       $rootScope.$emit(Status.SUCCEEDED, Status.PAYMENT_EDIT_SUCCEESS_MSG);
       // refreshing data
       //  getPaymentData(vm, profileId, PaymentService);
