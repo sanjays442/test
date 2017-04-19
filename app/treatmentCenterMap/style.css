@@ -1,0 +1,45 @@
+.center-list-box-content {
+  border-left: 1px solid #dddddd;
+  min-height: 732px;
+}
+
+.search-side-panel {
+  margin-top: 22px;
+}
+
+.map-box-hint {
+  color: #2172a7;
+  margin-top: 22px;
+  text-align: center;
+  font-size: 20px;
+  display: block;
+}
+
+.category-box input {
+  width: auto;
+}
+
+.category-box label {
+  font-size: 14px;
+}
+
+.search-panel-header {
+  background: #2172a7;
+}
+
+.search-panel-header a {
+  width: 100%;
+  padding: 8px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+}
+
+.search-panel-body {
+  background-color: #f1f1f1;
+  border: 1px solid #2172a7;
+  padding: 10px;
+  margin-bottom: 10px;
+}

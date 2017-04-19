@@ -1,0 +1,16 @@
+.card-heading {
+  background: url(title-solid-bg.png);
+  background-repeat: repeat-x;
+  text-align: center;
+  background-position: 0;
+  line-height: 10px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+}
+
+.card-heading-label {
+  background: #F2F2F2;
+  font-size: 15px;
+  padding: 0px 18px 3px 19px;
+  color: #73ac4b;
+}

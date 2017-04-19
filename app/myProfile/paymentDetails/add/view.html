@@ -1,0 +1,119 @@
+<div class="add-payment-details">
+  <section-heading>Add Payment Details</section-heading>
+  <div class="profile-content">
+    <div class="profile-row">
+      <a href="javascript:history.go(-1);">
+        <span class="btn adn-btn right">
+          <i class="glyphicon glyphicon-hand-left"></i> Back
+        </span>
+      </a>
+    </div>
+    <div class="profile-row">
+      <form name="paymentDetailsForm" ng-submit="$ctrl.submit()">
+        <!-- Card Number -->
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <label for="name">Card Number: </label>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <input placeholder="Card Number" name="card" id="name" class="form-control" type="text" ng-change="$ctrl.detectCardType($ctrl.card)" ng-model="$ctrl.card" ng-pattern="/^[0-9]+$/" required="">
+            <span ng-show="paymentDetailsForm.card.$invalid" class="help-block">Invalid Card number</span>
+            <span ng-if="($ctrl.totalDigits<15 || $ctrl.totalDigits>18) && paymentDetailsForm.card.$valid" class="help-block">Card number must be 15~18 digits.</span>
+            <span ng-show="$ctrl.cardType" class="help-block">{{$ctrl.cardType[0].niceType}}</span>
+            <span ng-if="!$ctrl.cardType[0] && paymentDetailsForm.card.$valid" class="help-block">Invalid card type</span>
+
+          </div>
+        </div>
+
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <label for="name">Card Name: </label>
+          </div>
+          <div class="col-md-3 col-sm-3 col-xs-12">
+            <input placeholder="First Name" name="firstName" class="form-control" type="text" ng-model="$ctrl.firstName" ng-minlength="2" ng-maxlength="25" required="">
+            <span ng-show="paymentDetailsForm.firstName.$invalid" class="help-block">Invalid First Name</span>
+          </div>
+          <div class="col-md-2 col-sm-2 col-xs-12">
+            <input placeholder="Middle Name" name="middleName" class="form-control" type="text" ng-model="$ctrl.middleName" ng-maxlength="20">
+            <span ng-show="paymentDetailsForm.middleName.$invalid" class="help-block">Max-length(20) reached</span>
+          </div>
+          <div class="col-md-3 col-sm-3 col-xs-12">
+            <input placeholder="Last Name" name="lastName" class="form-control" type="text" ng-model="$ctrl.lastName" ng-minlength="2" ng-maxlength="25" required="">
+            <span ng-show="paymentDetailsForm.lastName.$invalid" class="help-block">Invalid Last Name</span>
+          </div>
+        </div>
+
+        <!-- Expiry Year -->
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <label for="name">Expiry Year: </label>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <select ng-model="$ctrl.year" name="year" ng-change="$ctrl.testYear($ctrl.year)" required="">
+              <option value="">Select Year</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+            </select>
+            <!-- <span class="help-block">{{$ctrl.yearError}}</span> -->
+            <span class="help-block" ng-if="$ctrl.curYear > $ctrl.year">Invalid year</span>
+          </div>
+        </div>
+        <!-- Expiry Month -->
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <label for="name">Expiry Month: </label>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <select ng-model="$ctrl.month" name="month" required="">
+              <option value="">Select Month</option>
+              <option value="01">01</option>
+              <option value="02">02</option>
+              <option value="03">03</option>
+              <option value="04">04</option>
+              <option value="05">05</option>
+              <option value="06">06</option>
+              <option value="07">07</option>
+              <option value="08">08</option>
+              <option value="09">09</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <!-- <span class="help-block">{{$ctrl.monthError}}</span> -->
+          </div>
+        </div>
+        <!-- CVV Code -->
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <label for="cpwd">CVV Code</label>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <input name="cvv" ng-model="$ctrl.cvv" class="form-control" type="text" placeholder="CVV Code" ng-pattern="/^[0-9]+$/" ng-minlength="3" ng-maxlength="3" required="" />
+            <span ng-show="paymentDetailsForm.cvv.$invalid" class="help-block">Invalid CVV Code</span>
+          </div>
+        </div>
+        <!-- make default -->
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <label for="cpwd">Default</label>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <input name="default" ng-model="$ctrl.default" class="form-control default-payment" type="checkbox" />
+            <span>Use these credentials as your default payment method.</span>
+          </div>
+
+        </div>
+        <!-- Submit -->
+        <div class="adn-row">
+          <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-md-offset-4 col-sm-12 col-xs-12">
+            <button type="submit" class="btn adn-btn right" ng-disabled="paymentDetailsForm.card.$invalid || paymentDetailsForm.year.$invalid || paymentDetailsForm.month.$invalid || paymentDetailsForm.cvv.$invalid || paymentDetailsForm.firstName.$invalid || paymentDetailsForm.middleName.$invalid || paymentDetailsForm.lastName.$invalid">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="side-card">
+  <form ng-submit="$ctrl.submit()">
+    <card-heading>Find Treatment</card-heading>
+    <div class="form-group">
+      <label for="State">Select State</label>
+      <state-select on-update="$ctrl.onStateUpdate(selected)"></state-select>
+    </div>
+    <p class="font-bold text-center">OR</p>
+    <div class="form-group">
+      <label for="zip">Enter Zipcode</label>
+      <input ng-model="$ctrl.zipcode" class="form-control" type="text" />
+    </div>
+    <div class="form-group">
+      <label for="miles">Select Miles</label>
+      <select ng-model="$ctrl.miles" class="form-control">
+        <option selected value="">Select Miles</option>
+        <option value="10">10 miles</option>
+        <option value="50">50 miles</option>
+        <option value="100">100 miles</option>
+        <option value="250">250 miles</option>
+        <option value="">Unlimited</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="submit" class="btn adn-btn border_radius_add" value="submit" />
+    </div>
+  </form>
+</div>
