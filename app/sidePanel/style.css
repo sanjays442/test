@@ -1,0 +1,47 @@
+.side-card {
+  width: 100%;
+  float: left;
+  background: #F2F2F2;
+  margin-top: 30px;
+  padding: 12px 30px 12px 30px;
+}
+
+@media (min-width:768px) and (max-width: 991px) {
+  .side-card {
+    padding: 15px!important;
+  }
+}
+
+.side-card ul {
+  margin-bottom: 17px;
+}
+
+.side-card ul>li>a {
+  padding-bottom: 5px;
+  font-size: 14px;
+  font-family: arial;
+  width: 100%;
+}
+
+.side-card ul>li>a>span {
+  font-size: 11px;
+  margin: 4px 5px 0px 0;
+}
+
+.side-card .form-group>label {
+  font-weight: normal;
+  font-size: 14px;
+  color: #2172a7;
+  display: block;
+}
+
+a.area-filter-link:hover, a.area-filter-link:focus {
+  text-decoration: none
+}
+
+a.area-filter-link-disabled {
+  pointer-events: none;
+  color: #333
+}
+
+a.area-filter-link-normal {}

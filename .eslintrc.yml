@@ -1,0 +1,37 @@
+---
+env:
+  jasmine: true
+extends:
+  - angular
+  - eslint-config-es5
+  - plugin:jasmine/recommended
+globals:
+  module: true
+  inject: true
+rules:
+  angular/controller-name: off
+  angular/di:
+    - warn
+    - array
+  angular/no-service-method: off
+  jasmine/no-spec-dupes:
+    - warn
+    - branch
+  one-var: off
+  func-names: off
+  global-require: off
+  guard-for-in: off
+  no-undefined: off
+  no-use-before-define:
+    - error
+    - functions: false
+  padded-blocks:
+    - error
+    - never
+  space-before-function-paren:
+    - error
+    - anonymous: always
+      named: never
+      asyncArrow: always
+plugins:
+  - jasmine

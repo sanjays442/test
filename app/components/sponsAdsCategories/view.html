@@ -1,0 +1,4 @@
+<select class="form-control selectpicker"  ng-options="catg as value for (catg , value)  in $ctrl.catgs" ng-change="$ctrl.onUpdate({selected: $ctrl.selected})" multiple="multiple" ng-model="$ctrl.sponsored_pages" >
+    <option value="">Select Category</option>
+</select>
+<!-- <p>{{$ctrl.selected}}</p> -->

@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <!-- Left Section  -->
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+      <profile-nav-section profile-pic="$ctrl.profile.profile_pic"></profile-nav-section>
+      <div class="banner_adjust">
+        <a id="sidebar_ad_url">
+          <img class="img-responsive" id="sidebar_ad">
+        </a>
+      </div>
+    </div>
+    <!-- Right Section  -->
+    <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+      <ui-view></ui-view>
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-12 col-lg-9 pull-right">
+      <footer-ad></footer-ad>
+    </div>
+  </div>
+</div>

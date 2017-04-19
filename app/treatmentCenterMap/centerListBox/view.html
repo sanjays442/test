@@ -1,0 +1,37 @@
+<div class="center-list-box">
+  <section-heading>Treatment Centers</section-heading>
+  <!-- empty listings error-->
+  <empty-list-error display="$ctrl.displayError"></empty-list-error>
+  <!-- listings -->
+  <div ng-hide="$ctrl.displayError" class="center-list-box-content">
+    <div class="row">
+      <div class="col-sm-6 col-xs-12 col-md-6 col-lg-6" ng-repeat="listing in $ctrl.listings">
+        <div class="listing_wrap">
+          <div class="img_under_block_outer">
+            <a ui-sref="{{ listing.uiSref }}">
+              <img class="" ng-src="{{ listing.listing_image}}">
+            </a>
+          </div>
+          <div class="head_under_block">
+            <a ui-sref="{{ listing.uiSref }}">
+              <p class="text_style_under_block">{{ listing.center_name | limitTo:14}}...
+              </p>
+            </a>
+            <div class="desc_under_block">
+              <p> {{ listing.description | limitTo:100}} </p>
+            </div>
+          </div>
+          <div class="detail_div_under_block">
+            <a ui-sref="{{ listing.uiSref }}">More Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Pagination -->
+      <pagination total-pages="$ctrl.totalPages" current-page="$ctrl.currentPage" on-update="$ctrl.onPageUpdate(page)"></pagination>
+    </div>
+  </div>
+  <!-- footer ad -->
+  <footer-ad></footer-ad>
+</div>

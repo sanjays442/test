@@ -1,0 +1,14 @@
+<div class="map-box">
+  <label class="map-box-hint">
+    Begin your search by clicking on the state you're considering going to treatment in, or using the advanced search on the left.
+  </label>
+  <section-heading>Treatment Centers</section-heading>
+  <!--- Map content  Start   -->
+  <div onselectstart="return false;" class="unselectable">
+    <div id="mapwrapper">
+      <div id="map_base">
+        <state-map on-select="$ctrl.onStateSelect(state)"></state-map>
+      </div>
+    </div>
+  </div>
+</div>

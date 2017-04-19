@@ -1,0 +1,18 @@
+<div class="left_content">
+  <section-heading>
+    Browse the Best Rehabs in {{ $ctrl.stateName }}
+  </section-heading>
+  <!-- empty listings error-->
+  <empty-list-error display="$ctrl.displayError"></empty-list-error>
+
+  <!-- county list -->
+  <section ng-hide="$ctrl.displayError">
+    <ul class="list-locations list-columns">
+      <li ng-repeat="county in $ctrl.counties track by $index">
+        <a href ng-click="$ctrl.goToCounty(county)">
+          <i class="glyphicon glyphicon-map-marker"></i>{{ county }}
+        </a>
+      </li>
+    </ul>
+  </section>
+</div>

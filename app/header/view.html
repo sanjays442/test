@@ -1,0 +1,65 @@
+<!-- first navigation -->
+<div class=" first_nav">
+  <div class="container">
+    <div class="col-lg-5 col-md-5 col-sm-7 col-xs-12">
+      <div class="left_header">
+        <div class="img_outer_in_head pull-left" style="display:inline-block;">
+          <img width="75" height="75" src="uploads/2014/09/banner_12-150x150.png" class="attachment-75x80 size-75x80 wp-post-image" alt="banner_1" srcset="uploads/2014/09/banner_12-150x150.png 150w, uploads/2014/09/banner_12-44x44.png 44w" sizes="(max-width: 75px) 100vw, 75px" />
+        </div>
+        <div class="text_style_new">
+          For assistance in finding treatment,
+        </div>
+        <div class="text_style_special">
+          <img src="themes/addiction/images/phone.png" class="pull-left" /> Call 949-444-9123
+        </div>
+        <div class="text_style_new">
+          To speak to a live counselor
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+      <a id="header_ad_url">
+        <img class="img-responsive" id="header_ad" alt="Header advertisement">
+      </a>
+    </div>
+  </div>
+</div>
+<!-- second navigation -->
+<div class="navbar navbar-default header_bg_texture" role="navigation">
+  <div class="container width_adjust_header">
+    <div class="navbar-header padding_left_new">
+      <a class="hdr_logo_div " href="/">
+        <img class="img-responsive " src="themes/addiction/images/addiction_logo.png" />
+      </a>
+      <button type="button" class="navbar-toggle toggle_button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse to_be_pull_left new_class_for_collaspe ">
+      <!-- Social Links -->
+      <ul class="social_ul">
+        <li ng-repeat="socialLink in $ctrl.socialLinks">
+          <a ng-href="{{ socialLink.href }}" target="_blank">
+            <img ng-src="{{ socialLink.img }} " />
+          </a>
+        </li>
+      </ul>
+      <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=andr923 "></script>
+      <div class="nav_align">
+        <ul class="nav navbar-nav new_class_for_sub_menu header_main_menu fonnt ">
+          <li ng-if="$root.login==1" ng-repeat="link in $ctrl.internalLinks" ng-model="$root.login">
+            <a class="comm" ui-sref="{{ link.uiSref }}">{{ link.name }}</a>
+          </li>
+          <li ng-if="$root.login!=1" ng-repeat="link in $ctrl.internalLinksNoAuth" ng-model="$root.login">
+            <a class="comm" ui-sref="{{ link.uiSref }}">{{ link.name }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!--/.nav-collapse -->
+  </div>
+</div>
+<!-- <div ng-show="$ctrl.sliderShow" ng-bind-html="$ctrl.html"></div> -->

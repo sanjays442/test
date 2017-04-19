@@ -1,0 +1,62 @@
+<div class="edit-advertisement">
+  <section-heading>Edit Advertisement</section-heading>
+  <div class="profile-content">
+    <div class="profile-row">
+      <a href="javascript:history.go(-1);">
+        <span class="btn adn-btn right">
+          <i class="glyphicon glyphicon-hand-left"></i> Back
+        </span>
+      </a>
+    </div>
+    <div class="profile-row">
+      <form name="advertisementEditForm" enctype="multipart/form-data">
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <label for="name">Name: </label>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <input placeholder="Name" name="name" id="name" class="form-control" type="text" required ng-model="$ctrl.name">
+            <span ng-show="advertisementEditForm.name.$error.required" class="help-block">Name can't be blank.</span>
+          </div>
+        </div>
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <label for="position">Position: </label>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <select name="position" ng-model="$ctrl.position" required="true" class="selectpicker1">
+              <option value="footer">footer</option>
+              <option value="header">header</option>
+              <option value="sidebar">sidebar</option>
+            </select>
+            <span ng-show="advertisementEditForm.position.$invalid">Select position</span>
+          </div>
+        </div>
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <label for="upload_img">Content</label>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <!--  <input name="image" id="image" class="span2 text_file center_image" ng-model="$ctrl.image" type="file"> -->
+            <input file-model="$ctrl.content" type="file" name="content" id="content" class="center_image" accept="image/*" />
+            <img ng-src="{{$ctrl.oldcontent}}" width="100">
+            <span ng-show="$ctrl.err_type">Please upload an image only. </span>
+          </div>
+        </div>
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <label for="cpwd">Center Web Link</label>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <input name="center_web_link" ng-model="$ctrl.center_web_link" class="form-control" placeholder="Center Web Link" type="text" required ng-pattern="/^(?:(ftp|http|https):\/\/)?(?:[\w-]+\.)+([a-z]{2,10})?(?:[\.])+[a-z]{2,10}$/" />
+            <span ng-show="advertisementEditForm.center_web_link.$error.pattern" class="help-block">Invalid Format (Correct format: www.google.com)</span>
+            <span ng-show="advertisementEditForm.center_web_link.$error.required" class="help-block">Weburl can't be blank.</span>
+          </div>
+        </div>
+        <div class="text-right col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub sub">
+          <input class="btn modal_btn btn_size pull-right" value="Submit" id="submit" type="button" ng-click="$ctrl.submit()" ng-disabled="advertisementEditForm.position.$invalid || advertisementEditForm.center_web_link.$invalid || advertisementEditForm.name.$invalid">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
