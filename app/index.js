@@ -9,7 +9,7 @@ angular.module(appName, [
   require('./sponsorHome'),
   require('./treatmentCenterDetail'),
   require('./treatmentCenterMap'),
- // require('./advertisement'),
+  require('./advertisement'),
   require('./myProfile'),
   require('./featuredTreatmentCenter'),
   require('./addListing'),
