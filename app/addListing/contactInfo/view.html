@@ -1,0 +1,47 @@
+<div class="row">
+  <input name="customertype" value="owner" type="hidden">
+
+  <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+    <div class="adn-row">
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <label>First Name:</label>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-12">
+        <input placeholder="First Name" id="first_name" name="user_first_name" class="form-control required" type="text" required="true" ng-model="$root.first_name">
+        <p ng-show="$root.addlistForm.user_first_name.$error.required" class="help-block">Required</p>
+      </div>
+    </div>
+    <div class="adn-row">
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <label>Last Name:</label>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-12">
+        <input placeholder="Last Name" id="last_name" name="user_last_name" class="form-control required" type="text" required="true" ng-model="$root.last_name">
+        <p ng-show="$root.addlistForm.user_last_name.$error.required" class="help-block">Required</p>
+      </div>
+    </div>
+    <div class="adn-row">
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <label>Company</label>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-12">
+        <input placeholder="Company" name="user_company" class="form-control required" type="text" required="true" ng-model="$root.company">
+        <p ng-show="$root.addlistForm.user_company.$error.required" class="help-block">Required</p>
+      </div>
+    </div>
+    <div class="adn-row">
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <label>Phone</label>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-12">
+        <input placeholder="Phone" name="user_phone" class="form-control required" type="text" required="true" ng-minlength="10" ng-maxlength="12" ng-pattern="/^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$/" restrict="reject" maxlength="12" ng-model="$root.phone">
+        <p ng-show="$root.addlistForm.user_phone.$invalid" class="help-block">Required and correct US number format: 303-557-5899, should be 10 digits</p>
+      </div>
+    </div>
+
+    <div class="text-right col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub sub">
+      <input class="btn modal_btn btn_size pull-left" value="Next" id="submit" type="button" ng-click="$ctrl.saveStep1()" ng-disabled="$root.addlistForm.user_last_name.$error.required || $root.addlistForm.user_first_name.$error.required || $root.addlistForm.user_company.$error.required || $root.addlistForm.user_phone.$invalid">
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,42 @@
+<div class="my-treatment-details">
+  <section-heading>My Payment Details</section-heading>
+  <div class="profile-content">
+    <div class="profile-row">
+      <a ui-sref="myProfile.paymentDetailsAdd">
+        <span class="btn adn-btn right">Add Payment Details
+        </span>
+      </a>
+    </div>
+    <div class="profile-row">
+      <div class="adn-table">
+        <div id="no-more-tables">
+          <table class="col-md-12 col-xs-12 col-sm-12  table-striped table-condensed cf padding_0">
+            <thead class="cf">
+              <tr>
+                <th>Name</th>
+                <th>Card Number</th>
+                <th>Card Type</th>
+                <th class="width_adjust_tb">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="payment in $ctrl.payment.payments">
+                <td></td>
+                <td data-title="Name">{{payment.card}}
+                </td>
+                <td data-title="Name">{{payment.card_type}}
+                </td>
+                <td data-title="Action">
+                  <a href="/#/my-profile/payment-details/edit-payment/{{payment.customer_payment_profile_id}}" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
+                  <a href="" ng-click="$ctrl.open({id: payment.customer_payment_profile_id })" data-toggle="tooltip" data-placement="bottom" title="Delete">
+                    <i class="glyphicon glyphicon-trash"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

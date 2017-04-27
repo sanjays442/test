@@ -1,0 +1,12 @@
+<div class="profile-nav">
+  <ul class="profile-nav-list">
+    <!-- Profile Picture-->
+    <li>
+      <img ng-src="{{ $ctrl.profilePic }}" class="img-circle" />
+    </li>
+    <!-- Navigation-->
+    <li ng-repeat="link in $ctrl.links">
+      <a ui-sref="{{ link.uiSref }}" class="profile-nav-link">{{ link.name }}  </a>
+    </li>
+  </ul>
+</div>

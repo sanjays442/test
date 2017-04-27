@@ -1,0 +1,74 @@
+.center-logo-in-tb {
+  font-family: 'Helvetica';
+  font-weight: 300;
+  text-align: center;
+  width: auto;
+  max-height: 180px;
+  position: relative;
+}
+
+.profile-nav-list {
+  list-style-type: none;
+  text-align: center;
+  width: 100%;
+  float: left;
+  margin-top: 27px;
+  margin-left: 0px;
+  padding: 0;
+}
+
+.profile-nav-list li {
+  display: block;
+  text-align: center;
+  width: 100%;
+  float: left;
+  margin-bottom: 10px;
+}
+
+.profile-nav-link {
+  padding: 8px;
+  color: #fff;
+  background: #2172a7;
+  float: left;
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.profile-nav-link:hover, .profile-nav-link:active, .profile-nav-link:focus {
+  color: #fff;
+  background: #115a8f;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .profile-content {
+    border-left: none;
+  }
+}
+
+.profile-content {
+  border-left: 1px solid #dddddd;
+  min-height: 732px;
+}
+
+.profile-row {
+  padding: 0 15px;
+  margin-bottom: 15px;
+}
+
+.profile-row:before, .profile-row:after {
+  display: table;
+  content: " ";
+}
+
+.profile-row:after {
+  clear: both;
+}
+
+.pagination-nav {
+  text-align: right;
+  margin-right: 10px;
+  clear: both;
+}

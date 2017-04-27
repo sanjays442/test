@@ -1,0 +1,125 @@
+.center-detail-content {
+  width: 100%;
+  text-align: left;
+  color: #444;
+  font-size: 14px;
+  font-family: 'Arial';
+  padding: 0 15px;
+}
+
+.center-detail-link {
+  float: left;
+  width: auto;
+  padding: 10px 0 0 0;
+}
+
+.center-detail-map-address {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.center-detail-card {
+  margin-top: 30px;
+  background-color: #f2f2f2;
+  padding: 12px 5px;
+}
+
+.center-detail-contact-info {
+  margin-top: 15px;
+}
+
+.center-detail-contact-info-row {
+  color: #444;
+  /*float: left;*/
+  width: 100%;
+}
+
+.center-detail-contact-info-row:not(:first-child) {
+  margin-top: 15px;
+}
+
+.center-detail-contact-info-row span {
+  border-bottom: 1px solid #444444;
+  font-family: "oswaldbook";
+  font-size: 18px;
+  padding-bottom: 5px;
+  width: 100%;
+  display: block;
+}
+
+.center-detail-contact-info-row p {
+  font-family: 'Arial';
+  font-size: 16px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.center-detail-contact-info-row i {
+  color: #115a8f;
+  font-size: 18px;
+  font-family: "Glyphicons Halflings";
+  margin-right: 10px;
+}
+
+.inquiry-form-label {
+  color: #2172A7;
+  float: left;
+  font-size: 16px;
+  font-weight: normal;
+  padding-top: 6px;
+}
+
+.review-rating {
+  margin: 5px 0 0 0;
+  width: 100%;
+}
+
+.review-rating img {
+  width: 20px;
+}
+
+.review_star {
+  margin: 7px 0 0 0;
+}
+
+.review-list-box {
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+}
+
+.review-list-box h2 {
+  width: 100%;
+  color: #73AC4B;
+  font-size: 16px;
+}
+
+.review-list-box p {
+  width: 100%;
+  margin: 5px 0 0 0;
+}
+
+.review-list-box p a {
+  margin-bottom: 7px;
+  font-family: 'oswaldbook';
+}
+
+.review-list-box p a span {
+  margin: 0 7px 0 0;
+}
+
+.review-form-box .submit-review {
+  margin-bottom: 15px;
+}
+
+.review-form-box .review-form {
+  max-height: 300px;
+}
+
+.review-form-box .review-form.ng-hide {
+  max-height: 0px;
+}
+
+.review-form-box .review-form.ng-hide-add, .review-form-box .review-form.ng-hide-remove {
+  overflow: hidden;
+  transition: max-height linear 0.3s;
+}

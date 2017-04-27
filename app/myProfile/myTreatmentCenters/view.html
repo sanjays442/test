@@ -1,0 +1,18 @@
+<div class="my-treatment-centers">
+  <section-heading>My Treatment Centers</section-heading>
+  <!-- Content Starts -->
+  <div class="profile-content">
+    <!-- Add treatment center button -->
+    <div class="profile-row">
+      <a ui-sref="myProfile.addTreatmentCenter">
+        <span class="btn adn-btn right">Add Treatment Center</span>
+      </a>
+    </div>
+    <div class="profile-row">
+      <!-- Center listings in a table -->
+      <center-table centers="$ctrl.centers" on-activate="$ctrl.onActivate(id)" on-delete="$ctrl.open(id)"></center-table>
+      <!-- Pagination -->
+      <pagination total-pages="$ctrl.totalPages" current-page="$ctrl.currentPage" on-update="$ctrl.onPageUpdate(page)"></pagination>
+    </div>
+  </div>
+</div>

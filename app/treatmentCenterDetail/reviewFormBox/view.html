@@ -1,0 +1,43 @@
+<div class="review-form-box">
+  <div class="submit-review">
+    <button class="btn adn-btn" type="Button" ng-click="$ctrl.showAndHideInput()">Submit Review</button>
+  </div>
+
+  <div ng-show="!$ctrl.hidden" class="review-form">
+    <form ng-submit="$ctrl.submit()" novalidate="novalidate" __bizdiag="1806558906" __biza="WJ__">
+      <h4 class="sub_heading_under_sign_up">Review and Rating :</h4>
+      <div class="adn-row color_for_star">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="rat">Select Rating: </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <review-rating star="$ctrl.star" on-star-update="$ctrl.updateStar(star)"></review-rating>
+        </div>
+      </div>
+
+      <div class="adn-row">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label>Name: </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input ng-model="$ctrl.name" name="username" type="text" class="form-control required comm" placeholder="Name" />
+        </div>
+      </div>
+      <div class="adn-row">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="message">Review: </label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <textarea ng-model="$ctrl.review" name="reviews" rows="4" cols="100%" class="form-control required comm"></textarea>
+        </div>
+      </div>
+      <div class="adn-row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <button class="btn adn-btn right" type="Submit">Submit</button>
+          <button class="btn adn-btn right" type="Button" ng-click="$ctrl.hideInput()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>

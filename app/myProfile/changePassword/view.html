@@ -1,0 +1,47 @@
+<div class="change-password">
+  <section-heading>Change Password</section-heading>
+  <!-- Content Start -->
+  <div class="profile-content">
+    <div class="profile-row">
+      <form ng-submit="$ctrl.submit()" class="form-horizontal" novalidate="novalidate" __bizdiag="123399799" __biza="WJ__" ng-sub>
+
+        <!-- Old Password -->
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <label for="oldPassword">Old Password:</label>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <input ng-model="$ctrl.oldPassword" type="password" class="form-control old_password required" name="old_password" placeholder="Old Password" />
+          </div>
+        </div>
+
+        <!-- New Password -->
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <label for="newPassword">New Password:</label>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <input ng-model="$ctrl.password" type="password" name="new_password" class="form-control Password required" placeholder="New Password" />
+          </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <label for="confirmPassword">Confirm Password: </label>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <input ng-model="$ctrl.passwordConfirmation" type="password" name="cnf_password" class="form-control" placeholder="Confirm Password" />
+          </div>
+        </div>
+        <!-- Submit -->
+        <div class="adn-row">
+          <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-md-offset-4 col-sm-12 col-xs-12">
+            <button type="submit" class="btn adn-btn">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Content End -->
+</div>

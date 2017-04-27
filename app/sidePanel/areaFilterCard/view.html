@@ -1,0 +1,14 @@
+<div ng-show="$ctrl.display" class="side-card">
+  <card-heading>Filter</card-heading>
+  <ul class="list-unstyled">
+    <li>
+      <a href class="area-filter-link" ng-class="$ctrl.stateLinkClass" ng-click="$ctrl.goToState()">{{ $ctrl.stateName }}</a>
+    </li>
+    <li>
+      <a href class="area-filter-link" ng-click="$ctrl.goToCities()">View All Cities</a>
+    </li>
+    <li>
+      <a href class="area-filter-link" ng-click="$ctrl.goToCounties()">View All Counties</a>
+    </li>
+  </ul>
+</div>
