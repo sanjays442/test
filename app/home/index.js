@@ -8,6 +8,7 @@ angular.module(moduleName, [
 ]).component('welcome', require('./welcome'))
   .component('featuredTreatmentCenter', require('./featuredTreatmentCenter'))
   .component('searchByState', require('./searchByState'))
+  .component('slider', require('./slider'))
   .component('home', {
     template: require('./view.html'),
     controller: require('./ctrl')

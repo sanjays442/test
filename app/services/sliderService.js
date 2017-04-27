@@ -1,12 +1,12 @@
-module.exports = ['$log', '$http', service];
+module.exports = ['$http', 'endPoint', service];
 
-function service($log, $http) {
+function service($http, endPoint) {
   return {
     getSlider: getSlider
   };
 
   // homepage slider
   function getSlider() {
-    return $http.get('http://www.addictionnetwork.com/blog/custom-slider/');
+    return $http.get(endPoint + '/slider');
   }
 }

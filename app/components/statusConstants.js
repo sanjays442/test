@@ -14,8 +14,10 @@ module.exports = {
   PAYMENT_EDIT_SUCCEESS_MSG: 'Payment Details updated successfully.',
   PAYMENT_ADD_SUCCEESS_MSG: 'Payment Details added successfully.',
   ADD_LISTING_SUCCEESS_MSG: 'Listing added successfully.',
+  USER_ADD_SUCCESS_MSG: 'User added successfully.',
   PAYMENT_DELETE_SUCCEESS_MSG: 'Your Payment Details has been deleted successfully.',
   INQUIRY_SUCCESS_MSG: 'Your inquiry has been submitted successfully. We will contact soon.',
   SUBMIT_SUCCESS_MSG: 'Submitted successfully',
-  FAILURE_MSG: 'Oops! Something is up. We are sorry for the inconvenience.'
+  FAILURE_MSG: 'Oops! Something is up. We are sorry for the inconvenience.',
+  SIGNUP_CENTER: 'Treatment Center added successfully'
 };

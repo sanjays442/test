@@ -3,6 +3,7 @@ module.exports = ['$http', 'endPoint', 'UserService', service];
 function service($http, endPoint, UserService) {
   return {
     addTreatmentCenterSignUp: addTreatmentCenterSignUp,
+    addTreatmentCenter: addTreatmentCenter,
     queryFeaturedListings: queryFeaturedListings,
     querySponsoredListings: querySponsoredListings,
     queryDetail: queryDetail,
@@ -24,6 +25,16 @@ function service($http, endPoint, UserService) {
       data: formData,
       transformRequest: angular.identity,
       headers: {
+        'Content-Type': undefined
+      }
+    });
+  }
+
+  function addTreatmentCenter(formData, token) {
+    return $http.post(endPoint + '/listing_user/treatment_centers', formData, {
+      transformRequest: angular.identity,
+      headers: {
+        'Authorization': token,
         'Content-Type': undefined
       }
     });

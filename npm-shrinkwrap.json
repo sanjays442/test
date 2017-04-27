@@ -94,11 +94,6 @@
       "from": "angular-ui-router@>=0.4.2 <0.5.0",
       "resolved": "https://registry.npmjs.org/angular-ui-router/-/angular-ui-router-0.4.2.tgz"
     },
-    "credit-card-type": {
-      "version": "^5.0.1",
-      "from": "credit-card-type@latest",
-      "resolved": ""
-    },
     "angularjs-dropdown-multiselect": {
       "version": "2.0.0-beta.6",
       "from": "angularjs-dropdown-multiselect@latest",
@@ -816,6 +811,11 @@
       "version": "1.1.4",
       "from": "create-hmac@>=1.1.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/create-hmac/-/create-hmac-1.1.4.tgz"
+    },
+    "credit-card-type": {
+      "version": "5.0.1",
+      "from": "credit-card-type@>=5.0.1 <6.0.0",
+      "resolved": "https://registry.npmjs.org/credit-card-type/-/credit-card-type-5.0.1.tgz"
     },
     "cross-spawn": {
       "version": "5.1.0",
@@ -1662,6 +1662,11 @@
       "from": "globby@>=5.0.0 <6.0.0",
       "resolved": "https://registry.npmjs.org/globby/-/globby-5.0.0.tgz",
       "dev": true
+    },
+    "google-libphonenumber": {
+      "version": "2.0.15",
+      "from": "google-libphonenumber@latest",
+      "resolved": "https://registry.npmjs.org/google-libphonenumber/-/google-libphonenumber-2.0.15.tgz"
     },
     "graceful-fs": {
       "version": "4.1.11",

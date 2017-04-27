@@ -7,7 +7,8 @@ function service($log, $http, endPoint, UserService) {
     advertisementAdd: add,
     advertisementEdit: edit,
     getAdvertisementData: getData,
-    updateStatus: updateStatus
+    updateStatus: updateStatus,
+    advertisementAddSignUp: advertisementAddSignUp
   };
 
   // header, footer, side
@@ -83,6 +84,19 @@ function service($log, $http, endPoint, UserService) {
           'Authorization': token
         }
       });
+    });
+  }
+
+  function advertisementAddSignUp(formdata, token) {
+    return $http({
+      url: endPoint + '/listing_user/banner_ads',
+      method: 'POST',
+      data: formdata,
+      transformRequest: angular.identity,
+      headers: {
+        'Authorization': token,
+        'Content-Type': undefined
+      }
     });
   }
 }

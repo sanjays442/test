@@ -1,0 +1,11 @@
+<div ng-if="$ctrl.sliders && $ctrl.sliders.length > 0">
+  <div uib-carousel active="$ctrl.active" interval="$ctrl.myInterval" no-wrap="$ctrl.noWrapSlides">
+    <div uib-slide ng-repeat="slide in $ctrl.sliders track by $index" index="$index">
+      <img ng-src="{{slide.content_url}}" style="margin:auto;">
+      <div class="inner_slider_div">
+        <h1>{{slide.heading}}</h1>
+        <p>{{slide.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>

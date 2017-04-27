@@ -7,19 +7,33 @@ function service($log, $http, endPoint, UserService) {
     editSponsor: editSponsor,
     sponsorAdd: sponsorAdd,
     updateStatus: updateStatus,
-    getSponsoredSelect: getSponsoredSelect
+    getSponsoredSelect: getSponsoredSelect,
+    getSponsoredSelectAddlist: getSponsoredSelectAddlist,
+    sponsorListSignup: sponsorListSignup,
+    editSponsorSignup: editSponsorSignup
   };
 
   function sponsorList(page) {
     return UserService.getToken().then(function (token) {
       return $http({
-        url: endPoint + '/listing_user/sponsored_ads?page=' + page,
+        url: endPoint + '/v1/listing_user/sponsored_ads?page=' + page,
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': token
         }
       });
+    });
+  }
+
+  function sponsorListSignup(page, token) {
+    return $http({
+      url: endPoint + '/v1/listing_user/sponsored_ads',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      }
     });
   }
 
@@ -54,7 +68,7 @@ function service($log, $http, endPoint, UserService) {
   function editSponsor(formdata, id) {
     return UserService.getToken().then(function (token) {
       return $http({
-        url: endPoint + '/listing_user/sponsored_ads/' + id,
+        url: endPoint + '/v1/listing_user/sponsored_ads/' + id,
         method: 'PATCH',
         data: formdata,
         transformRequest: angular.identity,
@@ -63,6 +77,19 @@ function service($log, $http, endPoint, UserService) {
           'Content-Type': undefined
         }
       });
+    });
+  }
+
+  function editSponsorSignup(formdata, id, token) {
+    return $http({
+      url: endPoint + '/v1/listing_user/sponsored_ads/' + id,
+      method: 'PATCH',
+      data: formdata,
+      transformRequest: angular.identity,
+      headers: {
+        'Authorization': token,
+        'Content-Type': undefined
+      }
     });
   }
 
@@ -77,6 +104,18 @@ function service($log, $http, endPoint, UserService) {
           'Content-Type': undefined
         }
       });
+    });
+  }
+
+  function getSponsoredSelectAddlist(token) {
+    return $http({
+      url: endPoint + '/listing_user/sponsored_ad_select/',
+      method: 'GET',
+      transformRequest: angular.identity,
+      headers: {
+        'Authorization': token,
+        'Content-Type': undefined
+      }
     });
   }
 

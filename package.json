@@ -32,16 +32,18 @@
   "dependencies": {
     "angular": "1.6.3",
     "angular-animate": "1.6.3",
-    "angular-local-storage":"0.5.2",
+    "angular-local-storage": "0.5.2",
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-router": "^0.4.2",
     "angularjs-dropdown-multiselect": "^2.0.0-beta.6",
     "bootstrap": "3.2.0",
     "clean-webpack-plugin": "^0.1.15",
     "copy-webpack-plugin": "^4.0.1",
+    "credit-card-type": "^5.0.1",
     "css-loader": "^0.27.3",
     "express": "^4.14.1",
     "file-loader": "^0.11.1",
+    "google-libphonenumber": "^2.0.15",
     "html-loader": "^0.4.5",
     "html-webpack-include-assets-plugin": "0.0.4",
     "html-webpack-plugin": "^2.28.0",
@@ -49,8 +51,7 @@
     "style-loader": "^0.16.1",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1",
-    "webpack-merge": "^3.0.0",
-    "credit-card-type": "^5.0.1"
+    "webpack-merge": "^3.0.0"
   },
   "devDependencies": {
     "angular-mocks": "1.6.3",

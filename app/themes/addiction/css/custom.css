@@ -1927,3 +1927,78 @@ margin-right: 10px;
 vertical-align: middle;
 display: inline;
 }
+
+/*for add listing steps*/
+.add-listing-nav  ul.profile-nav-list li{
+    display: inline-block;
+    position: relative;
+    width: auto;
+    margin-left: 6px;
+}
+
+.add-listing-nav ul.profile-nav-list li:not(:first-child):before{
+ content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 17px 0 17px 20px;
+    border-color: transparent transparent transparent #fff;
+    left: 0;
+    z-index: 1;
+}
+.add-listing-nav ul.profile-nav-list li>a:after{
+ content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 17px 0 17px 20px;
+    border-color: transparent transparent transparent #2172a7;
+    z-index: 99;
+    right: -20px;
+    top: 0px;
+}
+.add-listing-nav ul.profile-nav-list li a{
+    font-size: 12px;
+    text-align: right;
+    padding: 8px 8px 8px 26px;
+}
+.add-listing-nav ul.profile-nav-list li a:hover{
+    background: #2172a7;
+}
+.add-listing-nav ul.profile-nav-list li:first-child a{
+ border-radius: 13px 0px 0px 13px;
+}
+.add-listing-nav .disable-me{
+pointer-events: none;
+ background: #2172a7;
+ opacity: .7;
+}
+.current_active.profile-nav-link{
+background: #58aa22 !important;
+border-color: #73ac4b !important;
+}
+.add-listing-nav ul.profile-nav-list li>a.current_active:after{
+ content: '';
+  border-color: transparent transparent transparent #58aa22;
+}
+.pricing-header{
+  height: 132px;
+  padding-top: 17px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.package-billing{
+  margin-top:20px;
+}
+.tr-background{
+background-color: #eee;
+text-align: center;
+}
+.membership-table td{
+  text-align: center;
+}
+.fa.fa-check-circle{
+  font-size:1.5em !important;
+  color: #8dad3d;
+}
+p .btn-success {
+    margin-bottom: 10px;
+}

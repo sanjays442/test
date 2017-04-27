@@ -39,7 +39,7 @@ var internalLinksNoAuth = [{
   uiSref: UIState.CONTACT_US,
   name: 'Contact Us'
 }, {
-  uiSref: UIState.ADD_LISTING,
+  uiSref: UIState.ADD_LISTING.CONTACT_INFO,
   name: 'Add Listing'
 }, {
   uiSref: UIState.LOGIN,
@@ -67,11 +67,15 @@ function HeaderCtrl($log, $scope, $rootScope, $window, localStorageService, serv
     function (event, toState) {
       var token = localStorageService.get('token');
       var tostate = toState.name.split('.');
+
       if (tostate[0] === 'blog') {
         $window.location = 'http://www.addictionnetwork.com/blog/?angular_ads=advertisement';
       }
       if (token) {
         $rootScope.login = 1;
+        if (tostate[0] === 'addListing') {
+          event.preventDefault();
+        }
       } else if (tostate[0] === 'myProfile') {
         $window.location.href = '/#/login';
         // $log.error('tostate: ' + tostate[0] + ' -->' + fromState.name);

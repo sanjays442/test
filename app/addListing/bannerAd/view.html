@@ -1,0 +1,59 @@
+<div class="add-advertisement">
+  <div class="adn-row">
+    <h3 class="sub_heading_under_sign_up">Banner Ads :</h3>
+  </div>
+  <div class="profile-row">
+    <input name="customertype" value="owner" type="hidden">
+    <!-- Name -->
+    <div class="adn-row">
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <label for="name">Name: </label>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-12">
+        <input placeholder="Name" name="name" id="name" class="form-control" type="text" required="true" ng-model="$ctrl.name">
+        <span ng-show="$root.addlistForm.name.$error.required" class="help-block">Name can't be blank.</span>
+      </div>
+    </div>
+    <!-- Position -->
+    <div class="adn-row">
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <label for="position">Position: </label>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-12">
+        <select name="position" ng-model="$ctrl.position" required="true" class="selectpicker1">
+          <option value="footer">footer</option>
+          <option value="header">header</option>
+          <option value="sidebar">sidebar</option>
+        </select>
+        <span ng-show="$root.addlistForm.position.$invalid">Select position</span>
+      </div>
+    </div>
+    <!-- Content -->
+    <div class="adn-row">
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <label for="upload_img">Content</label>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-12">
+        <!--  <input name="image" id="image" class="span2 text_file center_image" ng-model="$ctrl.image" type="file"> -->
+        <input file-model="$ctrl.content" type="file" name="content" id="content" class="center_image" accept="image/*" />
+        <span ng-show="$ctrl.err_type">Please upload an image only. </span>
+      </div>
+    </div>
+    <!-- Website link -->
+    <div class="adn-row">
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <label for="cpwd">Center Web Link</label>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-12">
+        <input name="center_web_link" ng-model="$ctrl.center_web_link" class="form-control" type="text" required="true" placeholder="Center Web Link" ng-pattern="/^(?:(ftp|http|https):\/\/)?(?:[\w-]+\.)+([a-z]{2,10})?(?:[\.])+[a-z]{2,10}$/" />
+        <span ng-show="$root.addlistForm.center_web_link.$error.pattern" class="help-block">Invalid Format(Correct format: www.google.com)</span>
+        <span ng-show="$root.addlistForm.center_web_link.$error.required" class="help-block">Weburl can't be blank.</span>
+      </div>
+    </div>
+    <!-- Submit -->
+    <div class="text-right col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub sub">
+      <input class="btn modal_btn btn_size pull-left" value="Previous" type="button" ng-click="$ctrl.previous()">
+      <input class="btn modal_btn btn_size pull-left" value="Next" id="submit" type="button" ng-click="$ctrl.submit()" ng-disabled="$root.addlistForm.position.$invalid  || $root.addlistForm.center_web_link.$invalid ||  $root.addlistForm.name.$invalid">
+    </div>
+  </div>
+</div>
