@@ -17,7 +17,7 @@ angular.module(appName, [
   require('./login'),
   require('./logout'),
   require('./blog')
-]).component('header', require('./header'))
+])// .component('header', require('./header'))
   .component('footer', require('./footer'))
   .constant('endPoint', require('./endPoint'))
   .config(['$locationProvider', function ($locationProvider) {
