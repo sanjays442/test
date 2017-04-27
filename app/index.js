@@ -5,18 +5,18 @@ angular.module(appName, [
   'ui.router',
   'ui.bootstrap',
   'LocalStorageModule',
- // require('./home'),
- // require('./sponsorHome'),
-  //require('./treatmentCenterDetail'),
- // require('./treatmentCenterMap'),
- // require('./advertisement'),
- // require('./myProfile'),
- // require('./featuredTreatmentCenter'),
-  //require('./addListing'),
-  //require('./aboutUs'),
+  require('./home'),
+  require('./sponsorHome'),
+  require('./treatmentCenterDetail'),
+  require('./treatmentCenterMap'),
+  require('./advertisement'),
+  require('./myProfile'),
+  require('./featuredTreatmentCenter'),
+  require('./addListing'),
+  require('./aboutUs'),
   require('./login'),
   require('./logout'),
-  //require('./blog')
+  require('./blog')
 ]) .component('header', require('./header'))
   .component('footer', require('./footer'))
   .constant('endPoint', require('./endPoint'))
