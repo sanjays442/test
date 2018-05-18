@@ -21,10 +21,15 @@ angular.module(moduleName, [
       // lazyLoad: ['$ocLazyLoad', function ($ocLazyLoad) {
       //   return $ocLazyLoad.load('preload'); // Resolve promise and load before view
       //     }]
+      // resolve: {
+      //   lazyLoad: function ($transition$) {
+      //     return $transition$.injector().get('$ocLazyLoad').load('preload');
+      //   }
+      // }
       resolve: {
-        lazyLoad: function ($transition$) {
-          return $transition$.injector().get('$ocLazyLoad').load('preload');
-        }
+        lazyLoad: ['$ocLazyLoad', function ($ocLazyLoad) {
+          return $ocLazyLoad.load('preload'); // Resolve promise and load before view
+            }]
       }
       // lazyLoad: function ($transition$) {
       //   return $transition$.injector().get('$ocLazyLoad').load('preload');
