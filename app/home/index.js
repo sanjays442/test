@@ -26,14 +26,14 @@ angular.module(moduleName, [
       //     return $transition$.injector().get('$ocLazyLoad').load('preload');
       //   }
       // }
-      resolve: {
-        lazyLoad: ['$ocLazyLoad', function ($ocLazyLoad) {
-          return $ocLazyLoad.load('preload'); // Resolve promise and load before view
-            }]
-      }
-      // lazyLoad: function ($transition$) {
-      //   return $transition$.injector().get('$ocLazyLoad').load('preload');
+      // resolve: {
+      //   lazyLoad: ['$ocLazyLoad', function ($ocLazyLoad) {
+      //     return $ocLazyLoad.load('preload'); // Resolve promise and load before view
+      //       }]
       // }
+      lazyLoad: function ($transition$) {
+        return $transition$.injector().get('$ocLazyLoad').load('app/home/slider/ctrl.js');
+      }
     });
   }]);
 
