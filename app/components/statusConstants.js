@@ -1,7 +1,9 @@
 module.exports = {
   SUCCEEDED: 'succeeded',
   FAILED: 'failed',
-  DURATION: 2500,
+  PROCESSING: 'processing',
+  HIDE_PROCESSING: 'hide-processing',
+  DURATION: 30000,
   CHANGE_PASSWORD_SUCCEESS_MSG: 'Your password is updated successfully.',
   PROFILE_EDIT_SUCCEESS_MSG: 'Your profile is updated successfully.',
   CENTER_ADD_SUCCEESS_MSG: 'Your treatmnet center is added successfully.',
@@ -19,5 +21,7 @@ module.exports = {
   INQUIRY_SUCCESS_MSG: 'Your inquiry has been submitted successfully. We will contact soon.',
   SUBMIT_SUCCESS_MSG: 'Submitted successfully',
   FAILURE_MSG: 'Oops! Something is up. We are sorry for the inconvenience.',
-  SIGNUP_CENTER: 'Treatment Center added successfully'
+  SIGNUP_CENTER: 'Treatment Center added successfully',
+  CONTACTUS_SUCCESS_MSG: 'Message has been sent.',
+  PROCESSING_MSG: 'Processing, please wait...'
 };

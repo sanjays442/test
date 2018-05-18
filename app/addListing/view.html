@@ -2,26 +2,35 @@
   <div class="row">
 
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <form name="$root.addlistForm" enctype="multipart/form-data">
+      <form name="$root.addlistForm" enctype="multipart/form-data" id="addlistForm">
         <div class="col-lg-12 col-sm-12 col-xs-12">
           <form-nav-section></form-nav-section>
         </div>
-
-        <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="{{$ctrl.colMd}} col-sm-12 col-xs-12" ng-init="$ctrl.colMd='col-md-8'">
           <div class="left_content">
             <ui-view></ui-view>
           </div>
         </div>
+        <!-- <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="left_content_old">
+            <div ui-view="cartDetails" ng-show="$root.cityModel.length || $root.countyModel.length || $root.statesSel.length"></div>
+          </div>
+        </div> -->
       </form>
-      <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-        <div class="side-card">
+      <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12" ng-init="$ctrl.sideAdvertisement = 0" ng-show="$ctrl.sideAdvertisement !== 1">
+        <div class="side-card add_listing_side_card">
           <card-heading>Advertisements</card-heading>
         </div>
         <div class="banner_adjust">
           <img class="img-responsive" id="sidebar_ad">
         </div>
+        <!-- <div class="banner_adjust1 sticky-phone" ng-if="$root.activeLink === 'Contact'">
+          <a href="tel:877-649-0306">
+            <img class="img-responsive " src="themes/addiction/images/animated-telephone.gif">
+          </a>
+        </div> -->
+
       </div>
     </div>
-
   </div>
 </div>

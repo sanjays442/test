@@ -1,0 +1,31 @@
+.status-view {
+  text-align: center;
+  padding: 10px 0px;
+  font-weight: 700;
+  background-color: #115a8f;
+  position: fixed;
+  top: 0px;
+  z-index: 1000;
+  width: 100%;
+  font-size: 15px;
+}
+
+.status-succeeded {
+  color: white;
+}
+.status-processing {
+  color: orange;
+}
+
+.status-failed {
+  color: white;
+}
+
+.status-show-hide.ng-hide {
+  opacity: 0;
+}
+
+.status-show-hide.ng-hide-add,
+.status-show-hide.ng-hide-remove {
+  transition: all linear 0.5s;
+}

@@ -1,27 +1,40 @@
 <div class="container">
   <div class="row">
     <form ng-submit="$ctrl.submit();">
-      <div class="col-md-9 col-sm-9 pading_0">
+      <div class="col-md-8 col-sm-8 pading_0">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <h2 class="contct_heding">Log In</h2>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12 pading_0">
           <div class="col-md-6 col-sm-12 col-xs-12 main_wrap_form_inner_sub">
-            <label>Username
+            <label>Email / Username
               <em class="em_star">*</em>
             </label>
-            <input placeholder="Email" id="email" name="email" class="form-control required" type="email" ng-model="$ctrl.email" required="true">
+            <input placeholder="Email" id="email" name="email" class="form-control required" type="text" ng-model="$ctrl.email" required="true">
           </div>
           <div class="col-md-6 col-sm-12 col-xs-12 main_wrap_form_inner_sub">
             <label>Password
               <em class="em_star">*</em>
             </label>
-            <input class="form-control required" ng-model="$ctrl.password" name="password" autofocus="" type="password" required="true">
+            <input class="form-control required" id="password" ng-model="$ctrl.password" name="password" autofocus="" type="password" required="true">
           </div>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-10">
-          <div class="log_btn_div btms_spaces btn_bottom_gap">
-            <input class="btn adn-btn right" value="Login" type="submit">
+          <div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
+            <input type="checkbox">
+            <span class="login-changes">Remember Me</span>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12 margin-bottom-10">
+            <input type="checkbox" ng-model="$ctrl.show_pass" ng-click="$ctrl.show_password()">
+            <span class="login-changes">Show Password</span>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-10">
+          <div class="log_btn_div btms_spaces btn_bottom_gap col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
+            <input class="btn adn-btn" value="Login" type="submit">
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12 margin-top-5">
+            <a href="javascript:void(0)" ng-click="$ctrl.forgot()"> Forgot Username/Password </a>
           </div>
           <div id="error_if"></div>
         </div>
@@ -30,5 +43,13 @@
         </div>
       </div>
     </form>
+    <div class="col-md-4 col-sm-4">
+      <div class="side-card">
+        <card-heading>Advertisements</card-heading>
+      </div>
+      <div class="banner_adjust">
+        <img class="img-responsive" id="sidebar_ad">
+      </div>
+    </div>
   </div>
 </div>

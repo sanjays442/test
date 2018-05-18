@@ -4,8 +4,9 @@
 
   <!-- Actual sponsor listing data -->
   <div ng-hide="$ctrl.displayError" class="sponsor-listing">
-    <section-heading>{{ $ctrl.entry.heading_1 }}</section-heading>
-    <p>{{ $ctrl.entry.content_1 }}</p>
+    <section-heading>{{ $ctrl.entry.heading_1}}</section-heading>
+    <div class="rehab_content" ng-bind-html="$ctrl.content1">
+    </div>
 
     <div class="row">
       <!-- First section of the listing -->
@@ -24,7 +25,7 @@
                     {{ listing.name }}
                   </a>
                 </h3>
-                <p>{{ listing.description }}</p>
+                <p>{{ listing.description|removeHTMLTags }}</p>
               </div>
             </div>
           </li>
@@ -34,9 +35,50 @@
       <!-- Second section of the listing-->
       <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
         <section-heading>{{ $ctrl.entry.heading_2 }}</section-heading>
-        <p>{{ $ctrl.entry.content_2 }}</p>
+        <!-- <p>{{ $ctrl.entry.content_2 }}</p> -->
+        <div class="rehab_content" ng-bind-html="$ctrl.content2">
+        </div>
       </div>
 
+      <!-- Layout links -->
+      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12" ng-if="$ctrl.entry.layout_links.length>0">
+        <section-heading>{{ $ctrl.entry.heading_3 }}</section-heading>
+        <!-- <p>{{ $ctrl.entry.content_2 }}</p> -->
+        <div>
+          <ul>
+            <li ng-repeat="lists in $ctrl.entry.layout_links">
+              <a ui-sref="sponsorHome.filter({filterName:'{{lists.name|createSlug}}'})" class="ng-binding" ng-if="lists.type==='category'">
+                <span class="glyphicon"></span>
+                {{lists.name}}
+              </a>
+              <a href ng-click="$ctrl.goToCounty({countyName: lists.name})" class="ng-binding" ng-if="lists.type==='county'">
+                <span class="glyphicon"></span>
+                {{lists.name}}
+              </a>
+              <!-- <a href="/counties/{{lists.name|createSlug}}" class="ng-binding" ng-if="lists.type==='county'">
+                <span class="glyphicon"></span>
+                {{lists.name}}
+              </a> -->
+              <!-- <a href="/cities/{{lists.name|createSlug}}" class="ng-binding" ng-if="lists.type==='city'">
+                <span class="glyphicon"></span>
+                {{lists.name}}
+              </a> -->
+              <!-- <a href="/state/{{$ctrl.stateName}}-rehab-centers/{{lists.name|createSlug}}" class="ng-binding" ng-if="lists.type==='city'">
+                <span class="glyphicon"></span>
+                {{lists.name}}
+              </a> -->
+              <a href="/state/{{lists.name|createSlug}}-rehab-centers" ng-click="$ctrl.goToCity({cityName: lists.name})" class="ng-binding" ng-if="lists.type==='city'">
+                <span class="glyphicon"></span>
+                {{lists.name}}
+              </a>
+              <a href="/state/{{lists.name|createSlug}}-rehab-centers" class="ng-binding" ng-if="lists.type==='state'">
+                <span class="glyphicon"></span>
+                {{lists.name}}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

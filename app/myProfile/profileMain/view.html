@@ -1,75 +1,99 @@
-<div class="profile-main">
-  <section-heading>My Profile</section-heading>
-  <div class="profile-content">
-    <div class="profile-row">
-      <a ui-sref="myProfile.addTreatmentCenter">
-        <span class="btn adn-btn right">Add Treatment Center</span>
-      </a>
-    </div>
-    <div class="profile-row">
-      <!-- First Name -->
-      <div class="adn-row">
-        <div class="col-md-4 col-sm-4 col-xs-6">
-          <label>First Name:</label>
+<div class="container progress-content">
+  <div class="clearfix"></div>
+  <div class="progress-content-one mt-30">
+    <div class="col-md-6">
+      <div class="progress-img-wrap">
+        <div class="p-form-title" style="margin-left: -9px;font-size: 12px;margin-top: 5px;">Account Details</div>
+        <div style="background-image: url('themes/addiction/images/png/illustrations-Man-Explains.png');" class="progress-img">
         </div>
-        <div class="col-md-8 col-sm-8 col-xs-6">
-          <p>{{ $ctrl.profile.first_name }}</p>
+        <div class="p-form-desc">
+          <span style="font-size:11.2px;color:#246F9B;">Hi {{$ctrl.profile.first_name}} click edit to do changes and then submit.</span>
+          <span ng-show="$ctrl.showSmiley" style="font-size:12px; "><i class="fa fa-smile-o"></i></span>
         </div>
-      </div>
-      <!-- Last Name -->
-      <div class="adn-row">
-        <div class="col-md-4 col-sm-4 col-xs-6">
-          <label>Last Name:</label>
-        </div>
-        <div class="col-md-8 col-sm-8 col-xs-6">
-          <p>{{ $ctrl.profile.last_name }}</p>
-        </div>
-      </div>
-      <!-- Email -->
-      <div class="adn-row">
-        <div class="col-md-4 col-sm-4 col-xs-6">
-          <label>Email:</label>
-        </div>
-        <div class="col-md-8 col-sm-8 col-xs-6">
-          <p>{{ $ctrl.profile.email }}</p>
-        </div>
-      </div>
-      <!-- About Me -->
-      <div class="adn-row">
-        <div class="col-md-4 col-sm-4 col-xs-6">
-          <label>About Me:</label>
-        </div>
-        <div class="col-md-8 col-sm-8 col-xs-6">
-          <p>{{ $ctrl.profile.about_me }}</p>
-        </div>
-      </div>
-      <!-- Phone -->
-      <div class="adn-row">
-        <div class="col-md-4 col-sm-4 col-xs-6">
-          <label>Phone:</label>
-        </div>
-        <div class="col-md-8 col-sm-8 col-xs-6">
-          <p>{{ $ctrl.profile.phone }}</p>
-        </div>
-      </div>
-      <!-- Address -->
-      <div class="adn-row">
-        <div class="col-md-4 col-sm-4 col-xs-6">
-          <label>Address:</label>
-        </div>
-        <div class="col-md-8 col-sm-8 col-xs-6">
-          <p>{{ $ctrl.profile.address }}</p>
-        </div>
-      </div>
-      <!-- Zipcode -->
-      <div class="adn-row">
-        <div class="col-md-4 col-sm-4 col-xs-6">
-          <label>Zipcode:</label>
-        </div>
-        <div class="col-md-8 col-sm-8 col-xs-6">
-          <p>{{ $ctrl.profile.zipcode }}</p>
+        <div class="p-form-desc" ng-if="$ctrl.displayErrorMsg">
+          <span style="font-size:11px;color:red;">{{$ctrl.displayErrorMsg}}</span>
         </div>
       </div>
     </div>
+    <div class="col-md-6">
+      <div class="psignup-form user-create" ng-init="$ctrl.viewOnly=1;">
+        <form class="psignup-form  n-form" name="$ctrl.accountDetailsForm" autocomplete="off">
+          <div class="col-md-6">
+            <div class="form-group">
+              <span class="abslt-plc" ng-if="$ctrl.first_name" style="font-size:12px; color:#83BF00;">First Name</span>
+              <input ng-if="$ctrl.viewOnly!==1" type="text" class="form-control" id="fname" name="firstName" placeholder="First Name" ng-model="$ctrl.first_name" required autocomplete="off">
+              <input ng-if="$ctrl.viewOnly===1" readonly type="text" class="form-control" placeholder="First Name" ng-model="$ctrl.profile.first_name" required autocomplete="off">
+              <!-- <span ng-show="$ctrl.accountDetailsForm.firstName.$invalid && ($ctrl.accountDetailsFormInit.firstName===0)" class="help-block">Required</span> -->
+            </div>
+          </div>
+          <div class="col-md-6" style="padding-right:4.5px;">
+            <div class="form-group">
+              <span class="abslt-plc" ng-if="$ctrl.last_name" style="font-size:12px; color:#83BF00;">Last Name</span>
+              <input type="text" ng-if="$ctrl.viewOnly!==1" class="form-control" name="lastName" id="lname" placeholder="Last Name" ng-model="$ctrl.last_name" required autocomplete="off">
+              <input type="text" ng-if="$ctrl.viewOnly===1" readonly class="form-control" placeholder="Last Name" ng-model="$ctrl.profile.last_name" required autocomplete="off">
+              <!-- <span ng-show="$ctrl.accountDetailsForm.lastName.$invalid && ($ctrl.accountDetailsFormInit.lastName===0)" class="help-block">Required</span> -->
+            </div>
+          </div>
+          <!-- <div class="form-group">
+            <span ng-if="$ctrl.company_name" class="abslt-plc" style="font-size:12px; color:#83BF00;">Company Name</span>
+            <input type="text" class="form-control" name="companyName" id="cname" placeholder="Company Name"  ng-model="$ctrl.company_name" required autocomplete="off">
+          </div> -->
+          <div class="form-group">
+            <span class="abslt-plc" ng-if="$ctrl.phone || $ctrl.phonePlaceholder" style="font-size:12px; color:#83BF00;">User Phone no</span>
+            <input type="text" ng-if="$ctrl.viewOnly!==1" name="phone" class="form-control" id="phone" ng-keyup="$ctrl.extraPlaceholder('phone')" placeholder="User Phone no" ng-model="$ctrl.phone" required ng-pattern="/^[0-9-+() ]*$/" number="true" autocomplete="off">
+            <input type="text" ng-if="$ctrl.viewOnly===1" name="phone" class="form-control" readonly ng-keyup="$ctrl.extraPlaceholder('phone')" placeholder="User Phone no" ng-model="$ctrl.profile.phone" required ng-pattern="/^[0-9-+() ]*$/" number="true" autocomplete="off">
+            <!-- <p ng-show="$ctrl.addCenter.center_phone.$error.pattern || $ctrl.addCenter.center_phone.$error.minlength || $ctrl.addCenter.center_phone.$error.maxlength" class="help-block">Invalid US number.</p> -->
+            <!-- <span ng-show="$ctrl.accountDetailsForm.phone.$invalid && ($ctrl.accountDetailsFormInit.phone===0)" class="help-block">{{$ctrl.phoneErrorTxt}}</span> -->
+          </div>
+          <div class="form-group">
+            <span class="abslt-plc" ng-if="$ctrl.email || $ctrl.emailPlaceholder" name="emailPlaceholder" style="font-size:12px; color:#83BF00;">User Email ID</span>
+            <input type="email" class="form-control" id="email" readonly name="email" ng-keyup="$ctrl.extraPlaceholder('email')" placeholder="User Email ID" ng-focus="$ctrl.dialogueBoxText('email')" ng-keypress="$ctrl.accountDetailsFormInit.email=0" ng-model="$ctrl.profile.email" email="true" required="true" ng-pattern="/^(([^<>()\[\]\.,;:\s@\']+(\.[^<>()\[\]\.,;:\s@\']+)*)|(\'.+\'))@(([^<>()[\]\.,;:\s@\']+\.)+[^<>()[\]\.,;:\s@\']{2,})$/i" autocomplete="off">
+            <!-- <span ng-show="$ctrl.accountDetailsForm.email.$invalid && ($ctrl.accountDetailsFormInit.email===0)" class="help-block">Required and please enter valid email</span>
+            <span ng-show="$ctrl.accountDetailsForm.email.$invalid===false && ($ctrl.accountDetailsFormInit.email===0) && $ctrl.emailErrorTxt!=''" ng-init="$ctrl.emailErrorTxt=''" class="help-block">{{$ctrl.emailErrorTxt}}</span> -->
+
+          </div>
+          <div class="form-group">
+            <span class="abslt-plc" ng-if="$ctrl.oldPassword" style="font-size:12px; color:#83BF00;">Old Password</span>
+            <input type="{{showpassword ? 'text' : 'password'}}" ng-if="$ctrl.viewOnly!==1" ng-keyup="showpassword=false;" name="old_password" class="form-control" id="old_pwd" placeholder="Old Password" required ng-model="$ctrl.oldPassword" autocomplete="off">
+            <input type="{{showpassword ? 'text' : 'password'}}" ng-if="$ctrl.viewOnly===1" readonly class="form-control" placeholder="Old Password" required ng-model="$ctrl.oldPassword" autocomplete="off">
+            <span class="fix-right"><i id="showpassword_old_pwd" class="fa fa-eye-slash fa-1x" ng-init="showpassword=true" ng-model="showpassword" ng-click="$ctrl.showpassword('old_pwd');"></i></span>
+
+          </div>
+          <div class="form-group">
+            <span class="abslt-plc" ng-if="$ctrl.password" style="font-size:12px; color:#83BF00;">New Password</span>
+            <input type="{{showpassword ? 'text' : 'password'}}" ng-if="$ctrl.viewOnly!==1" name="password" ng-keyup="showpassword=false;"  class="form-control" id="pwd" placeholder="New Password" required ng-model="$ctrl.password" ng-focus="$ctrl.dialogueBoxText('password')" autocomplete="off">
+            <input type="{{showpassword ? 'text' : 'password'}}" ng-if="$ctrl.viewOnly===1" readonly name="password" class="form-control" placeholder="New Password" required ng-model="$ctrl.password" ng-focus="$ctrl.dialogueBoxText('password')" autocomplete="off">
+            <span class="fix-right"><i id="showpassword_pwd" class="fa fa-eye-slash fa-1x" ng-model="showpassword" ng-click="$ctrl.showpassword('pwd');"></i></span>
+
+          </div>
+          <div class="form-group">
+            <span class="abslt-plc" ng-if="$ctrl.passwordConfirmation" style="font-size:12px; color:#83BF00;">Confirm Password</span>
+            <span class="abslt-plc" ng-if="$ctrl.passwordConfirmation!==$ctrl.password" style="font-size:12px; color:red;top:40px;">New and confirm password doesnot match.</span>
+            <input type="{{showpassword ? 'text' : 'password'}}" name="conf_password" ng-if="$ctrl.viewOnly!==1" ng-keyup="showpassword=false;" class="form-control" id="conf_pwd" placeholder="Confirm Password" required ng-model="$ctrl.passwordConfirmation" ng-focus="$ctrl.dialogueBoxText('password')" autocomplete="off">
+            <input type="{{showpassword ? 'text' : 'password'}}" ng-if="$ctrl.viewOnly===1" readonly name="conf_password" class="form-control" placeholder="Confirm Password" required ng-model="$ctrl.passwordConfirmation" ng-focus="$ctrl.dialogueBoxText('password')" autocomplete="off">
+            <span class="fix-right"><i id="showpassword_conf_pwd" class="fa fa-eye-slash fa-1x" ng-model="showpassword" ng-click="$ctrl.showpassword('conf_pwd');"></i></span>
+
+          </div>
+        </form>
+
+      </div>
+
+      <div class="stick-next user-create user_create" ng-show="$ctrl.processing!==1" ng-disabled="$ctrl.accountDetailsForm.email.$invalid || $ctrl.accountDetailsForm.firstName.$invalid || $ctrl.accountDetailsForm.lastName.$invalid || $ctrl.accountDetailsForm.companyName.$invalid || $ctrl.accountDetailsForm.phone.$invalid || $ctrl.accountDetailsForm.password.$invalid" style="margin-top: 57%;">
+        <!-- <span class="stick-next-element" ng-click="$ctrl.userCreate()"><a href="javascript:void(0);" class="allbtn-nxt" >Next</a>
+        </span> -->
+        <span class="stick-next-element pull-left" ng-show="$ctrl.viewOnly!==0">
+          <a href="javascript:void(0);" id="myaccount_edit" class="allbtn-nxt" ng-click="$ctrl.viewOnly=0;$ctrl.editOnly=1; $ctrl.initEditProfData();">Edit</a>
+        </span>
+        <span class="stick-next-element" ng-show="$ctrl.editOnly===1">
+          <a href="javascript:void(0);" ng-click="$ctrl.submit()" class="allbtn-nxt">Submit</a>
+        </span>
+        <span class="stick-next-element1 pull-left" ng-show="$ctrl.editOnly===1">
+          <a href="javascript:void(0);" ng-click="$ctrl.viewOnly=1;$ctrl.editOnly=0;" id="myaccount_back" class="allbtn-bk">Cancel</a>
+        </span>
+
+      </div>
+
+    </div>
+
   </div>
 </div>

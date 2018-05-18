@@ -7,7 +7,11 @@
           <th>
             <a class="head-name" href="?order=DESC" title="Order By name in desending order">Name</a>
           </th>
+          <th>
+            Listing Type
+          </th>
           <th>Category</th>
+          <!-- <th>Featured</th> -->
           <th class="head-action">Action</th>
         </tr>
       </thead>
@@ -25,9 +29,19 @@
             <a ui-sref="{{ center.viewLink }}" style="color:black;">{{ center.center_name }}</a>
           </td>
 
+          <!-- Listing Type -->
+          <td data-title="listingType">
+            {{ center.listing_type }}
+          </td>
           <!-- Category -->
           <td data-title="Category">{{ center.categories_name }}</td>
+          <!-- Featured -->
 
+          <!-- <td data-title="featured">
+            <span ng-if="center.listing_type==='free'">{{$ctrl.checkedFeature=false;}}</span>
+            <span ng-if="center.listing_type==='featured'">{{$ctrl.checkedFeature=true;}}</span>
+            <input type="checkbox" name="featured" ng-model="$root.featured" ng-checked="$ctrl.checkedFeature" ng-click="$root.featureSelect(center.id)" />
+          </td> -->
           <!-- Action view, edit, delete, activate/deactivate -->
           <td data-title="Action">
             <a ui-sref="{{ center.viewLink }}" data-toggle="tooltip" data-placement="bottom" title="View">

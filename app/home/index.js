@@ -16,8 +16,19 @@ angular.module(moduleName, [
   .config(['$stateProvider', 'UIState', function ($stateProvider, UIState) {
     $stateProvider.state({
       name: UIState.HOME,
-      url: '/',
-      template: '<home></home>'
+      url: '/?auth_token',
+      template: '<home></home>',
+      // lazyLoad: ['$ocLazyLoad', function ($ocLazyLoad) {
+      //   return $ocLazyLoad.load('preload'); // Resolve promise and load before view
+      //     }]
+      resolve: {
+        lazyLoad: function ($transition$) {
+          return $transition$.injector().get('$ocLazyLoad').load('preload');
+        }
+      }
+      // lazyLoad: function ($transition$) {
+      //   return $transition$.injector().get('$ocLazyLoad').load('preload');
+      // }
     });
   }]);
 

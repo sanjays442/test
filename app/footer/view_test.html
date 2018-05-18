@@ -1,0 +1,104 @@
+<div class="footer_section">
+  <div class="container">
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 padding_0">
+      <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
+        <div class="footer_heading">
+          <h1>Latest Post</h1>
+        </div>
+        <div class="latest_review" ng-repeat="results in $ctrl.result">
+          <div class="col-lg-3 col-sm-4 col-md-3 col-xs-3 padding_0 margin_ryt_10">
+            <div class="review_img">
+              <a href="/blog/{{results.post_name}}/">
+                <img width="44" height="44" src="{{results.thumbnail}}" class="attachment-footer_img size-footer_img" alt="{{result.post_title}}" sizes="(max-width: 44px) 100vw, 44px" />
+              </a>
+            </div>
+          </div>
+          <label style="display:block;">
+            <a href="/blog/{{results.post_name}}/">{{results.post_title}}</a>
+          </label>
+          <p>{{results.post_content | limitTo:18}}</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
+        <div class="footer_heading">
+          <h1>About</h1>
+        </div>
+        <div class="about_div">
+          <ul class="list-unstyled">
+            <li>
+              <a href="/about">
+                <span class="glyphicon glyphicon-chevron-right"></span>About Us</a>
+            </li>
+            <li>
+              <a href="/treatment-center-map">
+                <span class="glyphicon glyphicon-chevron-right"></span>Find Treatment</a>
+            </li>
+            <li>
+              <a href="javascript:;" ng-click="$ctrl.gotoPrivacyPolicy();">
+                <span class="glyphicon glyphicon-chevron-right"></span>Privacy Policy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
+        <div class="footer_heading">
+          <h1>Contact Us</h1>
+        </div>
+        <div class="about_div">
+          <ul class="list-unstyled">
+            <li>
+              <a href="javascript:void(0);">
+                <span class="glyphicon glyphicon-earphone"></span> 949-444-9123
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">
+                <span class="glyphicon glyphicon-envelope"></span> info@addictionnetwork.com
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
+        <div class="footer_heading">
+          <h1>Our Mission</h1>
+        </div>
+        <div class="about_div">
+          <p>Our goal at Addiction Network is to provide a comprehensive solution for those seeking treatment for drug and alcohol addiction.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end footer-->
+<!-- second  footer-->
+<div class="second_footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 ">
+        <p>
+          Copyright © 2014 Addiction Network - All Rights Reserved.
+        </p>
+      </div>
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 ">
+        <div class="footer_ul">
+          <ul class="list-unstyled list-inline pull-right">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="#/treatment-center-map">Treatment Center</a>
+            </li>
+            <li>
+              <a href="#/add-listing/step1" data-toggle="modal">Sign Up</a>
+            </li>
+            <li>
+              <a href="#/contact">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

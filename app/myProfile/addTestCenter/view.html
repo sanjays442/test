@@ -1,0 +1,138 @@
+<div class="container progress-content">
+
+  <div class="clearfix"></div>
+  <div class="progress-content-one mt-30 treatmentcenter-createcenter">
+    <div class="col-md-6 col-sm-12">
+      <div class="progress-img-wrap">
+        <div class="p-tc-title">Add treatment center</div>
+        <div style="background-image: url('themes/addiction/images/png/illustrations-Woman-Explains.png');" class="progress-img">
+        </div>
+        <div class="p-tc-desc">{{$ctrl.displayMsg}}</div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="full-height">
+        <div class="progressbar" ng-if="0">
+          <div class="progress progress-grediant prg-newcss">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{$ctrl.progressValue}}" aria-valuemin="0" aria-valuemax="100" style="width:{{$ctrl.progressValue}}%">
+              <span class="stick-me">{{$ctrl.progressValue}}%</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="psignup-form user-create" style="height:338px;margin-top:0px;">
+          <form class="psignup-form n-form" name="$ctrl.centerForm" style="margin-top:0px;">
+            <div class="form-group" ng-show="$ctrl.tagsToggle!==0">
+              <span class="abslt-plc" ng-if="$ctrl.centerName">Center Name</span>
+              <input type="text" class="form-control" name="centerName" placeholder="Center Name" ng-model="$ctrl.centerName" ng-keypress="$ctrl.centerFormInit.centerName = 0" required autocomplete="off">
+              <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Name of your treatment center"><i class="fa fa-question-circle-o fa-2x"></i></span>
+              <!-- <span ng-show="$ctrl.centerForm.centerName.$error.required && ($ctrl.centerFormInit.centerName===0)" class="help-block">Required</span> -->
+
+            </div>
+            <div class="form-group">
+              <!-- <input type="text" class="form-control" placeholder="Category"> -->
+              <!-- <div ng-dropdown-multiselect="" translation-texts="$ctrl.categorySelectText" options="$ctrl.centerCategories" selected-model="$ctrl.categoryModel" checkboxes="true" extra-settings="$ctrl.multiselectModelSettings" name="categories" required="" events="{onItemSelect: $ctrl.onCategorySelect, onItemDeselect: $ctrl.onCategoryDeSelect}"></div>
+            <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Explaination of each field here"><i class="fa fa-question-circle-o fa-2x"></i></span> -->
+              <!-- <span ng-show="$ctrl.categoryModel.length ===0 && ($ctrl.centerFormInit.categories===0)" class="help-block">Required</span> -->
+
+            </div>
+
+            <!-- <div class="form-group" ng-click="$ctrl.catgsToggleFun()" ng-init="$ctrl.catgsToggle=0" ng-if="$ctrl.tagsToggle!==0">
+              <input type="text" class="form-control" placeholder="Categories" style="cursor:pointer;" readonly="readonly">
+              <span class="fix-right" tooltip-placement="right" data-toggle="collapse" data-target="#collapse-catg" uib-tooltip="Show/hide Category"></span>
+            </div> -->
+            <div class="form-group" ng-click="$ctrl.catgsToggleFun()" ng-init="$ctrl.catgsToggle=0" ng-show="$ctrl.tagsToggle!==0">
+              <!-- <input type="text" class="no-border form-control" placeholder="Categories"> -->
+              <span class="abslt-plc" style="position:relative;" ng-if="$ctrl.catgcheckedstring[1]==='checked' || $ctrl.catgcheckedstring[2]==='checked' || $ctrl.catgcheckedstring[3]==='checked' || $ctrl.catgcheckedstring[4]==='checked'">Categories</span>
+
+              <div class="no-border categories" ng-if="$ctrl.catgcheckedstring[1]==='' && $ctrl.catgcheckedstring[2]==='' && $ctrl.catgcheckedstring[3]==='' && $ctrl.catgcheckedstring[4]===''">
+                Categories
+              </div>
+              <span class="fix-right" tooltip-placement="right" data-toggle="collapse" data-target="#collapse-catg" uib-tooltip="Show/hide Category">
+                <!-- <i ng-if="$ctrl.catgsToggle===0" class="fa fa-arrow-up fa-2x"></i><i ng-if="$ctrl.catgsToggle!==0" class="fa fa-arrow-down fa-2x"></i> -->
+              </span>
+            </div>
+
+            <div class="form-group checkboxFive2-category" ng-if="$ctrl.catgsToggle!==1 && $ctrl.tagsToggle!==0" style="padding-left:5px;">
+              <div ng-repeat="catgs in $ctrl.centerCategories" class="checkboxFive2" style="padding-bottom:7px;padding-left:11px;padding-right:4px;">
+                <input type="checkbox" id="catgs{{catgs.id}}" {{$ctrl.catgcheckedstring[catgs.id]}} name="catg[]" ng-model="$ctrl.categoryModel[catgs.id]" ng-click="$ctrl.catgChecked(catgs.id,$ctrl.categoryModel[catgs.id]);" />
+                <span style="cursor:pointer;" ng-click="$ctrl.catgChecked(catgs.id,$ctrl.categoryModel[catgs.id],'label_click');"> {{catgs.label}}</span>
+                <label for="catgs{{catgs.id}}" class="tooltiptext {{$ctrl.catgcheckedstring[catgs.id]}}"></label>
+              </div>
+            </div>
+
+            <div class="form-group" ng-show="$ctrl.tagsToggle!==0">
+              <span class="abslt-plc" ng-if="$ctrl.website || $ctrl.websitePlaceholder">Website</span>
+              <!-- <input type="text" class="form-control" placeholder="Website" name="website" ng-model="$ctrl.website" ng-keyup="$ctrl.extraPlaceholder('website')" ng-keypress="$ctrl.centerFormInit.website=0" required ng-pattern="/^(?:(ftp|http|https):\/\/)?(?:([\w W]{3})+\.)+([0-9 a-z A-Z]{2,300})?(?:[\.])+([a-z A-Z/.]{2,300})$/" autocomplete="off"> -->
+              <input type="text" class="form-control" placeholder="Website" name="website" ng-model="$ctrl.website" ng-keyup="$ctrl.extraPlaceholder('website')" ng-keypress="$ctrl.centerFormInit.website=0" required ng-pattern="/^((https?|ftp|smtp):\/\/)?([\w W]{3}.)?[a-z0-9A-Z]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/" autocomplete="off">
+              <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Weblink of your treatment center"><i class="fa fa-question-circle-o fa-2x"></i></span>
+              <!-- <span ng-show="$ctrl.centerForm.website.$error.required && ($ctrl.centerFormInit.website===0)" class="help-block">Required</span>
+            <span ng-show="$ctrl.centerForm.website.$error.pattern && ($ctrl.centerFormInit.website===0)" class="help-block">Invalid website</span> -->
+
+            </div>
+            <div class="form-group" ng-show="$ctrl.tagsToggle!==0">
+              <span class="abslt-plc" ng-if="$ctrl.email || $ctrl.emailPlaceholder">Contact Email</span>
+              <input type="email" class="form-control" name="email" ng-model="$ctrl.email" ng-keyup="$ctrl.extraPlaceholder('email')" ng-keypress="$ctrl.centerFormInit.email=0" required placeholder="Contact Email" ng-pattern="/^(([^<>()\[\]\.,;:\s@\']+(\.[^<>()\[\]\.,;:\s@\']+)*)|(\'.+\'))@(([^<>()[\]\.,;:\s@\']+\.)+[^<>()[\]\.,;:\s@\']{2,})$/i" autocomplete="off">
+              <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Email address to contact your treatment center"><i class="fa fa-question-circle-o fa-2x"></i></span>
+              <!-- <span ng-show="$ctrl.centerForm.email.$error.required && ($ctrl.centerFormInit.email===0)" class="help-block">Required</span>
+            <span ng-show="$ctrl.centerForm.email.$error.pattern && ($ctrl.centerFormInit.email===0)" class="help-block">Invalid email</span> -->
+
+            </div>
+            <div class="form-group" ng-show="$ctrl.tagsToggle!==0">
+              <span class="abslt-plc" ng-if="$ctrl.phone || $ctrl.phonePlaceholder">Contact Phone No</span>
+              <input type="text" class="form-control" name="phone" ng-model="$ctrl.phone" ng-keyup="$ctrl.extraPlaceholder('phone')" ng-keypress="$ctrl.centerFormInit.phone=0" required placeholder="Contact Phone no" ng-pattern="/^[0-9-+() ]*$/" autocomplete="off">
+              <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Phone number to reach your treatment center"><i class="fa fa-question-circle-o fa-2x"></i></span>
+              <!-- <span ng-show="$ctrl.centerForm.phone.$invalid && ($ctrl.centerFormInit.phone===0)" class="help-block">Invalid phone</span>
+            <span ng-show="$ctrl.centerForm.phone.$invalid!='true' && ($ctrl.centerFormInit.phone===0) && $ctrl.phoneErrorTxt!=''" ng-init="$ctrl.phoneErrorTxt=''" class="help-block">{{$ctrl.phoneErrorTxt}}</span> -->
+
+            </div>
+            <div class="form-group">
+              <span class="abslt-plc" ng-if="$ctrl.address">Address</span>
+              <input type="text" class="form-control" placeholder="Address" name="address" ng-model="$ctrl.address" ng-keypress="$ctrl.centerFormInit.address=0" required autocomplete="off">
+              <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Please enter the treatment center address"><i class="fa fa-question-circle-o fa-2x"></i></span>
+              <!-- <span ng-show="$ctrl.centerForm.address.$invalid && ($ctrl.centerFormInit.address===0)" class="help-block">Required</span> -->
+
+            </div>
+            <div class="form-group" ng-init="$ctrl.tagsToggle=1">
+              <input type="text" class="form-control" placeholder="Tags/ Labels" style="cursor:pointer;" readonly="readonly" autocomplete="off">
+              <!-- <div ng-dropdown-multiselect="" translation-texts="$ctrl.tagsSelectText" options="$ctrl.tagsOption" selected-model="$ctrl.tagsModel" checkboxes="true" extra-settings="$ctrl.tagsSelectSetting"  name="tags" required=""></div> -->
+              <!-- <div ng-dropdown-multiselect="" options="$ctrl.tagsOption" selected-model="$ctrl.tagsModel" extra-settings="$ctrl.tagsSelectSetting"></div>-->
+              <!-- <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Explaination of each field here"><i class="fa fa-question-circle-o fa-2x"></i></span> -->
+              <span class="fix-right" tooltip-placement="right" data-toggle="collapse" data-target="#collapse-tags" uib-tooltip="Show/hide tags" ng-if="$ctrl.tagsToggle === 1" ng-click="$ctrl.tagsToggleFun()"><i class="showmore">Show More</i></span>
+              <span class="fix-right" tooltip-placement="right" data-toggle="collapse" data-target="#collapse-tags" uib-tooltip="Show/hide tags" ng-if="$ctrl.tagsToggle === 0" ng-click="$ctrl.tagsToggleFun()"><i class="showless">Show Less</i></span>
+
+            </div>
+            <div id="collapse-tags" class="form-group test-center-tm collapse-tags" ng-if="$ctrl.tagsToggle!==1">
+              <div class="col-md-12 test-center-tz" id="tags{{tags.id}}" ng-init="$ctrl.tagToggle[tags.id]=0;$ctrl.tagToggleIconClass[tags.id] = 'fa-plus-square-o';" ng-repeat="tags in $ctrl.tagsData.tags">
+                <div class="test-center-tp" style="cursor:auto;">
+                  <p>
+                    <input type="checkbox" ng-click="$ctrl.selectSubtagAllOption(tags.id, tags.children, $ctrl.checkAllTagOption[tags.id])" ng-show="$ctrl.tagToggle[tags.id]" ng-model="$ctrl.checkAllTagOption[tags.id]">
+                    <span ng-click="$ctrl.tagToggleDynamic(tags.id)">{{tags.name}}</span>
+                  </p>
+                  <!-- <span style="cursor:pointer;" class="fix-right" ng-click="$ctrl.tagToggleDynamic(tags.id)"><i class="fa fa-caret-square-o-down" uib-tooltip="Show/hide " aria-hidden="true"></i></span> -->
+                  <span style="cursor:pointer;" class="fix-right" ng-click="$ctrl.tagToggleDynamic(tags.id)"><i class="fa {{$ctrl.tagToggleIconClass[tags.id]}}" uib-tooltip="Show/hide " aria-hidden="true"></i></span>
+                </div>
+                <!-- <input type="checkbox" ng-repeat="child in tags.children" /> test1<br> -->
+                <!-- {{$ctrl.tagCheckboxModel[tags.id]}} -->
+                <div class="test-center-bg checkboxFive2 tags" ng-show="$ctrl.tagToggle[tags.id]" ng-repeat="child in tags.children track by $index">
+                  <input type="checkbox" id="tag-{{tags.id}}-child-{{child.id}}" name="tag{{tags.id}}[]" {{$ctrl.checkedstring[child.id]}} ng-model="$ctrl.tagCheckboxModel[child.id]" ng-click="$ctrl.toggleChecked(child.id,$ctrl.tagCheckboxModel[child.id]);" />
+                  <span style="cursor:pointer;" ng-click="$ctrl.toggleChecked(child.id,$ctrl.tagCheckboxModel[child.id],'label_click');">{{child.name}}</span>
+                  <label for="tag-{{tags.id}}-child-{{child.id}}" class="tooltiptext {{$ctrl.checkedstring[child.id]}}"></label>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="custom-row mt-36 m-466">
+          <div class="col-md-6 align-lft-twocols"><a href="javascript:void(0)" ng-show="$ctrl.skipShow" ng-click="$ctrl.skip();" class="allbtn-skip">Skip</a></div>
+          <div class="col-md-6 align-rgt-twocols" ng-show="$ctrl.processing!==1"><a href="javascript:void(0);" ng-click="$ctrl.addCenterBefore()" ng-disabled="$ctrl.centerForm.centerName.$invalid || ($ctrl.categoryModel.length===0) || $ctrl.centerForm.website.$invalid || $ctrl.centerForm.email.$invalid || $ctrl.centerForm.phone.$invalid || $ctrl.centerForm.address.$invalid" class="allbtn-nxt">Next</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <p class="stick-next-tc"><a href="javascript:void(0)" ng-click="$ctrl.optional_fields()" ng-disabled="">Next</a></p> -->
+
+  <!-- <p class="stick-next-tc pull-right"><a href="javascript:void(0);" ng-click="$ctrl.addCenter()" ng-disabled="$ctrl.centerForm.centerName.$invalid || ($ctrl.categoryModel.length===0) || $ctrl.centerForm.website.$invalid || $ctrl.centerForm.email.$invalid || $ctrl.centerForm.phone.$invalid || $ctrl.centerForm.address.$invalid">Next</a></p> -->
+</div>

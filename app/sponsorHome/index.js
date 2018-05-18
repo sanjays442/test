@@ -15,6 +15,35 @@ angular.module(moduleName, [
   .component('sponsorHome', {
     template: require('./view.html')
   })
+  .filter('removeHTMLTags', function () {
+    return function (text) {
+      return text ? String(text).replace(/<[^>]+>/gm, '') : '';
+    };
+  })
+  .filter('firstlettercaps', function () {
+    return function (input, all) {
+      var textValue = input.replace('-', ' ');
+      if (input === '') {
+        return '';
+      }
+      var reg = (all) ? /([^\W_]+[^\s-]*) */g : /([^\W_]+[^\s-]*)/;
+      return (!!textValue) ? textValue.replace(reg, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      }) : '';
+    };
+  })
+  .filter('createSlug', function () {
+    return function (slug) {
+      if (slug === 'UT') {
+        return 'utah';
+      }
+      var value = slug.replace(/(^[\s]+|[\s]+$)/g, '');
+      return value
+        .toLowerCase()
+        .replace(/ /g, '-')
+        .replace(/[^\w-]+/g, '');
+    };
+  })
   .config(['$stateProvider', 'UIState', function ($stateProvider, UIState) {
     $stateProvider.state({
       name: UIState.SPONSOR_HOME.INDEX,
@@ -23,37 +52,56 @@ angular.module(moduleName, [
     });
     $stateProvider.state({
       name: UIState.SPONSOR_HOME.FILTER,
-      url: '/sponsorhome/filter/:filterName',
+      // url: '/sponsorhome/filter/:filterName',
+      url: '/info/:filterName',
       template: '<sponsor-listing-box></sponsor-listing-box>'
     });
     $stateProvider.state({
       name: UIState.SPONSOR_HOME.STATE,
-      url: '/sponsorhome/state/{stateName:[a-zA-Z]{2}}',
+      // url: '/sponsorhome/state/{stateName:[a-zA-Z]{2}}',
+      url: '/state/{slug}-rehab-centers',
       template: '<sponsor-listing-box></sponsor-listing-box>'
     });
-    $stateProvider.state({
-      name: UIState.SPONSOR_HOME.COUNTIES,
-      url: '/sponsorhome/counties/{stateName:[a-zA-Z]{2}}',
-      template: '<county-list-box></county-list-box>'
-    });
-    $stateProvider.state({
-      name: UIState.SPONSOR_HOME.COUNTY,
-      url: '/sponsorhome/{stateName:[a-zA-Z]{2}}/:countyName',
-      template: '<sponsor-listing-box></sponsor-listing-box>'
-    });
-    $stateProvider.state({
-      name: UIState.SPONSOR_HOME.CITY,
-      url: '/sponsorhome/{stateName:[a-zA-Z]{2}}/{countyName}/:cityName',
-      template: '<sponsor-listing-box></sponsor-listing-box>'
-    });
+
+    // allcities
     $stateProvider.state({
       name: UIState.SPONSOR_HOME.CITIES_OF_STATE,
-      url: '/sponsorhome/cities/{stateName:[a-zA-Z]{2}}',
+      //  url: '/sponsorhome/cities/{stateName:[a-zA-Z]{2}}',
+      url: '/state/{stateName}-rehab-centers/cities',
+      // url: '/cities/{stateName}',
       template: '<city-list-box-of-state></city-list-box-of-state>'
     });
+    // allcounties
+    $stateProvider.state({
+      name: UIState.SPONSOR_HOME.COUNTIES,
+      //  url: '/sponsorhome/counties/{stateName:[a-zA-Z]{2}}',
+      // url: '/counties/{stateName}',
+      url: '/state/{stateName}-rehab-centers/counties',
+      template: '<county-list-box></county-list-box>'
+    });
+
+    // single county
+    $stateProvider.state({
+      name: UIState.SPONSOR_HOME.COUNTY,
+      // url: '/sponsorhome/{stateName:[a-zA-Z]{2}}/:countyName',
+      // url: '/{stateName}-rehab-centers/:countyName',
+      url: '/state/{stateName}-rehab-centers/:countyName',
+      template: '<sponsor-listing-box></sponsor-listing-box>'
+    });
+
+    // singlecity
+    $stateProvider.state({
+      name: UIState.SPONSOR_HOME.CITY,
+      // url: '/sponsorhome/{stateName:[a-zA-Z]{2}}/{countyName}/:cityName',
+      // url: '/{stateName}-rehab-centers/:cityName',
+      url: '/state/{stateName}-rehab-centers/:cityName',
+      template: '<sponsor-listing-box></sponsor-listing-box>'
+    });
+
     $stateProvider.state({
       name: UIState.SPONSOR_HOME.CITIES_OF_COUNTY,
-      url: '/sponsorhome/cities/{stateName:[a-zA-Z]{2}}/{countyName}',
+      //  url: '/sponsorhome/cities/{stateName:[a-zA-Z]{2}}/{countyName}',
+      url: '/cities/{stateName}/{countyName}',
       template: '<city-list-box-of-county></city-list-box-county>'
     });
   }]);

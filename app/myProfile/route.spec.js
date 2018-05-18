@@ -147,16 +147,16 @@ describe('My Profile Route', function () {
     expect($state.current.name).toEqual(state);
   });
 
-  it('should have state `myProfile.sponsorAdsAdd`', function () {
-    // Test whether the url is correct
-    state = UIState.MY_PROFILE.SPONSOR_ADS_ADD;
-    expectedURL = encodeURI('#/my-profile/sponsor-ads/add-sponsor');
-    expect($state.href(state, params)).toEqual(expectedURL);
-    // Test whether our state activates correctly
-    $state.go(state);
-    $rootScope.$digest();
-    expect($state.current.name).toEqual(state);
-  });
+  // it('should have state `myProfile.sponsorAdsAdd`', function () {
+  //   // Test whether the url is correct
+  //   state = UIState.MY_PROFILE.SPONSOR_ADS_ADD;
+  //   expectedURL = encodeURI('#/my-profile/sponsor-ads/add-sponsor');
+  //   expect($state.href(state, params)).toEqual(expectedURL);
+  //   // Test whether our state activates correctly
+  //   $state.go(state);
+  //   $rootScope.$digest();
+  //   expect($state.current.name).toEqual(state);
+  // });
 
   it('should have state `myProfile.sponsorAdsEdit`', function () {
     // Test whether the url is correct

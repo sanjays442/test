@@ -1,3 +1,9 @@
-<div class="status-view status-show-hide" ng-show="$ctrl.visible">
-  <p ng-class="$ctrl.style">{{ $ctrl.message }}</p>
+<div class="status-view status-show-hide" style="padding-bottom:1px;" ng-show="$ctrl.visible">
+  <p ng-class="$ctrl.style" style="font-size:14px;">{{ $ctrl.message }} <span style="float:right;margin-right:1%;cursor:pointer;" ng-click="$ctrl.hideTopMessage();"><i class="fa fa-times-circle" style="color:white;font-size:150% !important;"></i></span></p>
+</div>
+<div ng-show="$ctrl.visibleProcess">
+  <!-- <p ng-class="$ctrl.styleProcess">{{ $ctrl.messageProcess }}</p> -->
+  <div ng-class="$ctrl.styleProcess" class="loading">
+    <!-- <img src="themes/addiction/images/png/green_loader.gif" style="width:100px;" /> -->
+  </div>
 </div>

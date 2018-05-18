@@ -1,47 +1,47 @@
 {
   "Demographic": [
-    "Teen / Adolescent Rehabs",
-    "LGBT Friendly Rehabs",
-    "Young Adult Rehabs",
-    "Rehab for Men",
-    "Executive Treatment",
-    "Luxury Rehab Centers",
-    "Rehab for Women",
-    "Mature Adult Rehabs"
+    "Teen / Adolescent Rehabs|teen-adolescent-rehabs",
+    "LGBT Friendly Rehabs |lgbt-friendly-rehabs",
+    "Young Adult Rehabs|young-adult-rehabs",
+    "Rehab for Men|rehab-for-men",
+    "Executive Treatment|executive-treatment",
+    "Luxury Rehab Centers|luxury-rehab-centers",
+    "Rehab for Women|rehab-for-women",
+    "Mature Adult Rehabs|mature-adult-rehabs"
   ],
   "Treatment Approach": [
-    "Dual Diagnosis Rehab Centers",
-    "Non 12 Step Rehab Centers",
-    "Holistic Addiction Rehab Centers",
-    "Faith Based Rehab Centers",
-    "12 Step Based Treatment Centers"
+    "Dual Diagnosis Rehab Centers|dual-diagnosis-rehab-centers",
+    "Non 12 Step Rehab Centers|non-12-step-rehab-centers",
+    "Holistic Addiction Rehab Centers|holistic-addiction-rehab-centers",
+    "Faith Based Rehab Centers|faith-based-rehab-centers",
+    "12 Step Based Treatment Centers|12-step-based-treatment-centers"
   ],
   "Setting": [
-    "Wilderness Camps",
-    "Rehabs on the Ocean",
-    "Residential Addiction Rehabs",
-    "Lake Front Addiction Centers",
-    "Mountain Lodge Recovery Centers"
+    "Wilderness Camps|wilderness-camps",
+    "Rehabs on the Ocean|rehabs-on-the-ocean",
+    "Residential Addiction Rehabs|residential-addiction-rehabs",
+    "Lake Front Addiction Centers|lake-front-addiction-centers",
+    "Mountain Lodge Recovery Centers|mountain-lodge-recovery-centers"
   ],
   "Additional Services": [
-    "Rehabs with One on One Counseling",
-    "Rehabs with Aftercare Programs",
-    "On Site Detox",
-    "Outpatient Treatment Centers",
-    "Sober Livings / Transitional Living"
+    "Rehabs with One on One Counseling|rehabs-with-one-on-one-counseling",
+    "Rehabs with Aftercare Programs|rehabs-with-aftercare-programs",
+    "On Site Detox|on-site-detox",
+    "Outpatient Treatment Centers|outpatient-treatment-centers",
+    "Sober Livings / Transitional Living|sober-livings-transitional-living"
   ],
   "Payment": [
-    "Financing Available",
-    "Private Pay Rehab Centers",
-    "Scholarships Available",
-    "Insurance Friendly Rehabs"
+    "Financing Available|financing-available",
+    "Private Pay Rehab Centers|private-pay-rehab-centers",
+    "Scholarships Available|scholarships-available",
+    "Insurance Friendly Rehabs|insurance-friendly-rehabs"
   ],
   "By Drug": [
-    "Alcohol Rehab Centers",
-    "Prescriptions Drug Rehabs",
-    "Heroin Rehab Centers",
-    "Crystal Meth Rehab Centers",
-    "Marijuana Rehab Centers",
-    "Opiate Addiction Centers"
+    "Alcohol Rehab Centers|alcohol-rehab-centers",
+    "Prescriptions Drug Rehabs|prescriptions-drug-rehabs",
+    "Heroin Rehab Centers|heroin-rehab-centers",
+    "Crystal Meth Rehab Centers|crystal-meth-rehab-centers",
+    "Marijuana Rehab Centers|marijuana-rehab-centers",
+    "Opiate Addiction Centers|opiate-addiction-centers"
   ]
 }

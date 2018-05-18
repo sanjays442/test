@@ -6,44 +6,45 @@
     <!--<form name="$ctrl.paymentDetailsForm" ng-submit="$ctrl.submit()">-->
     <!-- Card Number -->
     <div class="adn-row">
-      <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="col-md-12 col-sm-12 col-xs-12">
         <label for="name">Card Number: </label>
       </div>
-      <div class="col-md-9 col-sm-9 col-xs-12">
-        <input placeholder="Card Number" class="form-control" type="text" ng-change="$root.detectCardType($root.card)" ng-minlength="15" ng-maxlength="16" ng-model="$root.card" ng-pattern="/^[0-9]+$/" required="" name="card" maxlength="16">
+      <div class="col-md-12 col-sm-12 col-xs-12 ">
+        <div class="">
+          <input placeholder="Card Number" style="float: left;" class="form-control" type="text" ng-keyup="$root.detectCardType($root.card, $event)" ng-change="" ng-maxlength="19" ng-model="$root.card" ng-pattern="/^[0-9' ']+$/" required="" name="card" maxlength="19" autocomplete="off">
+          <i style="font-size: 40px; margin-top: -10px; color: #58aa22; position: absolute; margin-left: -43px;" class="icon large icon-{{$ctrl.cardType}}-card"></i>
+        </div>
         <p ng-show="$root.addlistForm.card.$invalid" class="help-block">Invalid Card number</p>
-        <p ng-if="($root.addlistForm.card.totalDigits<15 || $root.addlistForm.card.totalDigits>18) && $root.addlistForm.card.$valid" class="help-block">Card number must be 15~18 digits.</p>
-        <p ng-show="$root.cardType" class="help-block">{{$root.cardType[0].niceType}}</p>
+        <p ng-if="$ctrl.totalDigits != 16 && $ctrl.cardType != 'amex' && paymentDetailsForm.card.$valid" class="help-block">Card must be have 16 digits.</p>
+        <p ng-if="$ctrl.totalDigits != 15 && $ctrl.cardType == 'amex' && paymentDetailsForm.card.$valid" class="help-block">Card must be have 15 digits.</p>
+        <!-- <p ng-show="$root.cardType" class="help-block">{{$root.cardType[0].niceType}}</p> -->
         <p ng-if="!$root.cardType[0] && $root.$valid" class="help-block">Invalid card type</p>
-
       </div>
+
     </div>
 
     <div class="adn-row">
-      <div class="col-md-3 col-sm-3 col-xs-12">
-        <label for="name">Name: </label>
-      </div>
-      <div class="col-md-3 col-sm-3 col-xs-12">
-        <input placeholder="First Name" name="firstName" class="form-control" type="text" ng-model="$root.firstName" ng-minlength="2" ng-maxlength="25" required="">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label for="firstName">First Name: </label>
+        <input placeholder="Name" name="firstName" class="form-control" type="text" ng-model="$root.firstName" ng-minlength="2" ng-maxlength="25" required="" autocomplete="off">
         <p ng-show="$root.addlistForm.firstName.$invalid" class="help-block"> First Name</p>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-12">
-        <input placeholder="Middle Name" name="middleName" class="form-control" type="text" ng-model="$root.middleName" ng-maxlength="20">
+      <!-- <div class="col-md-3 col-sm-3 col-xs-12">
+        <input placeholder="Middle Name" name="middleName" class="form-control" type="text" ng-model="$root.middleName" ng-maxlength="20" autocomplete="off">
         <span ng-show="$root.addlistForm.middleName.$invalid" class="help-block">Max-length(20) reached</span>
-      </div>
-      <div class="col-md-3 col-sm-3 col-xs-12">
-        <input placeholder="Last Name" name="lastName" class="form-control" type="text" ng-model="$root.lastName" ng-minlength="2" ng-maxlength="25" required="">
+      </div> -->
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label for="lastName">Last Name: </label>
+        <input placeholder="Last Name" name="lastName" class="form-control" type="text" ng-model="$root.lastName" ng-minlength="2" ng-maxlength="25" required="" autocomplete="off">
         <p ng-show="$root.addlistForm.lastName.$invalid" class="help-block"> Last Name</p>
       </div>
     </div>
 
     <!-- Expiry Year -->
     <div class="adn-row">
-      <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="col-md-4 col-sm-4 col-xs-12">
         <label for="name">Expiry Year: </label>
-      </div>
-      <div class="col-md-9 col-sm-9 col-xs-12">
-        <select ng-model="$root.year" name="year" required="">
+        <select ng-model="$root.year" ng-change="$ctrl.validateMonth()" name="year" required="" class="form-control">
           <option value="">Select Year</option>
           <option value="2017">2017</option>
           <option value="2018">2018</option>
@@ -56,14 +57,9 @@
         <p ng-show="$root.addlistForm.year.$invalid" class="help-block">Invalid Year</p>
         <p class="help-block" ng-if="$ctrl.curYear > $ctrl.year">Invalid year</p>
       </div>
-    </div>
-    <!-- Expiry Month -->
-    <div class="adn-row">
-      <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="col-md-4 col-sm-4 col-xs-12">
         <label for="name">Expiry Month: </label>
-      </div>
-      <div class="col-md-9 col-sm-9 col-xs-12">
-        <select ng-model="$root.month" name="month" required="">
+        <select ng-model="$root.month" ng-change="$ctrl.validateMonth()" name="month" required="" class="form-control">
           <option value="">Select Month</option>
           <option value="01">01</option>
           <option value="02">02</option>
@@ -78,35 +74,64 @@
           <option value="11">11</option>
           <option value="12">12</option>
         </select>
-        <p ng-show="$root.addlistForm.month.$invalid" class="help-block">Invalid Month</p>
+        <p ng-show="$root.addlistForm.month.$invalid || $ctrl.validMonth===0" class="help-block">Invalid Month</p>
       </div>
-    </div>
-    <!-- CVV Code -->
-    <div class="adn-row">
-      <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="col-md-4 col-sm-4 col-xs-12">
         <label for="cpwd">CVV Code</label>
-      </div>
-      <div class="col-md-9 col-sm-9 col-xs-12">
-        <input name="cvv" ng-model="$root.cvv" class="form-control" type="text" placeholder="CVV Code" ng-pattern="/^[0-9]+$/" ng-minlength="3" ng-maxlength="3" required="" maxlength="3" />
+        <input name="cvv" ng-model="$root.cvv" class="form-control" type="password" placeholder="CVV Code" ng-pattern="/^[0-9]+$/" ng-minlength="3" ng-maxlength="4" required="" maxlength="4" />
         <p ng-show="$root.addlistForm.cvv.$invalid" class="help-block">Invalid CVV Code</p>
       </div>
     </div>
-    <!-- make default -->
+    <!-- Address -->
     <div class="adn-row">
-      <div class="col-md-3 col-sm-3 col-xs-12">
-        <label for="cpwd">Default</label>
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <label for="cpwd">Address</label>
+        <input placeholder="Address" name="address" class="form-control" type="text" ng-model="$root.address" ng-minlength="2" required="" autocomplete="off">
+        <p ng-show="$root.addlistForm.address.$invalid" class="help-block">Address</p>
       </div>
-      <div class="col-md-9 col-sm-9 col-xs-12">
-        <input name="default" ng-model="$root.default" class="form-control default-payment" type="checkbox" />
-        <span>Use these credentials as your default payment method.</span>
-      </div>
-
     </div>
+    <div class="adn-row">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label for="cpwd">State</label>
+        <input placeholder="State" name="state" class="form-control" type="text" ng-model="$root.state" ng-minlength="2" required="" autocomplete="off">
+        <p ng-show="$root.addlistForm.state.$invalid" class="help-block">State</p>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label for="cpwd">City</label>
+        <input placeholder="City" name="city" class="form-control" type="text" ng-model="$root.city" ng-minlength="2" required="" autocomplete="off">
+        <p ng-show="$root.addlistForm.city.$invalid" class="help-block">City</p>
+      </div>
+    </div>
+    <!-- Country -->
+    <div class="adn-row">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label for="cpwd">Country</label>
+        <input placeholder="Country" name="country" class="form-control" type="text" ng-model="$root.country" ng-minlength="2" required="" autocomplete="off">
+        <p ng-show="$root.addlistForm.country.$invalid" class="help-block">Country</p>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label for="cpwd">Zip</label>
+        <input placeholder="Zip" name="zip" class="form-control" type="text" ng-model="$root.zip" ng-minlength="5" ng-maxlength="5" maxlength="5" ng-pattern="/^\d{5}$/" required="" autocomplete="off">
+        <p ng-show="$root.addlistForm.zip.$invalid" class="help-block">Invalid Zip</p>
+      </div>
+    </div>
+    <!-- make default -->
+    <!-- <div class="adn-row"> -->
+    <!-- <div class="col-md-3 col-sm-3 col-xs-12">
+        <label for="cpwd">Agree</label>
+      </div> -->
+    <!-- <div class="col-md-12 col-sm-12 col-xs-12">
+        <input name="default" ng-model="$root.terms" class="default-payment" type="checkbox" />
+        <span>I agree to the <a href="" onclick="myFunction()">terms and condition</a></span>
+      </div> -->
+
+    <!-- </div> -->
     <!-- Submit -->
     <div class="adn-row">
       <div class="text-right col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub sub">
         <input class="btn modal_btn btn_size pull-left" value="Previous" type="button" ng-click="$ctrl.previous()">
-        <button type="button" ng-click="$root.submit()" class="btn modal_btn btn_size pull-left" value="Next" id="submit" ng-disabled="$root.addlistForm.card.$invalid || $root.addlistForm.year.$invalid || paymentDetailsForm.month.$invalid || $root.addlistForm.cvv.$invalid || paymentDetailsForm.firstName.$invalid || $root.addlistForm.middleName.$invalid || $root.addlistForm.lastName.$invalid">Next</button>
+        <button type="button" ng-click="$root.submit()" class="btn modal_btn btn_size pull-right" value="Next" id="submit" ng-disabled="$root.addlistForm.card.$invalid || ($ctrl.totalDigits != 16 && $ctrl.cardType != 'amex') || ($ctrl.totalDigits != 15 && $ctrl.cardType == 'amex') ||  $root.addlistForm.year.$invalid || paymentDetailsForm.month.$invalid || $ctrl.validMonth===0 || $root.addlistForm.cvv.$invalid || paymentDetailsForm.firstName.$invalid || $root.addlistForm.middleName.$invalid || $root.addlistForm.lastName.$invalid || $root.addlistForm.address.$invalid || $root.addlistForm.state.$invalid || $root.addlistForm.city.$invalid ||$root.addlistForm.zip.$invalid || $root.addlistForm.country.$invalid">Next</button>
+        <input class="btn modal_btn btn_size pull-right" ng-show="$root.paymentSkip" value="Skip" id="skip" type="button" ng-click="$ctrl.skipStep()">
       </div>
     </div>
     <!--</form>-->

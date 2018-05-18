@@ -1,13 +1,14 @@
 <div class="center-detail-card">
   <card-heading>Inquiry</card-heading>
-  <form ng-submit="$ctrl.submit()" novalidate="novalidate" __bizdiag="-483366306" __biza="WJ__">
+  <form novalidate="novalidate" __bizdiag="-483366306" __biza="WJ__" name="$ctrl.inquiryForm">
     <!--　Name -->
     <div class="adn-row">
       <div class="col-lg-4 col-ms-4 col-sm-8 col-xs-12">
         <label class="inquiry-form-label">Name:</label>
       </div>
       <div class="col-lg-8 col-md-12 col-sm-12">
-        <input ng-model="$ctrl.name" type="text" class="form-control required" placeholder="Name" name="name" />
+        <input ng-model="$ctrl.name" type="text" class="form-control required" placeholder="Name" name="name" required="" />
+        <p ng-show="$ctrl.inquiryForm.name.$error.required" class="help-block">Required</p>
       </div>
     </div>
     <!--　Email -->
@@ -16,7 +17,10 @@
         <label class="inquiry-form-label">Email:</label>
       </div>
       <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-        <input ng-model="$ctrl.email" type="text" class="form-control required" placeholder="Email" email="true" name="email" />
+        <!-- <input ng-model="$ctrl.email" type="text" class="form-control required" placeholder="Email" email="true" name="email" /> -->
+        <input placeholder="Email" id="email" name="email" class="form-control required ng-pristine ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern ng-touched" type="email" ng-model="$ctrl.email" required="true" ng-pattern="/^(([^<>()\[\]\.,;:\s@\']+(\.[^<>()\[\]\.,;:\s@\']+)*)|(\'.+\'))@(([^<>()[\]\.,;:\s@\']+\.)+[^<>()[\]\.,;:\s@\']{2,})$/i">
+        <p ng-show="$ctrl.inquiryForm.email.$error.pattern" class="help-block">Invalid Email</p>
+        <p ng-show="$ctrl.inquiryForm.email.$error.required" class="help-block">Required</p>
       </div>
     </div>
     <!--　Phone -->
@@ -25,7 +29,10 @@
         <label class="inquiry-form-label">Phone:</label>
       </div>
       <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-        <input ng-model="$ctrl.phone" type="text" class="form-control required" number="true" minlength="10" maxlength="10" placeholder="Phone" name="phone" />
+        <!-- <input ng-model="$ctrl.phone" type="text" class="form-control required" number="true" minlength="10" maxlength="10" placeholder="Phone" name="phone" /> -->
+        <input placeholder="eg. (601) 521-1542" name="phone" ng-change="$ctrl.testNum()" class="form-control required ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength ng-touched" type="text" required="true" phone-input="" restrict="reject" ng-minlength="14" maxlength="14" ng-model="$ctrl.phone" style="">
+        <p ng-show="$ctrl.inquiryForm.phone.$error.pattern || $ctrl.inquiryForm.phone.$error.minlength || $ctrl.inquiryForm.phone.$error.maxlength" class="help-block ng-hide">Invalid US number.</p>
+        <p ng-show="$ctrl.inquiryForm.phone.$error.required" class="help-block ng-hide">Required</p>
       </div>
     </div>
     <!--　Message -->
@@ -34,13 +41,17 @@
         <label class="inquiry-form-label">Message:</label>
       </div>
       <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-        <textarea ng-model="$ctrl.message" rows="5" class="form-control required" placeholder="Message" name="message"></textarea>
+        <textarea ng-model="$ctrl.message" rows="5" class="form-control required" placeholder="Message" required="true" name="message"></textarea>
+        <p ng-show="$ctrl.inquiryForm.message.$error.required" class="help-block ng-hide">Required</p>
       </div>
     </div>
     <!--　Submit -->
     <div class="adn-row">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <input type="submit" class="btn adn-btn adn-btn-full" value="submit" />
+      <div class="col-lg-4 col-md-4">
+
+      </div>
+      <div class="col-lg-8 col-md-8">
+        <input type="button" ng-click="$ctrl.submit()" class="btn adn-btn adn-btn-full" ng-disabled="$ctrl.inquiryForm.phone.$invalid || $ctrl.inquiryForm.name.$invalid || $ctrl.inquiryForm.message.$invalid || $ctrl.inquiryForm.email.$invalid" value="submit">
       </div>
     </div>
   </form>

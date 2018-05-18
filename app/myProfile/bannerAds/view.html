@@ -3,33 +3,36 @@
   <div class="profile-content">
     <div class="profile-row">
       <a ui-sref="myProfile.bannerAdsAdd">
-        <span class="btn adn-btn right">Add Banner Ad</span>
+        <span class="btn adn-btn right">Add Banner Ads</span>
       </a>
     </div>
+    <div class="no_banner_ads" ng-if="$ctrl.advertisement.banner_ads.length===0">Sorry, you have no banner ads</div>
     <div class="profile-row">
       <div class="adn-table">
         <div id="no-more-tables">
           <table class="col-md-12 col-xs-12 col-sm-12  table-striped table-condensed cf padding_0">
             <thead class="cf">
               <tr>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Position</th>
-                <th>Content</th>
+                <th>Link</th>
                 <th class="width_adjust_tb">Action</th>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="list in $ctrl.advertisement.banner_ads">
-                <td>{{list.name}}</td>
-                <td data-title="Name"><a href="javascript:;" style="color:black;">{{list.position}}</a>
-                </td>
-                <td data-title="Image" class="block_make">
+                <td data-title="Image">
                   <div class="img_outer_in_tb">
                     <div class="img_inner_in_tb">
-                      <img class="" src="{{list.content}}" style="height:70px">
+                      <img class="" src="{{list.content}}" style="height:70px" alt="Banner Ads">
                     </div>
                   </div>
                 </td>
+                <td>{{list.name}}</td>
+                <td data-title="Name"><a href="javascript:;" style="color:black;">{{list.position}}</a>
+                </td>
+                <td>{{list.center_web_link}}</td>
                 <td data-title="Action">
                   <a href="/#/my-profile/banner-ads/view-banner/{{list.id}}" data-toggle="tooltip" data-placement="bottom" title="View"><i class="glyphicon glyphicon-eye-open"></i></a>
                   <a href="/#/my-profile/banner-ads/edit-banner/{{list.id}}" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="glyphicon glyphicon-edit"></i></a>

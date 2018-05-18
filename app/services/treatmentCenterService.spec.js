@@ -23,7 +23,7 @@ describe('TreatmentCenterService', function () {
     'addTreatmentCenterSignUp',
     'queryFeaturedListings',
     'querySponsoredListings',
-    'queryDetail',
+    'queryDetailFront',
     'queryList',
     'add',
     'edit',
@@ -79,8 +79,8 @@ describe('TreatmentCenterService', function () {
     });
   });
 
-  // queryDetail
-  describe('queryDetail', function () {
+  // queryDetailFront
+  describe('queryDetailFront', function () {
     var id,
       requestURL;
     beforeEach(function () {
@@ -91,7 +91,7 @@ describe('TreatmentCenterService', function () {
     it('should get treatment center detail when backend is fine.', function () {
       var mockResponse = {};
       $httpBackend.whenGET(requestURL).respond(mockResponse);
-      service.queryDetail(id).then(function (res) {
+      service.queryDetailFront(id).then(function (res) {
         expect(res).toEqual(mockResponse);
       });
       $httpBackend.flush();
@@ -100,7 +100,7 @@ describe('TreatmentCenterService', function () {
 
     it('should throw an error when backend is broken.', function () {
       $httpBackend.whenGET(requestURL).respond(500, '');
-      service.queryDetail(id).catch(function (res) {
+      service.queryDetailFront(id).catch(function (res) {
         expect(res.status).toEqual(500);
         expect(res.data).toEqual('');
       });

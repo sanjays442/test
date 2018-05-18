@@ -1,0 +1,26 @@
+<div class="container" ng-controller="searchStateCtrl as $ctrl">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+      <section-heading>Cities</section-heading>
+      <div class="pull-left padding-right">Select State </div>
+      <div>
+        <select required="true" ng-change="$ctrl.getCities();" name="state" ng-model="$ctrl.state">
+          <option value="">Select State</option>
+          <option ng-repeat="states in $ctrl.states track by $index" value="{{states | uppercase}}">{{states | uppercase}}</option>
+        </select>
+      </div>
+      <div class="container text-center">
+        <div ng-click="$ctrl.cityClick($event)" class="col-sm-2 pull-left custom-sponsored" ng-repeat="cities in $ctrl.cities track by $index">
+          {{cities.name}}
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+          <footer-ad></footer-ad>
+        </div>
+      </div> -->
+    </div>
+    <!-- <side-panel></side-panel> -->
+  </div>
+</div>

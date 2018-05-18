@@ -1,6 +1,6 @@
-module.exports = ['$log', '$scope', '$state', 'UIState', ctrl];
+module.exports = ['$timeout', '$log', '$scope', '$state', 'UIState', ctrl];
 
-function ctrl($log, $scope, $state, UIState) {
+function ctrl($timeout, $log, $scope, $state, UIState) {
   var vm = this;
   vm.$onInit = onInit;
   vm.goToState = goToState;
@@ -15,6 +15,12 @@ function ctrl($log, $scope, $state, UIState) {
     UIState.SPONSOR_HOME.CITIES_OF_STATE,
     UIState.SPONSOR_HOME.CITIES_OF_COUNTY
   ];
+  vm.fullName = $state.params.slug;
+  // service.queryStateName($state.params.stateName).then(function (result) {
+  //   vm.fullName = result.state;
+  // }).catch(function (err) {
+  //   $log.error(err);
+  // });
 
   $scope.$on('$stateChangeStart', function (event, toState, toParams) {
     _update(toState.name, toParams);
@@ -30,7 +36,17 @@ function ctrl($log, $scope, $state, UIState) {
       return;
     }
     vm.display = true;
-    vm.stateName = params.stateName;
+    if (angular.isUndefined(params.slug)) {
+      vm.stateName = params.stateName;
+      vm.fullName = params.stateName;
+    } else {
+      vm.stateName = params.slug;
+    }
+    // vm.stateName = params.slug;
+    // if (angular.isUndefined(vm.stateName)) {
+    //   var href = location.href;
+    // //  vm.stateName = href.match(/([^\/]*)\/*$/)[1];
+    // }
     vm.countyName = params.countyName;
     if (uiState === UIState.SPONSOR_HOME.STATE) {
       vm.stateLinkClass = 'area-filter-link-disabled';
@@ -52,22 +68,32 @@ function ctrl($log, $scope, $state, UIState) {
 
   // click to view All Cities of a county
   function goToCities() {
-    if (vm.countyName && vm.stateName) {
-      $state.go(UIState.SPONSOR_HOME.CITIES_OF_COUNTY, {
-        stateName: vm.stateName,
-        countyName: vm.countyName
-      });
-      return;
-    }
+    // if (vm.countyName && vm.stateName) {
+    //   $state.go(UIState.SPONSOR_HOME.CITIES_OF_COUNTY, {
+    //     stateName: vm.stateName,
+    //     countyName: vm.countyName
+    //   });
+    //   return;
+    // }
     if (vm.stateName) {
       $state.go(UIState.SPONSOR_HOME.CITIES_OF_STATE, {
         stateName: vm.stateName
       });
+    //  vm.goToCities2();
     }
   }
 
+  vm.goToCities2 = function () {
+    $timeout(function () {
+      $state.go(UIState.SPONSOR_HOME.CITIES_OF_STATE, {
+        stateName: vm.stateName
+      });
+    }, 500);
+  };
+
   function goToCounties() {
     $state.go(UIState.SPONSOR_HOME.COUNTIES, {
+      // stateName: vm.stateName
       stateName: vm.stateName
     });
   }

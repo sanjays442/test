@@ -1,93 +1,40 @@
 <div class="row">
   <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
-
     <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
-      <p> You are free to add your own image and text and place them on any sponsored page on Addiction Network. This allows you to choose pages that related highly to the services you provide, as well as zero in on specific locations in the United States.</p>
+      <p class="heading_treatment_center">Choose your options below to sponsor treatment center</p>
     </div>
     <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
     </div>
     <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        <label for="tname">Treatment Centers: </label>
+      <!-- <div class="col-md-2 col-sm-2 col-xs-12">
+        <!-- <label for="tname">Treatment Center: </label>
+    </div> -->
+
+      <div class="col-sm-8">
+        <!-- <div ng-dropdown-multiselect="" options="$ctrl.treatmentCenters" ng-click="$event.stopPropagation()" selected-model="$ctrl.treatmentCentersModel" extra-settings="$ctrl.multiselectModelSettings" events="{onItemSelect: $root.centerSelect, onItemDeselect: $root.centerDeSelect}" checkboxes="true" translation-texts="$ctrl.treatmentCenter"></div> -->
+        <!-- <span ng-show="$root.centerSelected.length===0 " style="color:red;">Select any treatment center.</span> -->
       </div>
-      <div class="col-md-8 col-sm-8 col-xs-12 class_for_select">
-        <div ng-dropdown-multiselect="" options="$ctrl.treatmentCenters" ng-click="$event.stopPropagation()" selected-model="$ctrl.treatmentCentersModel" extra-settings="$ctrl.multiselectModelSettings"></div>
+      <div class="col-sm-4">
+        Choose Active Cart:
+        <!-- <select ng-model="$root.activeCenter" ng-init="$root.activeCenter=$ctrl.treatmentCenters[0].id">
+          <option ng-repeat="center in $ctrl.treatmentCenters" value="{{center.id}}">{{center.label}} - {{center.id}}</option>
+        </select> -->
+        <select ng-model="$root.activeCenter" ng-options="center.id as center.label for center in $ctrl.treatmentCenters" ng-change="$root.onInit()">
+        </select>
+
+        <!-- <label ng-repeat="center in $ctrl.treatmentCenters" ng-init="$root.activeCenter=$ctrl.treatmentCenters[0].id">
+          <input type="checkbox" ng-true-value="{{center.id}}" ng-change="$root.onInit()" ng-model="$root.activeCenter" value="{{center.id}}" /> {{center.label}} {{center.id}}
+        </label> -->
       </div>
     </div>
-
-    <!-- <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub pading_0">
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <label for="tname"> Sponsor Ads: </label>
-            </div>
-            <div class="col-md-8 col-sm-8 col-xs-12 class_for_select">
-              <div ng-dropdown-multiselect="" options="$ctrl.sponsored_ad_select" checkboxes="true" selected-model="$ctrl.multiselectModelLayoutIds " extra-settings="$ctrl.multiselectModelSettings"></div>
-
-            </div>
-          </div> -->
-
-    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        <label for="tname"> Normal: </label>
-      </div>
-      <div class="col-md-8 col-sm-8 col-xs-12 class_for_select">
-        <div ng-dropdown-multiselect="" options="$ctrl.sponsoredAdNormal" ng-click="$event.stopPropagation()" checkboxes="true" selected-model="$ctrl.sponsoredAdNormalModel" extra-settings="$ctrl.multiselectModelSettings"></div>
-      </div>
-    </div>
-
-    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        <label for="cpwd">State</label>
-      </div>
-      <div class="col-md-8 col-sm-8 col-xs-12 class_for_select">
-        <div ng-dropdown-multiselect="" options="$ctrl.sponsoredAdState" checkboxes="true" selected-model="$ctrl.sponsoredAdStateModel" extra-settings="$ctrl.multiselectModelSettings"></div>
-      </div>
-    </div>
-    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        <label for="cpwd">County: </label>
-      </div>
-      <div class="col-md-8 col-sm-8 col-xs-12">
-        <div ng-dropdown-multiselect="" options="$ctrl.sponsoredAdCounty" checkboxes="true" selected-model="$ctrl.sponsoredAdCountyModel" extra-settings="$ctrl.multiselectModelSettings"></div>
-      </div>
-    </div>
-    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        <label for="cpwd">City: </label>
-      </div>
-      <!-- <div class="col-md-8 col-sm-8 col-xs-12">
-              <searchandselect selecteditem="$ctrl.city" values="$ctrl.cities" key="Key" totalrecords="$ctrl.totalRecords" onscroll="getCities($ctrl.searchKey, pagenumber)"> </searchandselect>
-            </div> -->
-      <div class="col-md-8 col-sm-8 col-xs-12" infinite-scroll="$ctrl.loadMore()" infinite-scroll-distance="1" infinite-scroll-use-document-bottom="true" infinite-scroll-container="$ctrl.testScroll">
-        <div id="city" name="city" ng-dropdown-multiselect="" options="$ctrl.sponsoredAdCity" ng-click="$event.stopPropagation()" checkboxes="true" selected-model="$ctrl.sponsoredAdCityModel" extra-settings="$ctrl.multiselectModelSettings"></div>
-      </div>
-      <div class="col-md-8 col-sm-8 col-xs-12">
-
-        <!-- <p>Selected: {{ctrl.country.selected}}</p>
-              <ui-select ng-model="ctrl.country.selected" theme="selectize" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a country">
-                <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.name}}</ui-select-match>
-                <ui-select-choices repeat="country in ctrl.countries | filter: $select.search">
-                  <span ng-bind-html="country.name | highlight: $select.search"></span>
-                  <small ng-bind-html="country.code | highlight: $select.search"></small>
-                </ui-select-choices>
-              </ui-select> -->
-
-      </div>
-
-
-    </div>
-    <!-- <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <label for="cpwd">Sidepanel: </label>
-            </div>
-            <div class="col-md-8 col-sm-8 col-xs-12">
-              <sidepanel-multiselect></sidepanel-multiselect>
-            </div>
-          </div> -->
-
+    <!-- Search By State Section -->
+    <sponsored-state-select></sponsored-state-select>
+    <cart-detail></cart-detail>
     <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
       <div class="text-right col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub sub">
-        <input class="btn modal_btn btn_size pull-left" value="Previous" type="button" ng-click="$ctrl.previous()">
-        <button type="button" ng-click="$ctrl.submit()" class="btn modal_btn btn_size pull-left" value="Next" id="submit" ng-disabled="">Next</button>
+        <input id="previous" class="btn modal_btn btn_size pull-left" value="Previous" type="button" ng-click="$ctrl.previous()">
+        <input type="button" ng-click="$ctrl.submit()" class="btn modal_btn btn_size pull-right" value="Next" id="submit" ng-disabled="$ctrl.treatmentCentersModel.length===0 || $root.centerSelected.length===0">
+        <input type="button" ng-click="$ctrl.skipTo()" class="btn modal_btn btn_size pull-right" value="Skip" id="skip">
       </div>
     </div>
 

@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-sm-8 pading_0">
+      <form>
+        <div id="get_otp">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <h2 class="contct_heding">Forgot Email/Username/Password</h2>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <h4>Below are the 2 ways you can reset password</h4>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 margin-top-15">
+            <p>
+              <input type="checkbox" class="login-changes" ng-click="$ctrl.getEmail()" ng-model="$ctrl.get_email">
+              <span class="login-help">Email</span>
+            </p>
+            <div id="get_email" class="col-md-12 col-sm-12 col-xs-12 margin-bottom-10 ng-hide">
+              <p>
+                <input type="text" placeholder="Email" name="send_email" ng-model="$ctrl.send_email" ng-pattern="/^(([^<>()\[\]\.,;:\s@\']+(\.[^<>()\[\]\.,;:\s@\']+)*)|(\'.+\'))@(([^<>()[\]\.,;:\s@\']+\.)+[^<>()[\]\.,;:\s@\']{2,})$/i" class="col-sm-4 margin-top-10">
+              </p>
+              <p class="margin-top-15">
+                <input class="btn adn-btn clearfix-button pull-left margin-top-15" value="Get OTP" type="button" ng-click="$ctrl.email_otp()">
+              </p>
+            </div>
+            <p>
+              <input type="checkbox" class="login-changes" ng-click="$ctrl.getPhone()" ng-model="$ctrl.get_phone">
+              <span class="login-help">Text</span>
+              <div id="get_phone" class="col-md-12 col-sm-12 col-xs-12 margin-bottom-10 ng-hide">
+                <p>
+                  <input type="text" placeholder="Phone number" ng-model="$ctrl.send_phone" class="col-sm-4 margin-top-10">
+                </p>
+                <p class="margin-top-15">
+                  <input class="btn adn-btn clearfix-button pull-left margin-top-15" value="Get OTP" type="button" ng-click="$ctrl.phone_otp()">
+                </p>
+              </div>
+            </p>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 margin-top-15">
+            <a href="javascript:void(0)" ng-click="$ctrl.forgot_username()">Click here if you don't know Email or Username</a>
+          </div>
+        </div>
+      </form>
+      <div id="match_otp_email" class="ng-hide margin-top-15">
+        <h4>Please enter the details to reset password</h4>
+        <div class="col-md-12 col-sm-12 col-xs-12 margin-top-15">
+          <p class="margin-top-15 clearfix-button">
+            <div class="colsm1">Email</div>
+            <input type="text" class="col-sm-4" placeholder="Email" ng-model="$ctrl.send_email_otp" ng-pattern="/^(([^<>()\[\]\.,;:\s@\']+(\.[^<>()\[\]\.,;:\s@\']+)*)|(\'.+\'))@(([^<>()[\]\.,;:\s@\']+\.)+[^<>()[\]\.,;:\s@\']{2,})$/i">
+          </p>
+          <p class="margin-top-15 clearfix-button">
+            <div class="colsm1">OTP</div>
+            <input type="text" class="col-sm-4" placeholder="OTP" ng-model="$ctrl.send_email_otp_api">
+          </p>
+          <p class="margin-top-15 clearfix-button">
+            <div class="colsm1">Password</div>
+            <input type="password" class="col-sm-4" placeholder="Password" ng-model="$ctrl.send_email_password_api" ng-minlength="8" ng-pattern="/^(?=.*[0-9])(?=.*[!@#$%^&amp;*()_+])([a-zA-Z0-9!@#$%^&amp;*()]+)$/">
+          </p>
+          <p class="margin-top-15 clearfix-button">
+            <div class="colsm1">Confirm Password</div>
+            <input type="password" class="col-sm-4" placeholder="Confirm Password" ng-model="$ctrl.send_email_confirm_password_api" ng-minlength="8" ng-pattern="/^(?=.*[0-9])(?=.*[!@#$%^&amp;*()_+])([a-zA-Z0-9!@#$%^&amp;*()]+)$/">
+          </p>
+          <br>
+          <p class="clearfix-button">
+            <input class="btn adn-btn margin-top-15" value="Set Password" type="button" ng-click="$ctrl.send_email_api()">
+          </p>
+        </div>
+      </div>
+      <div id="match_otp_phone" class="ng-hide margin-top-15">
+        <h4>Please enter the details to reset password</h4>
+        <div class="col-md-12 col-sm-12 col-xs-12 margin-top-15">
+          <p class="margin-top-15 clearfix-button">
+            <div class="colsm1">Phone</div>
+            <input type="text" class="col-sm-4" placeholder="Phone" ng-model="$ctrl.send_phone_otp">
+          </p>
+          <p class="margin-top-15 clearfix-button">
+            <div class="colsm1">OTP</div>
+            <input type="text" class="col-sm-4" placeholder="OTP" ng-model="$ctrl.send_phone_otp_api">
+          </p>
+          <p class="margin-top-15 clearfix-button">
+            <div class="colsm1">Password</div>
+            <input type="password" class="col-sm-4" placeholder="Password" ng-model="$ctrl.send_phone_password_api" ng-minlength="8" ng-pattern="/^(?=.*[0-9])(?=.*[!@#$%^&amp;*()_+])([a-zA-Z0-9!@#$%^&amp;*()]+)$/">
+          </p>
+          <p class="margin-top-15 clearfix-button">
+            <div class="colsm1">Confirm Password</div>
+            <input type="password" class="col-sm-4" placeholder="Confirm Password" ng-model="$ctrl.send_phone_confirm_password_otp_api" ng-minlength="8" ng-pattern="/^(?=.*[0-9])(?=.*[!@#$%^&amp;*()_+])([a-zA-Z0-9!@#$%^&amp;*()]+)$/">
+          </p>
+          <br>
+          <br>
+          <p class="margin-top-15 clearfix-button">
+            <input class="btn adn-btn" value="Set Password" type="button" ng-click="$ctrl.send_phone_api()">
+          </p>
+        </div>
+      </div>
+
+      <div id="forgot_username_phone" class="ng-hide margin-top-15">
+        <h4>Please enter the Phone number to get Email and Username</h4>
+        <div class="col-md-12 col-sm-12 col-xs-12 margin-top-15">
+          <p class="margin-top-15 clearfix-button">
+            <div class="colsm1">Phone</div>
+            <input type="text" class="col-sm-4" placeholder="Phone" ng-model="$ctrl.forgot_username_phone">
+          </p>
+          <br>
+          <br>
+          <p class="margin-top-15 clearfix-button">
+            <input class="btn adn-btn" value="Submit" type="button" ng-click="$ctrl.get_email_username()">
+          </p>
+        </div>
+      </div>
+
+
+      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+        <footer-ad></footer-ad>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-4">
+      <div class="side-card">
+        <card-heading>Advertisements</card-heading>
+      </div>
+      <div class="banner_adjust">
+        <img class="img-responsive" id="sidebar_ad">
+      </div>
+    </div>
+  </div>
+</div>

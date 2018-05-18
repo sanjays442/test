@@ -1,0 +1,20 @@
+<div ng-show="$ctrl.display" class="side-card">
+  <card-heading>
+    <label class="state_size">{{ $ctrl.fullName | capitalize:true }}</label>
+  </card-heading>
+  <ul class="list-unstyled">
+    <!-- <li>
+      <label><a href class="area-filter-link state-full-name" ng-class="$ctrl.stateLinkClass" ng-click="$ctrl.goToState()">{{ $ctrl.fullName }}</a></label>
+    </li> -->
+    <li>
+      <label>
+        <button type="button" class="btn btn-default" ng-click="$ctrl.goToCities()"><a href="/#/cities/{{$ctrl.fullName}}" class="area-filter-link">View All Cities</a></button>
+      </label>
+    </li>
+    <li>
+      <label>
+        <button type="button" class="btn btn-default" ng-click="$ctrl.goToCounties()"><a href="/#/counties/{{$ctrl.fullName}}" class="area-filter-link">View All Counties</a></button>
+      </label>
+    </li>
+  </ul>
+</div>

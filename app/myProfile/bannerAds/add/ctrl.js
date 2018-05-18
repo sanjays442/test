@@ -1,9 +1,20 @@
-function ctrl($log, $rootScope, Status, $window, AdvertisementService) {
+function ctrl($scope, $document, $log, $rootScope, Status, $window, AdvertisementService) {
   var vm = this;
 
   // initializing form data
   vm.name = '';
   vm.content = '';
+
+  // Uploaded image preview
+  $scope.imagePreview = function (element) {
+    vm.err_type = 0;
+    var reader = new FileReader();
+    reader.readAsDataURL(element.files[0]);
+    reader.onload = function (e) {
+      vm.preview_img = e.target.result;
+      $document[0].getElementById('logo_preview').src = vm.preview_img;
+    };
+  };
 
   vm.submit = function () {
     // validating file type
@@ -40,4 +51,4 @@ function ctrl($log, $rootScope, Status, $window, AdvertisementService) {
   };
 }
 
-module.exports = ['$log', '$rootScope', 'Status', '$window', 'AdvertisementService', ctrl];
+module.exports = ['$scope', '$document', '$log', '$rootScope', 'Status', '$window', 'AdvertisementService', ctrl];

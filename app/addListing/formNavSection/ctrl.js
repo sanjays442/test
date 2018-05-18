@@ -6,14 +6,14 @@ function ctrl(UIState) {
     uiSref: UIState.ADD_LISTING.CONTACT_INFO,
     name: 'Contact',
     stateName: 'contactInfo'
-  }, {
-    uiSref: UIState.ADD_LISTING.USER_INFO,
-    name: 'User Info',
-    stateName: 'userInfo'
-  }, {
+  },  {
     uiSref: UIState.ADD_LISTING.PAID_MEMBER,
     name: 'Membership',
     stateName: 'paidMember'
+  }, {
+    uiSref: UIState.ADD_LISTING.PAYMENT_DETAILS,
+    name: 'Payment',
+    stateName: 'paymentDetails'
   }, {
     uiSref: UIState.ADD_LISTING.CENTER_INFO,
     name: 'Treatment Center',
@@ -23,10 +23,6 @@ function ctrl(UIState) {
     name: 'Treatment Center Details',
     stateName: 'centerDetails'
   }, {
-    uiSref: UIState.ADD_LISTING.PAYMENT_DETAILS,
-    name: 'Payment',
-    stateName: 'paymentDetails'
-  }, {
     uiSref: UIState.ADD_LISTING.SPONSORED_PAGES,
     name: 'Sponsored Pages',
     stateName: 'sponsoredPage'
@@ -35,7 +31,14 @@ function ctrl(UIState) {
     name: 'Banner Ads',
     stateName: 'bannerAd'
   }, {
-    uiSref: UIState.ADD_LISTING.CENTER_DETAILS,
-    name: 'Featured Listing'
+    uiSref: UIState.ADD_LISTING.FEATURED_LISTING_PAGE1,
+    name: 'Featured Listing',
+    stateName: 'featuredListing'
   }];
+  vm.cartLink = [{
+    uiSref: UIState.ADD_LISTING.CART_DETAILS,
+    name: 'Cart Details',
+    stateName: 'cart'
+  }];
+  vm.srl = 1;
 }

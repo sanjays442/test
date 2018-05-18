@@ -1,101 +1,41 @@
 <div class="edit-sponsor-ad">
-  <section-heading>Edit Sponsor Ad</section-heading>
+  <section-heading>{{$ctrl.treatmentCenter}}</section-heading>
   <div class="profile-content">
     <div class="profile-row">
-      <a href="javascript:history.go(-1);">
-        <span class="btn adn-btn right">
-          <i class="glyphicon glyphicon-hand-left"></i> Back
-        </span>
-      </a>
-    </div>
-    <div class="profile-row">
-      <form name="sponsorAdsEdit" class="form-horizontal" ng-submit="$ctrl.submit()">
-        <p> You are free to add your own image and text and place them on any sponsored page on Addiction Network. This allows you to choose pages that related highly to the services you provide, as well as zero in on specific locations in the United States.</p>
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="tname"> Title: </label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input name="title" class="form-control required" id="tname" placeholder="Sponsor Ad Title" type="text" required value="{{$ctrl.title}}" ng-model="$ctrl.title">
-            <span ng-show="sponsorAdsEdit.title.$error.required" class="help-block">Title can't be blank.</span>
-          </div>
-        </div>
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="tname"> Name: </label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input name="name" class="form-control required" placeholder="Sponsor Ad Name" value="{{$ctrl.name}}" type="text" required ng-model="$ctrl.name">
-            <span ng-show="sponsorAdsEdit.name.$error.required" class="help-block">Name can't be blank.</span>
-          </div>
-        </div>
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="img_upload"> Upload Image:</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <div class="">
-              <a href="javascript:void(0)">
-                <input file-model="$ctrl.image" type="file" name="image" id="image" class="center_image" accept="image/*" />
-              </a>
-              <span ng-show="$ctrl.err_type">Please upload an image with exact size of 308*180 pixel. </span>
-            </div>
-          </div>
-        </div>
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="description"> </label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <div class="">
-              <img id="sponsor_image" ng-src="{{$ctrl.image}}" style="max-width:300px;max-height:100px;" alt="Image">
-            </div>
-          </div>
-        </div>
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="description"> Description: </label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <textarea maxlength="255" name="sponsor_ad_description" rows="3" class="form-control required" id="description" placeholder="" required ng-model="$ctrl.description">{{$ctrl.description}}</textarea>
-            <span ng-show="sponsorAdsEdit.sponsor_ad_description.$error.required" class="help-block">Description can't be blank.</span>
-          </div>
-        </div>
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="web_link"> Website URL: </label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input name="sponsor_ad_website" class="form-control required url" type="text" id="sponsor_web_link" placeholder="http://www.google.com" ng-model="$ctrl.website" required ng-pattern="/^(?:(ftp|http|https):\/\/)?(?:[\w-]+\.)+([a-z]{2,10})?(?:[\.])+[a-z]{2,10}$/">
-            <span ng-show="sponsorAdsEdit.sponsor_ad_website.$error.pattern" class="help-block">Invalid Format(Correct format: www.google.com)</span>
-            <span ng-show="sponsorAdsEdit.sponsor_ad_website.$error.required" class="help-block">Website url can't be blank.</span>
 
-          </div>
-        </div>
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="tname"> Sponsor Ads: </label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12 class_for_select">
-            <div ng-dropdown-multiselect="" options="$ctrl.sponsored_ad_select" checkboxes="true" selected-model="$ctrl.multiselectModelLayoutIds " extra-settings="$ctrl.multiselectModelSettings"></div>
-
-          </div>
-        </div>
-        <div class="adn-row ">
-          <div class="col-md-4 col-sm-4 col-xs-12 ">
-            <label for="web_link "> Payment Amount: </label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12 ">
-            <input disabled=" " name="paidamount " class="form-control " value="{{$ctrl.payment_amount}} " id="paidamount " type="text ">
-          </div>
-        </div>
-        <!-- Submit -->
-        <div class="adn-row">
-          <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-md-offset-4 col-sm-12 col-xs-12">
-            <button type="submit" class="btn adn-btn right" ng-disabled="sponsorAdsEdit.sponsor_ad_website.$invalid || sponsorAdsEdit.sponsor_ad_description.$invalid  || sponsorAdsEdit.title.$invalid || sponsorAdsEdit.name.$invalid">Review</button>
-          </div>
-        </div>
-      </form>
     </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
+
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+          <!-- <div class="col-md-2 col-sm-2 col-xs-12">
+            <!-- <label for="tname">Treatment Center: </label>
+        </div> -->
+          <div class="col-sm-8">
+            <!-- {{$ctrl.treatmentCenter}} -->
+            <!-- <span ng-show="$root.centerSelected.length===0 " style="color:red;">Select any treatment center.</span> -->
+          </div>
+          <div class="col-sm-4">
+            <a ui-sref="myProfile.sponsorAds">
+              <span class="btn adn-btn right">
+                <i class="glyphicon glyphicon-hand-left"></i> Back
+              </span>
+            </a>
+          </div>
+        </div>
+        <!-- Search By State Section -->
+        <sponsor-state-select-edit></sponsor-state-select-edit>
+        <sponsor-cart-edit></sponsor-cart-edit>
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+          <div class="text-right col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub sub">
+            <input type="button" ng-click="$ctrl.submit()" class="btn modal_btn btn_size pull-right" value="Submit" id="submit" ng-disabled="$ctrl.treatmentCentersModel.length===0 || $root.centerSelected.length===0">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </div>

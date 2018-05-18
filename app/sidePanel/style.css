@@ -1,5 +1,7 @@
 .side-card {
   width: 100%;
+  /*max-width: 248px !important;
+  max-height: 145px !important;*/
   float: left;
   background: #F2F2F2;
   margin-top: 30px;

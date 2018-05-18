@@ -1,0 +1,15 @@
+.section-heading {
+  background-image: url(title-striped-bg.png);
+  background-repeat: repeat-x;
+  text-align: center;
+  background-position: 40px;
+  font-size: 28px;
+  margin: 20px 0;
+  clear:both;
+}
+
+.section-heading-label {
+  background: #fff;
+  padding: 0 16px;
+  color: #73ac4b;
+}

@@ -1,4 +1,4 @@
-<div class="add-sponsor-ad">
+<div class="edit-sponsor-ad">
   <section-heading>Add Sponsor Ad</section-heading>
   <div class="profile-content">
     <div class="profile-row">
@@ -9,82 +9,70 @@
       </a>
     </div>
     <div class="profile-row">
-      <form name="sponsorAdsForm" enctype="multipart/form-data" ng-submit="$ctrl.submit()">
+      <form name="sponsorAdsForm" enctype="multipart/form-data">
         <input name="customertype" value="owner" type="hidden">
-        <!-- Title -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="title">Title: </label>
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+
+          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub pading_0">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="tname">Treatment Centers: </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12 class_for_select">
+              <div ng-dropdown-multiselect="" options="$ctrl.treatmentCenters" checkboxes="true" selected-model="$ctrl.treatmentCentersModel" extra-settings="$ctrl.multiselectModelSettings"></div>
+            </div>
           </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input placeholder="Title" name="title" id="title" class="form-control required" type="text" required ng-model="$ctrl.title">
-            <span ng-show="sponsorAdsForm.title.$error.required" class="help-block">Title can't be blank.</span>
+
+          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="cpwd">Sponsor Ads </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <div ng-dropdown-multiselect="" options="$ctrl.sponsored_ad_select" checkboxes="true" selected-model="$ctrl.multiselectModelLayoutIds " extra-settings="$ctrl.multiselectModelSettings"></div>
+            </div>
           </div>
-        </div>
-        <!-- Name -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="name">Name: </label>
+
+          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="cpwd">State</label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <div ng-dropdown-multiselect="" options="$ctrl.sponsoredAdState" checkboxes="true" selected-model="$ctrl.sponsoredAdStateModel" extra-settings="$ctrl.multiselectModelSettings"></div>
+
+              <p ng-show="sponsorAdsForm.state.$invalid">Required</p>
+            </div>
           </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input placeholder="Name" name="name" id="name" class="form-control required" type="text" required ng-model="$ctrl.name">
-            <span ng-show="sponsorAdsForm.name.$error.required" class="help-block">Name can't be blank.</span>
+          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="cpwd">County: </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <div ng-dropdown-multiselect="" options="$ctrl.counties" checkboxes="true" selected-model="$ctrl.countiesModel" extra-settings="$ctrl.multiselectModelSettings"></div>
+            </div>
           </div>
-        </div>
-        <!-- Upload Image -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="upload_img">Upload Image</label>
+          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="cpwd">City: </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <div ng-dropdown-multiselect="" options="$ctrl.cities" checkboxes="true" selected-model="$ctrl.citiesModel" extra-settings="$ctrl.multiselectModelSettings"></div>
+            </div>
           </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <!--  <input name="image" id="image" class="span2 text_file center_image" ng-model="$ctrl.image" type="file"> -->
-            <input file-model="$ctrl.image" type="file" name="image" id="image" class="center_image" accept="image/*" />
-            <span ng-show="$ctrl.err_type">Please upload an image only. </span>
+          <!-- <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="cpwd">Sidepanel: </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <sidepanel-multiselect></sidepanel-multiselect>
+            </div>
+          </div> -->
+
+          <div class="text-right col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub sub">
+            <input class="btn btn-primary modal_btn btn_size pull-left" value="Submit" id="submit" type="button" ng-disabled="sponsorAdsForm.website.$invalid || sponsorAdsForm.title.$invalid || sponsorAdsForm.name.$invalid" ng-click="$ctrl.submit()">
+            <span ng-show="$ctrl.success_msg" style="color:green;">Added</span>
           </div>
-        </div>
-        <!-- Description -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="cpwd">Description</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <textarea name="briefoverview" ng-model="$ctrl.description" class="form-control required" rows="2" cols="50" required placeholder="Brief Overview"></textarea>
-            <span ng-show="sponsorAdsForm.briefoverview.$error.required" class="help-block">Description can't be blank.</span>
-          </div>
-        </div>
-        <!-- Website -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="cpwd">Website</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input placeholder="website" name="website" class="form-control required" type="text" ng-model="$ctrl.website" required ng-pattern="/^(?:(ftp|http|https):\/\/)?(?:[\w-]+\.)+([a-z]{2,10})?(?:[\.])+[a-z]{2,10}$/">
-            <span ng-show="sponsorAdsForm.website.$error.pattern" class="help-block">Invalid Format(Correct format: www.google.com)</span>
-            <span ng-show="sponsorAdsForm.website.$error.required" class="help-block">Website url can't be blank.</span>
-          </div>
-        </div>
-        <!-- Sponsor Ads -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="cpwd">Sponsor Ads </label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <div ng-dropdown-multiselect="" options="$ctrl.sponsored_ad_select" checkboxes="true" selected-model="$ctrl.multiselectModelLayoutIds " extra-settings="$ctrl.multiselectModelSettings"></div>
-          </div>
-        </div>
-        <!-- Payment Amount -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="text">Payment Amount</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input placeholder="Payment Amount" id="payment_amount" name="payment_amount" class="form-control required" type="number" disabled="">
-          </div>
-        </div>
-        <!-- Submit -->
-        <div class="adn-row">
-          <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-md-offset-4 col-sm-12 col-xs-12">
-            <button type="submit" class="btn adn-btn right" ng-disabled="sponsorAdsForm.website.$invalid || sponsorAdsForm.title.$invalid || sponsorAdsForm.name.$invalid">Submit</button>
+          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub">
+            <div class="company_adds">
+            </div>
           </div>
         </div>
       </form>

@@ -1,0 +1,17 @@
+<div class="profile-nav">
+  <ul class="profile-nav-list">
+    <!-- Profile Picture-->
+    <li>
+      <img ng-src="{{ $ctrl.profilePic }}" class="img-circle" />
+    </li>
+
+    <!-- Navigation-->
+    <li ng-if="$root.profileData.type_of_user==='free'" ng-repeat="link in $ctrl.linksFree">
+      <a ui-sref="{{ link.uiSref }}" class="profile-nav-link">{{ link.name }}  </a>
+    </li>
+
+    <li ng-if="$root.profileData.type_of_user!=='free'" ng-repeat="link in $ctrl.linksPaid">
+      <a ui-sref="{{ link.uiSref }}" class="profile-nav-link">{{ link.name }}  </a>
+    </li>
+  </ul>
+</div>

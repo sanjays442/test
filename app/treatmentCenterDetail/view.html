@@ -5,9 +5,11 @@
       <div class="left_content">
         <!-- slider -->
         <center-detail-carousel images="$ctrl.entry.center_images"></center-detail-carousel>
-
         <!-- Detail -->
         <div class="row">
+          <div class="text-center">
+            <img ng-show="$ctrl.entry.center_images.length===0" class="image" src="{{$ctrl.entry.listing_image}}">
+          </div>
           <section-heading>{{ $ctrl.entry.center_name }} Details</section-heading>
           <div class="adn-row">
             <div class="col-md-4 col-sm-4 col-xs-12">
@@ -22,10 +24,10 @@
               <label for="details">Details:</label>
             </div>
             <div class="col-md-8 col-sm-8 col-xs-12">
-              <p>{{ $ctrl.entry.description }} </p>
+              <p>{{ $ctrl.entry.description|removeHTMLTags }} </p>
             </div>
           </div>
-          <div class="adn-row">
+          <div class="adn-row" ng-if="$ctrl.entry.listing_type!='free'">
             <div class="col-md-4 col-sm-4 col-xs-12">
               <label for="website">Website Link:</label>
             </div>
@@ -33,7 +35,7 @@
               <a class="center-detail-link" ng-href="{{ $ctrl.entry.center_web_link | urlFilter }}" target="_blank">{{ $ctrl.entry.center_web_link }}</a>
             </div>
           </div>
-          <div class="adn-row">
+          <div class="adn-row" ng-if="$ctrl.entry.listing_type!='free'">
             <div class="col-md-4 col-sm-4 col-xs-12">
               <label for="phone">Phone Number:</label>
             </div>
@@ -41,29 +43,29 @@
               <p>{{ $ctrl.entry.phone }}</p>
             </div>
           </div>
-          <div class="adn-row">
+          <div class="adn-row" ng-if="$ctrl.entry.listing_type!='free'">
             <div class="col-md-4 col-sm-4 col-xs-12">
               <label for="address">Address:</label>
             </div>
             <div class="col-md-8 col-sm-8 col-xs-12">
-              <p>{{ $ctrl.entry.address }}</p>
+              <p>{{ $ctrl.entry.address }}, {{$ctrl.entry.city}}, {{$ctrl.entry.state}} {{$ctrl.entry.pincode}}</p>
             </div>
           </div>
         </div>
         <!--   About us    -->
         <div class="margin-bottom-10">
           <section-heading>{{ $ctrl.entry.heading_1 }}</section-heading>
-          <p class="center-detail-content">{{ $ctrl.entry.content_1 }}</p>
+          <p class="center-detail-content">{{ $ctrl.entry.content_1 | removeHTMLTags}}</p>
         </div>
         <!--   Treatment Approach    -->
         <div class="margin-bottom-10">
           <section-heading>{{ $ctrl.entry.heading_2 }}</section-heading>
-          <p class="center-detail-content">{{ $ctrl.entry.content_2 }}</p>
+          <p class="center-detail-content">{{ $ctrl.entry.content_2 | removeHTMLTags }}</p>
         </div>
         <!--   Unique Points   -->
         <div class="margin-bottom-10">
           <section-heading>{{ $ctrl.entry.heading_3 }}</section-heading>
-          <p class="center-detail-content">{{ $ctrl.entry.content_3 }}</p>
+          <p class="center-detail-content">{{ $ctrl.entry.content_3 | removeHTMLTags }}</p>
         </div>
         <!--   Reviews    -->
         <div class="row">
@@ -89,14 +91,14 @@
       </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-      <div class="center-detail-contact-info">
+      <div class="center-detail-contact-info" ng-if="$ctrl.entry.listing_type!='free'">
         <div class="center-detail-contact-info-row">
           <img ng-src="{{ $ctrl.entry.listing_image }}" alt="{{ $ctrl.entry.center_name }}" />
         </div>
         <div class="center-detail-contact-info-row">
           <span>Location:</span>
           <p>
-            <i class="glyphicon glyphicon-map-marker"></i>{{ $ctrl.entry.address }}
+            <i class="glyphicon glyphicon-map-marker"></i>{{ $ctrl.entry.address }}, {{$ctrl.entry.city}}, {{$ctrl.entry.state}} {{$ctrl.entry.pincode}}
           </p>
         </div>
         <div class="center-detail-contact-info-row">
@@ -113,8 +115,8 @@
         </div>
       </div>
       <!-- Google Map Card -->
-      <div class="center-detail-card">
-        <p class="center-detail-map-address">{{ $ctrl.entry.address }}</p>
+      <div class="center-detail-card" ng-if="$ctrl.entry.listing_type!='free'">
+        <p class="center-detail-map-address">{{ $ctrl.entry.address }}, {{$ctrl.entry.city}}, {{$ctrl.entry.state}} {{$ctrl.entry.pincode}}</p>
         <card-heading>Map</card-heading>
         <div>
           <iframe width="100%" height="250px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" ng-src="{{ $ctrl.entry.mapLink }}"></iframe>

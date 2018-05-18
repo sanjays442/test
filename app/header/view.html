@@ -1,65 +1,97 @@
-<!-- first navigation -->
-<div class=" first_nav">
-  <div class="container">
-    <div class="col-lg-5 col-md-5 col-sm-7 col-xs-12">
-      <div class="left_header">
-        <div class="img_outer_in_head pull-left" style="display:inline-block;">
-          <img width="75" height="75" src="uploads/2014/09/banner_12-150x150.png" class="attachment-75x80 size-75x80 wp-post-image" alt="banner_1" srcset="uploads/2014/09/banner_12-150x150.png 150w, uploads/2014/09/banner_12-44x44.png 44w" sizes="(max-width: 75px) 100vw, 75px" />
+<headermenu>
+  <section class="top-header">
+    <div class="container">
+      <div class="row">
+        <div class="left-topbanner">
+          <div class="custom-row">
+            <div class="telecaller">
+              <img src="themes/addiction/images/telecaller.png" alt="tele caller" />
+            </div>
+            <div class="caller-box">
+              <div class="custom-row">
+                <div class="callertxt">
+                  <p>For assistance in finding treatment</p>
+                  <div class="caller-no invocaNumber">Call 844-810-8708</div>
+
+                </div>
+              </div>
+              <div class="topsocial-box">
+                <div class="custom-row">
+                  <p class="pull-left live-speak">To speak to a live counselor</p>
+                  <ul class="top-social">
+                    <li><a href="https://www.facebook.com/addictionnet1" class="fa fa-facebook"></a></li>
+                    <li><a href="https://twitter.com/AddictionNet1" class="fa fa-twitter"></a></li>
+                    <li><a href="https://www.google.com/+Addictionnetwork1" class="fa fa-google"></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="text_style_new">
-          For assistance in finding treatment,
-        </div>
-        <div class="text_style_special">
-          <img src="themes/addiction/images/phone.png" class="pull-left" /> Call 949-444-9123
-        </div>
-        <div class="text_style_new">
-          To speak to a live counselor
+        <div class="right-topbanner">
+          <a id="header_ad_url" href="http://www.pillarsrecovery.com" target="_blank">
+            <img class="img-responsive header_ad_url" id="header_ad" alt="Header advertisement"> </a>
         </div>
       </div>
     </div>
-    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-      <a id="header_ad_url">
-        <img class="img-responsive" id="header_ad" alt="Header advertisement">
-      </a>
-    </div>
-  </div>
-</div>
-<!-- second navigation -->
-<div class="navbar navbar-default header_bg_texture" role="navigation">
-  <div class="container width_adjust_header">
-    <div class="navbar-header padding_left_new">
-      <a class="hdr_logo_div " href="/">
-        <img class="img-responsive " src="themes/addiction/images/addiction_logo.png" />
-      </a>
-      <button type="button" class="navbar-toggle toggle_button" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <div class="navbar-collapse collapse to_be_pull_left new_class_for_collaspe ">
-      <!-- Social Links -->
-      <ul class="social_ul">
-        <li ng-repeat="socialLink in $ctrl.socialLinks">
-          <a ng-href="{{ socialLink.href }}" target="_blank">
-            <img ng-src="{{ socialLink.img }} " />
-          </a>
-        </li>
-      </ul>
-      <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=andr923 "></script>
-      <div class="nav_align">
-        <ul class="nav navbar-nav new_class_for_sub_menu header_main_menu fonnt ">
-          <li ng-if="$root.login==1" ng-repeat="link in $ctrl.internalLinks" ng-model="$root.login">
-            <a class="comm" ui-sref="{{ link.uiSref }}">{{ link.name }}</a>
-          </li>
-          <li ng-if="$root.login!=1" ng-repeat="link in $ctrl.internalLinksNoAuth" ng-model="$root.login">
-            <a class="comm" ui-sref="{{ link.uiSref }}">{{ link.name }}</a>
-          </li>
-        </ul>
+  </section>
+  <!--end of Top Header -->
+  <!--Menu Header start -->
+
+  <div class="header-menu" id="anchor_top_header">
+    <div class="container">
+      <div class="row">
+        <div class="main-nav clearfix">
+          <div class="navbar navbar-default">
+            <div class="navbar-header">
+              <button button type="button" class="navbar-toggle {{$ctrl.menuButtonAddClass}}" ng-click="$ctrl.mobileMenuToggle()" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" ui-sref="home">
+                <div class="logo">
+                  <img src="themes/addiction/images/addiction_logo.png" alt="logo" /> </div>
+              </a>
+            </div>
+            <div id="navbar" class="navbar-responsive-collapse navbar-collapse collapse {{$ctrl.collapseInAddClass}}">
+              <ul class="nav navbar-nav">
+                <li ng-if="$root.login==1" class="{{$ctrl.activeMenu[link.slug]}}" ng-repeat="link in $ctrl.internalLinks" ng-model="$root.login"> <a ui-sref="{{ link.uiSref }}" ng-click="$ctrl.setActiveMenu(link.slug)">{{ link.name }}</a> </li>
+                <li ng-if="$root.login!=1" class="{{$ctrl.activeMenu[link.slug]}}" ng-repeat="link in $ctrl.internalLinksNoAuth" ng-model="$root.login"> <a ui-sref="{{ link.uiSref }}" ng-click="$ctrl.setActiveMenu(link.slug)">{{ link.name }}</a> </li>
+                <li><a href="javascript:void(0);" class="search-btn" ng-click="$ctrl.toggleSearch();">Search</a></li>
+              </ul>
+              <!--  <div class="navbar-right" ng-if="$root.login==1">
+              	<span class="signupbtn">
+              	<a ui-sref="{{$ctrl.myProfSref}}" ng-click="$ctrl.myProfile();" title="Profile"><i class="fa fa-user"></i></a> </span>
+                <span class="loginbtn"><a ui-sref="{{$ctrl.logoutSref}}">Logout</a></span>
+              </div>-->
+
+              <div class="navbar-right" ng-if="$root.login==1">
+                <span class="logout"> <a ui-sref="{{$ctrl.myProfSref}}" ng-click="$ctrl.myProfile();" title="Profile" class="icon-profile"> <i class="fa fa-user"></i></a> <a class="logout-text" ui-sref="{{$ctrl.logoutSref}}">Logout</a> </span>
+              </div>
+              <div ng-if="$root.login!=1" class="navbar-right">
+                <span class="loginbtn"><a class="sbtn sbtn-blue" ui-sref="{{$ctrl.loginSref}}">Log in</a></span>
+                <span class="signupbtn"><a class="sbtn sbtn-blue" ui-sref="{{$ctrl.signupSref}}">Sign up </a> </span>
+              </div>
+              <form class="searchform">
+
+                <!--<input type="text" id="search-pnl-searchbox" value="" ng-change="$ctrl.search(1)" ng-model="$ctrl.searchTxt" name="focus" placeholder="&#xF002;" class="search-pnl search-box {{$ctrl.searchExpandClass}}" autofocus="autofocus" onclick="window.location.href='#'"
+                  required="required">
+                <button class="close-icon" type="reset" ng-click="$ctrl.close_icon()"></button>-->
+
+                <input type="text" id="search-pnl-searchbox" value="" ng-change="$ctrl.search(1)" ng-model="$ctrl.searchTxt" name="focus" placeholder="&#xF002;" class="search-pnl search-box {{$ctrl.searchExpandClass}}" autofocus="autofocus" required="required">
+                <button class="close-icon {{$ctrl.hideIcon}}" type="reset" ng-click="$ctrl.close_icon()"></button>
+              </form>
+              <ul class="list-group search-results" ng-if="$ctrl.results">
+                <li class="list-group-item" ng-repeat="result in $ctrl.results"> <a class="comm" ng-click="$ctrl.removeAll()" ui-sref="treatmentCenterDetail({id: result.slug })">{{result.center_name}}</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <!--/.nav-collapse -->
   </div>
-</div>
-<!-- <div ng-show="$ctrl.sliderShow" ng-bind-html="$ctrl.html"></div> -->
+  <!--end of Menu Header -->
+
+</headermenu>

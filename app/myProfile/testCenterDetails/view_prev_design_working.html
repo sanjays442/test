@@ -1,0 +1,337 @@
+<div class="test-center-details">
+  <section-heading>Test centers and their details</section-heading>
+  <!-- Content Starts -->
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+      <div class="adn-row1">
+        <div class="col-md-12 table-pay1 ">
+          <div class="row bold-th1" style="color:#73ac4b;">
+            <div class="col-md-3">
+              <span style="cursor:pointer;"><i class="fa fa-long-arrow-up"></i>Upgrade</span>
+            </div>
+            <div class="col-md-3">
+              <span style="cursor:pointer;"><i class="fa fa-long-arrow-down"></i>Downgrade</span>
+            </div>
+            <div class="col-md-2">
+              <span style="cursor:pointer;"><i class="fa fa-plus"></i>Add New</span>
+            </div>
+            <div class="col-md-2">
+              <span style="cursor:pointer;"><i class="fa fa-trash"></i>Delete</span>
+            </div>
+            <div class="col-md-2">
+              <span style="cursor:pointer;"><i class="fa fa-pencil"></i>Edit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="progress-img-wrap" style="display: inline-block;width: 100%;">
+      <div class="progress-img" style="height:auto;">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+          <div class="adn-row">
+            <div class="col-md-12 table-pay">
+              <div class="row bold-th">
+                <div class="col-md-4">
+                  <label>CENTER NAME</label>
+                </div>
+                <div class="col-md-4">
+                  <label>PRODUCT</label>
+                </div>
+                <div class="col-md-2">
+                  <label>ACTION 1</label>
+                </div>
+                <div class="col-md-2">
+                  <label>ACTION 2</label>
+                </div>
+              </div>
+
+              <div class="row" ng-repeat="item in $ctrl.cartDetails.treatment_centers" ng-init="$ctrl.productShow[item.id]=0;$ctrl.centerToggleIconClass[item.id]='fa-plus';">
+                <div class="col-md-12 bordered">
+                  <div class="col-md-4">
+                    <span style="cursor:pointer;" class="fix-left" ng-click="$ctrl.centerToggle(item.id)">
+                      <i class="fa {{$ctrl.centerToggleIconClass[item.id]}}" uib-tooltip="Show/hide "></i>
+                      <span>{{item.center_name}}</span>
+                    </span>
+
+                  </div>
+                  <div class="col-md-4">
+                    <span ng-if="item.listing_type==='paid'">Gold Membership</span>
+                    <span ng-if="item.listing_type==='featured'">Platinum Membership</span>
+                  </div>
+                  <div class="col-md-2 text-center">
+                    <span style="cursor:pointer;" ng-click="$ctrl.upgradeMembershipConfirm(item.listing_type, 'featured', item.id);"><i class="fa fa-long-arrow-up"></i></span>
+                  </div>
+                  <div class="col-md-2 text-center">
+                    <span style="cursor:pointer;" ng-click="$ctrl.upgradeMembershipConfirm(item.listing_type, 'sponsored', item.id);"><i class="fa fa-long-arrow-down"></i></span>
+                  </div>
+                </div>
+                <div class="col-md-12" ng-show="$ctrl.productShow[item.id]" ng-init="$ctrl.sponsorshipShow[item.id]=0; $ctrl.sponsorshipToggleIconClass[item.id]='fa-plus'; $ctrl.stateShow[item.id]=0;">
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-4">
+                    <span style="cursor:pointer;" ng-click="$ctrl.sponsorshipToggle(item.id)">Sponsorship</span>
+                    <!-- <div class="col-md-12">
+                                        <span>California</span>
+                                    </div>
+                                    <div class="col-md-12 ">
+                                        <span>Alcohol</span>
+                                    </div> -->
+
+                  </div>
+                  <div class="col-md-2 text-center">
+                    <span><i class="fa fa-plus" style="background: transparent;color: #fff;"></i></span>
+
+                  </div>
+                  <div class="col-md-2 text-center">
+                    <div class="col-md-12">
+                      <!-- <span><i class="fa fa-long-arrow-up" style="visibility:hidden;"></i></span> -->
+                      <span style="cursor:pointer;" ng-click="$ctrl.editSponsor(item.id,item.center_name, item);"><i class="fa fa-pencil"></i></span>
+                    </div>
+                    <!-- <div class="col-md-12">
+                                    <span><i class="fa fa-trash" ></i></span>
+                                  </div>
+                									<div class="col-md-12">
+                                        <span><i class="fa fa-trash" ></i></span>
+                                  </div> -->
+                  </div>
+                </div>
+                <!-- state toggle -->
+                <div class="col-md-12" ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.productShow[item.id]" ng-init="$ctrl.stateShow[item.id]=0;" style="max-height: 200px;overflow-y: scroll;padding-bottom: 10px;border-bottom: 1px solid #fff;margin-bottom: 10px;">
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-4">
+                    <span style="cursor:pointer;margin-left:8px;" class="fix-left" ng-click="$ctrl.stateToggle(item.id)">State</span>
+                  </div>
+                  <div class="col-md-2 text-center">
+                    <!-- <span><i class="fa fa-plus" style="background: transparent;color: #fff;"></i></span> -->
+
+                  </div>
+                  <div class="col-md-2 text-center">
+                    <!-- <div class="col-md-12">
+                      <span><i class="fa fa-long-arrow-up" style="visibility:hidden;"></i></span>
+                    </div>
+                    <div class="col-md-12">
+                      <span><i class="fa fa-trash"></i></span>
+                    </div>
+                    <div class="col-md-12">
+                      <span><i class="fa fa-trash"></i></span>
+                    </div> -->
+                  </div>
+                  <!-- States -->
+                  <div class="col-md-12" ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.stateShow[item.id] && $ctrl.productShow[item.id]" ng-repeat="state in item.sponsored_listing_layouts[0].state">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                      <span style="cursor:pointer; margin-left:15px;font-size:13px;" class="fix-left"> {{state.name}}</span>
+                    </div>
+                    <div class="col-md-2 text-center">
+                      <!-- <span style="cursor:pointer; font-size:13px;" class="fix-left"> {{state.total_price}}$</span> -->
+                      <!-- <span><i class="fa fa-pencil"></i></span> -->
+                    </div>
+                    <div class="col-md-2 text-center">
+                      <span style="cursor:pointer;" ng-click="$ctrl.deleteConfirm(state.id,item.id);"><i class="fa fa-trash"></i></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- City toggle -->
+                <div class="col-md-12" ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.productShow[item.id]" ng-init="$ctrl.cityShow[item.id]=0;" style="max-height:200px;overflow:scroll;">
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-4">
+                    <span style="cursor:pointer;margin-left:8px;" class="fix-left" ng-click="$ctrl.cityToggle(item.id)">City</span>
+                  </div>
+                  <div class="col-md-2 text-center">
+                    <!-- <span><i class="fa fa-plus" style="background: transparent;color: #fff;"></i></span> -->
+                  </div>
+                  <div class="col-md-2 text-center">
+                  </div>
+                  <!-- Cities -->
+                  <div class="col-md-12" ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.cityShow[item.id] && $ctrl.productShow[item.id]" ng-repeat="city in item.sponsored_listing_layouts[0].city">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                      <span style="cursor:pointer; margin-left:15px;font-size:13px;" class="fix-left"> {{city.name}}</span>
+                    </div>
+                    <div class="col-md-2 text-center">
+                      <!-- <span><i class="fa fa-pencil"></i></span> -->
+                    </div>
+                    <div class="col-md-2 text-center">
+                      <span style="cursor:pointer;" ng-click="$ctrl.deleteConfirm(city.id, item.id);"><i class="fa fa-trash"></i></span>
+                    </div>
+                  </div>
+                </div>
+                <!-- County toggle -->
+                <div class="col-md-12" ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.productShow[item.id]" ng-init="$ctrl.countyShow[item.id]=0;" style="max-height:200px;overflow:scroll;">
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-4">
+                    <span style="cursor:pointer; margin-left:8px;" class="fix-left" ng-click="$ctrl.countyToggle(item.id)">County</span>
+                  </div>
+                  <div class="col-md-2 text-center">
+                    <!-- <span><i class="fa fa-plus" style="background: transparent;color: #fff;"></i></span> -->
+                  </div>
+                  <div class="col-md-2 text-center">
+                  </div>
+                  <!-- Counties -->
+                  <div class="col-md-12" ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.countyShow[item.id] && $ctrl.productShow[item.id]" ng-repeat="county in item.sponsored_listing_layouts[0].county">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                      <span class="fix-left" style="cursor:pointer; margin-left:15px;font-size:13px;"> {{county.name}}</span>
+                    </div>
+                    <div class="col-md-2 text-center">
+                      <!-- <span><i class="fa fa-pencil"></i></span> -->
+                    </div>
+                    <div class="col-md-2 text-center">
+                      <span style="cursor:pointer;" ng-click="$ctrl.deleteConfirm(county.id, item.id);"><i class="fa fa-trash"></i></span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Categories toggle -->
+                <div class="col-md-12" ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.productShow[item.id]" ng-init="$ctrl.categoryShow[item.id]=0;" style="max-height:200px;overflow:scroll;">
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-4">
+                    <span style="cursor:pointer;margin-left:8px;" class="fix-left" ng-click="$ctrl.categoryToggle(item.id)">Categories</span>
+                  </div>
+                  <div class="col-md-2 text-center">
+                    <!-- <span><i class="fa fa-plus" style="background: transparent;color: #fff;"></i></span> -->
+                  </div>
+                  <div class="col-md-2 text-center">
+                  </div>
+                  <!-- Categories -->
+                  <div class="col-md-12" ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.categoryShow[item.id] && $ctrl.productShow[item.id]" ng-repeat="category in item.sponsored_listing_layouts[0].categories">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                      <span class="fix-left" style="cursor:pointer; margin-left:15px;font-size:13px;"> {{category.name}}</span>
+                    </div>
+                    <div class="col-md-2 text-center">
+                      <!-- <span><i class="fa fa-pencil"></i></span> -->
+                    </div>
+                    <div class="col-md-2 text-center">
+                      <span style="cursor:pointer;" ng-click="$ctrl.deleteConfirm(category.id, item.id);"><i class="fa fa-trash"></i></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 bordered">
+                </div>
+                <!-- Ads toggle -->
+                <div class="col-md-12" ng-show="$ctrl.productShow[item.id]" ng-init="$ctrl.adsShow[item.id]=0;">
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-4">
+                    <span style="cursor:pointer;" class="fix-left" ng-click="$ctrl.adsToggle(item.id)">Ads</span>
+                  </div>
+                  <div class="col-md-2 text-center">
+                    <!-- <span><i class="fa fa-plus" style="background: transparent;color: #fff;"></i></span> -->
+                    <span style="cursor:pointer;" ng-click="$ctrl.editAds(item.banner_ads);"><i class="fa fa-pencil"></i></span>
+                  </div>
+                  <div class="col-md-2 text-center">
+                  </div>
+                </div>
+
+                <!-- Ads -->
+                <div class="col-md-12" ng-show="$ctrl.adsShow[item.id] && $ctrl.productShow[item.id]" ng-repeat="ads in item.banner_ads">
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-4">
+                    <span class="fix-left" style="cursor:pointer; margin-left:15px;font-size:13px; font-style: italic;">{{ads.name}}</span>
+                  </div>
+                  <div class="col-md-2 text-center">
+                    <!-- <span><i class="fa fa-pencil"></i></span> -->
+                  </div>
+                  <div class="col-md-2 text-center">
+                    <span><i class="fa fa-trash"></i></span>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-4">
+                                    <span style="cursor:pointer;" class="fix-left"><i class="fa fa-minus" ></i></span>
+                                    <span>Center 2</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>Platinum Membership</span>
+                                </div>
+                                <div class="col-md-2 text-center">
+
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <span><i class="fa fa-long-arrow-down" ></i></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12 bordered">
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4">
+                                    <span>Feature</span>
+
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <span></span>
+                                </div>
+                                <div class="col-md-2 text-center">
+								<span><i class="fa fa-trash" ></i></span>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+						<div class="row">
+                            <div class="col-md-12" style="padding: 15px">
+                                <div class="col-md-4">
+                                    <span style="cursor:pointer;" class="fix-left"><i class="fa fa-minus" ></i></span>
+                                    <span>Center 3</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>Gold Membership</span>
+                                </div>
+                                <div class="col-md-2 text-center">
+
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <span><i class="fa fa-long-arrow-down" ></i></span>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div> -->
+
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <div class="test-center-detials-footer">
+                <div class="col-md-4">
+                  <p class="font-normal"><a href="javascript:;" ng-click="$ctrl.goBack()">Back</a></p>
+                </div>
+                <div class="col-md-4">
+                  <p class="font-normal" style="left:72%;"><a href="javascript:void(0)" ng-click="$ctrl.addTestCenter();">Add another test center</a></p>
+                </div>
+                <div class="col-md-4">
+                  <!-- <p class=""><a href="javascript:void(0)" class="ng-scope">Delete</a></p> -->
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

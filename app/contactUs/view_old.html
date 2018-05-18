@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row contact_us_otr">
+    <div class="col-lg-9 col-sm-9 col-md-9 col-xs-12">
+      <div class="col-md-12 col-sm-12 pading_0">
+        <div id="success" style="color: green; display: none;" ;=""></div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <h2 class="contct_heding">Contact Us</h2>
+        </div>
+        <!-- BEGIN FORM-->
+        <form id="contactUs" name="$ctrl.contactUs" class="horizontal-form margin-bottom-40" ng-submit="$ctrl.submit()">
+          <div class="col-md-12 col-sm-12 col-xs-12 pading_0">
+            <div class="col-md-6 col-sm-12 col-xs-12 main_wrap_form_inner_sub">
+              <label>First Name
+                <em class="em_star">*</em>
+              </label>
+              <input type="text" class="form-control" name="fname" ng-model="$ctrl.first_name" required="" autofocus="" id="name">
+              <span class="help-block" ng-show="$ctrl.contactUs.fname.$error.required">Required</span>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 main_wrap_form_inner_sub">
+              <label>Last Name
+                <em class="em_star">*</em>
+              </label>
+              <input type="text" class="form-control required" name="lname" ng-model="$ctrl.last_name" autofocus="" required="" id="lname">
+              <span class="help-block" ng-show="$ctrl.contactUs.lname.$error.required">Required</span>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 main_wrap_form_inner_sub">
+              <label>Email
+                <em class="em_star">*</em>
+              </label>
+              <input type="text" class="form-control required" name="email" ng-model="$ctrl.email" email="true" required="" ng-pattern="/^(([^<>()\[\]\.,;:\s@\']+(\.[^<>()\[\]\.,;:\s@\']+)*)|(\'.+\'))@(([^<>()[\]\.,;:\s@\']+\.)+[^<>()[\]\.,;:\s@\']{2,})$/i" autofocus="">
+              <span ng-show="$ctrl.contactUs.email.$invalid" class="help-block">Required and please enter valid email</span>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 main_wrap_form_inner_sub">
+              <label>Phone
+                <em class="em_star">*</em>
+              </label>
+              <input ng-model="$ctrl.phone" type="text" name="phone" placeholder="eg. (601) 521-1542" number="true" ng-change="$ctrl.testPhone()" class="form-control required" required="true" phone-input restrict="reject" ng-minlength="14" maxlength="14">
+              <span ng-show="$ctrl.contactUs.phone.$error.pattern || $ctrl.contactUs.phone.$error.minlength || $ctrl.contactUs.phone.$error.maxlength" class="help-block">Invalid US number.</span>
+              <span ng-show="$ctrl.contactUs.phone.$error.required" class="help-block">Required</span>
+
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 main_wrap_form_inner_sub">
+              <label>Message
+                <em class="em_star">*</em>
+              </label>
+              <textarea class="form-control required" name="message" ng-model="$ctrl.message" required=""></textarea>
+              <span ng-show="$ctrl.contactUs.message.$error.required" class="help-block">Required</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="log_btn_div btms_spaces col-md-12 col-sm-12 col-xs-12">
+              <input type="submit" id="submit_profile" class="btn btn-primary modal_btn pull-right" ng-disabled="$ctrl.contactUs.fname.$error.required || $ctrl.contactUs.lname.$error.required|| $ctrl.contactUs.email.$invalid || $ctrl.contactUs.phone.$invalid || $ctrl.contactUs.email.$invalid || $ctrl.contactUs.message.$invalid" value="Submit">
+            </div>
+          </div>
+        </form>
+        <!-- END FORM-->
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+          <footer-ad></footer-ad>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-3">
+      <h2 class="contct_heding">Address</h2>
+      <address>
+        <!--<strong>Loop, Inc.</strong>-->
+
+        <p> </p>
+        <strong>Phone:</strong>
+        <span class="invocaNumber">877-649-0306</span>
+      </address>
+      <address>
+        <strong>Email</strong>
+        <br>
+        <a href="#">info@addictionnetwork.com</a>
+      </address>
+    </div>
+    <!-- <side-panel></side-panel> -->
+  </div>
+</div>

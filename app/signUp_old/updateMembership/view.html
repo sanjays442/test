@@ -1,0 +1,71 @@
+<div class="container progress-content">
+<div class="progressbar">
+<div class="col-md-6 col-md-offset-6">
+  <span class="member-cart"><img src="themes/addiction/images/png/Cart-Icon.png" /></span>
+  <div class="progress progress-grediant">
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70"
+    aria-valuemin="0" aria-valuemax="100" style="width:70%">
+      <span class="stick-me">70%</span>
+      <p class=""><img src="themes/addiction/images/png/Cart-Icon.png" /></p>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="clearfix"></div>
+  <div class="progress-content-one">
+
+      <div class="col-md-6">
+        <div class="progress-img-wrap">
+          <div style="background-image: url('themes/addiction/images/png/illustrations-Upgrade-membership.png');" class="progress-img">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+          <div class="para-optional">
+            <p class="lead">Update membership:</p>
+            <p>There is also an option to upgrade membership. Check the table below for the benefits:</p>
+          </div>
+          <div class="table-responsive table-pro">
+            <table class="table table-bordered">
+              <tbody>
+                <tr class="no-border">
+                  <td></td>
+                  <td>Gold ($)</td>
+                  <td>Platinum($)</td>
+                </tr>
+                <tr>
+                  <td>Show Contact details</td>
+                  <td><i class="fa fa-check"></i></td>
+                  <td><i class="fa fa-check"></i></td>
+                </tr>
+                <tr>
+                  <td>Sponsor pages</td>
+                  <td><i class="fa fa-check"></i></td>
+                  <td><i class="fa fa-check"></i></td>
+                </tr>
+                <tr>
+                  <td>Publish Ads</td>
+                  <td><i class="fa fa-check"></i></td>
+                  <td><i class="fa fa-check"></i></td>
+                </tr>
+                <tr>
+                  <td>Feature in Home page</td>
+                  <td></td>
+                  <td><i class="fa fa-check"></i></td>
+                </tr>
+                <tr class="no-border2">
+                  <td></td>
+                  <td><a href="javascript:void(0);" ng-click="$ctrl.sponsored();">Select</a></td>
+                  <td><a href="javascript:void(0);" ng-click="$ctrl.featured();">Select</a></td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+          <ul class="list-inline um-np">
+            <li><a href="javascript:window.history.back();">Back</a></li>
+            <li><a href="javascript:void(0)" ng-click="$ctrl.sponser()">Continue <span ng-if="$ctrl.currentMembership===''">without upgrade</span><span ng-if="$ctrl.currentMembership==='sponsored'">with Gold membership</span> <span ng-if="$ctrl.currentMembership==='featured'">with Platinum membership</span> </a></li>
+          </ul>
+    </div>
+  </div>
+</div>

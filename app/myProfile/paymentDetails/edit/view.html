@@ -12,10 +12,10 @@
       <form name="paymentDetailsForm" ng-submit="$ctrl.submit()">
         <!-- Card Number -->
         <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <label for="name">Card Number: </label>
           </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <input placeholder="Card Number" name="card" id="name" class="form-control" type="text" ng-change="$ctrl.detectCardType($ctrl.card)" ng-model="$ctrl.card" ng-pattern="/^[0-9]+$/" required="">
             <span ng-show="paymentDetailsForm.card.$invalid" class="help-block">Invalid Card number</span>
             <span ng-if="($ctrl.totalDigits<15 || $ctrl.totalDigits>18) && paymentDetailsForm.card.$valid" class="help-block">Card number must be 15~18 digits.</span>
@@ -26,18 +26,13 @@
         </div>
 
         <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="name">Name: </label>
-          </div>
-          <div class="col-md-3 col-sm-3 col-xs-12">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <label for="name">First Name: </label>
             <input placeholder="First Name" name="firstName" class="form-control" type="text" ng-model="$ctrl.firstName" ng-minlength="2" ng-maxlength="25" required="">
             <span ng-show="paymentDetailsForm.firstName.$invalid" class="help-block">Invalid First Name</span>
           </div>
-          <div class="col-md-2 col-sm-2 col-xs-12">
-            <input placeholder="Middle Name" name="middleName" class="form-control" type="text" ng-model="$ctrl.middleName" ng-maxlength="20">
-            <span ng-show="paymentDetailsForm.middleName.$invalid" class="help-block">Max-length(20) reached</span>
-          </div>
-          <div class="col-md-3 col-sm-3 col-xs-12">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <label for="name">Last Name: </label>
             <input placeholder="Last Name" name="lastName" class="form-control" type="text" ng-model="$ctrl.lastName" ng-minlength="2" ng-maxlength="25" required="">
             <span ng-show="paymentDetailsForm.lastName.$invalid" class="help-block">Invalid Last Name</span>
           </div>
@@ -46,9 +41,7 @@
         <div class="adn-row">
           <div class="col-md-4 col-sm-4 col-xs-12">
             <label for="name">Expiry Year: </label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <select ng-model="$ctrl.year" name="year" ng-change="$ctrl.testYear($ctrl.year)" required="">
+            <select ng-model="$ctrl.year" name="year" ng-change="$ctrl.testYear($ctrl.year)" required="" class="form-control">
               <option value="">Select Year</option>
               <option value="2017">2017</option>
               <option value="2018">2018</option>
@@ -60,14 +53,9 @@
             <!-- <span class="help-block">{{$ctrl.yearError}}</span> -->
             <span class="help-block" ng-if="$ctrl.curYear > $ctrl.year">Invalid year</span>
           </div>
-        </div>
-        <!-- Expiry Month -->
-        <div class="adn-row">
           <div class="col-md-4 col-sm-4 col-xs-12">
             <label for="name">Expiry Month: </label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <select ng-model="$ctrl.month" name="month" required="">
+            <select ng-model="$ctrl.month" name="month" required="" class="form-control">
               <option value="">Select Month</option>
               <option value="01">01</option>
               <option value="02">02</option>
@@ -84,25 +72,20 @@
             </select>
             <!-- <span class="help-block">{{$ctrl.monthError}}</span> -->
           </div>
-        </div>
-        <!-- CVV Code -->
-        <div class="adn-row">
           <div class="col-md-4 col-sm-4 col-xs-12">
             <label for="cpwd">CVV Code</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input name="cvv" ng-model="$ctrl.cvv" class="form-control" type="text" placeholder="CVV Code" ng-pattern="/^[0-9]+$/" ng-minlength="3" ng-maxlength="3" required="" />
+            <input name="cvv" ng-model="$ctrl.cvv" class="form-control" type="text" placeholder="CVV Code" ng-pattern="/^[0-9]+$/" ng-minlength="3" ng-maxlength="4" required="" />
             <span ng-show="paymentDetailsForm.cvv.$invalid" class="help-block">Invalid CVV Code</span>
           </div>
         </div>
 
         <!-- make default -->
-        <div class="adn-row">
+        <div class="adn-row hide_it">
           <div class="col-md-4 col-sm-4 col-xs-12">
             <label for="cpwd">Default</label>
           </div>
           <div class="col-md-8 col-sm-8 col-xs-12">
-            <input name="default" ng-model="$ctrl.default" class="form-control default-payment" type="checkbox" />
+            <input name="default" ng-model="$ctrl.default" class="default-payment" type="checkbox" />
             <span>Use these credentials as your default payment method.</span>
           </div>
 

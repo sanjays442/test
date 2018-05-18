@@ -1,23 +1,38 @@
 <div class="view-advertisement">
-  <section-heading>{{$ctrl.title}}</section-heading>
-  <div class="profile-row">
-    <a ui-sref="myProfile.sponsorAds">
-      <span class="btn adn-btn right">
-        <i class="glyphicon glyphicon-hand-left"></i> Back
-      </span>
-    </a>
-  </div>
-  <div class="profile-content">
-    <div class="profile-row">
-      <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
-        <a class="thumbnail" href="{{$ctrl.website | urlFilter}}" target="blank">
-          <img src="{{$ctrl.image}}">
-        </a>
+  <section-heading>  {{$ctrl.treatmentCenter}}</section-heading>
+
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
+
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
       </div>
-      <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
-        <h3>{{$ctrl.name}}</h3>
-        <p>{{$ctrl.description}}</p>
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+        <!-- <div class="col-md-2 col-sm-2 col-xs-12">
+          <!-- <label for="tname">Treatment Center: </label>
+      </div> -->
+        <div class="col-sm-8">
+          <!-- {{$ctrl.treatmentCenter}} -->
+          <!-- <span ng-show="$root.centerSelected.length===0 " style="color:red;">Select any treatment center.</span> -->
+        </div>
+        <div class="col-sm-4">
+          <a ui-sref="myProfile.sponsorAds">
+            <span class="btn adn-btn right">
+              <i class="glyphicon glyphicon-hand-left"></i> Back
+            </span>
+          </a>
+        </div>
       </div>
+      <!-- Search By State Section -->
+      <!-- <sponsor-ads-view-sponsored-ads-state-select></sponsor-ads-view-sponsored-ads-state-select> -->
+      <sponsor-state-select-view></sponsor-state-select-view>
+      <sponsor-cart-view></sponsor-cart-view>
+      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+
+      </div>
+
     </div>
   </div>
+
+
 </div>

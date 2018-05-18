@@ -9,11 +9,15 @@ function ctrl($log, service, $scope, $rootScope, $document) {
         var sidebar = angular.element($document[0].querySelector('#sidebar_ad'));
         var sidebarUrl = angular.element($document[0].querySelector('#sidebar_ad_url'));
         $rootScope.$emit('AdChanged', result);
+
+        var filteredHeaderUrl = filter(result.advertisements.header.url);
+        var filteredSidebarUrl = filter(result.advertisements.side_bar.url);
+
         header.attr('src', result.advertisements.header.image);
-        headerUrl.attr('href', result.advertisements.header.url);
+        headerUrl.attr('href', filteredHeaderUrl);
         headerUrl.attr('target', '_blank');
         sidebar.attr('src', result.advertisements.side_bar.image);
-        sidebarUrl.attr('href', filter(result.advertisements.side_bar.url));
+        sidebarUrl.attr('href', filter(filteredSidebarUrl));
         sidebarUrl.attr('target', '_blank');
       }).catch(function (err) {
         // todo, display the error message in the page.

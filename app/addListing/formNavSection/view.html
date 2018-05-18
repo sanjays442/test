@@ -1,12 +1,28 @@
 <div class="profile-nav add-listing-nav">
-
+  <!-- cart -->
+  <!-- <div ng-show="$root.cityModel.length || $root.countyModel.length || $root.statesSel.length"> -->
+  <div ng-show="">
+    <div class="wp-flybox_tab" style="width: auto; display: inline-block; overflow: hidden; position: fixed; border: 0px none; left:0px;top: 50%; z-index: 99991;">
+      <p class="add_to_cart">Cart</p>
+      <div class="wp_but">
+        <div ng-repeat="cart in $ctrl.cartLink">
+          <!-- <a ui-sref="{{ cart.uiSref }}" ng-click="$root.getCartDetails($root.countyModel,$root.cityModel)"> -->
+          <a ui-sref="{{ cart.uiSref }}">
+            <img src="themes/addiction/images/cart.png" style="height:65px; border-radius:100%;margin-left:20px;" alt="Cart">
+          </a>
+        </div>
+      </div>
+      <div style="float:left;"></div>
+    </div>
+  </div>
   <ul class="profile-nav-list">
     <!-- Navigation-->
     <li ng-repeat="link in $ctrl.links">
       <!-- <a ui-sref="{{ link.uiSref }}" class="disabled1 current_active  profile-nav-link" ng-click="false" ng-if="(link.name===$root.activeLink && $root.hideSteps.indexOf(link.stateName) === -1)">{{ link.name }} </a>
       <a ui-sref="{{ link.uiSref }}" ng-if="(link.name!==$root.activeLink && $root.hideSteps.indexOf(link.stateName) === -1 )" class="disabled  profile-nav-link" ng-click="false">{{ link.name }} </a> -->
-      <a ui-sref="{{ link.uiSref }}" class="disabled1 current_active  profile-nav-link" ng-click="false" ng-if="(link.name===$root.activeLink)">{{ link.name }} </a>
-      <a ui-sref="{{ link.uiSref }}" ng-if="(link.name!==$root.activeLink)" class="disabled  profile-nav-link" ng-click="false">{{ link.name }} </a>
+      <a ui-sref="{{ link.uiSref }}" class="disabled1 current_active profile-nav-link" ng-click="false" ng-if="(link.name===$root.activeLink && $root.doneSteps.indexOf($root.activeLink) === -1 && $root.showSteps.indexOf(link.stateName) >= 0)">{{ link.name }} </a>
+      <a ui-sref="{{ link.uiSref }}" ng-if="(link.name!==$root.activeLink && $root.doneSteps.indexOf(link.stateName) === -1 && $root.showSteps.indexOf(link.stateName) >= 0)" class="disabled  profile-nav-link" ng-click="false">{{ link.name }} </a>
+      <a ui-sref="{{ link.uiSref }}" ng-if="($root.doneSteps.indexOf(link.stateName) >=0 && link.name !==$root.activeLink && $root.showSteps.indexOf(link.stateName) >= 0)" class="current_active profile-nav-link" ng-click="false">{{ link.name }} </a>
     </li>
   </ul>
 

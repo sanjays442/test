@@ -1,0 +1,103 @@
+<div class="container progress-content">
+  <div class="progressbar">
+    <div class="col-md-6 col-md-offset-6">
+      <div class="progress progress-grediant">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width:15%">
+          <span class="stick-me">15%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="progress-content-one">
+    <div class="col-md-6">
+      <div class="progress-img-wrap">
+        <div class="p-user-profile">CONGRATULATIONS</div>
+        <div style="background-image: url('themes/addiction/images/png/illustrations-Congratulations.png');" class="progress-img">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="col-md-12">
+        <div class="para-userprofile">
+          <p>You have registered your treatment center with {{$ctrl.membership.package_name}} membership in Addiction network and are one step awaay from your customers</p>
+          <p class="lead">Please check your bill amount below</p>
+        </div>
+      </div>
+      <div class="col-md-12 ">
+        <div class="row ">
+          <div class="col-md-4 ">
+            <label>Center Name</label>
+          </div>
+          <div class="col-md-4">
+            <label>Product</label>
+          </div>
+          <div class="col-md-3">
+            <label>Cost</label>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+        <div class="row" ng-repeat="item in $ctrl.cartDetails.items">
+          <div class="col-md-4">
+            <span>{{item.name}}</span>
+          </div>
+          <div class="col-md-4">
+            <span>Total</span>
+          </div>
+          <div class="col-md-3">
+            <span>10$</span>
+          </div>
+          <div class="col-md-1">
+            <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
+          </div>
+
+        </div>
+
+        <div class="row" ng-if="$ctrl.membership!==''" style="padding-top:5px;">
+          <div class="col-md-4">
+            <span></span>
+          </div>
+          <div class="col-md-4">
+            <span>Membership
+              <br>{{$ctrl.membership.package}}</span>
+          </div>
+          <div class="col-md-3">
+            <span>
+              <br>{{$ctrl.membership.cost}} $</span>
+          </div>
+          <div class="col-md-1">
+            <br>
+            <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+          </div>
+          <!-- {{$ctrl.grandTotal = $ctrl.grandTotal + $ctrl.membership.cost;}} -->
+        </div>
+
+        <div class="row" style="padding-top:10px;padding-bottom:10px;">
+          <div class="col-md-4">
+            <span></span>
+          </div>
+          <div class="col-md-4">
+            <br>
+            <span>Grand Total</span>
+          </div>
+          <div class="col-md-3">
+            <label>
+              <br>{{$ctrl.cartDetails.total_price}} $</label>
+          </div>
+          <div class="col-md-1"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-12" style="margin-top:50px;">
+      <p class="stick-next-left"><a href="javascript:void(0)" ng-click="$ctrl.testCenter()">Add Test center</a></p>
+      <p class="stick-next-left font-normal back-button"><a href="javascript:window.history.back();">Back</a></p>
+      <!-- <p class="stick-next-left"><a href="javascript:void(0)" ng-click="$ctrl.viewProfile()">View my profile</a></p> -->
+      <p class="stick-next-right"><a href="javascript:void(0)" ng-click="$ctrl.gotoPayment()">Next</a></p>
+    </div>
+
+  </div>
+</div>

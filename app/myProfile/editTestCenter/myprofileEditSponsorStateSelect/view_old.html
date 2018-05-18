@@ -1,0 +1,91 @@
+<!-- <section-heading>Select State</section-heading> -->
+<!--- Map content  Start   -->
+
+<div class="col-sm-12 steps_sponsored"><div class="col-sm-10">Step1: Click on the map to select state, county and city or <b>{{$ctrl.checkAllText[$root.activeCenter]}}</b>
+  <input type="checkbox" name="" ng-model="$root.checkedAllStates[$root.activeCenter]" ng-change="$ctrl.selectStateAll()" ng-click="$ctrl.checkboxCheck()" /></div><div class="col-sm-2"><span style="cursor:pointer;" ng-click="$ctrl.gotoCart();"><img  alt="cart" /></span> </div></div>
+<div onselectstart="return false;" class="unselectable col-sm-12">
+  <div id="mapwrapper" class="col-sm-12">
+    <div class="col-sm-2">
+      <ul style="list-style-type:none">
+        <li style="font-size:12px;" ng-repeat="state in $root.stateIds | orderBy:'state' | limitTo:26">
+          <input style="visibility:hidden;" type="checkbox" ng-model="$ctrl.stateSelectCheck[state.name]">
+          <span style="background-color:#c3e09f;cursor:pointer;{{$ctrl.curSelStyle[state.name]}}" ng-click="$ctrl.stateCheckboxClick(state,true);" ng-if="$ctrl.stateSelectCheck[state.name]"> {{state.state}}</span>
+          <span ng-click="$ctrl.stateCheckboxClick(state,true);" style="cursor:pointer;{{$ctrl.curSelStyle[state.name]}}" ng-if="$ctrl.stateSelectCheck[state.name]!==true"> {{state.state}}</span>
+          <input type="checkbox" ng-if="$ctrl.stateCurrentSelection==state.name" ng-model="$ctrl.stateSelectCheck[state.name]" ng-click="$ctrl.stateCheckboxClick(state,false);"> </li>
+      </ul>
+    </div>
+    <div class="col-sm-8">
+      <div id="map_base">
+        <!-- <state-map ng-click="$ctrl.onStateSelect(state)" on-select="$ctrl.onStateSelect(state)"></state-map> -->
+        <state-map on-select="$ctrl.onStateSelect(state)"></state-map>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <ul style="list-style-type:none">
+        <li style="font-size:12px" ng-repeat="state in $root.stateIds | orderBy:'state' | limitTo:60" ng-if="$index>=26">
+          <input type="checkbox" style="visibility:hidden;" ng-model="$ctrl.stateSelectCheck[state.name]">
+          <span style="background-color:#c3e09f;cursor:pointer;{{$ctrl.curSelStyle[state.name]}}" ng-click="$ctrl.stateCheckboxClick(state,true);" ng-if="$ctrl.stateSelectCheck[state.name]"> {{state.state}}</span>
+          <span ng-click="$ctrl.stateCheckboxClick(state,true);" style="cursor:pointer;{{$ctrl.curSelStyle[state.name]}}" ng-if="$ctrl.stateSelectCheck[state.name]!==true"> {{state.state}}</span>
+          <span>
+            <input type="checkbox" ng-if="$ctrl.stateCurrentSelection==state.name" ng-model="$ctrl.stateSelectCheck[state.name]" ng-click="$ctrl.stateCheckboxClick(state,false);">
+          </span>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <div class="additional_filters">
+    <div class="col-sm-12">
+      <!-- <div ng-dropdown-multiselect="" id="statesSelect" options="$root.allStates" translation-texts="$ctrl.stateSelectText" selected-model="$root.stateSelectModel" extra-settings="$ctrl.stateSelectSetting" events="{onItemSelect: $ctrl.updateCart, onItemDeselect: $ctrl.updateCart, onSelectAll: $ctrl.updateCart, onDeselectAll:$ctrl.updateCart}" checkboxes="true"></div> -->
+      <!-- <input type="checkbox" name="" ng-model="$root.checkedAllStates" ng-change="$ctrl.selectStateAll()" ng-init="$ctrl.checkAllText=' Select all states'" /> {{$ctrl.checkAllText}} -->
+    </div>
+  </div>
+  <div class="col-sm-12 steps_sponsored step2" ng-show="$ctrl.stateCurrentSelection" style="font-size:12px;">Select the cities and counties in the state selected</div>
+  <div class="additional_filters spnser-selectbox" ng-show="$ctrl.stateCurrentSelection">
+    <div class="col-sm-12">
+      <div class="col-sm-4">
+        <img src="themes/addiction/images/{{$ctrl.stateImage}}.png" style="width:100%;opacity:0.8">
+      </div>
+      <div class="col-sm-4">
+        <button class="button btn-primary" ng-click="$ctrl.showCityCountyDropdown('county');">Select County</button>
+        <div ng-dropdown-multiselect="" ng-show="$ctrl.displayCountySelect===1" ng-click="$ctrl.checkFirst(); " id="selectCounties" options="$root.city" checkboxes="true" selected-model="$root.cityModel[$root.activeCenter]" extra-settings="$root.multiselectModelSettingsCity" translation-texts="$root.cityText" events="{ onSelectAll: onSelectAllCity, onItemSelect: $ctrl.citySelectFun, onItemDeselect: $ctrl.deSelectCityFun}"></div>
+    </div>
+      <div class="col-sm-4">
+        <button class="button btn-primary" ng-click="$ctrl.showCityCountyDropdown('city');">Select City</button>
+        <div ng-dropdown-multiselect="" ng-show="$ctrl.displayCitySelect===1" ng-click="$ctrl.checkFirst(); " id="selectCities" options="$root.county" checkboxes="true" selected-model="$root.countyModel[$root.activeCenter]" extra-settings="$root.multiselectModelSettingsCounty" translation-texts="$root.countyText" events="{ onSelectAll: onSelectAllCounty, onItemSelect: $ctrl.countySelectFun, onItemDeselect: $ctrl.deSelectCountyFun }"></div>
+      </div>
+      <div style="margin-bottom:30%;"></div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="col-sm-12 steps_sponsored step2" ng-init="$ctrl.deleteItemType=''">Step2: Select various categories for your treatment center</div>
+  <div class="additional_filters spnser-selectbox">
+    <div class="col-sm-12">
+      <div class="col-sm-4">
+        <div ng-dropdown-multiselect="" ng-click="$ctrl.checkFirst(); " id="demographic" options="$root.demographic" ng-if="$root.demographicModel[$root.activeCenter]" selected-model="$root.demographicModel[$root.activeCenter]" extra-settings="$ctrl.demographic" translation-texts="$ctrl.buttonTxtDemographic" events="{onItemSelect: $ctrl.updateCart, onItemDeselect: $ctrl.itemDeselectDemographic}" checkboxes="true">
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div ng-dropdown-multiselect="" ng-click="$ctrl.checkFirst(); " id="treatmentApproach" options="$root.treatmentApproach" ng-if="$root.treatmentApproachModel[$root.activeCenter]" translation-texts="$ctrl.buttonTxtTreatmentApproach" selected-model="$root.treatmentApproachModel[$root.activeCenter]" extra-settings="$ctrl.treatment" events="{onItemSelect: $ctrl.updateCart, onItemDeselect:$ctrl.itemDeselectTreatment}" checkboxes="true"></div>
+      </div>
+      <div class="col-sm-4">
+        <div ng-dropdown-multiselect="" ng-click="$ctrl.checkFirst(); " id="payment" options="$root.payment" selected-model="$root.paymentModel[$root.activeCenter]" ng-if="$root.paymentModel[$root.activeCenter]" translation-texts="$ctrl.buttonTxtPayment" extra-settings="$ctrl.payment" events="{onItemSelect: $ctrl.updateCart,onItemDeselect:$ctrl.itemDeselectPayment}" checkboxes="true"></div>
+      </div>
+      <div style="margin-bottom:30%;"></div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-sm-12">
+      <div class="col-sm-4">
+        <div ng-dropdown-multiselect="" ng-click="$ctrl.checkFirst(); " id="additionalServices" options="$root.additionalServices" translation-texts="$ctrl.buttonTxtAdditionalServices" ng-if="$root.additionalServicesModel[$root.activeCenter]" selected-model="$root.additionalServicesModel[$root.activeCenter]" extra-settings="$ctrl.additional_services" events="{onItemSelect: $ctrl.updateCart, onItemDeselect:$ctrl.itemDeselectAdditional}" checkboxes="true"></div>
+      </div>
+      <div class="col-sm-4" style="padding-right: 30px;">
+        <div ng-dropdown-multiselect="" id="setting" ng-click="$ctrl.checkFirst(); " options="$root.setting" translation-texts="$ctrl.buttonTxtSetting" selected-model="$root.settingModel[$root.activeCenter]" ng-if="$root.settingModel[$root.activeCenter]" extra-settings="$ctrl.settings" events="{onItemSelect: $ctrl.updateCart,onItemDeselect:$ctrl.itemDeselectSetting }" checkboxes="true"></div>
+      </div>
+      <div class="col-sm-4">
+        <div ng-dropdown-multiselect="" id="byDrug" ng-click="$ctrl.checkFirst(); " options="$root.byDrug" selected-model="$root.byDrugModel[$root.activeCenter]" translation-texts="$ctrl.buttonTxtByDrug" ng-if="$root.byDrugModel[$root.activeCenter]" extra-settings="$ctrl.byDrug" events="{onItemSelect: $ctrl.updateCart,onItemDeselect:$ctrl.itemDeselectBydrug}" checkboxes="true"></div>
+      </div>
+    </div>
+  </div>
+
+</div>

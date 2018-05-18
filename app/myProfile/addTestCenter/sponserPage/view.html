@@ -1,0 +1,55 @@
+<div class="container progress-content sponser-page">
+  <div class="clearfix"></div>
+  <div class="progress-content-one mt-30">
+    <div class="col-md-6 col-md-12">
+      <div class="progress-img-wrap">
+        <!-- <div style="background-image: url('themes/addiction/images/png/Upgrade.gif');" class="progress-img">
+        </div> -->
+        <div style="background-image: url('themes/addiction/images/png/Sponsorship.gif'); background-size:contain" class="progress-img"> </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="progressbar" ng-if="0">
+        <span class="member-cart" style="cursor:pointer;" ng-click="$ctrl.goToCart()">
+          <img src="themes/addiction/images/png/Cart-Icon.png" /> </span>
+        <div class="progress progress-grediant prg-newcss">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{$ctrl.progressValue}}" aria-valuemin="0" aria-valuemax="100" style="width:{{$ctrl.progressValue}}%">
+            <span class="stick-me">{{$ctrl.progressValue}}%</span>
+            <p class="">
+              <img src="themes/addiction/images/png/Cart-Icon.png" /> </p>
+          </div>
+        </div>
+      </div>
+      <div class="para-optional ht238">
+        <p>
+          <strong>You have now upgraded your membership.</strong>
+        </p>
+        <p>Now would you like to sponsor a few of our pages and get featured in them? This makes it easier for you to advertise your treatment center specifically with the target market that you are looking at.</p>
+        <p class="lead " ng-if="$ctrl.sponsorAdded!==1"><a href="javascript:void(0)" ng-click="$ctrl.add_sponsor()" class="sponser-b">Add Sponsor Pages</a></p>
+        <p ng-if="$ctrl.bannerAdded!==1">You can also choose to publish ads for your treatment center on our website to gain more visibility accross all audience.</p>
+        <p ng-if="$ctrl.bannerAdded===1">
+          <span style="cursor:pointer;" ng-click="$ctrl.publish_ads()">Publish Ads: Added</span>
+        </p>
+        <p ng-if="$ctrl.sponsorAdded===1">
+          <span style="cursor:pointer;" ng-click="$ctrl.add_sponsor()">Sponsor Ads: Added</span>
+        </p>
+        <p class="lead sponser-b" ng-if="$ctrl.bannerAdded!==1"><a href="javascript:void(0)" ng-click="$ctrl.publish_ads()">Publish my Ads</a></p>
+      </div>
+      <div class="custom-row mt-59 ml-05" ng-if="$ctrl.bannerAdded===1">
+        <div class="col-md-6 bckk pl04"><a href="javascript:;" class="allbtn-bk" ng-click="$ctrl.goBack()">Back</a></div>
+        <div class="col-md-6 pr0" style="text-align:right;"><a href="javascript:void(0)" class="allbtn-cart" ng-click="$ctrl.goToCart()">Go to cart</a></div>
+
+        <!-- <div class="col-md-4 txt-rgtalign"><a href="javascript:void(0)" ng-if="$ctrl.sponsorAdded!==1 " ng-click="$ctrl.add_sponsor()">Next</a></div> -->
+
+      </div>
+      <div class="custom-row mtt-59 ml-05 " ng-if="$ctrl.bannerAdded!==1">
+        <div class="col-md-6 "><a href="javascript:;" class="allbtn-bk" ng-click="$ctrl.goBack()">Back</a></div>
+        <div class="col-md-6 text-right"><a href="javascript:void(0)" class="allbtn-cart" ng-click="$ctrl.goToCart()">Go to cart</a></div>
+
+        <!-- <div class="col-md-4 txt-rgtalign"><a href="javascript:void(0)" ng-if="$ctrl.sponsorAdded!==1 " ng-click="$ctrl.add_sponsor()">Next</a></div> -->
+
+        <!-- <div class="col-md-4 text-right pr0"><a href="javascript:void(0)" ng-if="$ctrl.bannerAdded!==1" class="allbtn-nxt" ng-click="$ctrl.publish_ads()">Next</a></div> -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,132 @@
+<!-- {{$root.cityModel}} {{$root.countyModel}} -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-md-12 margin-left" style="margin-top:25%;margin-left:30px;">
+      <div class="col-sm-12 steps_sponsored step3">Step 3: Confirm or Edit your selected options to advertise</div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-info" style="margin-left:30px;">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <div class="row">
+        <div class="col-xs-6">
+          <h5>
+            <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
+        </div>
+        <!-- <div class="col-xs-6">
+        <button type="button" ng-click="$ctrl.continueShop()" class="btn btn-primary btn-sm btn-block">
+          <span class="glyphicon glyphicon-share-alt"></span> Continue shopping
+        </button>
+      </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- {{$root.treatmentCentersModel}} -->
+<table class="responstable" style="margin-left:30px;">
+  <tbody>
+    <tr>
+      <td>
+        <span class="pull-left">Treatment Centers</span>
+      </td>
+      <td colspan="2">
+        <span class="label label-primary" ng-repeat="center in $ctrl.treatmentCenters">{{center.label}}</span>
+      </td>
+    </tr>
+    <tr>
+      <td width="25%">
+        <span class="pull-left">STATE</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key,state) in $root.statesSel">{{state.state}}<i ng-click="$ctrl.deleteCartItem(key,'state')" class="fa fa-times"> </i></span>
+      </td>
+      <td width="10%">${{$ctrl.stateTotalCost}}</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-left">CITY</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key,cities) in $root.cities
+">{{cities.name}}<i ng-click="$ctrl.deleteCartItem(key,'city')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.cityTotalCost}}</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-left">COUNTY</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key,counties) in $root.counties">{{counties.name}}<i ng-click="$ctrl.deleteCartItem(key,'county')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.countyTotalCost}}</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-left">DEMOGRAPHICS</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key, demography) in $ctrl.demographic">{{demography.label}}<i ng-click="$ctrl.deleteCartItem(key,'demographic')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.demographicTotal}}</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-left">TREATMENT APPROACHES</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key, treatment) in $ctrl.treatmentApproach">{{treatment.label}}<i ng-click="$ctrl.deleteCartItem(key,'treatmentApproach')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.treatmentApproachTotal}}</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-left">PAYMENT</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key, payment) in $ctrl.payment">{{payment.label}}<i ng-click="$ctrl.deleteCartItem(key,'payment')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.paymentTotal}}</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-left">ADDITIONAL SERVICES</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key, additionalServices) in $ctrl.additionalServices">{{additionalServices.label}}<i ng-click="$ctrl.deleteCartItem(key,'additionalServices')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.additionalServicesTotal}}</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-left">SETTING</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key, setting) in $ctrl.setting">{{setting.label}}<i ng-click="$ctrl.deleteCartItem(key,'setting')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.settingTotal}}</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-left">BY DRUG</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key, drug) in $ctrl.byDrug">{{drug.label}} <i ng-click="$ctrl.deleteCartItem(key,'byDrug')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.byDrugTotal}}</td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <span class="pull-right">
+          <h4>
+            <strong>${{$ctrl.totalCost}}</strong>
+          </h4>
+        </span>
+        <span class="pull-right">
+          <h4 class="text-right">Total Cost: </h4>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

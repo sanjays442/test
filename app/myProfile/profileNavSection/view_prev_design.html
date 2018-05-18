@@ -1,0 +1,42 @@
+<div class="pn-new">
+
+  <!--static-->
+  <div class="pn-heading">
+      <p>
+        <a ui-sref="myProfile.profile" class="{{$ctrl.activeMenu['my-profile']}}"  ng-click="$ctrl.setCurrentMenu('my-profile');"> My Profile </a></p>
+  </div>
+  <nav class="nav">
+    <ul class="list-inline">
+      <!-- <li class="active">
+        <a href="">Test center Details</a>
+      </li> -->
+
+      <li ng-if="$root.profileData.type_of_user==='free'" class="{{$ctrl.activeMenu[link.slug]}}"  ng-repeat="link in $ctrl.linksFree">
+        <a ui-sref="{{ link.uiSref }}"  ng-click="$ctrl.setCurrentMenu(link.slug);" >{{ link.name }} </a>
+      </li>
+      <li ng-if="$root.profileData.type_of_user!=='free'"  class="{{$ctrl.activeMenu[link.slug]}}" ng-repeat="link in $ctrl.linksFree">
+        <a ui-sref="{{ link.uiSref }}" ng-click="$ctrl.setCurrentMenu(link.slug);">{{ link.name }} </a>
+      </li>
+
+    </ul>
+  </nav>
+</div>
+<!--end static-->
+
+<div class="profile-nav" ng-show="0">
+  <ul class="profile-nav-list">
+    <!-- Profile Picture-->
+    <li>
+      <img ng-src="{{ $ctrl.profilePic }}" class="img-circle" />
+    </li>
+
+    <!-- Navigation-->
+    <li ng-if="$root.profileData.type_of_user==='free'" ng-repeat="link in $ctrl.linksFree">
+      <a ui-sref="{{ link.uiSref }}" class="profile-nav-link">{{ link.name }}  </a>
+    </li>
+
+    <li ng-if="$root.profileData.type_of_user!=='free'" ng-repeat="link in $ctrl.linksPaid">
+      <a ui-sref="{{ link.uiSref }}" class="profile-nav-link">{{ link.name }}  </a>
+    </li>
+  </ul>
+</div>

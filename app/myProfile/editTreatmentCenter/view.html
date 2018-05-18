@@ -1,206 +1,172 @@
 <div class="edit-treatment-center">
-  <section-heading>Edit Treatment Center</section-heading>
-  <!-- Content Start -->
-  <div class="profile-content">
-    <div class="profile-row">
-      <a href="javascript:history.go(-1);">
-        <span class="btn adn-btn right">
-          <i class="glyphicon glyphicon-hand-left"></i> Back
-        </span>
-      </a>
-    </div>
-    <div class="profile-row">
-      <form ng-submit="$ctrl.submit()" class="form-horizontal" novalidate="novalidate" __bizdiag="1043787928" __biza="WJ__">
-
-        <!-- Category -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="category">Select Category:</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12 class_for_select">
-            <div ng-dropdown-multiselect="" options="$ctrl.treatmentCenterCategories" checkboxes="true" selected-model="$ctrl.multiselectModelCategories" extra-settings="$ctrl.multiselectModelSettings"></div>
-
+  <div class="container progress-content mt-30">
+    <!-- <div class="progressbar" >
+      <div class="col-md-6 col-md-offset-6">
+        <div class="progress progress-grediant">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+            <span class="stick-me">40%</span>
           </div>
         </div>
-
-        <!-- Center Name -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="tname">Center Name:</label>
+      </div>
+    </div> -->
+    <!-- <div class="clearfix"></div> -->
+    <div class="progress-content-one">
+      <div class="col-md-6">
+        <div class="progress-img-wrap">
+          <div class="p-tc-title">Edit test center</div>
+          <div style="background-image: url('themes/addiction/images/png/illustrations-Woman-Explains.png');" class="progress-img">
           </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input ng-model="$ctrl.center_name" type="text" class="form-control required" placeholder="Treatment Center Name" />
-          </div>
+          <div class="p-tc-desc">{{$ctrl.displayMsg}}</div>
         </div>
+      </div>
+      <div class="col-md-6">
+        <div class="psignup-form user-create" style="height:338px;margin-top:48px;">
+          <form class="psignup-form  n-form" name="$ctrl.centerForm" style="margin-top:0px;">
+            <div ng-hide="$ctrl.showFirstStep===0">
+              <div class="form-group">
+                <span class="abslt-plc" ng-if="$ctrl.center_name">Center Name</span>
+                <input type="text" class="form-control" name="centerName" ng-focus="$ctrl.displayMsg='Center Name'" placeholder="Center Name" ng-model="$ctrl.center_name" ng-keypress="$ctrl.centerFormInit.centerName = 0" required>
+                <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Name of your treatment center"><i class="fa fa-question-circle-o fa-2x"></i></span>
+              </div>
 
-        <!-- Center Website Link -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="web_link">Website Link:</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input ng-model="$ctrl.center_web_link" type="text" class="form-control required url" placeholder="http://www.google.com" value="" />
-          </div>
-        </div>
+              <div class="form-group" ng-click="$ctrl.catgsToggleFun()" ng-init="$ctrl.catgsToggle=0">
+                <!-- <input type="text" class="form-control" placeholder="Categories" style="cursor:pointer;" readonly="readonly"> -->
+                <span class="abslt-plc" style="position:relative;" ng-if="$ctrl.catgcheckedstring[1]==='checked' || $ctrl.catgcheckedstring[2]==='checked' || $ctrl.catgcheckedstring[3]==='checked' || $ctrl.catgcheckedstring[4]==='checked'">Categories</span>
+                <div class="no-border categories" ng-if="$ctrl.catgcheckedstring[1]==='' && $ctrl.catgcheckedstring[2]==='' && $ctrl.catgcheckedstring[3]==='' && $ctrl.catgcheckedstring[4]===''">
+                  Categories
+                </div>
+                <span class="fix-right" tooltip-placement="right" data-toggle="collapse" data-target="#collapse-catg" uib-tooltip="Show/hide Category"></span>
+              </div>
+              <div class="form-group checkboxFive2-category" ng-if="$ctrl.catgsToggle!==1">
+                <div ng-repeat="catgs in $ctrl.centerCategories" class="checkboxFive2" style="padding-bottom:7px;padding-left:11px;padding-right:4px;">
+                  <input type="checkbox" id="catgs{{catgs.id}}" {{$ctrl.catgcheckedstring[catgs.id]}} name="catg[]" ng-model="$ctrl.categoryModel[catgs.id]" ng-click="$ctrl.catgChecked(catgs.id,$ctrl.categoryModel[catgs.id]);" />
+                  <span style="cursor:pointer;" ng-click="$ctrl.catgChecked(catgs.id,$ctrl.categoryModel[catgs.id],'label_click');"> {{catgs.label}}</span>
+                  <label for="catgs{{catgs.id}}" class="tooltiptext {{$ctrl.catgcheckedstring[catgs.id]}}"></label>
+                </div>
+              </div>
 
-        <!-- Street Address -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="addr">Street Address:</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input ng-model="$ctrl.address_line_1" type="text" class="form-control required" placeholder="" />
-            <input type="hidden" name="centerapprove" value="0" />
-          </div>
-        </div>
+              <div class="form-group">
+                <span class="abslt-plc" ng-if="$ctrl.center_web_link || $ctrl.websitePlaceholder">Website</span>
+                <input type="text" class="form-control" placeholder="Website" name="website" ng-focus="$ctrl.displayMsg='Website'" ng-keyup="$ctrl.extraPlaceholder('website')" ng-model="$ctrl.center_web_link" ng-keypress="$ctrl.centerFormInit.website=0" required ng-pattern="/^((https?|ftp|smtp):\/\/)?([\w W]{3}.)?[a-z0-9A-Z]+\.[a-zA-Z]+(\/[a-zA-Z0-9#]+\/?)*$/">
+                <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Weblink of your treatment center"><i class="fa fa-question-circle-o fa-2x"></i></span>
+                <!-- <span ng-show="$ctrl.centerForm.website.$error.required && ($ctrl.centerFormInit.website===0)" class="help-block">Required</span>
+              <span ng-show="$ctrl.centerForm.website.$error.pattern && ($ctrl.centerFormInit.website===0)" class="help-block">Invalid website</span> -->
 
-        <!-- City -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="city">City:</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input ng-model="$ctrl.city" type="text" class="form-control required" placeholder="center city" value="" />
-          </div>
-        </div>
+              </div>
+              <div class="form-group">
+                <span class="abslt-plc" ng-if="$ctrl.email || $ctrl.emailPlaceholder">Contact Email</span>
+                <input type="email" class="form-control" name="email" ng-model="$ctrl.email" ng-focus="$ctrl.displayMsg='Email'" ng-keyup="$ctrl.extraPlaceholder('email')" ng-keypress="$ctrl.centerFormInit.email=0" required placeholder="Contact Email" ng-pattern="/^(([^<>()\[\]\.,;:\s@\']+(\.[^<>()\[\]\.,;:\s@\']+)*)|(\'.+\'))@(([^<>()[\]\.,;:\s@\']+\.)+[^<>()[\]\.,;:\s@\']{2,})$/i">
+                <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Email address to contact your treatment center"><i class="fa fa-question-circle-o fa-2x"></i></span>
+                <!-- <span ng-show="$ctrl.centerForm.email.$error.required && ($ctrl.centerFormInit.email===0)" class="help-block">Required</span>
+              <span ng-show="$ctrl.centerForm.email.$error.pattern && ($ctrl.centerFormInit.email===0)" class="help-block">Invalid email</span> -->
 
-        <!-- Select State -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="state">Select State:</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12 class_for_select">
-            <state-select selected="$ctrl.state" on-update="$ctrl.onStateUpdate(selected)"></state-select>
-          </div>
-        </div>
+              </div>
+              <div class="form-group">
+                <span class="abslt-plc" ng-if="$ctrl.phone || $ctrl.phonePlaceholder">Contact Phone No</span>
+                <input type="text" class="form-control" name="phone" ng-focus="$ctrl.displayMsg='Contact Phone No'" ng-model="$ctrl.phone" ng-keyup="$ctrl.extraPlaceholder('phone')" ng-keypress="$ctrl.centerFormInit.phone=0" required placeholder="Contact Phone no" ng-pattern="/^[0-9-+() ]*$/">
+                <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Phone number to reach your treatment center"><i class="fa fa-question-circle-o fa-2x"></i></span>
+                <!-- <span ng-show="$ctrl.centerForm.phone.$invalid && ($ctrl.centerFormInit.phone===0)" class="help-block">Invalid phone</span>
+              <span ng-show="$ctrl.centerForm.phone.$invalid!='true' && ($ctrl.centerFormInit.phone===0) && $ctrl.phoneErrorTxt!=''" ng-init="$ctrl.phoneErrorTxt=''" class="help-block">{{$ctrl.phoneErrorTxt}}</span> -->
 
-        <!-- Zipcode -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="zip">Zipcode:</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input ng-model="$ctrl.pincode" type="text" name="center_zip" class="form-control required" number="true" maxlength="5" minlength="5" id="zip" placeholder="14100" value="" />
-          </div>
-        </div>
+              </div>
+              <div class="form-group">
+                <span class="abslt-plc" ng-if="$ctrl.address_line_1">Address</span>
+                <input type="text" class="form-control" placeholder="Address" ng-focus="$ctrl.displayMsg='Address'" name="address" ng-model="$ctrl.address_line_1" ng-keypress="$ctrl.centerFormInit.address=0" required>
+                <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Please enter the treatment center address"><i class="fa fa-question-circle-o fa-2x"></i></span>
+                <!-- <span ng-show="$ctrl.centerForm.address.$invalid && ($ctrl.centerFormInit.address===0)" class="help-block">Required</span> -->
 
-        <!-- Phone -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="phone">Phone:</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input ng-model="$ctrl.phone" type="text" name="center_phone" class="form-control required" id="phone" number="true" maxlength="10" minlength="10" placeholder="09855438504" value="" />
-          </div>
-        </div>
-
-        <!-- Email -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="phone">Email:</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input ng-model="$ctrl.email" type="email" name="center_email" class="form-control required" email="placeholder=&quot;abc@gmail.com&quot;" value="">
-          </div>
-        </div>
-
-        <!-- Logo -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="logo"></label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <img ng-src="{{ $ctrl.logo }}">
-          </div>
-        </div>
-
-        <!-- Logo Upload-->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="img_upload">Logo:</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <div class="">
-              <a href="javascript:void(0)">
-                <input file-model="$ctrl.listing_image" type="file" name="center_image" id="img_upload" class="center_image" />
-              </a>
-              <span style="float:left;">Please upload an image with exact size of 308*180 KB.
-              </span>
+              </div>
             </div>
-          </div>
-        </div>
+            <!-- ************** optional fields code ****************************** -->
+            <div ng-show="$ctrl.showSecondStep===1">
+              <!-- <div class="para-optional">
+                <p>Now there are a few more optional fields which when filled can help give a clearer picture for the customers and help them make a decision quickly. Taking a couple of minutes extra can definitely boost your profile in our website.</p>
+                <p class="lead">Optional Fields</p>
+              </div> -->
+              <div class="psignup-form fg-height height-390" style="margin:0 auto 0 0;">
+                <!-- <form class="psignup-form n-form" name="$ctrl.optionalForm"> -->
+                <div class="form-group">
+                  <span class="abslt-plc" ng-if="$ctrl.description">Description</span>
+                  <input type="text" class="form-control" name="description" ng-focus="$ctrl.displayMsg='Description'" ng-blur="$ctrl.displayMsg=''" ng-keypress="$ctrl.optionalInit.description=0" ng-model="$ctrl.description" placeholder="Description">
+                  <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Enter brief description for your treatment center "><i class="fa fa-question-circle-o fa-2x"></i></span>
+                  <!-- <span ng-show="$ctrl.optionalForm.description.$invalid && ($ctrl.optionalInit.description===0)" class="help-block">Required</span> -->
 
-        <!-- Description content_1 -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="description">Description:</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <textarea ng-model="$ctrl.content_1" name="center_description" rows="3" cols="100%" class="form-control required" placeholder=""></textarea>
-          </div>
-        </div>
+                </div>
+                <div class="form-group">
+                  <span class="abslt-plc" ng-if="$ctrl.overview">Overview of the program</span>
+                  <input type="text" class="form-control" name="overview" ng-focus="$ctrl.displayMsg='Overview of the program'" ng-model="$ctrl.overview" ng-keypress="$ctrl.optionalInit.overview=0" placeholder="Overview of the program">
+                  <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Please enter program overview with small description"><i class="fa fa-question-circle-o fa-2x"></i></span>
+                  <!-- <span ng-show="$ctrl.optionalForm.overview.$invalid && ($ctrl.optionalInit.overview===0)" class="help-block">Required</span> -->
 
-        <!-- About  Facility content_2 -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="about">About Facility:</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <textarea ng-model="$ctrl.content_2" name="center_facility" rows="3" cols="100%" class="form-control required" id="description2" placeholder=""></textarea>
-          </div>
-        </div>
+                </div>
+                <div class="form-group">
+                  <span class="abslt-plc" ng-if="$ctrl.treatmentApproach">Treatment Approach</span>
+                  <input type="text" class="form-control" name="treatmentApproach" ng-focus="$ctrl.displayMsg='Treatment Approach'" ng-model="$ctrl.treatmentApproach" ng-keypress="$ctrl.optionalInit.treatmentApproach=0" placeholder="Treatment approach">
+                  <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Enter various treatment approach being taken at center."><i class="fa fa-question-circle-o fa-2x"></i></span>
+                  <!-- <span ng-show="$ctrl.optionalForm.treatmentApproach.$invalid && ($ctrl.optionalInit.treatmentApproach===0)" class="help-block">Required</span> -->
 
-        <!-- Treatment Approach content_3 -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="center_approach">Treatment Approach:</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <textarea ng-model="$ctrl.content_3" name="center_approach" rows="3" cols="100%" class="form-control required" placeholder=""></textarea>
-          </div>
-        </div>
+                </div>
+                <div class="form-group">
+                  <span class="abslt-plc" ng-if="$ctrl.usp">USP</span>
+                  <input type="text" class="form-control" name="usp" ng-model="$ctrl.usp" ng-focus="$ctrl.displayMsg='USP'" ng-keypress="$ctrl.optionalInit.usp=0" placeholder="USP">
+                  <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="What is the Unique selling points for your treatment center"><i class="fa fa-question-circle-o fa-2x"></i></span>
+                  <!-- <span ng-show="$ctrl.optionalForm.usp.$error.required && ($ctrl.optionalInit.usp===0)" class="help-block">Required</span>
+              <span ng-show="$ctrl.optionalForm.usp.$error.pattern && ($ctrl.optionalInit.usp===0)" class="help-block">Invalid Email</span> -->
 
-        <!-- Unique Selling Points content_4 -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="center_philosophy">Unique Selling Points:</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <textarea ng-model="$ctrl.content_4" name="center_philosophy" rows="3" cols="100%" class="form-control required" placeholder=""></textarea>
-          </div>
-        </div>
+                </div>
+                <div class="form-group clear-me mbt-08">
+                  <label class="label-uo">Logo</label>
+                  <div class="pull-left choose-file">
+                    <span>Upload <i class="fa fa-arrow-up"></i></span>
+                    <!-- <input type="file" class="file"> -->
+                    <input name="logo" id="logo" class="file" type="file" file-model="$ctrl.logoData" onchange="angular.element(this).scope().imagePreview(this)" accept="image/*">
+                  </div>
+                  <div class="fix-pos logo_preview-ct">
+                    <img id="logo_preview" width="50" name="logo_preview" />
+                    <i class="fa fa-times" ng-show="$ctrl.logoPreview" style="padding-left:5px;cursor:pointer;" ng-click="$ctrl.deleteLogo()" aria-hidden="true" tooltip-placement="right" uib-tooltip="Please upload the logo of your company/treatment center"></i>
+                  </div>
+                  <div class="pull-right fix-right">
+                    <span class="ng-binding" tooltip-placement="right" uib-tooltip="Please upload logo of your Treatment Center"><i class="fa fa-question-circle-o c-orange fa-2x"></i></span>
+                  </div>
+                </div>
+                <div class="form-group clear-me">
+                  <label class="label-uo">Gallery</label>
+                  <div class="pull-left choose-file">
+                    <span>Upload <i class="fa fa-arrow-up"></i></span>
+                    <!-- <input type="file" class="file"> -->
+                    <input name="gallery[]" id="gallery_data" class="file" type="file" file-model="$ctrl.galleryData" onchange="angular.element(this).scope().imagePreviewMulti(this)" multiple="multiple" accept="image/*">
+                  </div>
+                  <div class="pull-right fix-right">
+                    <span class="ng-binding" tooltip-placement="right" uib-tooltip="Please enter photos of your Treatment Center Gallery to show"><i class="fa fa-question-circle-o c-orange fa-2x"></i></span>
+                  </div>
+                </div>
 
-        <!-- Gallery Images -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="gallery"></label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <thumbnail-delete ng-repeat="imgUrl in $ctrl.center_images track by $index" imgurl="imgUrl" on-delete="$ctrl.deleteImage(imgUrl)"></thumbnail-delete>
-          </div>
-        </div>
+                <div class="form-group clear-me mbt-08">
+                  <div ng-repeat="(key, file) in $ctrl.multiPrvElm" class="img-option-gallery" ng-if="$ctrl.multiPreview[key]">
+                    <img id="multi_preview-{{key}}" width="50" />
+                    <i class="fa fa-times" ng-if="$ctrl.multiPreview[key]" style="padding-left:5px;cursor:pointer;" ng-click="$ctrl.deleteMulti(key)" aria-hidden="true" tooltip-placement="right" uib-tooltip="Delete image"></i>
 
-        <!-- Upload Gallery Images image_data -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="web_link">Upload Gallery Images:
-            </label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <div id="galler_image_wrap">
-              <input file-model="$ctrl.image_data" type="file" multiple name="treatment_center_gallery_images[]" id="galler_image" class="span2 text_file multi center_image" value="" />
-              <span id="galler_image_wrap_labels"></span>
+                  </div>
+                </div>
+                <!-- </form> -->
+              </div>
             </div>
-          </div>
+            <!-- optional field-->
+          </form>
         </div>
 
-        <!-- Submit -->
-        <div class="adn-row">
-          <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-md-offset-4 col-sm-12 col-xs-12">
-            <button type="submit" class="btn adn-btn right">Submit</button>
-          </div>
+        <div class="custom-row mt-36 mt-362 edit-treatment-center-nxt" style="padding-left:10%;">
+          <div class="col-md-4 align-lft-twocols" ng-show="$ctrl.showSecondStep===1"><a href="javascript:void(0)" ng-click="$ctrl.goToBack();" class="allbtn-bk">Back</a></div>
+          <div class="col-md-12 align-rgt-twocols " ng-show="$ctrl.showSecondStep!==1"><a href="javascript:void(0);" ng-click="$ctrl.goToNext()" class="allbtn-nxt">Next</a></div>
+          <!-- <div class="col-md-4 align-rgt-twocols text-center" style="padding-right: 20px !important;text-align: center !important;" ng-show="$ctrl.showSecondStep===1"><a href="javascript:void(0);" ng-click="$ctrl.updateCenter(true)" class="allbtn-nxt">Skip</a></div> -->
+          <div class="col-md-8 align-rgt-twocols " ng-show="$ctrl.showSecondStep===1 && $ctrl.processing!==1"><a href="javascript:void(0);" ng-click="$ctrl.updateCenter()" class="allbtn-nxt">Submit</a></div>
         </div>
-      </form>
+
+      </div>
     </div>
+    <!-- <p class="stick-next-tc"><a href="javascript:void(0)" ng-click="$ctrl.optional_fields()" ng-disabled="">Next</a></p> -->
+
+    <!-- <p class="stick-next-tc pull-right"><a href="javascript:void(0);" ng-click="$ctrl.addCenter()" ng-disabled="$ctrl.centerForm.centerName.$invalid || ($ctrl.categoryModel.length===0) || $ctrl.centerForm.website.$invalid || $ctrl.centerForm.email.$invalid || $ctrl.centerForm.phone.$invalid || $ctrl.centerForm.address.$invalid">Next</a></p> -->
   </div>
+
 </div>

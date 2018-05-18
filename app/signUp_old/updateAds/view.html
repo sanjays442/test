@@ -1,0 +1,144 @@
+<div class="container progress-content">
+  <div class="progressbar">
+    <div class="col-md-6 col-md-offset-6">
+      <span class="member-cart">
+        <img src="themes/addiction/images/png/Cart-Icon.png" />
+      </span>
+      <div class="progress progress-grediant">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+          <span class="stick-me">70%</span>
+          <p class="">
+            <img src="themes/addiction/images/png/Cart-Icon.png" />
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="progress-content-one update-ads">
+
+    <div class="col-md-6">
+      <div class="progress-img-wrap p-60">
+        <div style="background-image: url('themes/addiction/images/png/illustrations-Ads.png');" class="progress-img">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="psignup-form">
+        <form class="psignup-form" name="$ctrl.updateAdsForm">
+          <p class="c-blue">Update Ads</p>
+          <!-- Create Header Ads -->
+          <div class="form-group clear-me" ng-if="$ctrl.header===''">
+            <label class="label-uo">HEADER:</label>
+            <div class="pull-right">
+              <div class="pull-left choose-file">
+                <span>Upload <i class="fa fa-arrow-up"></i></span>
+                <input name="headerImage" id="headerImage" class="file" type="file" file-model="$ctrl.headerImage" accept="image/*">
+              </div>
+            </div>
+            <div class="ads-block">
+              <p>Cost:</p>
+              <p>Size:</p>
+              <p>Location:</p>
+              <p>Website:
+                <input type="text" name="weblinkHeader" ng-model="$ctrl.weblinkHeader" ng-init="$ctrl.adsFormInit.weblinkHeader=1" ng-keypress="$ctrl.adsFormInit.weblinkHeader = 0" required/>
+              </p>
+              <span ng-show="$ctrl.updateAdsForm.weblinkHeader.$error.required && ($ctrl.adsFormInit.weblinkHeader===0)" class="help-block">Required</span>
+              <span ng-show="$ctrl.updateAdsForm.weblinkHeader.$error.pattern && ($ctrl.adsFormInit.weblinkHeader===0)" class="help-block">Invalid website</span>
+
+            </div>
+            <div class="col-md-6"></div>
+          </div>
+          <!-- Update Header Ads -->
+          <div class="form-group clear-me" ng-if="$ctrl.header!==''">
+            <label class="label-uo">Header:</label>
+            <div class="pull-right">
+              <ul class="list-inline">
+                <li><a href="javascriprt:void(0)" class="btn btn-default btn-custom"> Edit <i class="fa fa-pencil"></i></a></li>
+                <li><a href="javascriprt:void(0)" class="btn btn-default btn-custom"> Delete <i class="fa fa-trash"></i></a></li>
+              </ul>
+            </div>
+            <div class="w-full">
+              <img src="{{$ctrl.header.content}}" class="demo-banner">
+            </div>
+          </div>
+
+          <!-- Create Sidebar Ads -->
+          <div class="form-group clear-me" ng-if="$ctrl.sidebar===''">
+            <label class="label-uo">Side:</label>
+            <div class="pull-right">
+              <div class="pull-left choose-file">
+                <span>Upload <i class="fa fa-arrow-up"></i></span>
+                <input name="sideImage" id="sideImage" class="file" type="file" file-model="$ctrl.sideImage" accept="image/*">
+              </div>
+            </div>
+            <div class="col-md-6 clear">
+              <div class="ads-block w-full">
+                <p>Cost:</p>
+                <p>Size:</p>
+                <p>Location:</p>
+                <p>Website:
+                  <input type="text" name="weblinkSidebar" ng-model="$ctrl.weblinkSidebar" ng-init="$ctrl.adsFormInit.weblinkSidebar=1" ng-keypress="$ctrl.adsFormInit.weblinkSidebar = 0" required/>
+                </p>
+                  <span ng-show="$ctrl.updateAdsForm.weblinkSidebar.$error.required && ($ctrl.adsFormInit.weblinkSidebar===0)" class="help-block">Required</span>
+                  <span ng-show="$ctrl.updateAdsForm.weblinkSidebar.$error.pattern && ($ctrl.adsFormInit.weblinkSidebar===0)" class="help-block">Invalid website</span>
+
+              </div>
+            </div>
+            <div class="col-md-6"></div>
+          </div>
+          <!-- Update Sidebar ads -->
+          <div class="form-group clear-me" ng-if="$ctrl.sidebar!==''">
+            <label class="label-uo">Sidebar:</label>
+            <div class="pull-right">
+              <ul class="list-inline">
+                <li><a href="javascriprt:void(0)" class="btn btn-default btn-custom"> Edit <i class="fa fa-pencil"></i></a></li>
+                <li><a href="javascriprt:void(0)" class="btn btn-default btn-custom"> Delete <i class="fa fa-trash"></i></a></li>
+              </ul>
+            </div>
+            <div class="w-full">
+              <img src="{{$ctrl.sidebar.content}}" class="demo-banner">
+            </div>
+          </div>
+
+          <!-- Create Footer ads -->
+          <div class="form-group clear-me" ng-if="$ctrl.footer===''">
+            <label class="label-uo">Footer:</label>
+            <div class="pull-right">
+              <div class="pull-left choose-file">
+                <span>Upload <i class="fa fa-arrow-up"></i></span>
+                <input name="footerImage" id="footerImage" class="file" type="file" file-model="$ctrl.footerImage" accept="image/*">
+              </div>
+            </div>
+            <div class="ads-block">
+              <p>Cost:</p>
+              <p>Size:</p>
+              <p>Location:</p>
+              <p>Website:
+                <input type="text" name="weblinkFooter" ng-model="$ctrl.weblinkFooter" ng-init="$ctrl.adsFormInit.weblinkFooter=1" ng-keypress="$ctrl.adsFormInit.weblinkFooter = 0" ng-pattern="/^(?:(ftp|http|https):\/\/)?(?:([\w]{3})+\.)+([0-9 a-z]{2,30})?(?:[\.])+([a-z/.]{2,10})$/" required/>
+              </p>
+              <span ng-show="$ctrl.updateAdsForm.weblinkFooter.$error.required && ($ctrl.adsFormInit.weblinkFooter===0)" class="help-block">Required</span>
+              <span ng-show="$ctrl.updateAdsForm.weblinkFooter.$error.pattern && ($ctrl.adsFormInit.weblinkFooter===0)" class="help-block">Invalid website</span>
+
+            </div>
+          </div>
+          <!-- Update Footer ads -->
+          <div class="form-group clear-me" ng-if="$ctrl.footer!==''">
+            <label class="label-uo">Footer:</label>
+            <div class="pull-right">
+              <ul class="list-inline">
+                <li><a href="javascriprt:void(0)" class="btn btn-default btn-custom"> Edit <i class="fa fa-pencil"></i></a></li>
+                <li><a href="javascriprt:void(0)" class="btn btn-default btn-custom"> Delete <i class="fa fa-trash"></i></a></li>
+              </ul>
+            </div>
+            <div class="w-full">
+              <img src="{{$ctrl.footer.content}}" class="demo-banner">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <p class="stick-next-left font-normal bottom-5"><a href="javascript:window.history.back();" ng-click="">Back</a></p>
+    <p class="stick-next-right bottom-5"><a href="javascript:void(0)" ng-click="$ctrl.updateAds()">Next</a></p>
+  </div>
+</div>

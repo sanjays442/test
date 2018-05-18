@@ -8,9 +8,21 @@ function service($log, $http, endPoint, UserService) {
     advertisementEdit: edit,
     getAdvertisementData: getData,
     updateStatus: updateStatus,
-    advertisementAddSignUp: advertisementAddSignUp
+    advertisementAddSignUp: advertisementAddSignUp,
+    getPriceBanner: getPriceBanner
   };
 
+  // get price info for state, city, county, sponsored
+
+  function getPriceBanner(token) {
+    // return UserService.getToken().then(function (token) {
+    return $http.get(endPoint + '/pricing', {
+      headers: {
+        'Authorization': token
+      }
+    });
+    // });
+  }
   // header, footer, side
   function queryGlobalAds() {
     return $http.get(endPoint + '/advertisements');

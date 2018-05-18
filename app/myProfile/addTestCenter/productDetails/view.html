@@ -1,0 +1,282 @@
+<section class="congratation details">
+  <div class="container">
+    <div class="row">
+      <div>
+        <div class="congrats-banner">
+          <a href="javascript:void(0)">
+            <img src="themes/addiction/images/middle-banner.jpg" alt="congration" /> </a>
+        </div>
+        <p style="width:100% !important;margin-top: 20px !important;">You have registered your treatment center with
+          <strong>{{$ctrl.membership.package_name}}</strong> membership in Addiction network and are one step away from your customers</p>
+        <p style="width:100% !important;" class="lead" ng-if="$ctrl.cartDetails.length !== 0">Please check your bill amount below </p>
+        <!-- <input type="checkbox" ng-model="$ctrl.expandAll" ng-init="$ctrl.expandAll=false" ng-click="$ctrl.expandAllFun($ctrl.expandAll);" /> Expand all -->
+        <p class="lead" ng-if="$ctrl.membership === ''">Cart is empty</p>
+        <p class="lead" ng-if="$ctrl.cartDetails.length === 0 && $ctrl.membership !== ''">Cart is loading...</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="center-table details prod-detials" style="margin-top:0px !important;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="outer-table" ng-if="$ctrl.cartDetails.length !== 0" ng-repeat="item in $ctrl.cartDetails.items track by $index" ng-init="$ctrl.stateShow[item.id] = 0;$ctrl.sponsorshipShow[item.id] = 0; $ctrl.countyShow[item.id] = 0;$ctrl.cityShow[item.id] = 0;$ctrl.categoryShow[item.id] = 0;$ctrl.membershipShow[item.id] = 0;$ctrl.productShow[item.id] = 0; $ctrl.centerToggleIconClass[item.id] = 'fa-plus-square-o';$ctrl.adsShow[item.id] = 0;">
+          <div class="custom-row">
+            <div class="table-lfthead">
+              <span style="cursor:pointer;" class="fix-left" ng-click="$ctrl.centerToggle(item.id)"><i class="fa {{$ctrl.centerToggleIconClass[item.id]}}" uib-tooltip="Show/hide " aria-hidden="true"></i>
+                <span>{{item.name}}</span>
+              </span>
+            </div>
+            <div class="table-rgthead">Cost</div>
+          </div>
+          <table class="table table-responsive" ng-show="$ctrl.productShow[item.id]">
+            <thead class="thead-inverse" ng-init="$ctrl.membershipShow[item.id] = 0; $ctrl.membershipToggleIconClass[item.id] = 'fa-plus-square-o';">
+              <tr>
+                <th colspan="1">
+                  <span style="cursor:pointer;" ng-click="$ctrl.membershipToggle(item.id)">Membership</span>
+                </th>
+                <th>
+                  <span ng-if="item.type === 'paid'">Gold</span>
+                  <span ng-if="item.type === 'featured'">Platinum</span>
+                  <span ng-if="!item.type">Not available</span>
+                </th>
+                <th>
+                  <!-- <div class="newbtns"><a data-toggle="tooltip" title="Edit" href="#"><i class="fa fa-pencil-square-o edit2" aria-hidden="true"></i><span>Edit</span></a></div> -->
+                </th>
+                <th class="right-align">
+                  <span>${{item.subtotal}}</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- sponsorship -->
+              <tr>
+                <td colspan="1" class="bg-grey black-colortxt">
+                  <div style="cursor:pointer;" class="fix-left" ng-click="$ctrl.sponsorshipToggle(item.id)">
+                    Sponsorship
+                  </div>
+                  <!-- <span style="cursor:pointer;" ng-click="$ctrl.editCenter(item.id, item.name, item, $index);">Edit</span> -->
+                </td>
+                <td class="bg-grey black-colortxt"></td>
+                <td colspan="2" class="bg-grey black-colortxt">
+                  <!--<span style="cursor:pointer;" ng-click="$ctrl.editCenter(item.id, item.name, item, $index);">Edit</span>-->
+                  <div class="newbtns"><a data-toggle="tooltip" title="Edit" href="javascript:void(0);" ng-click="$ctrl.editCenter(item.id, item.name, item, $index);"><i class="fa fa-pencil-square-o edit2" aria-hidden="true"></i><span  class="greentxt"> Edit</span></a></div>
+                </td>
+              </tr>
+
+              <!-- states --->
+              <tr ng-show="$ctrl.sponsorshipShow[item.id]">
+                <td>
+                  <span style="cursor:pointer;" ng-click="$ctrl.stateToggle(item.id)">States</span>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="animate-show-hide" ng-hide="$ctrl.deletedRow[state.id] === 1" ng-repeat="state in item.sponsored_layouts.state | orderBy:'name'| limitTo:(item.sponsored_layouts.state.length-1) track by $index" ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.stateShow[item.id] && $ctrl.productShow[item.id]">
+                <td>&nbsp;</td>
+                <td>
+                  <span>{{state.name}}</span>
+                </td>
+                <td>
+                  <div class="newbtns"><a href="javascript:;" title="Delete" ng-click="$ctrl.deleteConfirm(state.id, item.id, 'sponsor_ads');"><i ng-hide="$ctrl.deleteLoader[state.id]===1" class="fa fa-trash-o fa-2 delicon text-left text-left"></i><img ng-show="$ctrl.deleteLoader[state.id]===1" ng-src="themes/addiction/images/delete_loader.gif" style="width:8%;margin-left:5%;"/></a></div>
+                </td>
+                <td class="right-align">${{state.total_price}}</td>
+              </tr>
+              <tr class="border-bottom animate-show-hide" ng-hide="$ctrl.deletedRow[state.id] === 1" ng-repeat="state in item.sponsored_layouts.state | orderBy:'name' track by $index" ng-if="($index===
+              (item.sponsored_layouts.state.length)-1) " ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.stateShow[item.id] && $ctrl.productShow[item.id]">
+                <td>&nbsp;</td>
+                <td>
+                  <span>{{state.name}}</span>
+                </td>
+                <td>
+                  <div class="newbtns"><a href="javascript:;" title="Delete" ng-click="$ctrl.deleteConfirm(state.id, item.id, 'sponsor_ads');"><i ng-hide="$ctrl.deleteLoader[state.id]===1" class="fa fa-trash-o fa-2 delicon text-left text-left"></i><img ng-show="$ctrl.deleteLoader[state.id]===1" ng-src="themes/addiction/images/delete_loader.gif" style="width:8%;margin-left:5%;"/></a></div>
+                </td>
+                <td class="right-align">${{state.total_price}}</td>
+              </tr>
+
+              <!-- County -->
+              <tr ng-show="$ctrl.sponsorshipShow[item.id]">
+                <td>
+                  <span style="cursor:pointer;" ng-click="$ctrl.countyToggle(item.id)">County</span>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="animate-show-hide" ng-hide="$ctrl.deletedRow[county.id] === 1" ng-repeat="county in item.sponsored_layouts.county | orderBy:'name'|limitTo:(item.sponsored_layouts.county.length-1) track by $index" ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.countyShow[item.id] && $ctrl.productShow[item.id]">
+                <td>&nbsp;</td>
+                <td>
+                  <span>{{county.name}}</span>
+                </td>
+                <td>
+                  <div class="newbtns"><a href="javascript:;" title="Delete" ng-click="$ctrl.deleteConfirm(county.id, item.id, 'sponsor_ads');"><i ng-hide="$ctrl.deleteLoader[county.id]===1" class="fa fa-trash-o fa-2 delicon text-left text-left"></i><img ng-show="$ctrl.deleteLoader[county.id]===1" ng-src="themes/addiction/images/delete_loader.gif" style="width:8%;margin-left:5%;"/></a></div>
+                </td>
+                <td class="right-align">${{county.total_price}}</td>
+              </tr>
+              <tr class="border-bottom animate-show-hide" ng-hide="$ctrl.deletedRow[county.id] === 1" ng-repeat="county in item.sponsored_layouts.county | orderBy:'name' track by $index" ng-if="($index===
+              (item.sponsored_layouts.county.length)-1)" ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.countyShow[item.id] && $ctrl.productShow[item.id]">
+                <td>&nbsp;</td>
+                <td>
+                  <span>{{county.name}}</span>
+                </td>
+                <td>
+                  <div class="newbtns"><a href="javascript:;" title="Delete" ng-click="$ctrl.deleteConfirm(county.id, item.id);"><i ng-hide="$ctrl.deleteLoader[county.id]===1" class="fa fa-trash-o fa-2 delicon text-left text-left"></i><img ng-show="$ctrl.deleteLoader[county.id]===1" ng-src="themes/addiction/images/delete_loader.gif" style="width:8%;margin-left:5%;"/></a></div>
+                </td>
+                <td class="right-align">${{county.total_price}}</td>
+              </tr>
+
+              <!-- cities -->
+              <tr ng-show="$ctrl.sponsorshipShow[item.id]">
+                <td>
+                  <span style="cursor:pointer;" ng-click="$ctrl.cityToggle(item.id)">City</span>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="animate-show-hide" ng-hide="$ctrl.deletedRow[city.id] === 1" ng-repeat="city in item.sponsored_layouts.city | orderBy:'name'|limitTo:(item.sponsored_layouts.city.length-1) track by $index" ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.cityShow[item.id] && $ctrl.productShow[item.id]">
+                <td>&nbsp;</td>
+                <td>
+                  <span>{{city.name}}</span>
+                </td>
+                <td>
+                  <div class="newbtns"><a href="javascript:;" title="Delete" ng-click="$ctrl.deleteConfirm(city.id, item.id, 'sponsor_ads');"><i ng-hide="$ctrl.deleteLoader[city.id]===1" class="fa fa-trash-o fa-2 delicon text-left text-left"></i><img ng-show="$ctrl.deleteLoader[city.id]===1" ng-src="themes/addiction/images/delete_loader.gif" style="width:8%;margin-left:5%;"/></a></div>
+                </td>
+                <td class="right-align">${{city.total_price}}</td>
+              </tr>
+              <tr class="border-bottom animate-show-hide" ng-hide="$ctrl.deletedRow[city.id] === 1" ng-repeat="city in item.sponsored_layouts.city | orderBy:'name' track by $index" ng-if="($index===
+              (item.sponsored_layouts.city.length)-1) " ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.cityShow[item.id] && $ctrl.productShow[item.id]">
+                <td>&nbsp;</td>
+                <td>
+                  <span>{{city.name}}</span>
+                </td>
+                <td>
+                  <div class="newbtns"><a href="javascript:;" title="Delete" ng-click="$ctrl.deleteConfirm(city.id, item.id);"><i ng-hide="$ctrl.deleteLoader[city.id]===1" class="fa fa-trash-o fa-2 delicon text-left text-left"></i><img ng-show="$ctrl.deleteLoader[city.id]===1" ng-src="themes/addiction/images/delete_loader.gif" style="width:8%;margin-left:5%;"/></a></div>
+                </td>
+                <td class="right-align">${{city.total_price}}</td>
+              </tr>
+
+              <!-- categories -->
+              <tr ng-show="$ctrl.sponsorshipShow[item.id]">
+                <td>
+                  <span style="cursor:pointer;" ng-click="$ctrl.categoryToggle(item.id)">Categories</span>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="animate-show-hide" ng-hide="$ctrl.deletedRow[category.id] === 1" ng-repeat="category in item.sponsored_layouts.categories | orderBy:'name'|limitTo:(item.sponsored_layouts.categories.length-1) track by $index" ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.categoryShow[item.id] && $ctrl.productShow[item.id]">
+                <td>&nbsp;</td>
+                <td>
+                  <span>{{category.name}}</span>
+                </td>
+                <td>
+                  <div class="newbtns"><a href="javascript:;" title="Delete" ng-click="$ctrl.deleteConfirm(category.id, item.id, 'sponsor_ads');"><i ng-hide="$ctrl.deleteLoader[category.id]===1" class="fa fa-trash-o fa-2 delicon text-left text-left"></i><img ng-show="$ctrl.deleteLoader[category.id]===1" ng-src="themes/addiction/images/delete_loader.gif" style="width:8%;margin-left:5%;"/></a></div>
+                </td>
+                <td class="right-align">${{category.total_price}}</td>
+              </tr>
+              <tr class="border-bottom animate-show-hide" ng-hide="$ctrl.deletedRow[category.id] === 1" ng-repeat="category in item.sponsored_layouts.categories | orderBy:'name' track by $index" ng-if="($index===
+              (item.sponsored_layouts.categories.length)-1) " ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.categoryShow[item.id] && $ctrl.productShow[item.id]">
+                <td>&nbsp;</td>
+                <td>
+                  <span>{{category.name}}</span>
+                </td>
+                <td>
+                  <div class="newbtns"><a href="javascript:;" title="Delete" ng-click="$ctrl.deleteConfirm(category.id, item.id, 'sponsor_ads');"><i ng-hide="$ctrl.deleteLoader[category.id]===1" class="fa fa-trash-o fa-2 delicon text-left text-left"></i><img ng-show="$ctrl.deleteLoader[category.id]===1" ng-src="themes/addiction/images/delete_loader.gif" style="width:8%;margin-left:5%;"/></a></div>
+                </td>
+                <td class="right-align">${{category.total_price}}</td>
+              </tr>
+
+              <!-- Ads -->
+              <tr class="bg-light-blue">
+                <td>
+                  <span ng-if="$index===0">Banner Ads</span>
+                  <!-- <span ng-if="$index===0" ng-click="$ctrl.adsToggle(item.id)">Banner Ads</span> -->
+                </td>
+                <td>
+                  <!-- <span ng-if="$ctrl.productShow[item.id] && $ctrl.adsShow[item.id] ">{{ads.name}}</span> -->
+                </td>
+                <td>
+                  <div class="newbtns" ng-if="$ctrl.productShow[item.id] && $ctrl.adsShow[item.id] "><a data-toggle="tooltip" title="Edit" href="javascript:void(0)" ng-click="$ctrl.publish_ads_edit(item.id);"><i class="fa fa-pencil-square-o edit2" aria-hidden="true"></i><span> Edit</span></a> </div>
+
+                  <!-- <div class="newbtns">
+                    <span ng-click="$ctrl.publish_ads()" style="cursor:pointer;" ng-if="$ctrl.productShow[item.id] && $ctrl.adsShow[item.id] "><i class="fa fa-pencil-square-o edit2" aria-hidden="true" style="margin-left:14px;"></i> Edit</span>
+                  </div> -->
+                </td>
+                <td class="right-align">
+                  <!-- <span class="value-total" ng-if="$ctrl.productShow[item.id] && $ctrl.adsShow[item.id] ">${{ads.total_price}}</span> -->
+                </td>
+              </tr>
+              <tr ng-hide="$ctrl.deletedRow[ads.id] === 1" class="animate-show-hide" ng-repeat="ads in item.banner_ads" ng-show=" $ctrl.adsShow[item.id] && $ctrl.productShow[item.id]">
+                <td></td>
+                <td>
+                  <span>{{ads.name}}</span>
+                </td>
+                <td>
+                  <span ng-click="$ctrl.deleteConfirm(ads.id,item.id,'banner_ads')" style="cursor:pointer; margin-left:14px;" ng-if="$ctrl.productShow[item.id] && $ctrl.adsShow[item.id] "><i ng-hide="$ctrl.deleteLoader[ads.id]===1" class="fa fa-trash-o fa-2 delicon"></i>
+                    <img ng-show="$ctrl.deleteLoader[ads.id]===1" ng-src="themes/addiction/images/delete_loader.gif" style="width:8%;margin-left:5%;" />
+                  </span>
+                </td>
+                <td class="right-align">
+                  <span class="value-total">${{ads.total_price}}</span>
+                </td>
+              </tr>
+
+              <!-- <tr class="border-bottom" ng-repeat="ads in item.banner_ads | limitTo:(item.banner_ads.length-1) track by $index" ng-if="($index===(item.banner_ads.length)-1) && (item.banner_ads.length>1)" ng-show="$ctrl.sponsorshipShow[item.id] && $ctrl.adsShow[item.id] && $ctrl.productShow[item.id]">
+                <td> </td>
+                <td>
+                  <span>{{ads.name}}</span>
+                </td>
+                <td></td>
+                <td class="right-align">
+                  <span class="value-total">${{ads.total_price}}</span>
+                </td>
+              </tr> -->
+
+              <tr style="border-top: 1px solid #67b502;">
+                <td>
+                  <span></span>
+                </td>
+                <td>
+                  <span class="total-txt">{{item.name}} Total</span>
+                </td>
+                <td>&nbsp;</td>
+                <td class="right-align">
+                  <span class="final-value-total">${{$ctrl.centerSubTotals[item.id]}}</span>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+          <!-- for displaying total -->
+          <table class="table table-responsive">
+            <tbody>
+              <tr style="border-top: 1px solid #67b502; border-left:none;border-right:none;" ng-if="$index === ($ctrl.cartDetails.items.length - 1)">
+                <td style="padding-left:58px;">&nbsp;</td>
+                <td>
+                  <span class="total-txt">PAYMENT TOTAL</span>
+                </td>
+                <td></td>
+                <td class="right-align">
+                  <span class="final-value-total">${{$ctrl.cartDetails.total_price}}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <!--Navigation back and Next -->
+        <div class="custom-row mb-30 mt-10 pross">
+          <div class="col-md-3 col-sm-3" style="padding-left: 0;margin-left: -5px;"> <a href="javascript:void(0)" ng-click="$ctrl.goBack();" class="allbtn-bk" style="position: relative; padding: 0 0 0 5px;"> Back</a> </div>
+          <div class="col-md-6 col-sm-6 text-center"> <a href="javascript:void(0)" ng-click="$ctrl.testCenter();" class="allbtn-txt"> <i class="fa fa-building-o"></i> Add Another Treatment Center</a> </div>
+          <div class="col-md-3 col-sm-3 text-right"><a href="javascript:;" ng-click="$ctrl.gotoPayment();" class="allbtn-txt"><i class="fa fa-credit-card"></i> Make Payment</a></div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

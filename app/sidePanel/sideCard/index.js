@@ -1,4 +1,5 @@
 module.exports = {
   template: require('./view.html'),
-  controller: require('./ctrl')
+  controller: require('./ctrl'),
+  controllerAs: '$ctrl'
 };

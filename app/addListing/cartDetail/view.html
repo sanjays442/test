@@ -1,0 +1,149 @@
+<!-- {{$root.cityModel}} {{$root.countyModel}} -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-md-12 margin-left" style="margin-top:25%;">
+      <div class="col-sm-12 steps_sponsored step3">Step 3: Confirm or Edit your selected options to advertise</div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <div class="row">
+        <div class="col-xs-6">
+          <h5>
+            <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
+        </div>
+        <!-- <div class="col-xs-6">
+        <button type="button" ng-click="$ctrl.continueShop()" class="btn btn-primary btn-sm btn-block">
+          <span class="glyphicon glyphicon-share-alt"></span> Continue shopping
+        </button>
+      </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- {{$root.treatmentCentersModel}} -->
+<table class="responstable" ng-repeat="center in $ctrl.treatmentCenters">
+  <tbody>
+    <tr>
+      <td>
+        <span class="pull-left">Treatment Center</span>
+      </td>
+      <td colspan="2">
+        <span class="label label-primary">{{center.label}}</span>
+      </td>
+    </tr>
+    <tr>
+      <td width="25%">
+        <span class="pull-left">STATE</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key,state) in $ctrl.centerWise[center.id].statesSel">{{state.state}}<i ng-click="$ctrl.deleteCartItem(key,center.id,'state')" class="fa fa-times"> </i></span>
+      </td>
+      <td width="10%">${{$ctrl.centerWise[center.id].stateTotalCost}}</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-left">CITY</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key,cities) in $ctrl.centerWise[center.id].cities">{{cities.name}}<i ng-click="$ctrl.deleteCartItem(key,center.id,'city')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.centerWise[center.id].cityTotalCost}}</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-left">COUNTY</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key,counties) in $ctrl.centerWise[center.id].counties">{{counties.name}}<i ng-click="$ctrl.deleteCartItem(key,center.id,'county')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.centerWise[center.id].countyTotalCost}}</td>
+    </tr>
+    <!-- <tr>
+      <td>
+        <span class="pull-left">DEMOGRAPHICS</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key, demography) in $ctrl.demographic">{{demography.label}}<i ng-click="$ctrl.deleteCartItem(key,'demographic')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.demographicTotal}}</td>
+    </tr> -->
+    <tr>
+      <td>
+        <span class="pull-left">DEMOGRAPHICS</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key, demography) in $ctrl.centerWise[center.id].demographic">{{demography.label}}<i ng-click="$ctrl.deleteCartItem(key,center.id,'demographic')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.centerWise[center.id].demographicTotal}}</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-left">TREATMENT APPROACHES</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key, treatment) in $ctrl.centerWise[center.id].treatmentApproach">{{treatment.label}}<i ng-click="$ctrl.deleteCartItem(key,center.id,'treatmentApproach')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.centerWise[center.id].treatmentApproachTotal}}</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="pull-left">PAYMENT</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key, payment) in $ctrl.centerWise[center.id].payment">{{payment.label}}<i ng-click="$ctrl.deleteCartItem(key,center.id,'payment')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.centerWise[center.id].paymentTotal}}</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-left">ADDITIONAL SERVICES</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key, additionalServices) in $ctrl.centerWise[center.id].additionalServices">{{additionalServices.label}}<i ng-click="$ctrl.deleteCartItem(key,center.id,'additionalServices')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.centerWise[center.id].additionalServicesTotal}}</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-left">SETTING</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key, setting) in $ctrl.centerWise[center.id].setting">{{setting.label}}<i ng-click="$ctrl.deleteCartItem(key,center.id,'setting')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.centerWise[center.id].settingTotal}}</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-left">BY DRUG</span>
+      </td>
+      <td class="wrap_cart_item">
+        <span class="label label-primary" ng-repeat="(key, drug) in $ctrl.centerWise[center.id].byDrug">{{drug.label}} <i ng-click="$ctrl.deleteCartItem(key,center.id,'byDrug')" class="fa fa-times"> </i></span>
+      </td>
+      <td>${{$ctrl.centerWise[center.id].byDrugTotal}}</td>
+    </tr>
+    <!-- <tr>
+      <td>
+        <span class="pull-left">{{$ctrl.membershipTypeText}}</span>
+      </td>
+      <td>&nbsp;</td>
+      <td>${{$ctrl.totalExtra}}</td>
+    </tr> -->
+    <tr>
+      <td colspan="3">
+        <span class="pull-right">
+          <h4>
+            <strong>${{$ctrl.centerWise[center.id].totalCost}}</strong>
+          </h4>
+        </span>
+        <span class="pull-right">
+          <h4 class="text-right">Total Cost: </h4>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

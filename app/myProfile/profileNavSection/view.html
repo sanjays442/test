@@ -1,12 +1,26 @@
-<div class="profile-nav">
-  <ul class="profile-nav-list">
-    <!-- Profile Picture-->
-    <li>
-      <img ng-src="{{ $ctrl.profilePic }}" class="img-circle" />
-    </li>
-    <!-- Navigation-->
-    <li ng-repeat="link in $ctrl.links">
-      <a ui-sref="{{ link.uiSref }}" class="profile-nav-link">{{ link.name }}  </a>
-    </li>
-  </ul>
-</div>
+<!-- <link rel="stylesheet" href="themes/addiction/css/combine_new.css" type="text/css">
+<link rel="stylesheet" href="themes/addiction/css/style_new.css" type="text/css"> -->
+<!-- <link rel="stylesheet" href="themes/addiction/css/combine_header.css" type="text/css">
+<link rel="stylesheet" href="themes/addiction/css/style_header.css" type="text/css"> -->
+
+<section class="profile-header">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12 col-md-12 col-sm-12">
+          <h1>Hello {{$root.profileData.first_name}} welcome to your profile</h1>
+      </div>
+    </div>
+    <div class="custom-row">
+      <div class="profile-links" style="width:100%;">
+        <a ui-sref="{{ link.uiSref }}" ng-hide="$ctrl.hiddenMenu[link.slug]" ng-id="nav_{{link.slug}}" class="profile-tabs {{$ctrl.activeMenu[link.slug]}}" ng-click="$ctrl.linksCallback(link.slug);" ng-repeat="link in $ctrl.linksFree">{{ link.name }} </a>
+        <!-- <a ui-sref="{{ link.uiSref }}" ng-hide="$ctrl.hiddenMenu[link.slug]" ng-id="nav_{{link.slug}}" class="profile-tabs {{$ctrl.activeMenu[link.slug]}}" ng-if="$root.profileData.type_of_user!=='free'" ng-click="$ctrl.linksCallback(link.slug);" ng-repeat="link in $ctrl.linksPaid">{{ link.name }} </a> -->
+
+        <!-- <a href="javascript:;" ng-if="$ctrl.activeMenu['edit-test-center']!=='selected'" class="profile-tabs {{$ctrl.activeMenu['add-test-center']}}" ng-click="$ctrl.addTestCenter();">Add Treatment Center </a> -->
+        <!-- <a href="javascript:;" ng-if="$ctrl.activeMenu['edit-test-center']==='selected'" class="profile-tabs {{$ctrl.activeMenu['edit-test-center']}}" >Edit Treatment Center </a> -->
+
+      </div>
+    </div>
+
+  </div>
+</section>

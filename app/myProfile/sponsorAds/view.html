@@ -1,12 +1,11 @@
 <div class="sponsor-ads">
   <section-heading>Sponsor Ads</section-heading>
   <div class="profile-content">
+
     <div class="profile-row">
-      <a ui-sref="myProfile.sponsorAdsAdd">
-        <span class="btn adn-btn right">Add Sponsor Ad</span>
-      </a>
-    </div>
-    <div class="profile-row">
+      <!-- <a ui-sref="myProfile.sponsorAdsAdvertise">
+        <span class="btn adn-btn right">Advertise more</span>
+      </a> -->
       <div class="adn-table">
         <div id="no-more-tables">
           <table class="col-md-12 col-xs-12 col-sm-12  table-striped table-condensed cf padding_0">
@@ -20,31 +19,34 @@
             </thead>
             <tbody>
               <tr current-page="$ctrl.pagination.current" ng-repeat="list in $ctrl.sponsor.sponsored_ads">
-                <td class="block_make" data-title="Image">
+                <td data-title="Image">
                   <div class="img_outer_in_tb">
                     <div class="img_inner_in_tb">
-                      <img class="" src="{{list.image}}" style="height:70px">
+                      <img class="center-logo-in-tb" src="{{list.image}}" alt="Sponsor Ads">
                     </div>
                   </div>
                 </td>
-                <td data-title="Title">{{list.title}}
+                <td data-title="Title ">{{list.title}}
                 </td>
-                <td data-title="Name">
+                <td data-title="Name ">
                   {{list.name}}
                 </td>
-                <td data-title="Action">
-                  <a href="/#/my-profile/sponsor-ads/view-sponsor/{{list.id}}" data-toggle="tooltip" data-placement="bottom" title="View"><i class="glyphicon glyphicon-eye-open"></i></a>
-                  <a href="/#/my-profile/sponsor-ads/edit-sponsor/{{list.id}}" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
+                <td data-title="Action ">
+                  <a href="/#/my-profile/sponsor-ads/view-sponsor/{{list.id}} " data-toggle="tooltip " data-placement="bottom " title="View "><i class="glyphicon glyphicon-eye-open "></i></a>
+                  <a href="/#/my-profile/sponsor-ads/edit-sponsor/{{list.id}} " data-toggle="tooltip " data-placement="bottom " title="Edit "><i class="glyphicon glyphicon-edit "></i></a>
+                  <!-- <a id="status-{{list.id}} " href="javascript:; " data-toggle="tooltip " data-placement="bottom " ng-click="$ctrl.actDect(list.id) "><i class=" " ng-show="list.active ">Deactivate</i><i class=" " ng-show="(list.active==false) ">Activate</i></a> -->
                   <a id="status-{{list.id}}" href="javascript:;" data-toggle="tooltip" data-placement="bottom" ng-click="$ctrl.actDect(list.id)"><i class="" ng-show="list.active">Deactivate</i><i class="" ng-show="(list.active==false)">Activate</i></a>
                 </td>
               </tr>
             </tbody>
           </table>
-          <div class="pagination">
-            <a href="#">&laquo;</a>
-            <a href="javascript:;" ng-click="$ctrl.pageChanged(i)" ng-repeat="i in $ctrl.totalPages track by $index">{{i}}</a>
-            <a href="#">&raquo;</a>
-          </div>
+          <nav class="pagination-nav " aria-label="Page navigation ">
+            <ul class="pagination ">
+              <li><a href="# ">&laquo;</a></li>
+              <li ng-click="$ctrl.pageChanged(i) " ng-repeat="i in $ctrl.totalPages track by $index " class="hide_blank{{i}} "><a href="javascript:; " class="remove_margin ">{{i}}</a></li>
+              <li><a href="# ">&raquo;</a></li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>

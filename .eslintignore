@@ -1,3 +1,11 @@
 app/themes/*
 app/js/*
 app/plugins/*
+app/myProfile/sponsorAds/*
+index.js
+app/addListing/*
+app/signUp/*
+app/privacyPolicy/*
+app/services/*
+app/*
+app/signup/*

@@ -1,6 +1,6 @@
-module.exports = ['$log', '$stateParams', 'UIState', 'TreatmentCenterService', ctrl];
+module.exports = ['$log', '$stateParams', 'UIState', 'TreatmentCenterService', '$rootScope', ctrl];
 
-function ctrl($log, $stateParams, UIState, service) {
+function ctrl($log, $stateParams, UIState, service, $rootScope) {
   var vm = this;
   vm.currentPage = 1;
   vm.totalPages = 0;
@@ -10,6 +10,9 @@ function ctrl($log, $stateParams, UIState, service) {
   function onInit() {
     _search();
   }
+
+  $rootScope.title = 'Treatment Center';
+  $rootScope.description = 'Treatment Center';
 
   function onPageUpdate(page) {
     $log.info(page);
@@ -23,7 +26,7 @@ function ctrl($log, $stateParams, UIState, service) {
     service.search(data).then(function (result) {
       var listings = result.listings;
       vm.listings = listings.map(function (listing) {
-        listing.uiSref = UIState.CENTER_DETAIL + '({id:"' + listing.id + '"})';
+        listing.uiSref = UIState.CENTER_DETAIL + '({id:"' + listing.slug + '"})';
         return listing;
       });
       vm.totalPages = result.total_pages;

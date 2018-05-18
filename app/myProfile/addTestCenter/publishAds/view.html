@@ -1,0 +1,131 @@
+<div class="container progress-content publish-ads">
+  <div class="clearfix"></div>
+  <div class="progress-content-one mt-30">
+    <div class="col-md-6 col-sm-12">
+      <div class="progress-img-wrap">
+        <!-- <div style="background-image: url('themes/addiction/images/png/Ads.gif');" class="progress-img">
+        </div> -->
+        <div style="background-image: url('themes/addiction/images/png/illustrations-Ads.png');" class="progress-img"></div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="progressbar" ng-if="0">
+        <span class="member-cart" style="cursor:pointer;" ng-click="$ctrl.goToCart()">
+          <img src="themes/addiction/images/png/Cart-Icon.png" /> </span>
+        <div class="progress progress-grediant prg-newcss">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{$ctrl.progressValue}}" aria-valuemin="0" aria-valuemax="100" style="width:{{$ctrl.progressValue}}%">
+            <span class="stick-me">{{$ctrl.progressValue}}%</span>
+            <p class="">
+              <img src="themes/addiction/images/png/Cart-Icon.png" /> </p>
+          </div>
+        </div>
+      </div>
+      <div class="psignup-form ml-05 height177 h-185">
+        <form class="psignup-form" name="$ctrl.publishAdsForm">
+          <p class="c-blue">Publish Ads</p>
+          <div class="form-group clear-me">
+            <label class="label-uo">Header:</label>
+            <div class="pull-right">
+              <div class="pull-left choose-file {{$ctrl.fileReqHeader}}">
+                <span>Upload <i class="fa fa-arrow-up"></i></span>
+                <!-- <input type="file" class="file"> -->
+                <input name="headerImage" id="headerImage" class="file" type="file" file-model="$ctrl.headerImage" onchange="angular.element(this).scope().uploadChange(this,'header')" accept="image/*">
+                <span ng-show="$ctrl.fileReqMsgHeader!=''" ng-init="$ctrl.fileReqMsgHeader='';" class="help-block">{{$ctrl.fileReqMsgHeader}}</span>
+              </div>
+            </div>
+            <div class="ads-block">
+              <div class="custom-row">
+                <div class="col-md-8 col-sm-8 pr-pl0">
+                  <p>Cost: {{$ctrl.header}}</p>
+                  <p>Size: 544 PX x 93PX</p>
+                  <!-- <p>Location:
+                    <input type="text" name="location" />
+                  </p>-->
+                  <p>Website:
+                    <input type="text" name="weblinkHeader" ng-model="$ctrl.weblinkHeader" ng-init="$ctrl.adsFormInit.weblinkHeader=1" ng-focus="$ctrl.adsFormInit.weblinkHeader=1" ng-blur="$ctrl.adsFormInit.weblinkHeader = 0" required ng-pattern="/^((https?|ftp|smtp):\/\/)?([\w W]{3}.)?[a-z0-9A-Z]+\.[a-zA-Z]+(\/[a-zA-Z0-9#]+\/?)*$/" style="margin-left:3px !important; height:18px !important;" autocomplete="off" />
+                  </p>
+                  <span ng-show="$ctrl.publishAdsForm.weblinkHeader.$error.required && $ctrl.preview_img['header']" class="help-block">Required</span>
+                  <span ng-show="$ctrl.publishAdsForm.weblinkHeader.$error.pattern && ($ctrl.adsFormInit.weblinkHeader===0)" class="help-block">Invalid website</span>
+                </div>
+                <div class="col-md-4 col-sm-4 pr-pl0">
+                  <div class="add-previewbox">
+                    <img id="logo_preview_header" ng-src="{{$ctrl.preview_img.header}}" width="130" name="logo_preview" /> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group clear-me">
+            <label class="label-uo">Side:</label>
+            <div class="pull-right">
+              <div class="pull-left choose-file {{$ctrl.fileReqSidebar}}">
+                <span>Upload <i class="fa fa-arrow-up"></i></span>
+                <!-- <input type="file" class="file"> -->
+                <input name="sideImage" id="sideImage" class="file" type="file" file-model="$ctrl.sideImage" onchange="angular.element(this).scope().uploadChange(this,'sidebar')" accept="image/*">
+                <span ng-show="$ctrl.fileReqMsgSidebar!==''" ng-init="$ctrl.fileReqMsgSidebar='';" class="help-block">{{$ctrl.fileReqMsgSidebar}}</span>
+              </div>
+            </div>
+            <div class="ads-block">
+              <div class="custom-row">
+                <div class="col-md-8 col-sm-8 pr-pl0">
+                  <p>Cost: {{$ctrl.sidebar}}</p>
+                  <p>Size: 248PX x 145PX</p>
+                  <!--  <p>Location:
+                    <input type="text" name="location" />
+                  </p>-->
+                  <p>Website:
+                    <input type="text" name="weblinkSidebar" ng-model="$ctrl.weblinkSidebar" ng-init="$ctrl.adsFormInit.weblinkSidebar=1" ng-focus="$ctrl.adsFormInit.weblinkSidebar=1" ng-blur="$ctrl.adsFormInit.weblinkSidebar = 0" required ng-pattern="/^((https?|ftp|smtp):\/\/)?([\w W]{3}.)?[a-z0-9A-Z]+\.[a-zA-Z]+(\/[a-zA-Z0-9#]+\/?)*$/" style="margin-left:3px !important; height:18px !important;" autocomplete="off" />
+                  </p>
+                  <span ng-show="$ctrl.publishAdsForm.weblinkSidebar.$error.required && $ctrl.preview_img['sidebar']" class="help-block">Required</span>
+                  <span ng-show="$ctrl.publishAdsForm.weblinkSidebar.$error.pattern && ($ctrl.adsFormInit.weblinkSidebar===0)" class="help-block">Invalid website</span>
+                </div>
+                <div class="col-md-4 col-sm-4 pr-pl0">
+                  <div class="add-previewbox">
+                    <img id="logo_preview_sidebar" ng-src="{{$ctrl.preview_img.sidebar}}" width="130" name="logo_preview" /> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group clear-me">
+            <label class="label-uo">Footer:</label>
+            <div class="pull-right">
+              <div class="pull-left choose-file {{$ctrl.fileReqFooter}}">
+                <span>Upload <i class="fa fa-arrow-up"></i></span>
+                <!-- <input type="file" class="file"> -->
+                <input name="footerImage" id="footerImage" class="file" type="file" file-model="$ctrl.footerImage" onchange="angular.element(this).scope().uploadChange(this,'footer')" accept="image/*" required>
+                <span ng-show="$ctrl.fileReqMsgFooter!=''" ng-init="$ctrl.fileReqMsgFooter='';" class="help-block">{{$ctrl.fileReqMsgFooter}}</span>
+              </div>
+            </div>
+            <div class="ads-block">
+              <div class="custom-row">
+                <div class="col-md-8 col-sm-8 pr-pl0">
+                  <p>Cost: {{$ctrl.footer}}</p>
+                  <p>Size: 646PX x 111PX</p>
+                  <!-- <p>Location:
+                    <input type="text" name="location" />
+                  </p>-->
+                  <p>Website:
+                    <input type="text" name="weblinkFooter" ng-model="$ctrl.weblinkFooter" ng-init="$ctrl.adsFormInit.weblinkFooter=1" ng-focus="$ctrl.adsFormInit.weblinkFooter=1" ng-blur="$ctrl.adsFormInit.weblinkFooter=0" required ng-pattern="/^((https?|ftp|smtp):\/\/)?([\w W]{3}.)?[a-z0-9A-Z]+\.[a-zA-Z]+(\/[a-zA-Z0-9#]+\/?)*$/" style="margin-left:3px !important; height:18px !important;" autocomplete="off" />
+                  </p>
+                  <span ng-show="$ctrl.publishAdsForm.weblinkFooter.$error.required && $ctrl.preview_img['footer']" class="help-block">Required</span>
+                  <span ng-show="$ctrl.publishAdsForm.weblinkFooter.$error.pattern && ($ctrl.adsFormInit.weblinkFooter===0)" class="help-block">Invalid website</span>
+                </div>
+                <div class="col-md-4 col-sm-4 pr-pl0">
+                  <div class="add-previewbox">
+                    <img id="logo_preview_footer" ng-src="{{$ctrl.preview_img.footer}}" width="130" name="logo_preview" /> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="custom-row ml-05">
+        <div class="col-md-6 col-sm-12 pl04"><a href="javascript:;" ng-click="$ctrl.goBack()" class="allbtn-bk"> Back</a></div>
+        <div class="col-md-6 col-sm-12 text-right pr0" ng-show="$ctrl.bannerAdded!==1 && $ctrl.sponsorAdded!==1"><a href="javascript:void(0)" ng-click="$ctrl.publish_ads2()" class="allbtn-nxt">Next </a></div>
+        <div class="col-md-6 col-sm-12 text-right pr0" ng-show="$ctrl.bannerAdded===1 && $ctrl.sponsorAdded!==1"><a href="javascript:void(0)" ng-click="$ctrl.publish_ads2()" class="allbtn-nxt">Next </a></div>
+        <div class="col-md-6 col-sm-12 text-right pr0" ng-show="$ctrl.bannerAdded!==1 && $ctrl.sponsorAdded===1"><a href="javascript:void(0)" class="allbtn-cart" ng-click="$ctrl.publish_ads2()">Go to cart</a></div>
+        <div class="col-md-6 col-sm-12 text-right pr0" ng-show="$ctrl.bannerAdded===1 && $ctrl.sponsorAdded===1"><a href="javascript:void(0)" class="allbtn-cart" ng-click="$ctrl.goToCart()">Go to cart</a></div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,14 +1,22 @@
 <div ng-show="$ctrl.display" class="side-card">
-  <card-heading>Filter</card-heading>
+  <card-heading>
+    <label class="state_size">{{ $ctrl.fullName | capitalize:true }}</label>
+  </card-heading>
   <ul class="list-unstyled">
+    <!-- <li>
+      <label><a href class="area-filter-link state-full-name" ng-class="$ctrl.stateLinkClass" ng-click="$ctrl.goToState()">{{ $ctrl.fullName }}</a></label>
+    </li> -->
     <li>
-      <a href class="area-filter-link" ng-class="$ctrl.stateLinkClass" ng-click="$ctrl.goToState()">{{ $ctrl.stateName }}</a>
+      <label>
+        <!-- <button type="button" class="btn btn-default" ng-click="$ctrl.goToCities()"><a href="/state/{{$ctrl.fullName}}-rehab-centers/cities" class="area-filter-link">View All Cities</a></button> -->
+        <button type="button" class="btn btn-default" ng-click="$ctrl.goToCities()"><a href="/state/{{$ctrl.fullName}}-rehab-centers/cities" class="area-filter-link">View All Cities</a></button>
+      </label>
     </li>
     <li>
-      <a href class="area-filter-link" ng-click="$ctrl.goToCities()">View All Cities</a>
-    </li>
-    <li>
-      <a href class="area-filter-link" ng-click="$ctrl.goToCounties()">View All Counties</a>
+      <label>
+        <!-- <button type="button" class="btn btn-default" ng-click="$ctrl.goToCounties()"><a href="/state/{{$ctrl.fullName}}-rehab-centers/counties" class="area-filter-link">View All Counties</a></button> -->
+        <button type="button" class="btn btn-default" ng-click="$ctrl.goToCounties()"><a href="/state/{{$ctrl.fullName}}-rehab-centers/counties" class="area-filter-link">View All Counties</a></button>
+      </label>
     </li>
   </ul>
 </div>

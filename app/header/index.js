@@ -1,50 +1,79 @@
 var UIState = require('../components/uiStateConstants');
 
 var internalLinks = [{
-  uiSref: UIState.HOME,
-  name: 'Home'
+    uiSref: UIState.HOME,
+    name: 'Home',
+    slug: 'home'
 }, {
-  uiSref: UIState.CENTER_MAP.MAP,
-  name: 'Treatment Centers'
+    uiSref: UIState.CENTER_MAP.MAP,
+    name: 'Treatment Centers',
+    slug: 'treatment_center'
 }, {
-  uiSref: UIState.ABOUT_US,
-  name: 'About Us'
+    uiSref: UIState.INSURANCE,
+    name: 'Insurance',
+    slug: 'insurance'
 }, {
-  uiSref: UIState.BLOG,
-  name: 'Blog'
+    uiSref: UIState.ABOUT_US,
+    name: 'About Us',
+    slug: 'about_us'
 }, {
-  uiSref: UIState.CONTACT_US,
-  name: 'Contact Us'
+    uiSref: UIState.BLOG,
+    name: 'Blog',
+    slug: 'blog'
 }, {
-  uiSref: UIState.MY_PROFILE.PROFILE,
-  name: 'My Profile'
-}, {
-  uiSref: UIState.LOGOUT,
-  name: 'Logout'
-}];
+    uiSref: UIState.CONTACT_US,
+    name: 'Contact Us',
+    slug: 'contact_us'
+}
+// {
+//   uiSref: UIState.MY_PROFILE.PROFILE,
+//   name: 'My Profile',
+//   slug: 'my_profile'
+// }
+// {
+//   uiSref: UIState.LOGOUT,
+//   name: 'Logout',
+//   slug: 'logout'
+// }
+];
 
 var internalLinksNoAuth = [{
-  uiSref: UIState.HOME,
-  name: 'Home'
+    uiSref: UIState.HOME,
+    name: 'Home',
+    slug: 'home'
 }, {
-  uiSref: UIState.CENTER_MAP.MAP,
-  name: 'Treatment Centers'
+    uiSref: UIState.CENTER_MAP.MAP,
+    name: 'Treatment Centers',
+    slug: 'treatment_center'
 }, {
-  uiSref: UIState.ABOUT_US,
-  name: 'About Us'
+    uiSref: UIState.INSURANCE,
+    name: 'Insurance',
+    slug: 'insurance'
 }, {
-  uiSref: UIState.BLOG,
-  name: 'Blog'
+    uiSref: UIState.ABOUT_US,
+    name: 'About Us',
+    slug: 'about_us'
 }, {
-  uiSref: UIState.CONTACT_US,
-  name: 'Contact Us'
+    uiSref: UIState.BLOG,
+    name: 'Blog',
+    slug: 'blog'
 }, {
-  uiSref: UIState.ADD_LISTING.CONTACT_INFO,
-  name: 'Add Listing'
-}, {
-  uiSref: UIState.LOGIN,
-  name: 'Login'
-}];
+    uiSref: UIState.CONTACT_US,
+    name: 'Contact Us',
+    slug: 'contact_us'
+}
+// {
+//   // uiSref: UIState.ADD_LISTING.CONTACT_INFO,
+//   uiSref: UIState.SIGN_UP.WELCOME,
+//   name: 'Signup',
+//   slug: 'signup'
+// }
+// {
+//   uiSref: UIState.LOGIN,
+//   name: 'Login',
+//   slug: 'login'
+// }
+];
 
 var socialLinks = [{
   href: 'https://www.facebook.com/theaddictionnetwork',
@@ -57,29 +86,110 @@ var socialLinks = [{
   img: 'themes/addiction/images/gglplus.png'
 }];
 
-function HeaderCtrl($log, $scope, $rootScope, $window, localStorageService, service, $sce) {
-  /* todo */
+function HeaderCtrl($ocLazyLoad, $location, $anchorScroll, $state, $log, $timeout, $scope, $rootScope, $window, localStorageService, service, centerService, $sce) {
+
+  localStorageService.remove('loginToken');
+  localStorageService.remove('token');
   var vm = this;
   this.socialLinks = socialLinks;
   this.internalLinks = internalLinks;
   this.internalLinksNoAuth = internalLinksNoAuth;
+  vm.loginSref = UIState.LOGIN;
+  vm.logoutSref = UIState.LOGOUT;
+  vm.signupSref = UIState.SIGN_UP.WELCOME;
+  vm.myProfSref = UIState.MY_PROFILE.TEST_CENTER_DETAILS;
+
+  var token = localStorageService.get('token');
+  var loginToken = localStorageService.get('loginToken', 'sessionStorage');
+  if (token || loginToken) {
+    $rootScope.login = 1;
+  } else {
+    $rootScope.login = 0;
+  }
+  vm.setActiveMenu = function (slug) {
+    vm.activeMenu = {};
+    vm.activeMenu[slug] = 'active';
+  };
+  vm.searchExpandClass = '';
+  vm.toggleSearch = function () {
+    if (vm.searchExpandClass === '') {
+      vm.hideIcon = '';
+      vm.searchExpandClass = 'expanded';
+      var element = $window.document.getElementById('search-pnl-searchbox');
+      element.focus();
+    } else {
+      vm.searchExpandClass = '';
+      vm.hideIcon = 'ng-hide';
+    }
+  };
+  vm.collapseInAddClass = '';
+  vm.menuButtonAddClass = '';
+  vm.mobileMenuToggle = function () {
+    if (vm.collapseInAddClass === '') {
+      vm.collapseInAddClass = ' in';
+      vm.menuButtonAddClass = ' collapsed';
+    } else {
+      vm.collapseInAddClass = '';
+      vm.menuButtonAddClass = '';
+    }
+  };
+  vm.myProfile = function () {
+    //  localStorageService.set('myprofileCurrentMenu', 'my-profile', 'sessionStorage');
+    $rootScope.addCenterInitialize = 0;
+    $state.go(UIState.MY_PROFILE.TEST_CENTER_DETAILS);
+  };
+
+  // scroll
+  vm.gotoAnchor = function (x) {
+    $anchorScroll.yOffset = 50;
+    var newHash = 'anchor_top_header';
+    if ($location.hash() !== newHash) {
+      // set the $location.hash to `newHash` and
+      // $anchorScroll will automatically scroll to it
+      // $location.hash('anchor_top_header');
+    } else {
+      // call $anchorScroll() explicitly,
+      // since $location.hash hasn't changed
+      $anchorScroll();
+    }
+    $anchorScroll();
+  };
+
   $scope.$on('$stateChangeStart',
     function (event, toState) {
-      var token = localStorageService.get('token');
-      var tostate = toState.name.split('.');
+      // trigger scroll
+      vm.gotoAnchor(1);
 
+      token = localStorageService.get('token');
+      loginToken = localStorageService.get('loginToken', 'sessionStorage');
+      //  console.log('----token from index: ' + token + '   logintoken: ' + loginToken);
+      var tostate = toState.name.split('.');
       if (tostate[0] === 'blog') {
-        $window.location = 'http://www.addictionnetwork.com/blog/?angular_ads=advertisement';
+        //  $window.location = 'http://www.addictionnetwork.com/blog/';
       }
-      if (token) {
+
+      if (token || loginToken) {
         $rootScope.login = 1;
         if (tostate[0] === 'addListing') {
           event.preventDefault();
         }
+        //  $window.location.href = '/#my-profile/profile';
       } else if (tostate[0] === 'myProfile') {
+        $rootScope.login = 0;
         $window.location.href = '/#/login';
         // $log.error('tostate: ' + tostate[0] + ' -->' + fromState.name);
-        event.preventDefault();
+        // event.preventDefault();
+      } else {
+        $rootScope.login = 0;
+        (function (i, n, v, o, c, a) {
+          i.InvocaTagId = o;
+          var s = n.createElement("script");
+          s.type = "text/javascript";
+          s.async = true;
+          s.src = ("https:" === n.location.protocol ? "https://" : "http://") + v;
+          var fs = n.getElementsByTagName("script")[0];
+          fs.parentNode.insertBefore(s, fs);
+        })(window, document, "solutions.invocacdn.com/js/pnapi_integration-latest.min.js", "1282/3910429119");
       }
       // for slider
       if (toState.name !== 'home') {
@@ -100,15 +210,49 @@ function HeaderCtrl($log, $scope, $rootScope, $window, localStorageService, serv
       //  $log.info('slider html:  ' + vm.html);
     });
   vm.sliderLoaded = slider;
-  //  $log.info(stateStart);
+  vm.results = '';
+  vm.removeAll = function () {
+    angular.element("#search-pnl-searchbox").val("");
+    vm.results = '';
+  }
+  vm.close_icon = function () {
+    vm.results = '';
+    vm.toggleSearch();
+  }
+  vm.search = function (srch) {
+    angular.element('.list-group.search-results').removeClass('ng-hide');
+    if (srch === 1 && angular.isDefined(vm.searchTxt) && vm.searchTxt.length > 1) {
+      centerService.searchCenter(vm.searchTxt).then(function (result) {
+        vm.results = result.results;
+        if (result.results.length === 0) {
+          vm.results = {
+            0: {
+              center_name: 'No result found',
+              slug: ''
+            }
+          };
+        }
+      }).catch(function (err) {
+        $log.error(err);
+      });
+    } else {
+      vm.results = '';
+    }
+  };
+
+  vm.gotoCart = function () {
+    $state.go(UIState.MY_PROFILE.CART_ITEMS);
+  };
+
 }
 
 module.exports = {
   template: require('./view.html'),
-  controller: HeaderCtrl
+  controller: HeaderCtrl,
+  controllerAs: '$ctrl'
 };
 
-HeaderCtrl.$inject = ['$log', '$scope', '$rootScope', '$window', 'localStorageService', 'SliderService', '$sce'];
+HeaderCtrl.$inject = ['$ocLazyLoad', '$location', '$anchorScroll', '$state', '$log', '$timeout', '$scope', '$rootScope', '$window', 'localStorageService', 'SliderService', 'TreatmentCenterService', '$sce'];
 
 function loadSlider(vm, service, $rootScope, $log, $sce) {
   service.getSlider().then(function (result) {

@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 padding_0 listing_wrapper_inner">
+      <form name="$ctrl.sponsoredPage" enctype="multipart/form-data" id="addlistForm">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+          <p class="heading_treatment_center">Choose your options below to sponsor treatment center</p>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+          <!-- <div class="col-md-2 col-sm-2 col-xs-12">
+        <!-- <label for="tname">Treatment Center: </label>
+    </div> -->
+
+          <div class="col-sm-8">
+            <!-- <div ng-dropdown-multiselect="" options="$ctrl.treatmentCenters" ng-click="$event.stopPropagation()" selected-model="$ctrl.treatmentCentersModel" extra-settings="$ctrl.multiselectModelSettings" events="{onItemSelect: $root.centerSelect, onItemDeselect: $root.centerDeSelect}" checkboxes="true" translation-texts="$ctrl.treatmentCenter"></div> -->
+            <!-- <span ng-show="$root.centerSelected.length===0 " style="color:red;">Select any treatment center.</span> -->
+          </div>
+          <div class="col-sm-4" ng-show="1">
+            Active Cart:
+            <!-- <select ng-model="$root.activeCenter" ng-init="$root.activeCenter=$ctrl.treatmentCenters[0].id">
+          <option ng-repeat="center in $ctrl.treatmentCenters" value="{{center.id}}">{{center.label}} - {{center.id}}</option>
+        </select> -->
+
+            <select ng-model="$root.activeCenter" ng-options="center.id as center.label for center in $ctrl.treatmentCenters" ng-change="$root.onInit()">
+            </select>
+
+            <!-- <label ng-repeat="center in $ctrl.treatmentCenters" ng-init="$root.activeCenter=$ctrl.treatmentCenters[0].id">
+          <input type="checkbox" ng-true-value="{{center.id}}" ng-change="$root.onInit()" ng-model="$root.activeCenter" value="{{center.id}}" /> {{center.label}} {{center.id}}
+        </label> -->
+          </div>
+        </div>
+        <!-- Search By State Section -->
+        <sponsor-state-select></sponsor-state-select>
+        <cart-detail> </cart-detail>
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 padding_0 main_wrap_form_inner_sub">
+          <div class="text-right col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub sub">
+            <input id="previous" class="btn modal_btn btn_size pull-left" value="Previous" type="button" ng-click="$ctrl.previous()">
+            <input type="button" ng-click="$ctrl.submit()" class="btn modal_btn btn_size pull-right" value="Next" id="submit" ng-disabled="$ctrl.treatmentCentersModel.length===0 || $root.centerSelected.length===0">
+            <input type="button" ng-click="$ctrl.skipTo()" class="btn modal_btn btn_size pull-right" value="Skip" id="skip">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

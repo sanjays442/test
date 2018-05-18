@@ -15,6 +15,7 @@ angular.module(moduleName, [])
   .component('stateSelect', require('./stateSelect'))
   .component('stateMap', require('./stateMap'))
   .component('statusView', require('./statusView'))
+  .component('sidepanelMultiselect', require('./sidepanelMultiselect'))
   .directive('fileModel', require('./fileModel'))
   .directive('validPasswordC', require('./validPasswordC'))
   .filter('urlFilter', require('./urlFilter'));

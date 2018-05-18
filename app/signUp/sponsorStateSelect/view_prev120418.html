@@ -1,0 +1,182 @@
+<div class="row">
+  <div class="col-lg-2 col-md-2 border-wh">
+    <p class="mb-30" style="position: absolute;top: 50%; font-size: small;">
+      <span>Step1: Click on the map to select state, county and city or {{$ctrl.checkAllText[$root.activeCenter]}}</span>
+      <input type="checkbox" name="" ng-model="$root.checkedAllStates[$root.activeCenter]" ng-change="$ctrl.selectStateAll()" ng-click="$ctrl.checkboxCheck()" />
+    </p>
+  </div>
+  <div class="col-lg-10 col-md-10 border-th">
+    <div class="col-lg-12 col-md-12 col-sm-12 usmap-ct">
+      <div id="mapwrapper" style="max-width:90%;">
+        <div id="map_base">
+          <state-map on-select="$ctrl.onStateSelect(state)" selected-states="$ctrl.stateSelectCheck" class="ng-isolate-scope"></state-map>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-2 col-md-2 col-sm-6" ng-repeat="col in $ctrl.statesColsHtml track by $index" ng-init="$ctrl.stateCurrentSelection=''">
+      <div class="custom-row">
+        <ul class="countrylist">
+          <li ng-repeat="(key,state) in $root.stateIds | orderBy:'state' | limitTo:col " ng-if="key >= (col-9)">
+            <input style="visibility:hidden;" type="checkbox" ng-model="$ctrl.stateSelectCheck[state.name]">
+            <a href="javascript:;" ng-click="$ctrl.stateCheckboxClick(state,true);" style="{{$ctrl.prevSelStyle[state.name]}} {{$ctrl.curSelStyle[state.name]}}"> {{state.state}}</a>
+            <input type="checkbox" ng-show="$ctrl.stateCurrentSelection===state.name || $ctrl.stateSelectCheck[state.name]===true" ng-model="$ctrl.stateSelectCheck[state.name]" ng-click="$ctrl.stateCheckboxClick(state,false);">
+
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="row city-details" ng-show="$ctrl.stateCurrentSelection!==''">
+  <div class="col-lg-2 col-md-2 border-wh">
+    <p style="position: absolute;top: 50%; font-size: small;">Selct the cities and counties in the {{$ctrl.stateCurrentSelectionName}}</p>
+  </div>
+  <div class="col-lg-10 col-md-10 border-th">
+    <div class="city-map-container">
+      <div class="custom-row">
+        <img src="themes/addiction/images/{{$ctrl.stateImage}}.png" style="width:100%;opacity:0.8">
+      </div>
+    </div>
+    <div class="city-country">
+      <div class="">
+        <div class="city-box">
+          <form>
+            <div class="form-group has-feedback">
+              <label class="control-label" for="inputValidation">Select City </label>
+
+              <input name="city" list="cities" class="form-control" ng-model="$ctrl.citySearchCustom" ng-click="$ctrl.showCityCountyDropdown('city');" placeholder="Cities" />
+              <a href="#" class="glyphicon glyphicon-search form-control-feedback"></a>
+            </div>
+          </form>
+        </div>
+        <div class="country-box">
+          <form>
+            <div class="form-group has-feedback">
+              <label class="control-label" for="inputValidation">Select Counties </label>
+              <input name="country" class="form-control" placeholder="Counties" ng-click="$ctrl.showCityCountyDropdown('county');" />
+              <!-- <div ng-dropdown-multiselect="" ng-show="$ctrl.displayCountySelect===1" ng-click="$ctrl.checkFirst(); " id="selectCounties" options="$root.county" checkboxes="true" selected-model="$root.countyModel[$root.activeCenter]" extra-settings="$ctrl.multiselectModelSettingsCounty" translation-texts="$root.countyText" events="{  onSelectAll: onSelectAllCounty, onItemSelect: $ctrl.countySelectFun, onItemDeselect: $ctrl.deSelectCountyFun}"></div> -->
+
+              <a href="#" class="glyphicon glyphicon-search form-control-feedback"></a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="closeCityCounty">
+        <span ng-click="$ctrl.closeCityCounty()" style="float:right;cursor:pointer;" ng-show="$ctrl.displayCitySelect===1 || $ctrl.displayCountySelect===1">
+          <button type="button" class="btn btn-default" id="close_county_city">Close <i class="fa fa-close"></i></button>
+        </span>
+      </div>
+      <div class="select-statesbox" ng-show="$ctrl.displayCitySelect===1 || $ctrl.displayCountySelect===1">
+        <!-- <multiple-autocomplete object-property="label" suggestions-arr="$root.city" ng-model="$root.cityModel[$root.activeCenter]" after-select-item="$ctrl.citySelectFun" after-remove-item="$ctrl.deSelectCityFun"  ng-show="$ctrl.displayCitySelect===1" ng-click="$ctrl.checkFirst(); " id="selectCities" ></multiple-autocomplete> -->
+        <!-- <multiple-autocomplete object-property="label" suggestions-arr="$root.county" ng-model="$root.countyModel[$root.activeCenter]" after-select-item="$ctrl.countySelectFun" after-remove-item="$ctrl.deSelectCountyFun"  ng-show="$ctrl.displayCountySelect===1" ng-click="$ctrl.checkFirst(); " id="selectCounties" ></multiple-autocomplete> -->
+
+        <div ng-dropdown-multiselect="" class="three_columns" ng-show="$ctrl.displayCitySelect===1" ng-click="$ctrl.checkFirst(); " id="selectCities" options="$root.city" checkboxes="true" selected-model="$root.cityModel[$root.activeCenter]" search-filter="$ctrl.citySearchCustom" extra-settings="$ctrl.multiselectModelSettingsCity" translation-texts="$root.cityText" events="{ onSelectAll: onSelectAllCity, onItemSelect: $ctrl.citySelectFun, onItemDeselect: $ctrl.deSelectCityFun }"></div>
+        <div ng-dropdown-multiselect="" ng-show="$ctrl.displayCountySelect===1" ng-click="$ctrl.checkFirst(); " id="selectCounties" options="$root.county" checkboxes="true" selected-model="$root.countyModel[$root.activeCenter]" extra-settings="$ctrl.multiselectModelSettingsCounty" translation-texts="$root.countyText" events="{  onSelectAll: onSelectAllCounty, onItemSelect: $ctrl.countySelectFun, onItemDeselect: $ctrl.deSelectCountyFun}"></div>
+      </div>
+      <!-- <div class="col-md-12">
+      <div class="select-statesbox1 col-md-5" style="float: left;margin: 15px 0 0 17px;border: 1px solid #eeeeee;padding: 10px;" ng-show="$ctrl.displayCitySelect===1|| $ctrl.displayCountySelect===1">
+        <div class="col-md-12" ng-repeat="city in $root.cityModel[$root.activeCenter]">
+          <span ng-repeat="c in $root.city" ng-if="c.id===city.id">{{c.label}}</span>
+        </div>
+
+      </div> -->
+
+      <div class="select-statesbox1 col-md-5" ng-if="$root.city && $ctrl.showCityCountySelected===1">
+        <div class="col-md-12" ng-repeat="city in $root.cityModel[$root.activeCenter]">
+          <span class="btn-link" ng-repeat="c in $root.city" ng-if="c.id===city.id">{{c.label}}</span>
+        </div>
+      </div>
+
+      <div class="select-statesbox1 col-md-5" ng-if="$root.county && $ctrl.showCityCountySelected===1">
+        <div class="col-md-12" ng-repeat="county in $root.countyModel[$root.activeCenter]">
+          <span class="btn-link" ng-repeat="co in $root.county track by $index" ng-if="co.id===county.id">{{co.label}}</span>
+        </div>
+      </div>
+
+      <!-- <div class="select-statesbox1 col-md-5" style="float: left;margin: 15px 0 0 81px;border: 1px solid #eeeeee;padding: 10px;" ng-show="$root.countyModel[$root.activeCenter].length>0)">
+        <div class="col-md-12" ng-repeat="county in $root.countyModel[$root.activeCenter]">
+          <span ng-repeat="co in $root.county track by $index" ng-if="co.id===county.id">{{co.label}}</span>
+        </div>
+      </div> -->
+
+    </div>
+  </div>
+</div>
+<!--end of city country -->
+<div class="row">
+  <div class="col-lg-2 col-md-2 border-wh border-c">
+    <p style="position: absolute;top: 50%; font-size: small;">
+      <span>Step2:Select various categories for your treatment </span>
+    </p>
+  </div>
+  <div class="col-lg-10 col-md-10 border-th border-c p-0">
+    <div class="col-lg-4 col-md-4 col-sm-12 border-3">
+      <div class="row">
+        <h2><a href="#" style="text-transform: uppercase;">Treatment approach</a></h2>
+        <ul class="generallist {{$ctrl.scrollClass[$root.activeCenter]['treatmentApproach']}}">
+          <li ng-repeat="treatmentApproach in $root.treatmentApproach | orderBy:'label' ">
+            <a href="javascript:;" ng-if="$ctrl.categoriesActiveIds[$root.activeCenter][treatmentApproach.id]===true" style="color:#015b8e;" ng-click="$ctrl.updateCategoriesModel(treatmentApproach, 'treatmentApproach');">{{treatmentApproach.label}}&nbsp; <input type="checkbox" checked="checked"></a>
+            <a href="javascript:;" ng-if="$ctrl.categoriesActiveIds[$root.activeCenter][treatmentApproach.id]!==true" style="color:#8bc442;" ng-click="$ctrl.updateCategoriesModel(treatmentApproach, 'treatmentApproach');">{{treatmentApproach.label}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 border-3">
+      <div class="row">
+        <h2><a href="#" style="text-transform: uppercase;">Payment</a></h2>
+        <ul class="generallist {{$ctrl.scrollClass[$root.activeCenter]['payment']}}">
+          <li ng-repeat="payment in $root.payment | orderBy:'label' ">
+            <a href="javascript:;" ng-if="$ctrl.categoriesActiveIds[$root.activeCenter][payment.id]===true" style="color:#015b8e;" ng-click="$ctrl.updateCategoriesModel(payment, 'payment');">{{payment.label}}&nbsp; <input type="checkbox" checked="checked"></a>
+            <a href="javascript:;" ng-if="$ctrl.categoriesActiveIds[$root.activeCenter][payment.id]!==true" style="color:#8bc442;" ng-click="$ctrl.updateCategoriesModel(payment, 'payment');">{{payment.label}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 border-3">
+      <div class="row">
+        <h2><a href="#" style="text-transform: uppercase;">Setting</a></h2>
+        <ul class="generallist {{$ctrl.scrollClass[$root.activeCenter]['setting']}}">
+          <li ng-repeat="setting in $root.setting | orderBy:'label' ">
+            <a href="javascript:;" ng-if="$ctrl.categoriesActiveIds[$root.activeCenter][setting.id]===true" style="color:#015b8e;" ng-click="$ctrl.updateCategoriesModel(setting, 'setting');">{{setting.label}}&nbsp; <input type="checkbox" checked="checked"></a>
+            <a href="javascript:;" ng-if="$ctrl.categoriesActiveIds[$root.activeCenter][setting.id]!==true" style="color:#8bc442;" ng-click="$ctrl.updateCategoriesModel(setting, 'setting');">{{setting.label}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 border-3 border-3-custom">
+      <div class="row">
+        <h2><a href="#" style="text-transform: uppercase;">By Drug</a></h2>
+        <ul class="generallist {{$ctrl.scrollClass[$root.activeCenter]['byDrug']}}">
+          <li ng-repeat="byDrug in $root.byDrug | orderBy:'label' ">
+            <a href="javascript:;" ng-if="$ctrl.categoriesActiveIds[$root.activeCenter][byDrug.id]===true" style="color:#015b8e;" ng-click="$ctrl.updateCategoriesModel(byDrug, 'byDrug');">{{byDrug.label}}&nbsp; <input type="checkbox" checked="checked"></a>
+            <a href="javascript:;" ng-if="$ctrl.categoriesActiveIds[$root.activeCenter][byDrug.id]!==true" style="color:#8bc442;" ng-click="$ctrl.updateCategoriesModel(byDrug, 'byDrug');">{{byDrug.label}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 border-3 border-3-custom">
+      <div class="row">
+        <h2><a href="#" style="text-transform: uppercase;">Demographic</a></h2>
+        <ul class="generallist {{$ctrl.scrollClass[$root.activeCenter]['demographic']}}">
+          <li ng-repeat="demographic in $root.demographic | orderBy:'label' ">
+            <a href="javascript:;" ng-if="$ctrl.categoriesActiveIds[$root.activeCenter][demographic.id]===true" style="color:#015b8e;" ng-click="$ctrl.updateCategoriesModel(demographic, 'demographic');">{{demographic.label}}&nbsp; <input type="checkbox" checked="checked"></a>
+            <a href="javascript:;" ng-if="$ctrl.categoriesActiveIds[$root.activeCenter][demographic.id]!==true" style="color:#8bc442;" ng-click="$ctrl.updateCategoriesModel(demographic, 'demographic');">{{demographic.label}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 border-3 border-3-custom">
+      <div class="row">
+        <h2><a href="javascript:void(0)" style="text-transform: uppercase;">Additional Services</a></h2>
+        <ul class="generallist {{$ctrl.scrollClass[$root.activeCenter]['additionalServices']}}">
+          <li ng-repeat="additionalServices in $root.additionalServices | orderBy:'label' ">
+            <a href="javascript:;" ng-if="$ctrl.categoriesActiveIds[$root.activeCenter][additionalServices.id]===true" style="color:#015b8e;" ng-click="$ctrl.updateCategoriesModel(additionalServices, 'additionalServices');">{{additionalServices.label}}&nbsp; <input type="checkbox" checked="checked"></a>
+            <a href="javascript:;" ng-if="$ctrl.categoriesActiveIds[$root.activeCenter][additionalServices.id]!==true" style="color:#8bc442;" ng-click="$ctrl.updateCategoriesModel(additionalServices, 'additionalServices');">{{additionalServices.label}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

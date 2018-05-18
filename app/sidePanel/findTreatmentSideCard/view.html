@@ -1,14 +1,17 @@
 <div class="side-card">
-  <form ng-submit="$ctrl.submit()">
+  <!-- <form ng-submit="$ctrl.submit()"> -->
+  <form>
     <card-heading>Find Treatment</card-heading>
     <div class="form-group">
       <label for="State">Select State</label>
       <state-select on-update="$ctrl.onStateUpdate(selected)"></state-select>
+      <span ng-show="$ctrl.stateErr">{{$ctrl.stateErr}}</span>
     </div>
     <p class="font-bold text-center">OR</p>
     <div class="form-group">
       <label for="zip">Enter Zipcode</label>
-      <input ng-model="$ctrl.zipcode" class="form-control" type="text" />
+      <input ng-model="$ctrl.zipcode" class="form-control" type="text" maxlength="5" />
+      <span ng-show="$ctrl.zipErr">{{$ctrl.zipErr}}</span>
     </div>
     <div class="form-group">
       <label for="miles">Select Miles</label>
@@ -22,7 +25,7 @@
       </select>
     </div>
     <div class="form-group">
-      <input type="submit" class="btn adn-btn border_radius_add" value="submit" />
+      <input type="submit" ng-click="$ctrl.submit()" class="btn adn-btn border_radius_add" value="submit" />
     </div>
   </form>
 </div>

@@ -1,119 +1,137 @@
-<div class="add-payment-details">
-  <section-heading>Add Payment Details</section-heading>
+<div class="add-payment-details mt-30" ng-init="$ctrl.cardSelect=''">
   <div class="profile-content">
-    <div class="profile-row">
-      <a href="javascript:history.go(-1);">
-        <span class="btn adn-btn right">
-          <i class="glyphicon glyphicon-hand-left"></i> Back
-        </span>
-      </a>
-    </div>
-    <div class="profile-row">
-      <form name="paymentDetailsForm" ng-submit="$ctrl.submit()">
-        <!-- Card Number -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="name">Card Number: </label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input placeholder="Card Number" name="card" id="name" class="form-control" type="text" ng-change="$ctrl.detectCardType($ctrl.card)" ng-model="$ctrl.card" ng-pattern="/^[0-9]+$/" required="">
-            <span ng-show="paymentDetailsForm.card.$invalid" class="help-block">Invalid Card number</span>
-            <span ng-if="($ctrl.totalDigits<15 || $ctrl.totalDigits>18) && paymentDetailsForm.card.$valid" class="help-block">Card number must be 15~18 digits.</span>
-            <span ng-show="$ctrl.cardType" class="help-block">{{$ctrl.cardType[0].niceType}}</span>
-            <span ng-if="!$ctrl.cardType[0] && paymentDetailsForm.card.$valid" class="help-block">Invalid card type</span>
+    <div class="profile-row" style="padding: 0px;">
+      <div class="col-md-6 col-sm-12" style="padding-right:0px;">
+        <div class="progress-img-wrap">
+          <div class="p-form-title3 title4">Payment</div>
+          <div style="background-image: url('themes/addiction/images/png/illustrations-Woman-Explains.png');" class="progress-img"></div>
+          <div class="p-tc-desc3 ng-binding" style="color:red;top: 56%;">{{$ctrl.displayMsg}}</div>
+          <!-- <div class="p-tc-desc3 ng-binding" style="color:red;top: 56%;">You are just one step away from making a difference!!</div> -->
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12" style="padding-right:0px;">
+        <div class="psignup-form ml-051 payment-hgt1 add_payment">
+          <form class="psignup-form n-form" name="$ctrl.paymentForm">
+            <!-- <div class="payment-container">
+            <div class="col-md-6">
 
-          </div>
+            </div>
+            <div class="col-md-6 ">
+              <div class="tooltip-1 tooltip-2">
+                <span class="tooltiptext">SAVE CARD DETAIL</span>
+              </div>
+              <div class="checkboxFive chk-left-mrgn form-group">
+                <input type="checkbox" value="1" id="checkboxFiveInput" ng-model="$ctrl.saveDetails" checked />
+                <label for="checkboxFiveInput" class="tooltiptext"></label>
+              </div>
+            </div>
+          </div> -->
+
+            <!-- previous cards -->
+            <div class="existing-cards" ng-show="$ctrl.savedCards.payments.length>0">
+              <div style="font-size:13px;font-weight:600;color:#428bca;">
+                <span class="col-md-3">Default Card</span>
+                <span class="col-md-4">Card Number</span>
+                <span class="col-md-3">Card Type</span>
+                <span class="col-md-2">Action</span>
+              </div>
+              <div class="payment-container" style="font-size: 10px; padding-top:10px;color:#83BF00;margin-top:20px;" ng-repeat="card in $ctrl.savedCards.payments" ng-init="$ctrl.savedCardCvv={}">
+                <div class="col-md-3" style="padding-left: 20px;">
+                  <input type="radio" ng-model="$ctrl.cardSelect" value="{{card.customer_payment_profile_id}}" ng-click="$ctrl.setDefaultPayment(card.customer_payment_profile_id)" />
+                </div>
+                <div class="col-md-4">
+                  <span>*** **** *** {{card.card}}</span>
+                </div>
+
+                <div class="col-md-3" style="padding-left: 27px;">
+                  <span>{{card.card_type}}</span>
+                </div>
+                <div class="col-md-2" style="text-align:center;">
+                  <span style="cursor:pointer;" ng-click="$ctrl.open({id: card.customer_payment_profile_id })">
+                    <i class="fa fa-trash-o fa-2 delicon text-left text-left"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!-- new cards -->
+            <div class="existing-cards" style="padding-top:10px;" ng-show="$ctrl.cardSelect!=='newCard' && $ctrl.cardSelect!==''">
+              <div style="font-size:10px;padding-left: 5px;">
+                <div class="col-md-7">
+                  <input type="radio" ng-model="$ctrl.cardSelect" value="newCard" /> New Card
+                </div>
+
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-2">
+                </div>
+              </div>
+            </div>
+
+
+            <div ng-show="$ctrl.cardSelect==='newCard'" style="padding-left:20px;">
+              <div class="form-group">
+                <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.cardName">Name as seen on card</span>
+                <input type="text" class="form-control" id="cardName" name="cardName" placeholder="Name as seen on card" ng-model="$ctrl.cardName" required autocomplete="off">
+              </div>
+              <div class="form-group disp-ib">
+                <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.cardNumber">Card Number</span>
+                <input placeholder="Card Number" style="float: left;" class="form-control" type="text" ng-keyup="$ctrl.detectCardType($ctrl.cardNumber, $event)" ng-change="" ng-maxlength="19" ng-model="$ctrl.cardNumber" ng-pattern="/^[0-9' ']+$/" required="" name="cardNumber" maxlength="19" autocomplete="off">
+                <i style="font-size: 40px; margin-top: -10px; color: #58aa22; position: absolute; margin-left: -43px;" class="icon large icon-{{$ctrl.cardType}}-card"></i> </div>
+              <div class="col-md-6" style="padding-left:0px;">
+                <div class="form-group">
+                  <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.expiry || $ctrl.expiryPlaceholder">Expiry date(MM/YYYY)</span>
+                  <input type="text" class="form-control" name="expiry" id="expiry" placeholder="Expiry date(MM/YYYY)" ng-model="$ctrl.expiry" ng-keyup="$ctrl.extraPlaceholder('expiry', $event)" ng-pattern="/^[\d]{2}\/[\d]{4}/*$/" required autocomplete="off">
+                </div>
+              </div>
+              <div class="col-md-6" style="padding-right:0px;" ng-init="showPwd=true;">
+                <div class="form-group">
+                  <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.cvv || $ctrl.cvvPlaceholder">Security Code</span>
+                  <input type="{{showPwd ? 'text':'password'}}" ng-keyup="showPwd=false" name="cvv" class="form-control" id="cvv" placeholder="Security Code" ng-model="$ctrl.cvv" ng-keyup="$ctrl.extraPlaceholder('cvv')" ng-pattern="/^[0-9]*$/" ng-minlength="3" ng-maxlength="4" required="" maxlength="4" number="true" autocomplete="off">
+                </div>
+              </div>
+              <div class="form-group">
+                <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.address">Address</span>
+                <input type="text" name="address" ng-model="$ctrl.address" class="form-control" id="address" placeholder="Address" required autocomplete="off">
+              </div>
+              <div class="col-md-6" style="padding-left:0px;">
+                <div class="form-group">
+                  <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.state">State</span>
+                  <input type="text" name="state" ng-model="$ctrl.state" class="form-control" id="state" placeholder="State" required autocomplete="off">
+                </div>
+              </div>
+              <div class="col-md-6" style="padding-right:0px;">
+                <div class="form-group">
+                  <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.city">City</span>
+                  <input type="text" name="city" class="form-control" id="city" placeholder="City" ng-model="$ctrl.city" required autocomplete="off">
+                </div>
+              </div>
+              <div class="col-md-6" style="padding-left:0px;">
+                <div class="form-group">
+                  <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.country">Country</span>
+                  <input type="text" name="country" class="form-control" id="country" ng-model="$ctrl.country" placeholder="Country" required autocomplete="off">
+                </div>
+              </div>
+              <div class="col-md-6" style="padding-right:0px;">
+                <div class="form-group">
+                  <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.zip">Zip</span>
+                  <input type="text" name="zip" class="form-control" id="zip" ng-model="$ctrl.zip" placeholder="Zip" required autocomplete="off" ng-pattern="/^[0-9]*$/">
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
 
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="name">Name: </label>
-          </div>
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <input placeholder="First Name" name="firstName" class="form-control" type="text" ng-model="$ctrl.firstName" ng-minlength="2" ng-maxlength="25" required="">
-            <span ng-show="paymentDetailsForm.firstName.$invalid" class="help-block">Invalid First Name</span>
-          </div>
-          <div class="col-md-2 col-sm-2 col-xs-12">
-            <input placeholder="Middle Name" name="middleName" class="form-control" type="text" ng-model="$ctrl.middleName" ng-maxlength="20">
-            <span ng-show="paymentDetailsForm.middleName.$invalid" class="help-block">Max-length(20) reached</span>
-          </div>
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <input placeholder="Last Name" name="lastName" class="form-control" type="text" ng-model="$ctrl.lastName" ng-minlength="2" ng-maxlength="25" required="">
-            <span ng-show="paymentDetailsForm.lastName.$invalid" class="help-block">Invalid Last Name</span>
-          </div>
+        <div class="custom-row">
+          <div class="col-md-6 col-sm-12 " ng-if="$ctrl.paymentProcessing!==0 && $ctrl.cardSelect==='newCard'"><a href="javascript:;" ng-click="$ctrl.goToCart()" class="allbtn-bk">Back</a></div>
+          <div class="col-md-6 col-sm-12 " ng-if="$ctrl.cardSelect!='newCard'" style="margin-top: 59%;"><a href="javascript:;" ng-click="$ctrl.goToCart()" class="allbtn-bk">Back</a></div>
+          <div class="col-md-6 col-sm-12 rpad0 text-right" ng-if="$ctrl.paymentProcessing!==0 && $ctrl.cardSelect==='newCard'"> <a href="javascript:void(0)" ng-click="$ctrl.congrats()" class="allbtn-txt"> <i class="fa fa-credit-card"></i> Add Payment</a></div>
+          <!-- <div class="col2 txt-rgtalign" ng-if="$ctrl.paymentProcessing===0">
+          <img src="themes/addiction/images/png/green_loader.gif" width="30" /> </div> -->
         </div>
 
-        <!-- Expiry Year -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="name">Expiry Year: </label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <select ng-model="$ctrl.year" name="year" ng-change="$ctrl.testYear($ctrl.year)" required="">
-              <option value="">Select Year</option>
-              <option value="2017">2017</option>
-              <option value="2018">2018</option>
-              <option value="2019">2019</option>
-              <option value="2020">2020</option>
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-            </select>
-            <!-- <span class="help-block">{{$ctrl.yearError}}</span> -->
-            <span class="help-block" ng-if="$ctrl.curYear > $ctrl.year">Invalid year</span>
-          </div>
-        </div>
-        <!-- Expiry Month -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="name">Expiry Month: </label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <select ng-model="$ctrl.month" name="month" required="">
-              <option value="">Select Month</option>
-              <option value="01">01</option>
-              <option value="02">02</option>
-              <option value="03">03</option>
-              <option value="04">04</option>
-              <option value="05">05</option>
-              <option value="06">06</option>
-              <option value="07">07</option>
-              <option value="08">08</option>
-              <option value="09">09</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>
-            <!-- <span class="help-block">{{$ctrl.monthError}}</span> -->
-          </div>
-        </div>
-        <!-- CVV Code -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="cpwd">CVV Code</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input name="cvv" ng-model="$ctrl.cvv" class="form-control" type="text" placeholder="CVV Code" ng-pattern="/^[0-9]+$/" ng-minlength="3" ng-maxlength="3" required="" />
-            <span ng-show="paymentDetailsForm.cvv.$invalid" class="help-block">Invalid CVV Code</span>
-          </div>
-        </div>
-        <!-- make default -->
-        <div class="adn-row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <label for="cpwd">Default</label>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <input name="default" ng-model="$ctrl.default" class="form-control default-payment" type="checkbox" />
-            <span>Use these credentials as your default payment method.</span>
-          </div>
+      </div>
 
-        </div>
-        <!-- Submit -->
-        <div class="adn-row">
-          <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-md-offset-4 col-sm-12 col-xs-12">
-            <button type="submit" class="btn adn-btn right" ng-disabled="paymentDetailsForm.card.$invalid || paymentDetailsForm.year.$invalid || paymentDetailsForm.month.$invalid || paymentDetailsForm.cvv.$invalid || paymentDetailsForm.firstName.$invalid || paymentDetailsForm.middleName.$invalid || paymentDetailsForm.lastName.$invalid">Submit</button>
-          </div>
-        </div>
-      </form>
+
     </div>
   </div>
 </div>

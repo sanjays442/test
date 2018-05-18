@@ -1,0 +1,107 @@
+<div class="container progress-content custom-payment">
+
+  <div class="clearfix"></div>
+  <div class="progress-content-one mt-30">
+
+    <div class="col-md-6 col-sm-12">
+      <div class="progress-img-wrap">
+        <div class="p-form-title3">Payment</div>
+        <div style="background-image: url('themes/addiction/images/png/illustrations-Woman-Explains.png');" class="progress-img"> </div>
+        <div class="p-tc-desc3 ng-binding">{{$ctrl.displayMsg}}</div>
+      </div>
+    </div>
+    <div class="col-md-6" style="margin-bottom:5%;">
+      <div class="progressbar">
+        <span class="member-cart" style="cursor:pointer;" ng-click="$ctrl.goToCart()">
+          <img src="themes/addiction/images/png/Cart-Icon.png"> </span>
+        <div class="progress progress-grediant prg-newcss">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{$ctrl.progressValue}}" aria-valuemin="0" aria-valuemax="100" style="width:{{$ctrl.progressValue}}%">
+            <span class="stick-me">{{$ctrl.progressValue}}%</span>
+            <p class="">
+              <img src="themes/addiction/images/png/Cart-Icon.png"> </p>
+          </div>
+        </div>
+      </div>
+      <div class="psignup-form ml-05 payment-hgt">
+        <form class="psignup-form n-form" name="$ctrl.paymentForm">
+
+          <div class="payment-container">
+            <div class="col-md-6">
+              <p class="para-optional1">Amount : ${{$ctrl.cartTotal}}</p>
+            </div>
+            <div class="col-md-6 ">
+              <div class="tooltip-1 tooltip-2">
+                <span class="tooltiptext">SAVE CARD DETAIL</span>
+              </div>
+              <div class="checkboxFive chk-left-mrgn form-group">
+
+                <input type="checkbox" value="1" id="checkboxFiveInput" ng-model="$ctrl.saveDetails" checked />
+                <label for="checkboxFiveInput" class="tooltiptext"></label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.cardName">Name as seen on card</span>
+            <input type="text" class="form-control" id="cardName" name="cardName" placeholder="Name as seen on card" ng-model="$ctrl.cardName" required autocomplete="off">
+          </div>
+
+          <!-- <div class="form-group">
+            <input type="text" class="form-control" name="cardNumber" id="cardNumber" placeholder="Card number" ng-model="$ctrl.cardNumber" required>
+          </div> -->
+          <div class="form-group">
+            <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.cardNumber">Card Number</span>
+            <input placeholder="Card Number" style="float: left; margin-bottom: 20px;" class="form-control" type="text" ng-keyup="$ctrl.detectCardType($ctrl.cardNumber, $event)" ng-change="" ng-maxlength="19" ng-model="$ctrl.cardNumber" ng-pattern="/^[0-9' ']+$/" required="" name="cardNumber" maxlength="19" autocomplete="off">
+            <i style="font-size: 40px; margin-top: -10px; color: #58aa22; position: absolute; margin-left: -43px;" class="icon large icon-{{$ctrl.cardType}}-card"></i>
+          </div>
+          <div class="form-group">
+            <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.expiry">Expiry date(MM/YYYY)</span>
+            <input type="text" class="form-control" name="expiry" id="expiry" placeholder="Expiry date(MM/YYYY)" ng-model="$ctrl.expiry" required autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.cvv">Security Code</span>
+            <input type="text" name="cvv" class="form-control" id="cvv" placeholder="Security Code" ng-model="$ctrl.cvv" ng-pattern="/^[0-9]+$/" ng-minlength="3" ng-maxlength="4" required="" maxlength="4" number="true" autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.address">Address</span>
+            <input type="text" name="address" ng-model="$ctrl.address" class="form-control" id="address" placeholder="Address" required autocomplete="off">
+          </div>
+          <div class="col-md-6" style="padding-left:0px;">
+            <div class="form-group">
+              <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.state">State</span>
+              <input type="text" name="state" ng-model="$ctrl.state" class="form-control" id="state" placeholder="State" required autocomplete="off">
+            </div>
+          </div>
+          <div class="col-md-6" style="padding-left:0px;">
+            <div class="form-group">
+              <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.city">City</span>
+              <input type="text" name="city" class="form-control" id="city" placeholder="City" ng-model="$ctrl.city" required autocomplete="off">
+            </div>
+          </div>
+          <div class="col-md-6" style="padding-left:0px;">
+            <div class="form-group">
+              <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.country">Country</span>
+              <input type="text" name="country" class="form-control" id="country" ng-model="$ctrl.country" placeholder="Country" required autocomplete="off">
+            </div>
+          </div>
+          <div class="col-md-6" style="padding-left:0px;">
+            <div class="form-group">
+              <span style="font-size:12px; color:#83BF00;" class="abslt-plc" ng-if="$ctrl.zip">Zip</span>
+              <input type="text" name="zip" class="form-control" id="zip" ng-model="$ctrl.zip" placeholder="Zip" required autocomplete="off">
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="custom-row ml-05">
+        <div class="col-md-6 col-sm-12"><a href="javascript:;" ng-click="$ctrl.goToCart()" class="allbtn-bk pl03px">Back</a></div>
+        <div class="col-md-6 col-sm-12 text-right pr0" ng-if="$ctrl.paymentProcessing!==0"> <a href="javascript:void(0)" ng-click="$ctrl.congrats()" class="allbtn-txt"> <i class="fa fa-credit-card"></i> Make Payment</a></div>
+        <!-- <div class="col2 txt-rgtalign" ng-if="$ctrl.paymentProcessing===0">
+          <img src="themes/addiction/images/png/green_loader.gif" width="30" /> </div> -->
+      </div>
+
+    </div>
+
+  </div>
+</div>

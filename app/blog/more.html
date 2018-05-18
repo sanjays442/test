@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <div ng-controller="nextCtrl as $ctrl" class="col-sm-12">
+      <div class="col-sm-8">
+        <div class="blog_title">
+          <h1>
+            <label>Blog</label>
+          </h1>
+        </div>
+        <div ng-repeat="result in $ctrl.result">
+          <div class="wrap_blog_inner">
+            <div class="wrap_title_inner">
+              <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+                <!-- <a href="{{result.permalink}} ">{{result.post_title}}</a> -->
+                <a href="/blog/{{result.post_name}}/">{{result.post_title}}</a>
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding_0 ">
+              <div class="row ">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
+                  <div class="img_outer_blog ">
+                    <div class="img_inner_blog ">
+                      <a href="/blog/{{result.post_name}}/">
+                        <img width="150 " height="150 " src="{{result.thumbnail | replaceurl}} " class="attachment-thumbnail size-thumbnail " alt="{{result.post_title}} ">
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-8 padding_0 ">
+                  <div class="posted_by_div_wrap ">
+                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                      <span class="posted_by "> Posted By
+                        <span>{{result.author}} </span> , on
+                        <span class="date_span "> {{result.post_date}}
+                          <span> </span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8 col-xs-8 col-sm-8 ">
+                  <div class="desc_div_inner ">
+                    {{result.post_content}}
+                  </div>
+                  <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub text-right ">
+                    <a href="/blog/{{result.post_name}}/" class="view_more space ">
+                      <span class=" glyphicon glyphicon-hand-right "></span>Read More</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--paginate-->
+        <div class="col-md-12 col-sm-12 col-xs-12 text-center pagination-div text-right">
+          <nav class="navigation paging-navigation" role="navigation">
+            <div class="pagination loop-pagination">
+              <a class="page-numbers" ng-repeat="n in $ctrl.more track by $index" href="/blog/page/{{n}}/" ng-if="n=='1'"> {{n}} </a>
+              <span class="page-numbers dots">…</span>
+              <a class="page-numbers" ng-repeat="n in $ctrl.more track by $index" href="/blog/page/{{n}}/" ng-if="n!='1'"> {{n}} </a>
+              <a class="next page-numbers" href="/blog/page/{{$ctrl.next}}/">»</a>
+            </div>
+            <!-- .pagination -->
+          </nav>
+          <!-- .navigation -->
+        </div>
+      </div>
+      <div>
+        <side-panel></side-panel>
+      </div>
+    </div>
+    <div>
+    </div>
+  </div>
+</div>

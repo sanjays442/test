@@ -1,0 +1,111 @@
+<div class="container progress-content">
+  <div class="progressbar">
+    <div class="col-md-6 col-md-offset-6">
+      <div class="progress progress-grediant">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+          <span class="stick-me">40%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="progress-content-one">
+
+    <div class="col-md-6">
+      <div class="progress-img-wrap h-490">
+        <div class="p-tc-title">Add test center</div>
+        <div style="background-image: url('themes/addiction/images/png/illustrations-Woman-Explains.png');" class="progress-img">
+        </div>
+        <div class="p-tc-desc">{{$ctrl.displayMsg}}</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="para-optional">
+        <p>Now there are a few more optional fields which when filled can help give a clearer picture for the customers and help them make a decision quickly. Taking a couple of minutes extra can definitely boost your profile in our website.</p>
+        <p class="lead">Optional Fields</p>
+      </div>
+      <div class="psignup-form fg-height">
+        <form class="psignup-form" name="$ctrl.optionalForm">
+          <div class="form-group">
+            <input type="text" class="form-control" name="description" ng-focus="$ctrl.displayMsg='Description Explanation'" ng-blur="$ctrl.displayMsg=''" ng-keypress="$ctrl.optionalInit.description=0" ng-model="$ctrl.description" required="true" placeholder="Description">
+            <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Explaination of each field here"><i class="fa fa-question-circle-o fa-2x"></i></span>
+            <!-- <span ng-show="$ctrl.optionalForm.description.$invalid && ($ctrl.optionalInit.description===0)" class="help-block">Required</span> -->
+
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="overview" ng-model="$ctrl.overview" ng-keypress="$ctrl.optionalInit.overview=0" required="true" placeholder="Overview of the program">
+            <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Explaination of each field here"><i class="fa fa-question-circle-o fa-2x"></i></span>
+            <!-- <span ng-show="$ctrl.optionalForm.overview.$invalid && ($ctrl.optionalInit.overview===0)" class="help-block">Required</span> -->
+
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="treatmentApproach" ng-model="$ctrl.treatmentApproach" ng-keypress="$ctrl.optionalInit.treatmentApproach=0" required="true" placeholder="Treatment approach">
+            <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Explaination of each field here"><i class="fa fa-question-circle-o fa-2x"></i></span>
+            <!-- <span ng-show="$ctrl.optionalForm.treatmentApproach.$invalid && ($ctrl.optionalInit.treatmentApproach===0)" class="help-block">Required</span> -->
+
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="usp" ng-model="$ctrl.usp" ng-keypress="$ctrl.optionalInit.usp=0" required="true" placeholder="USP" >
+            <span class="fix-right ng-binding" tooltip-placement="right" uib-tooltip="Explaination of each field here"><i class="fa fa-question-circle-o fa-2x"></i></span>
+            <!-- <span ng-show="$ctrl.optionalForm.usp.$error.required && ($ctrl.optionalInit.usp===0)" class="help-block">Required</span>
+            <span ng-show="$ctrl.optionalForm.usp.$error.pattern && ($ctrl.optionalInit.usp===0)" class="help-block">Invalid Email</span> -->
+
+          </div>
+
+          <div class="form-group clear-me">
+            <label class="label-uo">Logo</label>
+            <div class="pull-left choose-file">
+              <span>Upload <i class="fa fa-arrow-up"></i></span>
+              <!-- <input type="file" class="file"> -->
+              <input name="logo" id="logo" class="file" type="file" file-model="$ctrl.logoData" onchange="angular.element(this).scope().imagePreview(this)" accept="image/*">
+                <img id="logo_preview"   width="120" name="logo_preview" />
+
+              </div>
+              <i class="fa fa-times" ng-show="$ctrl.logoPreview" style="padding-left:5px;cursor:pointer;" ng-click="$ctrl.deleteLogo()" aria-hidden="true" tooltip-placement="right" uib-tooltip="Delete image"></i>
+
+            <div class="pull-right">
+              <span class="ng-binding" tooltip-placement="right" uib-tooltip="Explaination of each field here"><i class="fa fa-question-circle-o c-orange fa-2x"></i></span>
+            </div>
+          </div>
+          <div class="form-group clear-me">
+            <label class="label-uo">Gallery</label>
+            <div class="pull-left choose-file">
+              <span>Upload <i class="fa fa-arrow-up"></i></span>
+              <!-- <input type="file" class="file"> -->
+              <input name="gallery[]" id="gallery_data" class="file" type="file" file-model="$ctrl.galleryData" onchange="angular.element(this).scope().imagePreviewMulti(this)" multiple="multiple" accept="image/*">
+
+            </div>
+
+            <div class="pull-right">
+              <span class="ng-binding" tooltip-placement="right" uib-tooltip="Explaination of each field here"><i class="fa fa-question-circle-o c-orange fa-2x"></i></span>
+            </div>
+          </div>
+
+        <div class="form-group clear-me">
+          <div ng-repeat="(key, file) in $ctrl.multiPrvElm" style="padding-bottom:10px;">
+            <img id="multi_preview-{{key}}"   width="100"  />
+            <i class="fa fa-times" ng-if="$ctrl.multiPreview[key]"  style="padding-left:5px;cursor:pointer;" ng-click="$ctrl.deleteMulti(key)" aria-hidden="true" tooltip-placement="right" uib-tooltip="Delete image"></i>
+
+            </div>
+        </div>
+
+        </form>
+      </div>
+      <ul class="stick-next-uo list-inline">
+        <li>
+          <p><a href="javascript:history.go(-1);" ng-click="">Back</a></p>
+        </li>
+        <li>
+          <p><a href="javascript:void(0);" ng-click="$ctrl.updateMembership()">Skip</a></p>
+        </li>
+        <!-- <li><p><button  ng-click="$ctrl.updateMembership()">Skip</button></p></li> -->
+        <!-- <li><p><a href="javascript:void(0)" ng-click="$ctrl.updateMembership()">Done</a></p></li> -->
+        <li>
+          <p>
+            <a href="javascript:void(0);" ng-click="$ctrl.optionalFieldsSubmit()" ng-disabled="$ctrl.optionalForm.description.$invalid || $ctrl.optionalForm.overview.$invalid || $ctrl.optionalForm.treatmentApproach.$invalid || $ctrl.optionalForm.usp.$invalid">Next</a>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

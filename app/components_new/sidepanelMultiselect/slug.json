@@ -1,0 +1,47 @@
+{
+  "Demographic": [
+    "Teen / Adolescent Rehabs",
+    "LGBT Friendly Rehabs",
+    "Young Adult Rehabs",
+    "Rehab for Men",
+    "Executive Treatment",
+    "Luxury Rehab Centers",
+    "Rehab for Women",
+    "Mature Adult Rehabs"
+  ],
+  "Treatment Approach": [
+    "Dual Diagnosis Rehab Centers",
+    "Non 12 Step Rehab Centers",
+    "Holistic Addiction Rehab Centers",
+    "Faith Based Rehab Centers",
+    "12 Step Based Treatment Centers"
+  ],
+  "Setting": [
+    "Wilderness Camps",
+    "Rehabs on the Ocean",
+    "Residential Addiction Rehabs",
+    "Lake Front Addiction Centers",
+    "Mountain Lodge Recovery Centers"
+  ],
+  "Additional Services": [
+    "Rehabs with One on One Counseling",
+    "Rehabs with Aftercare Programs",
+    "On Site Detox",
+    "Outpatient Treatment Centers",
+    "Sober Livings / Transitional Living"
+  ],
+  "Payment": [
+    "Financing Available",
+    "Private Pay Rehab Centers",
+    "Scholarships Available",
+    "Insurance Friendly Rehabs"
+  ],
+  "By Drug": [
+    "Alcohol Rehab Centers",
+    "Prescriptions Drug Rehabs",
+    "Heroin Rehab Centers",
+    "Crystal Meth Rehab Centers",
+    "Marijuana Rehab Centers",
+    "Opiate Addiction Centers"
+  ]
+}

@@ -1,0 +1,13 @@
+<div id="page3">
+  <div class="rect-blue text-center zoomIn">
+    <h2 class="text-center" style="top: 5px;">We give you free subscription for one week with absolute no charges.</h2>
+    <h3>It will be charged only once after trial period you can cancel anytime before that if you don't see the difference.</h3>
+    <a class="btn btn-default" ng-click="$ctrl.subscribeFeatured()">Subscribe</a>
+    <!-- <br/><br/><a ui-sref="{{$ctrl.cancelState}}" class="btn btn-danger">No thanks</a> -->
+    <br/>
+    <br/><a ng-click="$ctrl.cancelState()" class="btn btn-danger">No thanks</a>
+  </div>
+  <a ui-sref="{{$ctrl.backState}}" class="btn btn-default button-previous">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+  </a>
+</div>

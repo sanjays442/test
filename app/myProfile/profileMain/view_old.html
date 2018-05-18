@@ -1,0 +1,240 @@
+<div class="profile-main mr-16" ng-init="$ctrl.viewOnly=1">
+  <!-- <section-heading>My Profile</section-heading> -->
+  <div class="profile-content account_details">
+    <!--<div class="profile-row">
+      <a ui-sref="myProfile.addTreatmentCenter">
+        <span class="btn adn-btn right">Add More Treatment Center</span>
+      </a>
+    </div>-->
+    <div class="col-md-6 block_colored">
+      <div ng-if="$ctrl.viewOnly===1">
+        <!-- First Name -->
+        <div class="adn-row mt-30">
+          <div class="col-md-4 col-sm-4 col-xs-6">
+            <label>First Name:</label>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-6">
+            <p>{{ $ctrl.profile.first_name }}</p>
+
+            <!-- <div class="membership_profile text-right col-md-10 col-sm-8 col-xs-8">
+            <img src="/themes/addiction/images/{{ $ctrl.profile.type_of_user }}.png" width="80">
+          </div> -->
+          </div>
+        </div>
+        <!-- Last Name -->
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-6">
+            <label>Last Name:</label>
+          </div>
+          <div class="col-md-8 col-sm-4 col-xs-6">
+            <p>{{ $ctrl.profile.last_name }}</p>
+          </div>
+        </div>
+        <!-- Email -->
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-6">
+            <label>Email:</label>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-6">
+            <p>{{ $ctrl.profile.email }}</p>
+          </div>
+        </div>
+        <!-- About Me -->
+        <!-- <div class="adn-row">
+        <div class="col-md-4 col-sm-4 col-xs-6">
+          <label>About Me:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-6">
+          <p>{{ $ctrl.profile.about_me }}</p>
+        </div>
+      </div> -->
+        <!-- Phone -->
+        <div class="adn-row">
+          <div class="col-md-4 col-sm-4 col-xs-6">
+            <label>Phone:</label>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-6">
+            <p>{{ $ctrl.profile.phone }}</p>
+          </div>
+        </div>
+        <!-- Address -->
+        <!-- <div class="adn-row">
+        <div class="col-md-4 col-sm-4 col-xs-6">
+          <label>Address:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-6">
+          <p>{{ $ctrl.profile.address }}</p>
+        </div>
+      </div> -->
+        <!-- Zipcode -->
+        <!-- <div class="adn-row">
+        <div class="col-md-4 col-sm-4 col-xs-6">
+          <label>Zipcode:</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-6">
+          <p>{{ $ctrl.profile.zipcode }}</p>
+        </div>
+      </div> -->
+
+      </div>
+      <div class="" ng-if="$ctrl.editOnly===1">
+        <form ng-submit="$ctrl.submit()" name="$ctrl.accountSetting" class="form-horizontal" enctype="multipart/form-data" novalidate="novalidate" __bizdiag="-1747746453" __biza="WJ__">
+          <div class="adn-row mt-30">
+            <!-- First Name -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="firstname">First Name:</label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <input ng-model="$ctrl.first_name" type="text" name="first_name" class="form-control required" required="true" placeholder="First Name" />
+              <span ng-show="$ctrl.accountSetting.first_name.$error.required" class="help-block">Required</span>
+            </div>
+          </div>
+
+          <!-- Last Name -->
+          <div class="adn-row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="lastname">Last Name:</label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <input ng-model="$ctrl.last_name" type="text" name="last_name" class="form-control required" required="true" placeholder="Last Name" />
+              <span ng-show="$ctrl.accountSetting.last_name.$error.required" class="help-block">Required</span>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="adn-row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="email">Email:</label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <input ng-model="$ctrl.email" type="text" name="email" readonly="" class="form-control" id="email" placeholder="Email" />
+            </div>
+          </div>
+
+          <!-- About me -->
+          <div class="adn-row hide_it">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="about">About Me:</label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <textarea ng-model="$ctrl.about_me" name="about_me" type="text" rows="3" cols="100%" class="form-control required" required="true" placeholder=""> </textarea>
+              <!-- <span ng-show="$ctrl.accountSetting.about_me.$error.required" class="help-block">Required</span> -->
+            </div>
+          </div>
+
+          <!-- Country -->
+          <div class="adn-row hide_it">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="country">Country</label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <input ng-model="$ctrl.country" type="text" name="country" class="form-control required" ng-value="$ctrl.country" readonly="readonly" />
+            </div>
+          </div>
+
+          <!-- State -->
+          <div class="adn-row hide_it">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="state"> State </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <state-select selected="$ctrl.state" on-update="$ctrl.onStateUpdate(selected)"></state-select>
+            </div>
+          </div>
+          <div class="adn-row hide_it">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label>City</label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <select ng-model="$ctrl.city" name="city" ng-change="$ctrl.testZip()" required="true">
+                <option value="">Select City</option>
+                <option ng-repeat="cities in $ctrl.cities track by $index" value="{{cities.name}}">{{cities.name}}</option>
+              </select>
+              <!-- <p ng-show="$ctrl.accountSetting.city.$invalid" class="help-block">Required</p> -->
+            </div>
+          </div>
+
+          <!-- Zipcode -->
+          <div class="adn-row hide_it">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="zip"> Zipcode: </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <input ng-model="$ctrl.zipcode" type="text" name="zipcode" ng-change="$ctrl.testZip()" class="form-control required" number="true" minlength="5" maxlength="5" ng-pattern="/^\d{5}$/" required="true" placeholder="14100" />
+              <span ng-show="$ctrl.accountSetting.zipcode.$invalid" class="help-block">Required and Zip code must be 5 digits</span>
+              <!-- <span ng-if="($ctrl.zipFound===0 && $ctrl.accountSetting.zipcode.$valid)" class="help-block">Invalid zip, doesn't match with selected state.</span> -->
+            </div>
+          </div>
+
+          <!-- Address -->
+          <div class="adn-row hide_it">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="addr"> Address: </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <input ng-model="$ctrl.address" type="text" name="address" class="form-control required" />
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="adn-row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="phone"> Phone: </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <!-- <input ng-model="$ctrl.phone" type="text" name="phone" placeholder="eg. (601) 521-1542" number="true" ng-change="$ctrl.testPhone()" class="form-control required" required="true" phone-input restrict="reject" ng-minlength="14" maxlength="14"> -->
+              <input ng-model="$ctrl.phone" type="text" name="phone" placeholder="Intake Phone number" ng-pattern="/^-?[0-9+]*$/" number="true" class="form-control required" required="true">
+              <!-- <p ng-show="$ctrl.accountSetting.phone.$error.pattern || $ctrl.accountSetting.phone.$error.minlength || $ctrl.accountSetting.phone.$error.maxlength" class="help-block">Invalid US number.</p> -->
+              <p ng-show="$ctrl.accountSetting.phone.$error.required" class="help-block">Required</p>
+              <p ng-show="$ctrl.accountSetting.phone.$invalid" class="help-block">Invalid phone</p>
+            </div>
+          </div>
+
+          <!-- Upload Image -->
+          <div class="adn-row hide_it">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <label for="img_upload"> Upload Image: </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <div class="">
+                <!-- bg_file_input  -->
+                <a href="javascript:void(0)">
+                  <input file-model="$ctrl.profile_pic" type="file" name="profile_image" class="profile_img bg_file_input" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="adn-row" ng-show="0">
+            <div class="" style="padding-left: 15px;">
+              <button type="submit" class="btn adn-btn" ng-disabled="$ctrl.accountSetting.last_name.$invalid ||
+            $ctrl.accountSetting.last_name.$invalid || $ctrl.accountSetting.phone.$invalid">Save</button>
+              <button type="submit" class="btn adn-btn" ng-disabled="$ctrl.accountSetting.last_name.$invalid ||
+            $ctrl.accountSetting.last_name.$invalid || $ctrl.accountSetting.phone.$invalid">Edit</button>
+              <button type="submit" class="btn adn-btn">Back</button>
+              <!-- <button type="submit" class="btn adn-btn right" ng-disabled="$ctrl.accountSetting.phone.$invalid || ($ctrl.zipFound === 0) || $ctrl.accountSetting.city.$invalid || $ctrl.accountSetting.last_name.$invalid || $ctrl.accountSetting.first_name.$invalid">Submit</button> -->
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="adn-row">
+        <div class="" style="padding-left: 15px;">
+          <a ng-show="$ctrl.editOnly===1" ng-click="$ctrl.submit()" class="btn adn-btn allbtn-nxt myprofile" ng-disabled="$ctrl.accountSetting.last_name.$invalid ||
+        $ctrl.accountSetting.last_name.$invalid || $ctrl.accountSetting.phone.$invalid">Save</a>
+          <a ng-show="$ctrl.viewOnly!==0" ng-click="$ctrl.viewOnly=0;$ctrl.editOnly=1; $ctrl.initEditProfData();" class="btn adn-btn allbtn-nxt myprofile">Edit</a>
+
+          <a ng-show="$ctrl.editOnly===1" ng-click="$ctrl.viewOnly=1;$ctrl.editOnly=0;" class="btn adn-btn allbtn-nxt myprofile">Back</a>
+
+          <!-- <a ng-show="$ctrl.editOnly===1" ng-click="$ctrl.viewOnly=1;$ctrl.editOnly=0;" class="allbtn-bk myprofile">Back</a> -->
+          <!-- <button type="submit" class="btn adn-btn right" ng-disabled="$ctrl.accountSetting.phone.$invalid || ($ctrl.zipFound === 0) || $ctrl.accountSetting.city.$invalid || $ctrl.accountSetting.last_name.$invalid || $ctrl.accountSetting.first_name.$invalid">Submit</button> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <change-password></change-password>
+    </div>
+
+  </div>
+</div>

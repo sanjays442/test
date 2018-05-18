@@ -1,0 +1,86 @@
+<div class="container progress-content update-membership">
+  <div class="clearfix"></div>
+  <div class="progress-content-one mt-30">
+    <div class="col-md-6 col-md-12">
+      <div class="progress-img-wrap">
+        <!-- <div style="background-image: url('themes/addiction/images/png/Upgrade.gif');" class="progress-img"> </div> -->
+        <div style="background-image: url('themes/addiction/images/png/Upgrade.gif'); background-size:contain" class="progress-img">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-md-12">
+      <div class="progressbar" ng-if="0">
+
+        <!-- <span class="member-cart"><img src="themes/addiction/images/png/Cart-Icon.png" /></span> -->
+        <div class="progress progress-grediant prg-newcss">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{$ctrl.progressValue}}" aria-valuemin="0" aria-valuemax="100" style="width:{{$ctrl.progressValue}}%">
+            <span class="stick-me">{{$ctrl.progressValue}}%</span>
+            <p class="">
+              <img src="themes/addiction/images/png/Cart-Icon.png" />
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <div class="para-optional">
+        <p class="lead">Update membership:</p>
+        <p>There is also an option to upgrade membership. Check the table below for the benefits:</p>
+      </div>
+      <div class="table-responsive table-pro table-224" style="margin-left:5%;">
+        <table class="table table-bordered" style="margin-left:0%!important;">
+          <tbody>
+            <tr class="no-border" style="border:1px solid #83BF00">
+              <td><b>Membership Benefits</b></td>
+              <td style="padding-left:15px;padding-right:15px;"><b>Gold ($)</b></td>
+              <td><b>Platinum($)</b></td>
+            </tr>
+            <tr style="border:1px solid #83BF00">
+              <td>Show Contact details</td>
+              <td><i class="fa fa-check"></i></td>
+              <td><i class="fa fa-check"></i></td>
+            </tr>
+            <tr style="border:1px solid #83BF00">
+              <td>Sponsor pages</td>
+              <td><i class="fa fa-check"></i></td>
+              <td><i class="fa fa-check"></i></td>
+            </tr>
+            <tr style="border:1px solid #83BF00">
+              <td>Publish Ads</td>
+              <td><i class="fa fa-check"></i></td>
+              <td><i class="fa fa-check"></i></td>
+            </tr>
+            <tr style="border:1px solid #83BF00">
+              <td>Feature in Home page</td>
+              <td></td>
+              <td><i class="fa fa-check"></i></td>
+            </tr>
+            <tr class="no-border2">
+              <td></td>
+              <td>
+                <a href="javascript:void(0);" ng-show="$ctrl.currentMembership!=='sponsored'" ng-click="$ctrl.selectMemebership('sponsored')">Select</a>
+                <a href="javascript:void(0);" ng-show="$ctrl.currentMembership==='sponsored'" ng-click="$ctrl.selectMemebership(false)">UnSelect</a>
+              </td>
+              <td>
+                <a href="javascript:void(0);" ng-show="$ctrl.currentMembership!=='featured'" ng-click="$ctrl.selectMemebership('featured');">Select</a>
+                <a href="javascript:void(0);" ng-show="$ctrl.currentMembership==='featured'" ng-click="$ctrl.selectMemebership(false);">UnSelect</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <ul class="list-inline um-np mt-42">
+        <li><a href="javascript:;" class="allbtn-bk" ng-click="$ctrl.goBack()">Back</a></li>
+        <li id="selection-user-focus" class="selection-user-focus">
+          <a href="javascript:void(0)">
+            <!-- <span  ng-click="$ctrl.anotherTestcenter()" ng-if="$ctrl.currentMembership===''">Continue without upgrade</span> -->
+            <span ng-click="$ctrl.anotherTestcenter()" ng-if="$ctrl.currentMembership===''">Continue without upgrade</span>
+            <span ng-click="$ctrl.sponsored();" ng-if="$ctrl.currentMembership==='sponsored'">Continue with Gold membership</span>
+            <span ng-click="$ctrl.featured();" ng-if="$ctrl.currentMembership==='featured'">Continue with Platinum membership</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>

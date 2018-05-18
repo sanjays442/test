@@ -1,6 +1,24 @@
 ﻿/* reset */
 
 a:hover{text-decoration: none;}
+
+path:hover, circle:hover {
+ 
+  stroke:transparent;
+  stroke-linejoin: round;
+  fill: #015b8e !important;
+  cursor: pointer;
+  color::#ffffff;
+}
+
+path:visited {  
+
+  fill: red !important;
+  cursor: pointer;
+}
+tspan {
+	fill: #b3b3b3 !important;
+}
 #mapwrapper
 {
 	max-width:100%;

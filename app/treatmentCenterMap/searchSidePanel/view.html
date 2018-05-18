@@ -1,5 +1,5 @@
 <div class="search-side-panel">
-  <form ng-submit="$ctrl.submit()" __bizdiag="927742349" __biza="WJ__">
+  <form __bizdiag="927742349" __biza="WJ__">
     <!-- Category Starts -->
     <div class="category-box">
       <div class="search-panel-header">
@@ -43,6 +43,7 @@
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
             <state-select selected="$ctrl.state" on-update="$ctrl.onStateSelect(selected)"></state-select>
+            <p ng-show="$ctrl.stateErr">{{$ctrl.stateErr}}</p>
           </div>
         </div>
         <p class="font-bold text-center">OR</p>
@@ -51,7 +52,8 @@
             <label for="zip">Zipcode:</label>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
-            <input ng-model="$ctrl.zipcode" type="text" class="form-control" placeholder="" />
+            <input ng-model="$ctrl.zipcode" type="text" class="form-control" placeholder="" maxlength="5" />
+            <p ng-show="$ctrl.zipErr">{{$ctrl.zipErr}}</p>
           </div>
         </div>
         <div class="adn-row">
@@ -71,7 +73,7 @@
           </div>
         </div>
         <div class="adn-row">
-          <input type="submit" class="btn adn-btn border_radius_add" value="submit" />
+          <input type="submit" class="btn adn-btn border_radius_add" ng-click="$ctrl.submit()" value="submit" />
         </div>
       </div>
     </div>

@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div ng-controller="blogSingleCtrl as $ctrl" class="col-sm-12">
+      <div class="col-sm-8">
+        <div class="blog_title">
+          <h1>
+            <label>Blog</label>
+          </h1>
+        </div>
+        <div ng-repeat="result in $ctrl.result">
+          <div class="wrap_blog_inner">
+            <div class="wrap_title_inner">
+              <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+                <a href="/blog/{{result.post_name}}/">{{result.post_title}}</a>
+              </div>
+            </div>
+            <div class="wrap_title_inner">
+              <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+
+              </div>
+            </div>
+            <div class="img_outer_blog">
+              <div class="img_inner_blog">
+                <!-- <a href="http://www.addictionnetwork.com/blog/minorities-drug-recovery/"></a> -->
+              </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+              <div class="posted_by_div_wrap">
+                <div class="col-md-12 col-sm-12 col-xs-12 padding_0">
+                  <span class="posted_by">Posted By
+                    <span>{{result.author}}</span>
+                    <span class="date_span">{{result.post_date}}
+                      <span> </span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 padding_0">
+              <div class="desc_div_inner" ng-bind-html="$ctrl.content">
+              </div>
+            </div>
+            <iframe width="650px" height="400px" frameborder="0" src="//blog.addictionnetwork.com/blog/iframe.php" style="overflow:hidden;height:500px;width:100%"></iframe>
+            <!-- Your embedded comments code -->
+            <!-- <facebook>
+            </facebook> -->
+          </div>
+        </div>
+      </div>
+      <div>
+        <side-panel></side-panel>
+      </div>
+    </div>
+    <div>
+    </div>
+  </div>
+</div>

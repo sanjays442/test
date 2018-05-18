@@ -1,7 +1,17 @@
-<div class="side-card">
-  <card-heading>{{ $ctrl.filter }}</card-heading>
+<div class="side-card" ng-repeat="cards in $ctrl.demographies">
+  <!-- <card-heading>{{ $ctrl.filter }}</card-heading>
   <ul class="list-unstyled">
     <li ng-repeat="listing in $ctrl.listings">
+      <a ui-sref="{{ listing.uiSref }}">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        {{ listing.name }}
+      </a>
+    </li>
+  </ul> -->
+
+  <card-heading>{{ cards.card }}</card-heading>
+  <ul class="list-unstyled">
+    <li ng-repeat="listing in cards.cardInfo">
       <a ui-sref="{{ listing.uiSref }}">
         <span class="glyphicon glyphicon-chevron-right"></span>
         {{ listing.name }}

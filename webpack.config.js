@@ -68,6 +68,9 @@ var copyWebpackPlugin = new CopyWebpackPlugin([{
   from: 'node_modules/angular-local-storage/dist',
   to: PATHS.build
 }, {
+  from: 'node_modules/oclazyload/dist',
+  to: PATHS.build
+}, {
   from: 'app/plugins',
   to: 'plugins'
 }, {
@@ -102,33 +105,36 @@ var cssAssetsPlugin = new HtmlWebpackIncludeAssetsPlugin({
   assets: [
     'themes/addiction/css/bootstrap.css',
     'themes/addiction/css/bootstrap-select.css',
-    'themes/addiction/css/custom.css',
+    'themes/addiction/css/custom-1.css?ver=1.2001',
+    'themes/addiction/css/style_header.css?ver=1.0001',
     'themes/addiction/css/fwslider.css',
     'themes/addiction/css/bootstrap-multiselect.css',
     'themes/addiction/css/map-style.css',
     'ui-bootstrap-csp.css',
-    'themes/addiction/css/font-awesome.min.css'
+    'themes/addiction/css/font-awesome.min.css',
+    'themes/addiction/css/credit_card/style.css'
   ],
   append: false
 });
 
 var jsAssetsPlugin = new HtmlWebpackIncludeAssetsPlugin({
   assets: [
-    'themes/addiction/js/css3-mediaqueries.js',
-    'themes/addiction/css/jQuery-Multiselect/js/bootstrap-multiselect.js',
-    'themes/addiction/js/common.js',
+    // 'themes/addiction/js/css3-mediaqueries.js',
+    // 'themes/addiction/css/jQuery-Multiselect/js/bootstrap-multiselect.js',
+    // 'themes/addiction/js/common.js',
     // 'themes/addiction/js/multiple.js',
-    'themes/addiction/js/maskinput.js',
+    // 'themes/addiction/js/maskinput.js',
     // 'themes/addiction/js/functions.js',
-    'js/masonry.min.js',
-    'js/jquery/jquery.masonry.min.js',
-    'js/wp-embed.min.js',
+    // 'js/masonry.min.js',
+    // 'js/jquery/jquery.masonry.min.js',
+   // 'js/wp-embed.min.js',
     'angular.js',
     'angular-animate.min.js',
     'angular-ui-router.min.js',
     'ui-bootstrap-tpls.js',
     'angularjs-dropdown-multiselect.min.js',
-    'angular-local-storage.min.js'
+    'angular-local-storage.min.js',
+    'ocLazyLoad.min.js'
   ],
   append: false
 });
@@ -158,7 +164,7 @@ var devConfig = merge(common, {
   devServer: {
     contentBase: PATHS.build,
     stats: 'errors-only',
-    port: 3000,
+    port: 3003,
     overlay: {
       errors: true,
       warnings: true

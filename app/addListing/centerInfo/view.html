@@ -7,13 +7,12 @@
           </label>
         </div>
         <div class="col-md-8 col-sm-8 col-xs-12">
-          <div ng-dropdown-multiselect="" options="$ctrl.addListingCategories" checkboxes="true" selected-model="$root.multiselectModelCategories" extra-settings="$ctrl.multiselectModelSettings" name="categories" required=""></div>
+          <div ng-dropdown-multiselect="" options="$ctrl.addListingCategories" checkboxes="true" selected-model="$root.multiselectModelCategories" extra-settings="$ctrl.multiselectModelSettings" name="categories" required="" id="category_step4"></div>
           <!-- <p class="help-block">Required</p> -->
         </div>
 
       </div>
     </div>
-
     <div class="adn-row">
       <div class="col-md-4 col-sm-4 col-xs-12">
         <label>Treatment Center Name</label>
@@ -28,7 +27,7 @@
         <label>Website </label>
       </div>
       <div class="col-md-8 col-sm-8 col-xs-12">
-        <input placeholder="www.google.com" id="center_web_link" url="true" name="center_web_link" class="form-control required" type="text" ng-model="$root.center_web_link" ng-pattern="/^(?:(ftp|http|https):\/\/)?(?:([\w]{3})+\.)+([a-z]{2,10})?(?:[\.])+([a-z/.]{2,10})$/">
+        <input placeholder="www.google.com" id="center_web_link" url="true" name="center_web_link" class="form-control required" type="text" ng-model="$root.center_web_link" ng-pattern="/^(?:(ftp|http|https):\/\/)?(?:([\w]{3})+\.)+([0-9 a-z]{2,30})?(?:[\.])+([a-z/.]{2,10})$/">
         <p ng-show="$root.addlistForm.center_web_link.$invalid" class="help-block ng-hide">Invalid Format(Correct format: www.google.com)</p>
       </div>
     </div>
@@ -47,9 +46,10 @@
       </div>
       <div class="col-md-8 col-sm-8 col-xs-12">
         <!-- <input placeholder="Intake Phone" id="intakephone" name="intakephone" class="form-control required" ng-minlength="10" ng-maxlength="10" maxlength="10" ng-pattern="/^-?[0-9+]*$/" type="text" ng-model="$root.intakephone" required="true"> -->
-        <input placeholder="Intake Phone" id="intakephone" name="intakephone" class="form-control required" ng-minlength="10" ng-maxlength="12" maxlength="12" ng-pattern="/^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$/" type="text" ng-model="$root.intakephone" required="true">
-        <p ng-show="$root.addlistForm.intakephone.$invalid" class="help-block">Required and correct US number format: 303-557-5899, should be 10 digits</p>
-
+        <input placeholder="Intake Phone" id="phone" name="intakephone" class="form-control required" ng-pattern="/^-?[0-9+]*$/" type="text" ng-model="$root.intakephone" required="true">
+        <!-- <input ng-init="" placeholder="eg. (601) 521-1542" id="intakephone" name="intakephone" ng-change="$ctrl.testNum()" class="form-control required" type="text" required="true" phone-input restrict="reject" ng-minlength="14" maxlength="14" ng-model="$root.intakephone"> -->
+        <!-- <p ng-show="$root.addlistForm.intakephone.$error.pattern || $root.addlistForm.intakephone.$error.minlength || $root.addlistForm.intakephone.$error.maxlength" class="help-block">Invalid US number.</p> -->
+        <p ng-show="$root.addlistForm.intakephone.$invalid" class="help-block">Invalid phone number</p>
       </div>
     </div>
     <div class="adn-row">
@@ -58,7 +58,7 @@
       </div>
       <div class="col-md-8 col-sm-8 col-xs-12">
         <textarea name="description" ng-model="$root.description" class="form-control required" rows="2" cols="50" placeholder="Brief Overview" required="true"></textarea>
-        <p ng-show="$root.addlistForm.description.$error.required">Required</p>
+        <p ng-show="$root.addlistForm.description.$error.required" class="help-block">Required</p>
       </div>
     </div>
     <div class="adn-row">
@@ -66,7 +66,8 @@
         <label for="web_link">Logo:</label>
       </div>
       <div class="col-md-8 col-sm-8 col-xs-12">
-        <input name="listing_image[]" id="listing_image" file-model="$root.listing_image" class="span2 text_file multi center_image" type="file" accept="image/*">
+        <input name="listing_image[]" id="listing_image" file-model="$root.listing_image" onchange="angular.element(this).scope().uploadImage(this)" class="span2 text_file multi center_image" type="file" accept="image/*">
+        <img id="logo_preview" ng-src="{{$ctrl.preview_img}}" width="100" name="logo_preview" />
       </div>
     </div>
     <div class="adn-row">
@@ -75,7 +76,7 @@
       </div>
       <div class="col-md-8 col-sm-8 col-xs-12">
         <input name="address_line_1" class="form-control required" type="text" ng-model="$root.address_line_1" placeholder="Street Address" required="true">
-        <p ng-show="$root.addlistForm.address_line_1.$invalid">Required</p>
+        <p ng-show="$root.addlistForm.address_line_1.$invalid" class="help-block">Required</p>
       </div>
     </div>
     <div class="adn-row">
@@ -83,11 +84,11 @@
         <label>State</label>
       </div>
       <div class="col-md-8 col-sm-8 col-xs-12">
-        <select required="true" ng-change="$root.getCities()" name="state" ng-model="$root.state">
+        <select required="true" ng-change="$root.getCities();" name="state" ng-model="$root.state">
           <option value="">Select State</option>
-          <option ng-repeat="states in $root.states track by $index" value="{{states}}">{{states}}</option>
+          <option ng-repeat="states in $root.states track by $index" value="{{states | uppercase}}">{{states | uppercase}}</option>
         </select>
-        <p ng-show="$root.addlistForm.state.$invalid">Required</p>
+        <p ng-show="$root.addlistForm.state.$invalid" class="help-block">Required</p>
       </div>
     </div>
     <div class="adn-row">
@@ -95,11 +96,10 @@
         <label>City</label>
       </div>
       <div class="col-md-8 col-sm-8 col-xs-12">
-        <select ng-model="$root.city" name="city" required="true">
+        <select ng-model="$root.city" ng-change="$ctrl.testZip()" name="city">
           <option value="">Select City</option>
-          <option ng-repeat="cities in $root.cities track by $index" value="{{cities}}">{{cities}}</option>
+          <option ng-repeat="cities in $root.cities track by $index" value="{{cities.name}}">{{cities.name}}</option>
         </select>
-        <p ng-show="$root.addlistForm.city.$invalid">Required</p>
       </div>
     </div>
     <div class="adn-row">
@@ -107,7 +107,7 @@
         <label>Country</label>
       </div>
       <div class="col-md-8 col-sm-8 col-xs-12">
-        <input placeholder="Country" id="country" name="country" class="form-control" type="text" ng-model="$root.country">
+        <input placeholder="Country" id="country" name="country" class="form-control" type="text" ng-init="$root.country='USA'" ng-model="$root.country">
       </div>
     </div>
     <div class="adn-row">
@@ -115,15 +115,17 @@
         <label>Zip</label>
       </div>
       <div class="col-md-8 col-sm-8 col-xs-12">
-        <input placeholder="Zip" id="pincode" name="pincode" class="form-control required" number="true" minlength="5" maxlength="5" type="text" ng-model="$root.pincode" ng-pattern="/^\d{5}$/" required="true">
+        <input placeholder="Zip" id="pincode" ng-change="$ctrl.testZip()" name="pincode" class="form-control required" number="true" minlength="5" maxlength="5" type="text" ng-model="$root.pincode" ng-pattern="/^\d{5}$/" required="true">
         <p ng-show="$root.addlistForm.pincode.$invalid" class="help-block">Required and Zip code must be 5 digits</p>
+        <!-- <p ng-if="($ctrl.zipFound===0 && $root.addlistForm.pincode.$valid)" class="help-block">Invalid zip, doesn't match with selected state.</p> -->
       </div>
     </div>
     <div class="text-right col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub sub">
       <input class="btn modal_btn btn_size pull-left" value="Previous" type="button" ng-click="$ctrl.previous()">
-      <input class="btn modal_btn btn_size pull-left" value="Next" id="submit" type="button" ng-click="$ctrl.GoStep5()" ng-disabled="$root.addlistForm.center_name.$invalid ||  $root.addlistForm.center_web_link.$invalid ||  $root.addlistForm.pincode.$error.required ||
+      <input class="btn modal_btn btn_size pull-right" value="Next" id="submit" type="button" ng-click="$ctrl.GoStep5()" ng-disabled="$root.addlistForm.center_name.$invalid ||  $root.addlistForm.center_web_link.$invalid ||  $root.addlistForm.pincode.$error.required ||
       $root.addlistForm.pincode.$invalid || $root.addlistForm.intakephone.$error.required || $root.addlistForm.intakephone.$invalid ||
-      $root.addlistForm.description.$error.required || $root.addlistForm.city.$error.required || $root.addlistForm.state.$error.required || $root.addlistForm.center_name.$error.required || $root.addlistForm.user_last_name.$error.required || $root.addlistForm.user_first_name.$error.required || $root.addlistForm.user_company.$error.required || $root.addlistForm.user_phone.$error.required || $root.addlistForm.intakeemail.$error.required || $root.addlistForm.username.$error.required || $root.addlistForm.address_line_1.$error.required">
+      $root.addlistForm.description.$error.required || $root.addlistForm.state.$error.required || $root.addlistForm.center_name.$error.required || $root.addlistForm.user_last_name.$error.required || $root.addlistForm.user_first_name.$error.required || $root.addlistForm.user_company.$error.required || $root.addlistForm.user_phone.$error.required || $root.addlistForm.intakeemail.$error.required || $root.addlistForm.username.$error.required || $root.addlistForm.address_line_1.$error.required">
+      <input class="btn modal_btn btn_size pull-right" ng-show="$root.centerSkip" value="Skip" id="skip" type="button" ng-click="$ctrl.skipStep()">
     </div>
   </div>
 </div>

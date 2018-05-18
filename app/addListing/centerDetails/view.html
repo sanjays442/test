@@ -36,13 +36,25 @@
         <label for="web_link">Upload Gallery Images:</label>
       </div>
       <div class="col-md-8 col-sm-8 col-xs-12">
-        <input name="image_data[]" id="galler_image" class="span2 text_file multi center_image" type="file" file-model="$root.image_data" multiple="multiple" accept="image/*">
+        <input name="image_data[]" id="galler_image" class="span2 text_file multi center_image" type="file" file-model="$root.image_data" onchange="angular.element(this).scope().uploadImagePreview(this)" multiple="multiple" accept="image/*">
+        <img id="logo_preview" ng-src="{{$ctrl.preview_img}}" width="100" name="logo_preview" />
+      </div>
+    </div>
+    <div class="adn-row">
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <label for="web_link">Treatment center added:</label>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-12 custom_treatment_center" ng-if="$root.centerAdded.length>0">
+        <p ng-repeat="center in $root.centerAdded track by $index" ng-init="$ctrl.total=0" class="treatment_center_added">{{center}}, </p>
+
+        <p ng-if="$root.centerAdded.length>0" class="treatment_center_added"> {{$root.centerPrice}} * {{$root.centerAdded.length}} = ${{$root.centerAdded.length * $root.centerPrice}}</p>
       </div>
     </div>
     <div class="text-right col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub sub">
       <input class="btn modal_btn btn_size pull-left" value="Previous" type="button" ng-click="$ctrl.previous()">
-      <input class="btn modal_btn btn_size pull-left" value="Next" id="submit" type="button" ng-click="$root.submit()" ng-disabled="$root.addlistForm.content_1.$error.required || $root.addlistForm.content_2.$error.required || $root.addlistForm.content_3.$error.required">
-
+      <input class="btn modal_btn btn_size pull-right" value="{{$ctrl.nextText}}" id="submit" type="button" ng-click="$root.submit()" ng-disabled="$root.addlistForm.content_1.$error.required || $root.addlistForm.content_2.$error.required || $root.addlistForm.content_3.$error.required">
+      <!--<input type="button" value="Popup" ng-click="$root.popup()">-->
+      <input class="btn modal_btn btn_size pull-right" ng-show="$root.centerSkip" value="Skip" id="skip" type="button" ng-click="$ctrl.skipStep()">
     </div>
     <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub">
       <footer-ad></footer-ad>

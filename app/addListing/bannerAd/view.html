@@ -1,59 +1,150 @@
-<div class="add-advertisement">
+<div class="add-advertisement col-md-8">
+  <div style="transform: rotate(-90deg);transform-origin: 50px 40px;">93 PX</div>
+  <div style="border:1px solid gray;width:544px;height:93px;text-align:center; padding-top:5%;margin-left:5%;background-color: #f1f1f1;">HEADER AD BLOCK
+    <br>$ {{$ctrl.headerCost}}</div>
+  <div style="text-align: center;margin-top: 5px;">544 PX</div>
   <div class="adn-row">
     <h3 class="sub_heading_under_sign_up">Banner Ads :</h3>
   </div>
   <div class="profile-row">
     <input name="customertype" value="owner" type="hidden">
     <!-- Name -->
-    <div class="adn-row">
+    <!-- <div class="adn-row">
       <div class="col-md-4 col-sm-4 col-xs-12">
         <label for="name">Name: </label>
       </div>
       <div class="col-md-8 col-sm-8 col-xs-12">
         <input placeholder="Name" name="name" id="name" class="form-control" type="text" required="true" ng-model="$ctrl.name">
-        <span ng-show="$root.addlistForm.name.$error.required" class="help-block">Name can't be blank.</span>
+        <p ng-show="$root.addlistForm.name.$error.required" class="help-block">Name can't be blank.</p>
       </div>
-    </div>
+    </div> -->
     <!-- Position -->
     <div class="adn-row">
-      <div class="col-md-4 col-sm-4 col-xs-12">
+      <!-- <div class="col-md-4 col-sm-4 col-xs-12">
         <label for="position">Position: </label>
-      </div>
-      <div class="col-md-8 col-sm-8 col-xs-12">
+      </div> -->
+      <!-- <input type="checkbox" name="header"> Header
+      <input type="checkbox" name="header"> Sidebar
+      <input type="checkbox" name="header"> Footer -->
+      <!-- <div class="col-md-12 col-sm-12 col-xs-12">
         <select name="position" ng-model="$ctrl.position" required="true" class="selectpicker1">
-          <option value="footer">footer</option>
-          <option value="header">header</option>
-          <option value="sidebar">sidebar</option>
+          <option value="footer">footer ($ {{$ctrl.footerCost}})</option>
+          <option value="header">header ($ {{$ctrl.headerCost}})</option>
+          <option value="sidebar">sidebar ($ {{$ctrl.sidebarCost}})</option>
         </select>
-        <span ng-show="$root.addlistForm.position.$invalid">Select position</span>
+        <p ng-show="$root.addlistForm.position.$invalid" class="help-block">Select position</p>
+
+      </div> -->
+
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-2">
+          <input type="checkbox" class="form-control small_checkbox" ng-model="$ctrl.position['header']" ng-click="$ctrl.setName('header')" />
+        </div>
+        <div class="col-md-2 pull-left">
+          <label> HEADER</label>
+        </div>
+      </div>
+      <!-- Content -->
+      <div class="col-md-12 col-sm-12 col-xs-12" ng-if="$ctrl.position['header']===true">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="upload_img">Image</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <!--  <input name="image" id="image" class="span2 text_file center_image" ng-model="$ctrl.image" type="file"> -->
+          <input file-model="$ctrl.content.header" type="file" name="content" id="content" onchange="angular.element(this).scope().uploadImagePreview(this,'header')" class="center_image" accept="image/*" />
+          <p ng-show="$ctrl.err_type.header===1" class="help-block">Please upload an image only. </p>
+          <img id="logo_preview_header" ng-src="{{$ctrl.preview_img.header}}" width="100" name="logo_preview_header" />
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="cpwd">Center Web Link</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input name="center_web_link_header" ng-model="$ctrl.center_web_link.header" class="form-control" type="text" required="true" placeholder="Center Web Link" ng-pattern="/^(?:(ftp|http|https):\/\/)?(?:([\w]{3})+\.)+([a-z 0-9]{2,200})?(?:[\.])+([a-z/.]{2,200})$/" />
+          <p ng-show="$root.addlistForm.center_web_link_header.$error.pattern" class="help-block">Invalid Format(Correct format: www.google.com)</p>
+          <p ng-show="$root.addlistForm.center_web_link_header.$error.required" class="help-block">Weburl can't be blank.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="adn-row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-2">
+          <input type="checkbox" class="form-control small_checkbox" ng-model="$ctrl.position['footer']" ng-click="$ctrl.setName('footer')" />
+        </div>
+        <div class="col-md-2 pull-left">
+          <label>FOOTER</label>
+        </div>
+      </div>
+      <!-- Content -->
+      <div class="col-md-12 col-sm-12 col-xs-12" ng-if="$ctrl.position['footer']===true">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="upload_img">Image</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <!--  <input name="image" id="image" class="span2 text_file center_image" ng-model="$ctrl.image" type="file"> -->
+          <input file-model="$ctrl.content.footer" type="file" name="content" onchange="angular.element(this).scope().uploadImagePreview(this,'footer')" class="center_image" accept="image/*" />
+          <p ng-show="$ctrl.err_type.footer===1" class="help-block">Please upload an image only. </p>
+          <img id="logo_preview_footer" ng-src="{{$ctrl.preview_img.footer}}" width="100" name="logo_preview" />
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="cpwd">Center Web Link</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input name="center_web_link_footer" ng-model="$ctrl.center_web_link.footer" class="form-control" type="text" required="true" placeholder="Center Web Link" ng-pattern="/^(?:(ftp|http|https):\/\/)?(?:([\w]{3})+\.)+([a-z 0-9]{2,200})?(?:[\.])+([a-z/.]{2,200})$/" />
+          <p ng-show="$root.addlistForm.center_web_link_footer.$error.pattern" class="help-block">Invalid Format(Correct format: www.google.com)</p>
+          <p ng-show="$root.addlistForm.center_web_link_footer.$error.required" class="help-block">Weburl can't be blank.</p>
+        </div>
       </div>
     </div>
-    <!-- Content -->
+
+    <!-- SIDEBAR -->
     <div class="adn-row">
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        <label for="upload_img">Content</label>
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-2">
+          <input type="checkbox" class="form-control small_checkbox" ng-model="$ctrl.position['sidebar']" ng-click="$ctrl.setName('sidebar')" />
+        </div>
+        <div class="col-md-2 pull-left">
+          <label>SIDEBAR</label>
+        </div>
       </div>
-      <div class="col-md-8 col-sm-8 col-xs-12">
-        <!--  <input name="image" id="image" class="span2 text_file center_image" ng-model="$ctrl.image" type="file"> -->
-        <input file-model="$ctrl.content" type="file" name="content" id="content" class="center_image" accept="image/*" />
-        <span ng-show="$ctrl.err_type">Please upload an image only. </span>
-      </div>
-    </div>
-    <!-- Website link -->
-    <div class="adn-row">
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        <label for="cpwd">Center Web Link</label>
-      </div>
-      <div class="col-md-8 col-sm-8 col-xs-12">
-        <input name="center_web_link" ng-model="$ctrl.center_web_link" class="form-control" type="text" required="true" placeholder="Center Web Link" ng-pattern="/^(?:(ftp|http|https):\/\/)?(?:[\w-]+\.)+([a-z]{2,10})?(?:[\.])+[a-z]{2,10}$/" />
-        <span ng-show="$root.addlistForm.center_web_link.$error.pattern" class="help-block">Invalid Format(Correct format: www.google.com)</span>
-        <span ng-show="$root.addlistForm.center_web_link.$error.required" class="help-block">Weburl can't be blank.</span>
+      <!-- Content -->
+      <div class="col-md-12 col-sm-12 col-xs-12" ng-if="$ctrl.position['sidebar']===true">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="upload_img">Image</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <!--  <input name="image" id="image" class="span2 text_file center_image" ng-model="$ctrl.image" type="file"> -->
+          <input file-model="$ctrl.content.sidebar" type="file" name="content" onchange="angular.element(this).scope().uploadImagePreview(this, 'sidebar')" class="center_image" accept="image/*" />
+          <p ng-show="$ctrl.err_type.sidebar===1" class="help-block">Please upload an image only. </p>
+          <img id="logo_preview_sidebar" ng-src="{{$ctrl.preview_img.sidebar}}" width="100" name="logo_preview" />
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <label for="cpwd">Center Web Link</label>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <input name="center_web_link_sidebar" ng-model="$ctrl.center_web_link.sidebar" class="form-control" type="text" required="true" placeholder="Center Web Link" ng-pattern="/^(?:(ftp|http|https):\/\/)?(?:([\w]{3})+\.)+([a-z 0-9]{2,200})?(?:[\.])+([a-z/.]{2,200})$/" />
+          <p ng-show="$root.addlistForm.center_web_link_sidebar.$error.pattern" class="help-block">Invalid Format(Correct format: www.google.com)</p>
+          <p ng-show="$root.addlistForm.center_web_link_sidebar.$error.required" class="help-block">Weburl can't be blank.</p>
+        </div>
       </div>
     </div>
     <!-- Submit -->
     <div class="text-right col-md-12 col-sm-12 col-xs-12 col-lg-12 main_wrap_form_inner_sub sub">
       <input class="btn modal_btn btn_size pull-left" value="Previous" type="button" ng-click="$ctrl.previous()">
-      <input class="btn modal_btn btn_size pull-left" value="Next" id="submit" type="button" ng-click="$ctrl.submit()" ng-disabled="$root.addlistForm.position.$invalid  || $root.addlistForm.center_web_link.$invalid ||  $root.addlistForm.name.$invalid">
+      <input class="btn modal_btn btn_size pull-right" value="Next" id="submit" type="button" ng-click="$ctrl.submit()" ng-disabled="($ctrl.position.header===false && $ctrl.position.footer===false && $ctrl.position.sidebar===false)  || $root.addlistForm.center_web_link_header.$invalid || $root.addlistForm.center_web_link_footer.$invalid || $root.addlistForm.center_web_link_sidebar.$invalid ">
+      <input class="btn modal_btn btn_size pull-right" value="Skip" id="skip" type="button" ng-click="$ctrl.skipStep()">
     </div>
+    <div style="transform: rotate(-90deg);transform-origin: 33px 95px;">111 PX </div>
+    <div style="border:1px solid gray;width:646px;height:111px;text-align:center;padding-top:8%;background-color: #f1f1f1;">FOOTER AD BLOCK
+      <br>$ {{$ctrl.footerCost}}</div>
+    <div style="text-align: center;margin-top: 5px;">646 PX</div>
   </div>
+</div>
+<div class="col-md-4">
+  <div style="transform: rotate(-90deg);transform-origin: 45px 65px;">145 PX </div>
+  <div style="border:1px solid gray;width:248px;height:145px;text-align:center;padding-top:20%;background-color: #f1f1f1;">SIDEBAR AD BLOCK
+    <br>$ {{$ctrl.sidebarCost}}</div>
+  <div style="text-align: center;margin-top: 5px;">248 PX</div>
 </div>

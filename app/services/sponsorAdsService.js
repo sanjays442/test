@@ -10,8 +10,54 @@ function service($log, $http, endPoint, UserService) {
     getSponsoredSelect: getSponsoredSelect,
     getSponsoredSelectAddlist: getSponsoredSelectAddlist,
     sponsorListSignup: sponsorListSignup,
-    editSponsorSignup: editSponsorSignup
+    editSponsorSignup: editSponsorSignup,
+    getCityCountyByState: getCityCountyByState,
+    getCityCountyByStateV2: getCityCountyByStateV2,
+    getSponsoredStatesSignup: getSponsoredStatesSignup,
+    getSponsoredDemographic: getSponsoredDemographic,
+    getSignupPriceInfo: getSignupPriceInfo,
+    getPriceInfo: getPriceInfo
   };
+
+  // get price info for state, city, county, sponsored
+  function getSignupPriceInfo(token) {
+    return $http.get(endPoint + '/pricing', {
+      headers: {
+        'Authorization': token
+      }
+    });
+  }
+
+  // get price info for state, city, county, sponsored
+  function getPriceInfo() {
+    return UserService.getToken().then(function (token) {
+      return $http.get(endPoint + '/pricing', {
+        headers: {
+          'Authorization': token
+        }
+      });
+    });
+  }
+
+  function getSponsoredStatesSignup() {
+    return $http({
+      url: endPoint + '/sponsored_states',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
+  function getSponsoredDemographic() {
+    return $http({
+      url: endPoint + '/sponsored_categories',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
 
   function sponsorList(page) {
     return UserService.getToken().then(function (token) {
@@ -68,7 +114,7 @@ function service($log, $http, endPoint, UserService) {
   function editSponsor(formdata, id) {
     return UserService.getToken().then(function (token) {
       return $http({
-        url: endPoint + '/v1/listing_user/sponsored_ads/' + id,
+        url: endPoint + '/v2/sponsored_ads/' + id,
         method: 'PATCH',
         data: formdata,
         transformRequest: angular.identity,
@@ -82,7 +128,7 @@ function service($log, $http, endPoint, UserService) {
 
   function editSponsorSignup(formdata, id, token) {
     return $http({
-      url: endPoint + '/v1/listing_user/sponsored_ads/' + id,
+      url: endPoint + '/v2/sponsored_ads/' + id,
       method: 'PATCH',
       data: formdata,
       transformRequest: angular.identity,
@@ -119,10 +165,40 @@ function service($log, $http, endPoint, UserService) {
     });
   }
 
+  function getCityCountyByState(token, state) {
+    return $http({
+      url: endPoint + '/v1/listing_user/sponsored_ad_select/' + state,
+      // url: endPoint + '/v2/sponsored_ad_select/' + state,
+      method: 'GET',
+      async: true,
+      transformRequest: angular.identity,
+      headers: {
+        'Authorization': token,
+        'Content-Type': undefined
+      }
+    });
+  }
+
+  function getCityCountyByStateV2(state) {
+    return UserService.getToken().then(function (token) {
+      return $http({
+        url: endPoint + '/v1/listing_user/sponsored_ad_select/' + state,
+        //  url: endPoint + '/v2/sponsored_ad_select/' + state,
+        method: 'GET',
+        async: true,
+        transformRequest: angular.identity,
+        headers: {
+          'Authorization': token,
+          'Content-Type': undefined
+        }
+      });
+    });
+  }
+
   function updateStatus(id) {
     return UserService.getToken().then(function (token) {
       return $http({
-        url: endPoint + '/listing_user/sponsored_ad/' + id + '/activate_deactivate',
+        url: endPoint + '/v1/listing_user/sponsored_ad/' + id + '/activate_deactivate',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

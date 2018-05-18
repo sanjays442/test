@@ -1,0 +1,25 @@
+<div class="container progress-content">
+
+  <div class="clearfix"></div>
+  <div class="progress-content-one payment-success">
+    <div class="col-md-12 text-center">
+      <img src="themes/addiction/images/png/Congratulations-crop.gif" style="max-width:50%;">
+      <!-- <img src="themes/addiction/images/png/illustrations-Congratulations-payment.png"> -->
+      <!-- <div class="p-user-profile">CONGRATULATIONS</div> -->
+      <div class="col-md-12" style="padding-top:0px;">
+        <div class="payment-text">
+          <p>Congratulations!! You are now a
+            <span ng-repeat="member in $ctrl.totalMemberships track by $index">{{member}}
+              <span ng-if="$index<($ctrl.totalMemberships.length-1)">& </span>
+            </span> member and you can view your Treatment center details of membership, sponsorship,Banner Ads etc on your dashboard below. You can also modify add, delete, upgrade and downgrade membership at any point in time!</p>
+
+        </div>
+      </div>
+    </div>
+    <div class="payment-btm">
+
+      <p class="stick-next-left font-normal"><a href="javascript:;" ng-click="$ctrl.close()" class="button_last">Go to Home</a></p>
+      <p class="stick-next-right"><a href="javascript:void(0)" ng-click="$ctrl.viewProfile()" class="button_last">My Profile</a></p>
+    </div>
+  </div>
+</div>

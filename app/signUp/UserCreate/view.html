@@ -1,0 +1,94 @@
+<div class="container progress-content">
+  <div class="clearfix"></div>
+  <div class="progress-content-one mt-30">
+    <div class="col-md-6">
+      <div class="progress-img-wrap">
+        <div class="p-form-title">Sign-up form</div>
+        <div style="background-image: url('themes/addiction/images/png/illustrations-Man-Explains.png');" class="progress-img">
+        </div>
+        <div class="p-form-desc" ng-if="$ctrl.dialogueText">
+          <span style="font-size:11.2px;color:#246F9B;">{{$ctrl.dialogueText}}</span>
+          <span ng-show="$ctrl.showSmiley" style="font-size:12px; "><i class="fa fa-smile-o"></i></span>
+        </div>
+        <div class="p-form-desc" ng-if="$ctrl.displayErrorMsg">
+          <span style="font-size:11px;color:red;">{{$ctrl.displayErrorMsg}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="progressbar user-create">
+        <div class="progress progress-grediant prg-newcss">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{$ctrl.progressValue}}" aria-valuemin="0" aria-valuemax="100" style="width:{{$ctrl.progressValue}}%">
+            <span class="stick-me">{{$ctrl.progressValue}}%</span>
+          </div>
+        </div>
+      </div>
+      <div class="psignup-form user-create">
+        <form class="psignup-form  n-form" name="$ctrl.userCreateForm" autocomplete="off">
+          <div class="col-md-6">
+            <div class="form-group">
+              <span class="abslt-plc" ng-if="$ctrl.first_name" style="font-size:12px; color:#83BF00;">First Name</span>
+              <input type="text" class="form-control" id="fname" name="firstName" placeholder="First Name" ng-focus="$ctrl.dialogueBoxText('first_name')" ng-keypress="$ctrl.userCreateFormInit.firstName=0" ng-model="$ctrl.first_name" required autocomplete="off">
+              <!-- <span ng-show="$ctrl.userCreateForm.firstName.$invalid && ($ctrl.userCreateFormInit.firstName===0)" class="help-block">Required</span> -->
+            </div>
+          </div>
+          <div class="col-md-6" style="padding-right:4.5px;">
+            <div class="form-group">
+              <span class="abslt-plc" ng-if="$ctrl.last_name" style="font-size:12px; color:#83BF00;">Last Name</span>
+              <input type="text" class="form-control" name="lastName" id="lname" placeholder="Last Name" ng-focus="$ctrl.dialogueBoxText('last_name')" ng-keypress="$ctrl.userCreateFormInit.lastName=0" ng-model="$ctrl.last_name" required autocomplete="off">
+              <!-- <span ng-show="$ctrl.userCreateForm.lastName.$invalid && ($ctrl.userCreateFormInit.lastName===0)" class="help-block">Required</span> -->
+            </div>
+          </div>
+          <div class="form-group">
+            <span ng-if="$ctrl.company_name" class="abslt-plc" style="font-size:12px; color:#83BF00;">Company Name</span>
+            <input type="text" class="form-control" name="companyName" id="cname" placeholder="Company Name" ng-focus="$ctrl.dialogueBoxText('company_name')" ng-keypress="$ctrl.userCreateFormInit.companyName=0" ng-model="$ctrl.company_name" required autocomplete="off">
+            <!-- <span ng-show="$ctrl.userCreateForm.companyName.$invalid && ($ctrl.userCreateFormInit.companyName===0)" class="help-block">Required</span> -->
+          </div>
+          <div class="form-group">
+            <span class="abslt-plc" ng-if="$ctrl.phone_num || $ctrl.phonePlaceholder" style="font-size:12px; color:#83BF00;">User Phone no</span>
+            <!-- <input type="text" name="phone" class="form-control" id="phone" ng-keyup="$ctrl.extraPlaceholder('phone')" placeholder="User Phone no" ng-focus="$ctrl.dialogueBoxText('phone_number')" ng-keypress="$ctrl.userCreateFormInit.phone=0" ng-model="$ctrl.phone_num" required ng-pattern="/^-?[0-9+]*$/" number="true" autocomplete="off"> -->
+            <input type="text" name="phone" class="form-control" id="phone" ng-keyup="$ctrl.extraPlaceholder('phone')" placeholder="User Phone no" ng-focus="$ctrl.dialogueBoxText('phone_number')" ng-keypress="$ctrl.userCreateFormInit.phone=0" ng-model="$ctrl.phone_num" required ng-pattern="/^[0-9-+() ]*$/" number="true" autocomplete="off">
+            <!-- <p ng-show="$ctrl.addCenter.center_phone.$error.pattern || $ctrl.addCenter.center_phone.$error.minlength || $ctrl.addCenter.center_phone.$error.maxlength" class="help-block">Invalid US number.</p> -->
+            <!-- <span ng-show="$ctrl.userCreateForm.phone.$invalid && ($ctrl.userCreateFormInit.phone===0)" class="help-block">{{$ctrl.phoneErrorTxt}}</span> -->
+          </div>
+          <div class="form-group">
+            <span class="abslt-plc" ng-if="$ctrl.email || $ctrl.emailPlaceholder" name="emailPlaceholder" style="font-size:12px; color:#83BF00;">User Email ID</span>
+            <input type="email" class="form-control" id="email" name="email" ng-keyup="$ctrl.extraPlaceholder('email')" placeholder="User Email ID" ng-focus="$ctrl.dialogueBoxText('email')" ng-keypress="$ctrl.userCreateFormInit.email=0" ng-model="$ctrl.email" email="true" required="true" ng-pattern="/^(([^<>()\[\]\.,;:\s@\']+(\.[^<>()\[\]\.,;:\s@\']+)*)|(\'.+\'))@(([^<>()[\]\.,;:\s@\']+\.)+[^<>()[\]\.,;:\s@\']{2,})$/i" autocomplete="off">
+            <!-- <span ng-show="$ctrl.userCreateForm.email.$invalid && ($ctrl.userCreateFormInit.email===0)" class="help-block">Required and please enter valid email</span>
+            <span ng-show="$ctrl.userCreateForm.email.$invalid===false && ($ctrl.userCreateFormInit.email===0) && $ctrl.emailErrorTxt!=''" ng-init="$ctrl.emailErrorTxt=''" class="help-block">{{$ctrl.emailErrorTxt}}</span> -->
+
+          </div>
+          <div class="form-group">
+            <span class="abslt-plc" ng-if="$ctrl.password" style="font-size:12px; color:#83BF00;">Password</span>
+            <input type="{{showpassword ? 'text' : 'password'}}" name="password" ng-keyup="showpassword=false;" class="form-control" id="pwd" placeholder="Password" required ng-model="$ctrl.password" ng-focus="$ctrl.dialogueBoxText('password')" ng-keypress="$ctrl.userCreateFormInit.password=0" autocomplete="off">
+            <span class="fix-right"><i id="showpassword" class="fa fa-eye-slash fa-1x" ng-model="showpassword" ng-init="showpassword=true" ng-click="$ctrl.showpassword();"></i></span>
+            <!-- <span ng-show="$ctrl.userCreateForm.password.$error.required && ($ctrl.userCreateFormInit.password===0)" ng-init="$ctrl.pwdRequiredTxt='Required'" class="help-block">Required</span>
+            <span ng-show="($ctrl.userCreateFormInit.password===0)&& $ctrl.pwdRequiredTxt!='Required' && $ctrl.userCreateForm.password.$error.required!=true" class="help-block">{{$ctrl.pwdRequiredTxt}}</span> -->
+
+
+            <!--  -->
+            <!-- <input ng-show="showpassword" type="text" ng-model="password"> -->
+            <!-- <input ng-hide="showpassword" type="password" ng-model="password"> -->
+            <!-- <input type="{{showpassword ? 'text' : 'password'}}" ng-model="password">
+                <input type="checkbox" ng-model="showpassword" ng-checked="false"> -->
+            <!--  -->
+          </div>
+          <div class="form-group">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <input name="term_condition" ng-model="$ctrl.terms" style="" type="checkbox">
+              <span>I agree to the <a href="javascript:;" ng-click="$ctrl.openTerms('https://www.addictionnetwork.com/themes/terms.html')" >terms and condition</a></span>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="stick-next user-create user_create" ng-show="$ctrl.processing!==1" ng-disabled="$ctrl.userCreateForm.email.$invalid || $ctrl.userCreateForm.firstName.$invalid || $ctrl.userCreateForm.lastName.$invalid || $ctrl.userCreateForm.companyName.$invalid || $ctrl.userCreateForm.phone.$invalid || $ctrl.userCreateForm.password.$invalid" style="margin-top: 65%;">
+        <span class="stick-next-element" ng-click="$ctrl.userCreate()"><a href="javascript:void(0);" class="allbtn-nxt" >Next</a>
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+</div>
