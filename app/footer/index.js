@@ -2,6 +2,5 @@ require('./style.css');
 
 module.exports = {
   template: require('./view.html'),
-  controller: require('./ctrl.js'),
-
+  controller: require('./ctrl.js')
 };

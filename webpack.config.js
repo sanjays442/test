@@ -68,7 +68,7 @@ var copyWebpackPlugin = new CopyWebpackPlugin([{
   from: 'node_modules/angular-local-storage/dist',
   to: PATHS.build
 }, {
-  from: 'node_modules/oclazyload/dist',
+  from: 'node_modules/late-images/dist',
   to: PATHS.build
 }, {
   from: 'app/plugins',
@@ -134,7 +134,7 @@ var jsAssetsPlugin = new HtmlWebpackIncludeAssetsPlugin({
     'ui-bootstrap-tpls.js',
     'angularjs-dropdown-multiselect.min.js',
     'angular-local-storage.min.js',
-    'ocLazyLoad.min.js'
+    'lateImages.min.js'
   ],
   append: false
 });

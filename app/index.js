@@ -5,7 +5,6 @@ angular.module(appName, [
   'ui.router',
   'ui.bootstrap',
   'LocalStorageModule',
-  'oc.lazyLoad',
   require('./home'),
   require('./sponsorHome'),
   require('./treatmentCenterDetail'),
@@ -32,27 +31,9 @@ angular.module(appName, [
   require('./about'),
   require('./signUp'),
   require('./privacyPolicy')
-
 ]).component('header', require('./header'))
   .component('footer', require('./footer'))
   .constant('endPoint', require('./endPoint'))
-  .config(['$ocLazyLoadProvider', 'UIState', function ($ocLazyLoadProvider, UIState) {
-    //Config For ocLazyLoading
-    $ocLazyLoadProvider.config({
-      'debug': true, // For debugging 'true/false'
-      'events': true, // For Event 'true/false'
-      'modules': [{ // Set modules initially
-        name: 'preload', // State1 module
-        files: ['app/header/index.js', 'app/footer/index.js', 'app/home/slider/index.js', 'app/home/featuredTreatmentCenter/index.js',
-         'https://s3.amazonaws.com/addictionnetwork.com/production/uploads/681/advertisements/91/footer.jpg',
-        'https://s3.amazonaws.com/addictionnetwork.com/production/uploads/737/advertisements/102/header.jpg',
-        'https://s3.amazonaws.com/addictionnetwork.com/production/uploads/637/treatment_centers/927/listing.png',
-        'https://s3.amazonaws.com/addictionnetwork.com/production/uploads/sliders/4/doctors2-1630x468.jpg',
-        'https://s3.amazonaws.com/addictionnetwork.com/production/uploads/sliders/3/view1-1630x468.jpg'
-      ]
-            }]
-    });
-  }])
   .config(['$locationProvider', function ($locationProvider) {
     $locationProvider.hashPrefix('');
     $locationProvider.html5Mode(true);
@@ -62,6 +43,26 @@ angular.module(appName, [
     // $urlRouterProvider.otherwise('');
     // alert('india');
     angular.element(document).ready(function () {
+
+      LateImage.defaults = {
+        srcAttribute: 'data-src',
+        altAttribute: 'data-alt',
+        doneCallback: null,
+        failCallback: null,
+        threshold: 0,
+        loadingClass: 'lateImageLoading',
+        loadedClass: 'lateImageLoaded',
+        errorClass: 'lateImageError',
+        enableViewportCheck: false
+      };
+      angular.element('img').lateImages();
+      // var elements = Array.prototype.slice.call(
+      //   document.getElementsByClassName('lateImage')
+      // );
+      //
+      // elements.forEach(function (element) {
+      //   new LateImage(element);
+      // });
       angular.element('body').click(function () {
         angular.element('.list-group.search-results').addClass('ng-hide');
         // alert('clicked');
@@ -88,7 +89,6 @@ angular.module(appName, [
         });
       });
     });
-
   }]);
 
 // eslint-disable-next-line angular/document-service

@@ -86,8 +86,8 @@ var socialLinks = [{
   img: 'themes/addiction/images/gglplus.png'
 }];
 
-function HeaderCtrl($ocLazyLoad, $location, $anchorScroll, $state, $log, $timeout, $scope, $rootScope, $window, localStorageService, service, centerService, $sce) {
-
+function HeaderCtrl($location, $anchorScroll, $state, $log, $timeout, $scope, $rootScope, $window, localStorageService, service, centerService, $sce) {
+  /* todo */
   localStorageService.remove('loginToken');
   localStorageService.remove('token');
   var vm = this;
@@ -252,7 +252,7 @@ module.exports = {
   controllerAs: '$ctrl'
 };
 
-HeaderCtrl.$inject = ['$ocLazyLoad', '$location', '$anchorScroll', '$state', '$log', '$timeout', '$scope', '$rootScope', '$window', 'localStorageService', 'SliderService', 'TreatmentCenterService', '$sce'];
+HeaderCtrl.$inject = ['$location', '$anchorScroll', '$state', '$log', '$timeout', '$scope', '$rootScope', '$window', 'localStorageService', 'SliderService', 'TreatmentCenterService', '$sce'];
 
 function loadSlider(vm, service, $rootScope, $log, $sce) {
   service.getSlider().then(function (result) {

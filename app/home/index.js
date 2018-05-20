@@ -17,23 +17,7 @@ angular.module(moduleName, [
     $stateProvider.state({
       name: UIState.HOME,
       url: '/?auth_token',
-      template: '<home></home>',
-      // lazyLoad: ['$ocLazyLoad', function ($ocLazyLoad) {
-      //   return $ocLazyLoad.load('preload'); // Resolve promise and load before view
-      //     }]
-      // resolve: {
-      //   lazyLoad: function ($transition$) {
-      //     return $transition$.injector().get('$ocLazyLoad').load('preload');
-      //   }
-      // }
-      // resolve: {
-      //   lazyLoad: ['$ocLazyLoad', function ($ocLazyLoad) {
-      //     return $ocLazyLoad.load('preload'); // Resolve promise and load before view
-      //       }]
-      // }
-      lazyLoad: function ($transition$) {
-        return $transition$.injector().get('$ocLazyLoad').load('app/home/slider/ctrl.js');
-      }
+      template: '<home></home>'
     });
   }]);
 

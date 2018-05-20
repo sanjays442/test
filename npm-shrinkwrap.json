@@ -4189,6 +4189,14 @@
         "graceful-fs": "4.1.11"
       }
     },
+    "late-images": {
+      "version": "2.0.1",
+      "resolved": "https://registry.npmjs.org/late-images/-/late-images-2.0.1.tgz",
+      "integrity": "sha1-+pZxl60B5edYIKSFIxGcMxGL2NQ=",
+      "requires": {
+        "when-in-viewport": "2.0.3"
+      }
+    },
     "lazy-cache": {
       "version": "1.0.4",
       "resolved": "https://registry.npmjs.org/lazy-cache/-/lazy-cache-1.0.4.tgz",
@@ -4650,11 +4658,6 @@
       "version": "1.1.1",
       "resolved": "https://registry.npmjs.org/obuf/-/obuf-1.1.1.tgz",
       "integrity": "sha1-EEEktsYCxnlogaBCVB0220OlJk4="
-    },
-    "oclazyload": {
-      "version": "1.1.0",
-      "resolved": "https://registry.npmjs.org/oclazyload/-/oclazyload-1.1.0.tgz",
-      "integrity": "sha1-qYBzIvGQggqBwCLy7xcB0DbYPoc="
     },
     "on-finished": {
       "version": "2.3.0",
@@ -7269,6 +7272,11 @@
       "version": "0.1.1",
       "resolved": "https://registry.npmjs.org/websocket-extensions/-/websocket-extensions-0.1.1.tgz",
       "integrity": "sha1-domUmcGEtu91Q3fC27DNbLVdKec="
+    },
+    "when-in-viewport": {
+      "version": "2.0.3",
+      "resolved": "https://registry.npmjs.org/when-in-viewport/-/when-in-viewport-2.0.3.tgz",
+      "integrity": "sha1-GprTK9v7N4LTeEpVUOECi0yVD5A="
     },
     "whet.extend": {
       "version": "0.9.9",
