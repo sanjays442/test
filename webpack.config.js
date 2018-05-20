@@ -71,6 +71,9 @@ var copyWebpackPlugin = new CopyWebpackPlugin([{
   from: 'node_modules/late-images/dist',
   to: PATHS.build
 }, {
+  from: 'node_modules/html-minifier/src',
+  to: PATHS.build
+}, {
   from: 'app/plugins',
   to: 'plugins'
 }, {
@@ -134,7 +137,8 @@ var jsAssetsPlugin = new HtmlWebpackIncludeAssetsPlugin({
     'ui-bootstrap-tpls.js',
     'angularjs-dropdown-multiselect.min.js',
     'angular-local-storage.min.js',
-    'lateImages.min.js'
+    'lateImages.min.js',
+    'htmlminifier.js'
   ],
   append: false
 });
