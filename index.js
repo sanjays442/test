@@ -4,7 +4,7 @@ var express = require('express'),
 var minify = require('express-minify');
 
 app.set('port', (process.env.PORT || 3003));
-app.use(compression());
+// app.use(compression());
 app.use(minify());
 // app.use(minify({
 //   cache: false,
