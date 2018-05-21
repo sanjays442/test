@@ -53,7 +53,7 @@ angular.module(appName, [
   }])
   .config(['$locationProvider', function ($locationProvider) {
     $locationProvider.hashPrefix('');
-    //  $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
   }])
   .config(['$urlRouterProvider', function ($urlRouterProvider) {
     // .when('/customers', route.resolve('Customers'))
