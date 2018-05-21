@@ -1,6 +1,6 @@
-module.exports = ['$stateParams', '$rootScope', 'localStorageService', 'Status', '$state', 'UIState', '$location', '$scope', ctrl];
+module.exports = ['$ocLazyLoad', '$stateParams', '$rootScope', 'localStorageService', 'Status', '$state', 'UIState', '$location', '$scope', ctrl];
 
-function ctrl($stateParams, $rootScope, localStorageService, Status, $state, UIState, $location, $scope) {
+function ctrl($ocLazyLoad, $stateParams, $rootScope, localStorageService, Status, $state, UIState, $location, $scope) {
   // .controller('rootCtrl', function ($scope, $location, $rootScope) {
   $scope.$on('$stateChangeSuccess', function changedPage() {
     var path = $location.path();
@@ -29,4 +29,9 @@ function ctrl($stateParams, $rootScope, localStorageService, Status, $state, UIS
     // $window.location.href = '/my-profile/profile';
     $state.go(UIState.MY_PROFILE.PROFILE);
   }
+
+  $scope.$on('ocLazyLoad.moduleLoaded', function (e, module) {
+    console.log('module name : ', module);
+  });
+  console.log('home controller...');
 }

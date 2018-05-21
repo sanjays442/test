@@ -134,7 +134,7 @@ var jsAssetsPlugin = new HtmlWebpackIncludeAssetsPlugin({
     'ui-bootstrap-tpls.js',
     'angularjs-dropdown-multiselect.min.js',
     'angular-local-storage.min.js',
-    'ocLazyLoad.min.js'
+    'ocLazyLoad.js'
   ],
   append: false
 });

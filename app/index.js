@@ -6,7 +6,7 @@ angular.module(appName, [
   'ui.bootstrap',
   'LocalStorageModule',
   'oc.lazyLoad',
-  require('./home'),
+   require('./home'),
   require('./sponsorHome'),
   require('./treatmentCenterDetail'),
   require('./treatmentCenterMap'),
@@ -38,24 +38,22 @@ angular.module(appName, [
   .constant('endPoint', require('./endPoint'))
   .config(['$ocLazyLoadProvider', 'UIState', function ($ocLazyLoadProvider, UIState) {
     //Config For ocLazyLoading
-    $ocLazyLoadProvider.config({
-      'debug': true, // For debugging 'true/false'
-      'events': true, // For Event 'true/false'
-      'modules': [{ // Set modules initially
-        name: 'preload', // State1 module
-        files: ['app/header/index.js', 'app/footer/index.js', 'app/home/slider/index.js', 'app/home/featuredTreatmentCenter/index.js',
-         'https://s3.amazonaws.com/addictionnetwork.com/production/uploads/681/advertisements/91/footer.jpg',
-        'https://s3.amazonaws.com/addictionnetwork.com/production/uploads/737/advertisements/102/header.jpg',
-        'https://s3.amazonaws.com/addictionnetwork.com/production/uploads/637/treatment_centers/927/listing.png',
-        'https://s3.amazonaws.com/addictionnetwork.com/production/uploads/sliders/4/doctors2-1630x468.jpg',
-        'https://s3.amazonaws.com/addictionnetwork.com/production/uploads/sliders/3/view1-1630x468.jpg'
-      ]
-            }]
-    });
+    // $ocLazyLoadProvider.config({
+    //   'debug': true, // For debugging 'true/false'
+    //   'events': true, // For Event 'true/false'
+    //   //  'loadedModules': [appName],
+    //   'modules': [
+    //     {
+    //       name: 'app.home',
+    //       files: ['app/home/ctrl.js']
+    //     }
+    //   ]
+    // });
+
   }])
   .config(['$locationProvider', function ($locationProvider) {
     $locationProvider.hashPrefix('');
-    $locationProvider.html5Mode(true);
+    //  $locationProvider.html5Mode(true);
   }])
   .config(['$urlRouterProvider', function ($urlRouterProvider) {
     // .when('/customers', route.resolve('Customers'))

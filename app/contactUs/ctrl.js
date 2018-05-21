@@ -1,6 +1,7 @@
 module.exports = ['Status', '$log', '$rootScope', 'ContactUsService', '$window', '$state', 'UIState', ctrl];
 
 function ctrl(Status, $log, $rootScope, service, $window, $state, UIState) {
+  $log.info('contact controller...');
   // initialize
   var vm = this;
   $rootScope.title = 'Contact Us';

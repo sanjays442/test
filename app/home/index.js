@@ -1,5 +1,5 @@
 var moduleName = 'app.home';
-
+console.log('index of home');
 angular.module(moduleName, [
   'ui.router',
   require('../components'),
@@ -27,13 +27,13 @@ angular.module(moduleName, [
       //   }
       // }
       // resolve: {
-      //   lazyLoad: ['$ocLazyLoad', function ($ocLazyLoad) {
-      //     return $ocLazyLoad.load('preload'); // Resolve promise and load before view
-      //       }]
+      //   lazyLoad: function ($ocLazyLoad) {
+      //     return $ocLazyLoad.load('ctrl.js');
+      //   }
       // }
-      lazyLoad: function ($transition$) {
-        return $transition$.injector().get('$ocLazyLoad').load('app/home/slider/ctrl.js');
-      }
+      // lazyLoad: function ($transition$) {
+      //   return $transition$.injector().get('$ocLazyLoad').load('app/home/slider/ctrl.js');
+      // }
     });
   }]);
 
